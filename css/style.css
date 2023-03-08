@@ -10,50 +10,36 @@ body{
     overflow: hidden;
     display: flex;
     align-items: center;
-}
-
-.start{
-    width: 100%;
-    height: 80%;
-    display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
 }
 
-.start pre{
-    font-size: 2em;
+.gamescreen{
+    outline: 1px solid white;
+    width: 80%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: repeat(10, 10%);
+    grid-template-rows: repeat(6, 1fr);
 }
 
-.buttons{
-    width: 100%;
-    height: 30%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center ;
+.gamescreen div{
+    border: 1px solid white;
 }
 
-.buttons button{
-    text-transform: uppercase;
-    border: none;
-    background-color: black;
-    outline: 2px solid white;
-    width: 30%;
-    height: 50px;
-    font-size: 1.4em;
+#main{
+    grid-area: 1/1/5/8;
 }
 
-.break{
-    width: 100%;
+#chat{
+    grid-area: 5/1/8/8;
 }
 
-button:hover{
-    background-color: rgba(255, 255, 255, 0.3);
-    transition: 0.1s ease-in;
-    cursor: pointer;
+#inventory{
+    grid-area: 1/8/4/11;
 }
 
-button:active{
-    background-color: white; 
+#map{
+    grid-area: 4/8/7/11;
+    text-align: center;
 }
