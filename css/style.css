@@ -39,7 +39,19 @@ body{
     grid-area: 1/8/4/11;
 }
 
-#map{
+#others{
     grid-area: 4/8/7/11;
     text-align: center;
+}
+
+#others ul{
+    list-style-type: none;
+    padding: 0;
+    position: relative;
+    top: 30%;
+}
+
+#others ul li{
+    height: 50px;
+    font-size: 1.2em;
 }
