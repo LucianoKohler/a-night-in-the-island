@@ -1,6 +1,24 @@
-var mapActivator = document.getElementById('mapactivate');
-
-var othersdiv = document.getElementById('others')
-mapActivator.addEventListener('click', function(){
-    othersdiv.style.display = "none";
+var startScreen = document.getElementById('start')
+var startButton = document.getElementById('startbutton')
+startButton.addEventListener('click', function(){
+    startScreen.style.display = 'none';
+    console.log('clicado');
 })
+
+//Para ciclar entre mapa e others
+var othersDiv = document.getElementById('others');
+var mapDiv = document.getElementById('map');
+
+
+function toMap(){
+    othersDiv.style.display='none';
+    mapDiv.style.display='block';
+}    
+
+
+function toOthers(){
+    mapDiv.style.display='none';
+    othersDiv.style.display='block';
+}   
+
+
