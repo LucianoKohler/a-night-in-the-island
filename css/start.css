@@ -1,5 +1,5 @@
-.start{
-    display: none !important; /* Para ver a tela de início, remova o !important */
+#start{
+    display: none; /* Para ver a tela de início, remova o !important */
     width: 100%;
     height: 100%;
     display: flex;
@@ -10,7 +10,7 @@
     margin-bottom: 9999px;
 }
 
-.start pre{
+#start pre{
     font-size: 1.4vw;
 }
 
