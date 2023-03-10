@@ -48,10 +48,15 @@ body{
     list-style-type: none;
     padding: 0;
     position: relative;
-    top: 30%;
+    top: 22%;
 }
 
 #others ul li{
     height: 50px;
     font-size: 1.2em;
+}
+
+#map{
+    grid-area: 4/8/7/11;
+    z-index: -1;
 }

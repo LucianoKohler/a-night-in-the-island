@@ -1,5 +1,5 @@
 .start{
-    display: none !important; /* Para ver a tela de início, remova o !important */
+    display: none; /* Para ver a tela de início, remova o !important */
     width: 100%;
     height: 100%;
     display: flex;
