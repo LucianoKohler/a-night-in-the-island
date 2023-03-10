@@ -18,7 +18,8 @@ function toMap(){
 
 function toOthers(){
     mapDiv.style.display='none';
-    othersDiv.style.display='block';
+    othersDiv.style.display='flex';
 }   
 
+var location = '';
 

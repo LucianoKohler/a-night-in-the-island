@@ -40,16 +40,16 @@ body{
 }
 
 #others{
-    grid-area: 4/8/7/11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    display: block;
+    grid-area: 4/8/7/11;
 }
 
 #others ul{
     list-style-type: none;
     padding: 0;
-    position: relative;
-    top: 22%;
 }
 
 #others ul li{
@@ -63,6 +63,7 @@ body{
     text-align: center;
     display: none;
     border: 1px solid white;
+    overflow: hidden;
 }
 
 #map pre{
