@@ -21,5 +21,10 @@ function toOthers(){
     othersDiv.style.display='flex';
 }   
 
-var location = '';
+var place = 'farm';
+var currentLocation = document.querySelectorAll('.'+place);
+var allPlaces = mapDiv.querySelectorAll('a')
 
+for (let i=0; i<=currentLocation.length; i++){
+    currentLocation[i].style.color='yellow';
+}
