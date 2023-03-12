@@ -21,10 +21,14 @@ function toOthers(){
     othersDiv.style.display='flex';
 }   
 
-var place = 'farm';
+var place = 'mountains';
 var currentLocation = document.querySelectorAll('.'+place);
 var allPlaces = mapDiv.querySelectorAll('a')
+console.log(allPlaces.length)
+
+
 
 for (let i=0; i<=currentLocation.length; i++){
     currentLocation[i].style.color='yellow';
 }
+
