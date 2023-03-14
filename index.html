@@ -22,7 +22,7 @@
                 <button>Info</button>
             </div>
     </div>
-    <div class="gamescreen">
+    <div id="gamescreen">
         <div id="main">a</div>
         <div id="inventory">b</div>
         <div id="chat">c</div>
@@ -30,7 +30,7 @@
             <ul>
                 <li><a id="mapactivate" onclick="toMap()" href="#">Mapa</a></li>
                 <li><a href="#">Salvar</a></li>
-                <li><a href="#">Sair</a></li>
+                <li><a id="backtomainmenu" onclick="toMainMenu()" href="#">Sair</a></li>
             </ul>
         </div>
         <div id="map"><pre>
@@ -92,6 +92,19 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
         </div>
+    </div>
+    <div id="deathmessage">
+        <pre
+        >  _____
+ /     \
+| () () |
+ \  ^  /
+  |||||
+  |||||</pre>
+        <div class="break">&zwnj;</div>
+        <p>Não foi dessa vez...</p>
+        <div class="break">&zwnj;</div>
+        <button onclick="toMainMenu()">Reniciar</button>
     </div>
 
 

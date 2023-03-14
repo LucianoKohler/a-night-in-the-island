@@ -9,6 +9,12 @@ startButton.addEventListener('click', function(){
 var othersDiv = document.getElementById('others');
 var mapDiv = document.getElementById('map');
 
+function toMainMenu(){
+    startScreen.style.display = 'flex';
+    document.getElementById('deathmessage').style.display='none';
+    document.getElementById('gamescreen').style.display='grid';
+
+}
 
 function toMap(){
     othersDiv.style.display='none';
@@ -21,6 +27,8 @@ function toOthers(){
     othersDiv.style.display='flex';
 }   
 
+
+//Fazendo com que a localização atual fique amarela no mapa
 var place = 'house';
 var currentLocation = document.querySelectorAll('.'+place);
 var allPlaces = mapDiv.querySelectorAll('a')
@@ -31,12 +39,12 @@ for (let i=0; i<=(allPlaces.length-1); i++){
     allPlaces[i].addEventListener('click', function(){
         place=allPlaces[i].className
         currentLocation = document.querySelectorAll('.'+place);
-        updateColors();
+        UpdateColors();
     })
 }
 
 
-function updateColors(){
+function UpdateColors(){
     for (let i=0; i<=(allPlaces.length-1); i++){
         if(allPlaces[i].className==place){
             allPlaces[i].style.color='yellow';
@@ -44,8 +52,18 @@ function updateColors(){
             allPlaces[i].style.color='white'
         }
     }
-    
-    // for (let i=0; i<=currentLocation.length; i++){
-    //     currentLocation[i].style.color='yellow';
+}
+
+function DyingAnimation(){
+    document.getElementById('gamescreen').style.display='none';
+    document.getElementById('deathmessage').style.display='flex';
+}
+
+document.addEventListener('keydown', function(event){
+    if(event.code == 'KeyD'){
+        console.log('MORREU');
+        DyingAnimation();
     }
+
+})
 
