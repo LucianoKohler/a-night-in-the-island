@@ -21,14 +21,31 @@ function toOthers(){
     othersDiv.style.display='flex';
 }   
 
-var place = 'mountains';
+var place = 'house';
 var currentLocation = document.querySelectorAll('.'+place);
 var allPlaces = mapDiv.querySelectorAll('a')
 console.log(allPlaces.length)
-
-
-
-for (let i=0; i<=currentLocation.length; i++){
-    currentLocation[i].style.color='yellow';
+console.log(allPlaces)
+//adicionando eventlisteners para TODOS os links do menu
+for (let i=0; i<=(allPlaces.length-1); i++){
+    allPlaces[i].addEventListener('click', function(){
+        place=allPlaces[i].className
+        currentLocation = document.querySelectorAll('.'+place);
+        updateColors();
+    })
 }
+
+
+function updateColors(){
+    for (let i=0; i<=(allPlaces.length-1); i++){
+        if(allPlaces[i].className==place){
+            allPlaces[i].style.color='yellow';
+        }else{
+            allPlaces[i].style.color='white'
+        }
+    }
+    
+    // for (let i=0; i<=currentLocation.length; i++){
+    //     currentLocation[i].style.color='yellow';
+    }
 
