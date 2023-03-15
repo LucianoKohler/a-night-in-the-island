@@ -25,7 +25,7 @@ function toMap(){
 function toOthers(){
     mapDiv.style.display='none';
     othersDiv.style.display='flex';
-}   
+}
 
 
 //Fazendo com que a localização atual fique amarela no mapa
