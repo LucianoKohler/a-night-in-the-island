@@ -112,3 +112,41 @@ button:hover{
 button:active{
     background-color: white; 
 }
+
+#chat{
+    padding: 15px;
+    font-size: 1.2em;
+}
+
+#inventory{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#inventory .aligntext{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#inventory pre{
+    font-size: .8em;
+}
+
+#inventory::-webkit-scrollbar{
+    width: 10px;
+}
+
+#inventory::-webkit-scrollbar-track{
+    background-color: black;
+    border: 1px solid white;
+}
+
+#inventory::-webkit-scrollbar-thumb{
+    background: white;
+}
+
+#inventory::-webkit-scrollbar-thumb:hover {
+    background: #aaa; 
+  }
