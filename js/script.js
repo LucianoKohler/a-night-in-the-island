@@ -2,7 +2,14 @@ var startScreen = document.getElementById('start')
 var startButton = document.getElementById('startbutton')
 startButton.addEventListener('click', function(){
     startScreen.style.display = 'none';
-    console.log('clicado');
+})
+
+//para ser mais rápido:
+
+document.addEventListener('keydown', function(event){
+    if(event.code='Enter'){
+        startScreen.style.display = 'none';
+    }
 })
 
 //Para ciclar entre mapa e others

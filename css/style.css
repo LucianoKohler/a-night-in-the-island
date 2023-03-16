@@ -128,6 +128,7 @@ button:active{
 #inventory{
     overflow-x: hidden;
     overflow-y: scroll;
+    padding: 15px;
 }
 
 #inventory .aligntext{
@@ -137,8 +138,18 @@ button:active{
     justify-content: center;
 }
 
+#inventory #inventorylogo{
+    font-size: 110%;
+}
+
 #inventory pre{
-    font-size: .8em;
+    font-size: .9em;
+    padding: 5px;
+}
+
+#inventory pre h3{
+    display: inline;
+    font-size: 1.3em;
 }
 
 #inventory::-webkit-scrollbar{
