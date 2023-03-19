@@ -128,7 +128,6 @@ button:active{
 #inventory{
     overflow-x: hidden;
     overflow-y: scroll;
-    padding: 15px;
 }
 
 #inventory .aligntext{
@@ -136,15 +135,21 @@ button:active{
     height: auto;
     display: flex;
     justify-content: center;
+    border: none;
 }
 
 #inventory #inventorylogo{
-    font-size: 110%;
+    font-size: .8vw;
+}
+
+#inventory p{
+    margin-left: 15px;
 }
 
 #inventory pre{
     font-size: .9em;
     padding: 5px;
+    
 }
 
 #inventory pre h3{
