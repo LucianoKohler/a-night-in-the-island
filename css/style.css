@@ -31,6 +31,13 @@ body{
     grid-area: 1/1/5/8;
 }
 
+#main{
+    font-size: .9vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #chat{
     grid-area: 5/1/8/8;
 }

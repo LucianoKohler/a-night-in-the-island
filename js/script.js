@@ -44,9 +44,11 @@ console.log(allPlaces)
 //adicionando eventlisteners para TODOS os links do menu
 for (let i=0; i<=(allPlaces.length-1); i++){
     allPlaces[i].addEventListener('click', function(){
-        place=allPlaces[i].className
-        currentLocation = document.querySelectorAll('.'+place);
-        UpdateColors();
+        if(allPlaces[i].className!='goback'){
+            place=allPlaces[i].className
+            currentLocation = document.querySelectorAll('.'+place);
+            UpdateColors();
+        }
     })
 }
 
