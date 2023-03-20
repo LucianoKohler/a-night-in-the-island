@@ -27,39 +27,54 @@
         <div id="main">a</div>
         <div id="inventory">
             <div class="aligntext">
-                <pre
-                > _____                     _                   
+                <pre id="inventorylogo"
+                >
+-----------------------------------------------
+ _____                     _                   
 |_   _|                   | |                  
   | | _ ____   _____ _ __ | |_ ___  _ __ _   _ 
   | || '_ \ \ / / _ \ '_ \| __/ _ \| '__| | | |
  _| || | | \ V /  __/ | | | || (_) | |  | |_| |
  \___/_| |_|\_/ \___|_| |_|\__\___/|_|   \__, |
                                           __/ |
-                                         |___/ </pre>
+                                         |___/ 
+-----------------------------------------------</pre>
             </div>
-            <p>aaa</p>
-            <br>
-            <p>aaa</p>
-            <br>
-            <p>aaa</p>
-            <br>
-            <p>aaa</p>
-            <br>
-            <p>aaa</p>
-            <br>
-            <p>aaa</p>
-            <br>
-            <p>aaa</p>
-            <br>
+            <p id="keys">Keys: 0</p>
+            <p id="gold">Gold: 0</p>
+            <pre id="sword">
+ /-------------\
+ |        ||<> |  <h3>An ordinary stick</h3>
+ |       /     |
+ |     //      |  Maybe it's better than
+ |    /        |  nothing...
+ |   |         |
+ \-------------/</pre>
+            <pre>
+ /--+---+---+--\
+ |             |  ???
+ +             +
+ |             |
+ +             +
+ |             |
+ \--+---+---+--/</pre>
+            <pre>
+ /-_-‾-_-‾-_-‾-\
+ |             |  ???
+|               |
+ |             |
+  |           |
+ |             |
+ \-_-‾-_-‾-_-‾-/</pre>
 
 
         </div>
         <div id="chat">&gt;</div>
         <div id="others">
             <ul>
-                <li><a id="mapactivate" onclick="toMap()" href="#">Map</a></li>
-                <li><a href="#">Save</a></li>
-                <li><a id="backtomainmenu" onclick="toMainMenu()" href="#">Exit</a></li>
+                <li><button id="tomap" onclick="toMap()" href="#">Map</button></li>
+                <li><button id=""href="#">Settings</button></li>
+                <li><button id="backtomainmenu" onclick="toMainMenu()" href="#">Exit</button></li>
             </ul>
         </div>
         <div id="map"><pre>
