@@ -6,6 +6,13 @@ startButton.addEventListener('click', function(){
 
 //para ser mais rápido:
 
+var textLines = {
+    well0: 'In the distance, you see an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies"',
+    well1: 'What will you do ?',
+    well2: '<a href="#" id="throwcoinintowell"> Throw a Coin',
+    well3: '<a href="#" id="jumpintowell"> Jump into the well'
+}
+
 document.addEventListener('keydown', function(event){
     if(event.code='Enter'){
         startScreen.style.display = 'none';
@@ -75,4 +82,19 @@ document.addEventListener('keydown', function(event){
     }
 
 })
+
+var chat = document.getElementById('text');
+
+var typewriterwell = new Typewriter(chat, {
+    delay: 25,
+  });
+  
+  typewriterwell
+    .pauseFor(2500)
+    .typeString(textLines.well0 + '<br> <br>')
+    .pauseFor(500)
+    .typeString(textLines.well1 + '<br> <br>')
+    .typeString(textLines.well2 + '<br>')
+    .typeString(textLines.well3)
+    .start();
 
