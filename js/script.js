@@ -90,7 +90,7 @@ var typewriterwell = new Typewriter(chat, {
   });
   
   typewriterwell
-    .pauseFor(2500)
+    .pauseFor(6000)
     .typeString(textLines.well0 + '<br> <br>')
     .pauseFor(500)
     .typeString(textLines.well1 + '<br> <br>')
