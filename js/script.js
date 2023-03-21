@@ -89,12 +89,18 @@ var typewriterwell = new Typewriter(chat, {
     delay: 25,
   });
   
-  typewriterwell
-    .pauseFor(6000)
+if (gamescreen.style.display=='grid'){
+    typewriterwell
+    .pauseFor(500)
     .typeString(textLines.well0 + '<br> <br>')
     .pauseFor(500)
     .typeString(textLines.well1 + '<br> <br>')
     .typeString(textLines.well2 + '<br>')
     .typeString(textLines.well3)
-    .start();
+    .start()
+
+}
+
+
+    
 
