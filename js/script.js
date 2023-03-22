@@ -1,17 +1,13 @@
+
+//BOTÕES PARA A TELA DE INÍCIO
+
 var startScreen = document.getElementById('start')
 var startButton = document.getElementById('startbutton')
 startButton.addEventListener('click', function(){
     startScreen.style.display = 'none';
 })
 
-//para ser mais rápido:
-
-var textLines = {
-    well0: 'In the distance, you see an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies"',
-    well1: 'What will you do ?',
-    well2: '<a href="#" id="throwcoinintowell"> Throw a Coin',
-    well3: '<a href="#" id="jumpintowell"> Jump into the well'
-}
+//Para abrir o jogo com a tecla "enter"
 
 document.addEventListener('keydown', function(event){
     if(event.code='Enter'){
@@ -19,9 +15,22 @@ document.addEventListener('keydown', function(event){
     }
 })
 
+//"BANCO DE DADOS" PARA AS FALAS DO JOGO
+
+var textLines = {
+    start0: 'You wake up in front of a great forest',
+    well0: 'In the distance, you see an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies"',
+    well1: 'What will you do ?',
+    well2: '<a href="#" id="throwcoinintowell"> Throw a Coin',
+    well3: '<a href="#" id="jumpintowell"> Jump into the well'
+}
+
+
 //Para ciclar entre mapa e others
 var othersDiv = document.getElementById('others');
 var mapDiv = document.getElementById('map');
+
+//Funções para mudar as divs, utilizadas no HTML
 
 function toMainMenu(){
     startScreen.style.display = 'flex';
@@ -43,12 +52,15 @@ function toOthers(){
 
 
 //Fazendo com que a localização atual fique amarela no mapa
+
 var place = 'house';
 var currentLocation = document.querySelectorAll('.'+place);
 var allPlaces = mapDiv.querySelectorAll('a')
 console.log(allPlaces.length)
 console.log(allPlaces)
+
 //adicionando eventlisteners para TODOS os links do menu
+
 for (let i=0; i<=(allPlaces.length-1); i++){
     allPlaces[i].addEventListener('click', function(){
         if(allPlaces[i].className!='goback'){
@@ -59,6 +71,7 @@ for (let i=0; i<=(allPlaces.length-1); i++){
     })
 }
 
+//Função para trocar a cor da localização atual
 
 function UpdateColors(){
     for (let i=0; i<=(allPlaces.length-1); i++){
@@ -69,6 +82,8 @@ function UpdateColors(){
         }
     }
 }
+
+//Métodos de morrer aqui
 
 function DyingAnimation(){
     document.getElementById('gamescreen').style.display='none';
@@ -83,23 +98,25 @@ document.addEventListener('keydown', function(event){
 
 })
 
-var chat = document.getElementById('text');
+//Início do chat, para colocar os textos na div "chat"
 
-var typewriterwell = new Typewriter(chat, {
+var chatDiv = document.getElementById('text');
+
+
+var TypewriterLocation = 'typewriter' + place;
+var typewriterLocation = new Typewriter(chatDiv, {
     delay: 25,
   });
   
-if (gamescreen.style.display=='grid'){
-    typewriterwell
-    .pauseFor(500)
+
+    typewriterLocation
+    .pauseFor(750)
     .typeString(textLines.well0 + '<br> <br>')
-    .pauseFor(500)
+    .pauseFor(1000)
     .typeString(textLines.well1 + '<br> <br>')
     .typeString(textLines.well2 + '<br>')
     .typeString(textLines.well3)
     .start()
-
-}
 
 
     
