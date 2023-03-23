@@ -18,11 +18,15 @@ document.addEventListener('keydown', function(event){
 //"BANCO DE DADOS" PARA AS FALAS DO JOGO
 
 var textLines = {
-    start0: 'You wake up in front of a great forest',
+    start0: 'You wake up in front of a great and dense forest, without any memory of the last day, what happened?',
+    start1: 'The only thing you can do now is to investigate, what will you do?',
+    start2: '<a href="#" id="choice_gotoflorest"> Enter the florest </a>',
+    start3: '<a href="#" id="choice_retreatflorest"> Retreat from the florest',
     well0: 'In the distance, you see an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies"',
     well1: 'What will you do ?',
-    well2: '<a href="#" id="throwcoinintowell"> Throw a Coin',
-    well3: '<a href="#" id="jumpintowell"> Jump into the well'
+    well2: '<a href="#" id="choice_throwcoinintowell"> Throw a Coin',
+    well3: '<a href="#" id="choice_jumpintowell"> Jump into the well',
+
 }
 
 
@@ -66,6 +70,7 @@ for (let i=0; i<=(allPlaces.length-1); i++){
         if(allPlaces[i].className!='goback'){
             place=allPlaces[i].className
             currentLocation = document.querySelectorAll('.'+place);
+            console.log(place);
             UpdateColors();
         }
     })
@@ -102,21 +107,24 @@ document.addEventListener('keydown', function(event){
 
 var chatDiv = document.getElementById('text');
 
-
-var TypewriterLocation = 'typewriter' + place;
-var typewriterLocation = new Typewriter(chatDiv, {
+var typewriterStart = new Typewriter(chatDiv, {
     delay: 25,
+    autoStart: false,
   });
   
 
-    typewriterLocation
-    .pauseFor(750)
-    .typeString(textLines.well0 + '<br> <br>')
-    .pauseFor(1000)
-    .typeString(textLines.well1 + '<br> <br>')
-    .typeString(textLines.well2 + '<br>')
-    .typeString(textLines.well3)
-    .start()
+        if(place=='well'){
+                console.log('true')
+                typewriterStart
+                .pauseFor(750)
+                .typeString(textLines.start0 + '<br> <br>')
+                .pauseFor(1000)
+                .typeString(textLines.start1 + '<br> <br>')
+                .typeString(textLines.start2 + '<br>')
+                .typeString(textLines.start3)
+        }
+
+
 
 
     
