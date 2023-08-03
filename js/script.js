@@ -16,17 +16,17 @@ document.addEventListener('keydown', function(event){
 })
 
 //"BANCO DE DADOS" PARA AS FALAS DO JOGO
-
+//todos os <a> possuem a função de dar update no jogo, as variáveis inseridas são: a imagem a ser carregada e o texto a ser printado
 var textLines = {
-    start0: 'You wake up in front of a great and dense forest, without any memory of the last day, what happened?',
-    start1: 'The only thing you can do now is to investigate, what will you do?',
-    start2: '<a href="#" id="choice_gotoflorest"> Enter the florest </a>',
-    start3: '<a href="#" id="choice_retreatflorest"> Retreat from the florest',
-    well0: 'In the distance, you see an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies"',
-    well1: 'What will you do ?',
-    well2: '<a href="#" id="choice_throwcoinintowell"> Throw a Coin',
-    well3: '<a href="#" id="choice_jumpintowell"> Jump into the well',
-
+    chooselocation: `You can use the map anytime you want to leave the place`,
+    start0: `You wake up in front of a great and dense forest, without any memory of the last day, what happened?`,
+    start1: `The only thing you can do now is to investigate, what will you do?`,
+    start2: `<a href="#"> Enter the florest </a>`,
+    start3: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the florest`,
+    well0: ` In the distance, you see an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies"` ,
+    well1: ` What will you do ?` ,
+    well2: ` <a href="#"> Throw a Coin` ,
+    well3: ` <a href="#"> Jump into the well` ,
 }
 
 
@@ -40,7 +40,6 @@ function toMainMenu(){
     startScreen.style.display = 'flex';
     document.getElementById('deathmessage').style.display='none';
     document.getElementById('gamescreen').style.display='grid';
-
 }
 
 function toMap(){
@@ -57,11 +56,9 @@ function toOthers(){
 
 //Fazendo com que a localização atual fique amarela no mapa
 
-var place = 'house';
+var place = 'forest';
 var currentLocation = document.querySelectorAll('.'+place);
 var allPlaces = mapDiv.querySelectorAll('a')
-console.log(allPlaces.length)
-console.log(allPlaces)
 
 //adicionando eventlisteners para TODOS os links do menu
 
@@ -71,6 +68,7 @@ for (let i=0; i<=(allPlaces.length-1); i++){
             place=allPlaces[i].className
             currentLocation = document.querySelectorAll('.'+place);
             console.log(place);
+
             UpdateColors();
         }
     })
@@ -107,25 +105,34 @@ document.addEventListener('keydown', function(event){
 
 var chatDiv = document.getElementById('text');
 
-var typewriterStart = new Typewriter(chatDiv, {
-    delay: 25,
-    autoStart: false,
-  });
-  
+document.getElementById('startbutton').onclick = () =>{
+    var twStart = new Typewriter(chatDiv, {
+        delay: 25,
+      });
 
-        if(place=='well'){
-                console.log('true')
-                typewriterStart
-                .pauseFor(750)
-                .typeString(textLines.start0 + '<br> <br>')
-                .pauseFor(1000)
-                .typeString(textLines.start1 + '<br> <br>')
-                .typeString(textLines.start2 + '<br>')
-                .typeString(textLines.start3)
-        }
+      twStart
+      .pauseFor(500)
+      .typeString(textLines.start0 + '<br> <br>')
+      .pauseFor(1000)
+      .typeString(textLines.start1 + '<br> <br>')
+      .typeString(textLines.start2 + '<br>')
+      .typeString(textLines.start3)
+      .start()
+}
 
+function updateScreen(nextImg, text){
+    let NI = document.getElementById(nextImg)
 
+    document.querySelector('.active').classList.remove('active')
 
+    NI.classList.add('active')
+    if(text == 'chooselocation'){
+        let TW = new Typewriter(chatDiv, {
+            delay: 25,
+        });
+        TW.typeString(textLines.chooselocation).start()
+    }
+}
 
-    
+UpdateColors()
 
