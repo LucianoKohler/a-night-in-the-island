@@ -67,8 +67,7 @@ for (let i=0; i<=(allPlaces.length-1); i++){
         if(allPlaces[i].className!='goback'){
             place=allPlaces[i].className
             currentLocation = document.querySelectorAll('.'+place);
-            console.log(place);
-
+            //Botar um updateScreen aqui.
             UpdateColors();
         }
     })
