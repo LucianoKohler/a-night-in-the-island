@@ -18,11 +18,8 @@ document.addEventListener('keydown', function(event){
 //"BANCO DE DADOS" PARA AS FALAS DO JOGO
 //todos os <a> possuem a função de dar update no jogo, as variáveis inseridas são: a imagem a ser carregada e o texto a ser printado
 
-var wellLines = {
-    0: ` In the distance, you see an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies"` ,
-    1: ` What will you do ?` ,
-    2: ` <a href="#"> Throw a Coin` ,
-    3: ` <a href="#"> Jump into the well` ,
+var chooseLines = {
+    0: `You can use the map anytime you want to leave the place`,
 }
 
 var startLines = {
@@ -32,8 +29,26 @@ var startLines = {
     3: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`,
 }
 
-var chooseLines = {
-    0: `You can use the map anytime you want to leave the place`,
+var forestLines = {
+    0: `Back to forest you get, what will you do?`,
+    1: `<a href="#"> Enter the forest </a>`,
+    2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`,
+}
+
+
+var wellLines = {
+    0: ` In the distance, you discover an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies"` ,
+    1: ` What will you do?` ,
+    2: ` <a href="#"> Throw a Coin` ,
+    3: ` <a href="#" onclick="updateScreen('well_jump', 'well_jump')"> Jump into the well` ,
+}
+
+var well_jumpLines = {
+    0: `Without any fear, you hop into the well, after all, that's how games work!`,
+    1: `.`,
+    2: `.`,
+    3: `. right?`,
+    4: `After some time, you hit the ground and die instantly, what was you thinking!?`
 }
 
 
@@ -144,7 +159,6 @@ function updateScreen(nextImg, text){
             });
             TWS.typeString(chooseLines[0]).start()
             break;
-            
         case 'well':
             let TWW = new Typewriter(chatDiv, {
                 delay: 25,
@@ -156,6 +170,34 @@ function updateScreen(nextImg, text){
             .typeString(wellLines[3])            
             .start()
             break;
+        case 'well_jump':
+            let TWWJ = new Typewriter(chatDiv, {
+                delay: 25,
+            });
+            TWWJ.typeString(well_jumpLines[0] + "<br> <br>")
+            .pauseFor(1000)
+            .typeString(well_jumpLines[1])
+            .pauseFor(1000)
+            .typeString(well_jumpLines[2])
+            .pauseFor(1000)
+            .typeString(well_jumpLines[3] + "<br> <br>")
+            .pauseFor(2000)
+            .typeString(well_jumpLines[4])
+            .start()
+
+
+            break;
+        case 'forest':
+            let TWF = new Typewriter(chatDiv, {
+                delay: 25,
+            });
+            TWF.typeString(forestLines[0] + '<br> <br>')
+            .pauseFor(500)
+            .typeString(forestLines[1] + '<br>')
+            .typeString(forestLines[2])            
+            .start()
+            break;
+
         default:
             console.log('não encontrado')
             break;
