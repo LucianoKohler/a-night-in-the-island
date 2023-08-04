@@ -16,18 +16,41 @@ document.addEventListener('keydown', function(event){
 })
 
 //"BANCO DE DADOS" PARA AS FALAS DO JOGO
+//todos os <a> possuem a função de dar update no jogo, as variáveis inseridas são: a imagem a ser carregada e o texto a ser printado
 
-var textLines = {
-    start0: 'You wake up in front of a great and dense forest, without any memory of the last day, what happened?',
-    start1: 'The only thing you can do now is to investigate, what will you do?',
-    start2: '<a href="#" id="choice_gotoflorest"> Enter the florest </a>',
-    start3: '<a href="#" id="choice_retreatflorest"> Retreat from the florest',
-    well0: 'In the distance, you see an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies"',
-    well1: 'What will you do ?',
-    well2: '<a href="#" id="choice_throwcoinintowell"> Throw a Coin',
-    well3: '<a href="#" id="choice_jumpintowell"> Jump into the well',
-
+var chooseLines = {
+    0: `You can use the map anytime you want to leave the place`,
 }
+
+var startLines = {
+    0: `You wake up in front of a great and dense forest, without any memory of the last day, what happened?`,
+    1: `The only thing you can do now is to investigate, what will you do?`,
+    2: `<a href="#"> Enter the forest </a>`,
+    3: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`,
+}
+
+var forestLines = {
+    0: `Back to forest you get, what will you do?`,
+    1: `<a href="#"> Enter the forest </a>`,
+    2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`,
+}
+
+
+var wellLines = {
+    0: ` In the distance, you discover an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies"` ,
+    1: ` What will you do?` ,
+    2: ` <a href="#"> Throw a Coin` ,
+    3: ` <a href="#" onclick="updateScreen('well_jump', 'well_jump')"> Jump into the well` ,
+}
+
+var well_jumpLines = {
+    0: `Without any fear, you hop into the well, after all, that's how games work!`,
+    1: `.`,
+    2: `.`,
+    3: `. right?`,
+    4: `After some time, you hit the ground and die instantly, what was you thinking!?`
+}
+
 
 
 //Para ciclar entre mapa e others
@@ -40,7 +63,6 @@ function toMainMenu(){
     startScreen.style.display = 'flex';
     document.getElementById('deathmessage').style.display='none';
     document.getElementById('gamescreen').style.display='grid';
-
 }
 
 function toMap(){
@@ -57,11 +79,9 @@ function toOthers(){
 
 //Fazendo com que a localização atual fique amarela no mapa
 
-var place = 'house';
+var place = 'forest';
 var currentLocation = document.querySelectorAll('.'+place);
 var allPlaces = mapDiv.querySelectorAll('a')
-console.log(allPlaces.length)
-console.log(allPlaces)
 
 //adicionando eventlisteners para TODOS os links do menu
 
@@ -70,7 +90,8 @@ for (let i=0; i<=(allPlaces.length-1); i++){
         if(allPlaces[i].className!='goback'){
             place=allPlaces[i].className
             currentLocation = document.querySelectorAll('.'+place);
-            console.log(place);
+            updateScreen(allPlaces[i].className, allPlaces[i].className)
+            //Botar um updateScreen aqui.
             UpdateColors();
         }
     })
@@ -107,25 +128,81 @@ document.addEventListener('keydown', function(event){
 
 var chatDiv = document.getElementById('text');
 
-var typewriterStart = new Typewriter(chatDiv, {
-    delay: 25,
-    autoStart: false,
-  });
-  
+document.getElementById('startbutton').onclick = () =>{
+    var twStart = new Typewriter(chatDiv, {
+        delay: 25,
+      });
 
-        if(place=='well'){
-                console.log('true')
-                typewriterStart
-                .pauseFor(750)
-                .typeString(textLines.start0 + '<br> <br>')
-                .pauseFor(1000)
-                .typeString(textLines.start1 + '<br> <br>')
-                .typeString(textLines.start2 + '<br>')
-                .typeString(textLines.start3)
-        }
+      twStart
+      .pauseFor(500)
+      .typeString(startLines[0] + '<br> <br>')
+      .pauseFor(1000)
+      .typeString(startLines[1] + '<br> <br>')
+      .typeString(startLines[2] + '<br>')
+      .typeString(startLines[3])
+      .start()
+}
+
+function updateScreen(nextImg, text){
+    let NI = document.getElementById(nextImg)
+    console.log(nextImg, text)
+
+    //mudar imagem
+    document.querySelector('.active').classList.remove('active')
+    NI.classList.add('active')
+
+    //mudar texto
+    switch (text){
+        case 'chooselocation':
+            let TWS = new Typewriter(chatDiv, {
+                delay: 25,
+            });
+            TWS.typeString(chooseLines[0]).start()
+            break;
+        case 'well':
+            let TWW = new Typewriter(chatDiv, {
+                delay: 25,
+            });
+            TWW.typeString(wellLines[0] + '<br> <br>')
+            .pauseFor(500)
+            .typeString(wellLines[1] + '<br> <br>')
+            .typeString(wellLines[2] + '<br>')
+            .typeString(wellLines[3])            
+            .start()
+            break;
+        case 'well_jump':
+            let TWWJ = new Typewriter(chatDiv, {
+                delay: 25,
+            });
+            TWWJ.typeString(well_jumpLines[0] + "<br> <br>")
+            .pauseFor(1000)
+            .typeString(well_jumpLines[1])
+            .pauseFor(1000)
+            .typeString(well_jumpLines[2])
+            .pauseFor(1000)
+            .typeString(well_jumpLines[3] + "<br> <br>")
+            .pauseFor(2000)
+            .typeString(well_jumpLines[4])
+            .start()
 
 
+            break;
+        case 'forest':
+            let TWF = new Typewriter(chatDiv, {
+                delay: 25,
+            });
+            TWF.typeString(forestLines[0] + '<br> <br>')
+            .pauseFor(500)
+            .typeString(forestLines[1] + '<br>')
+            .typeString(forestLines[2])            
+            .start()
+            break;
 
+        default:
+            console.log('não encontrado')
+            break;
+    }
+}
 
-    
+UpdateColors()
 
