@@ -17,17 +17,25 @@ document.addEventListener('keydown', function(event){
 
 //"BANCO DE DADOS" PARA AS FALAS DO JOGO
 //todos os <a> possuem a função de dar update no jogo, as variáveis inseridas são: a imagem a ser carregada e o texto a ser printado
-var textLines = {
-    chooselocation: `You can use the map anytime you want to leave the place`,
-    start0: `You wake up in front of a great and dense forest, without any memory of the last day, what happened?`,
-    start1: `The only thing you can do now is to investigate, what will you do?`,
-    start2: `<a href="#"> Enter the florest </a>`,
-    start3: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the florest`,
-    well0: ` In the distance, you see an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies"` ,
-    well1: ` What will you do ?` ,
-    well2: ` <a href="#"> Throw a Coin` ,
-    well3: ` <a href="#"> Jump into the well` ,
+
+var wellLines = {
+    0: ` In the distance, you see an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies"` ,
+    1: ` What will you do ?` ,
+    2: ` <a href="#"> Throw a Coin` ,
+    3: ` <a href="#"> Jump into the well` ,
 }
+
+var startLines = {
+    0: `You wake up in front of a great and dense forest, without any memory of the last day, what happened?`,
+    1: `The only thing you can do now is to investigate, what will you do?`,
+    2: `<a href="#"> Enter the forest </a>`,
+    3: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`,
+}
+
+var chooseLines = {
+    0: `You can use the map anytime you want to leave the place`,
+}
+
 
 
 //Para ciclar entre mapa e others
@@ -67,6 +75,7 @@ for (let i=0; i<=(allPlaces.length-1); i++){
         if(allPlaces[i].className!='goback'){
             place=allPlaces[i].className
             currentLocation = document.querySelectorAll('.'+place);
+            updateScreen(allPlaces[i].className, allPlaces[i].className)
             //Botar um updateScreen aqui.
             UpdateColors();
         }
@@ -111,25 +120,45 @@ document.getElementById('startbutton').onclick = () =>{
 
       twStart
       .pauseFor(500)
-      .typeString(textLines.start0 + '<br> <br>')
+      .typeString(startLines[0] + '<br> <br>')
       .pauseFor(1000)
-      .typeString(textLines.start1 + '<br> <br>')
-      .typeString(textLines.start2 + '<br>')
-      .typeString(textLines.start3)
+      .typeString(startLines[1] + '<br> <br>')
+      .typeString(startLines[2] + '<br>')
+      .typeString(startLines[3])
       .start()
 }
 
 function updateScreen(nextImg, text){
     let NI = document.getElementById(nextImg)
+    console.log(nextImg, text)
 
+    //mudar imagem
     document.querySelector('.active').classList.remove('active')
-
     NI.classList.add('active')
-    if(text == 'chooselocation'){
-        let TW = new Typewriter(chatDiv, {
-            delay: 25,
-        });
-        TW.typeString(textLines.chooselocation).start()
+
+    //mudar texto
+    switch (text){
+        case 'chooselocation':
+            let TWS = new Typewriter(chatDiv, {
+                delay: 25,
+            });
+            TWS.typeString(chooseLines[0]).start()
+            break;
+            
+        case 'well':
+            let TWW = new Typewriter(chatDiv, {
+                delay: 25,
+            });
+            TWW.typeString(wellLines[0] + '<br> <br>')
+            .pauseFor(500)
+            .typeString(wellLines[1] + '<br> <br>')
+            .typeString(wellLines[2] + '<br>')
+            .typeString(wellLines[3])            
+            .start()
+            break;
+        default:
+            console.log('não encontrado')
+            break;
     }
 }
 
