@@ -169,7 +169,6 @@ function updateScreen(nextImg, text){
 
         case 'enterForest':
 
-
             if(Stick){//com graveto
                 TW.typeString(enterForestLinesWithStick[0])
                 .typeString(WWYD)
@@ -190,9 +189,18 @@ function updateScreen(nextImg, text){
                 .start()
             }
 
-
             break;
+        
+        case 'weird_rocks':
+            TW.typeString(weird_rocksLines[0])
+            .pauseFor(500)
+            .typeString(weird_rocksLines[1])
+            .pauseFor(500)
+            .typeString(weird_rocksLines[2])
+            .typeString(weird_rocksLines[3])
+            .typeString(weird_rocksLines[4])
 
+            .start()
         default:
             console.log('não encontrado')
             break;
@@ -253,4 +261,12 @@ var well_jumpLines = {
     2: `.`,
     3: `. right?<br><br>`,
     4: `After some time, you hit the ground and die instantly, what was you thinking!?`
+}
+
+var weird_rocksLines = {
+    0: `You find a weird arrangement of rocks between in the middle of the grass <br><br>`,
+    1: `-Heyo! <br><br>`,
+    2: `What will you say? <br><br>`,
+    3: `<a href="#"> Who are you?<br>`,
+    4: `<a href="#"> What's the deal with your eye?`
 }
