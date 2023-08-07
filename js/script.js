@@ -107,22 +107,21 @@ document.addEventListener('keydown', function(event){
 
 var chatDiv = document.getElementById('text');
 
-var typewriterStart = new Typewriter(chatDiv, {
+var typewriterWell = new Typewriter(chatDiv, {
     delay: 25,
     autoStart: false,
   });
   
 
-        if(place=='well'){
-                console.log('true')
-                typewriterStart
-                .pauseFor(750)
-                .typeString(textLines.start0 + '<br> <br>')
-                .pauseFor(1000)
-                .typeString(textLines.start1 + '<br> <br>')
-                .typeString(textLines.start2 + '<br>')
-                .typeString(textLines.start3)
-        }
+
+typewriterWell
+.pauseFor(750)
+.typeString(textLines.well0 + '<br> <br>')
+.pauseFor(1000)
+.typeString(textLines.well1 + '<br> <br>')
+.typeString(textLines.well2 + '<br>')
+.typeString(textLines.well3)
+.start()
 
 
 
