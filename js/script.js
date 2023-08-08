@@ -1,6 +1,6 @@
 var Stick = false
 
-let del = 5
+let del = 25
 //velocidade de escrita dos textos
 
 //BOTÕES PARA A TELA DE INÍCIO
@@ -55,16 +55,34 @@ var allPlaces = mapDiv.querySelectorAll('a')
 
 //adicionando eventlisteners para TODOS os links do menu
 
+let tooltip = document.createElement('span');
+tooltip.id = 'tooltip'
+mapDiv.appendChild(tooltip)
+
+
 for (let i=0; i<=(allPlaces.length-1); i++){
-    allPlaces[i].addEventListener('click', function(){
+    allPlaces[i].addEventListener('click', () =>{
         if(allPlaces[i].className!='goback'){
             place=allPlaces[i].className
             currentLocation = document.querySelectorAll('.'+place);
             updateScreen(allPlaces[i].className, allPlaces[i].className)
-            //Botar um updateScreen aqui.
             UpdateColors();
         }
     })
+
+    allPlaces[i].addEventListener('mousemove', (e) =>{
+        //Para capitalizar as localizações
+        tooltip.style.display = 'inline'
+        tooltip.innerHTML = allPlaces[i].className.charAt(0).toUpperCase() + (allPlaces[i].className).slice(1);
+        tooltip.style.top = (e.clientY -20) +'px';
+        tooltip.style.left = (e.clientX +10) +'px';
+    })
+    
+    allPlaces[i].addEventListener('mouseout', () =>{
+        tooltip.style.display = 'none'
+    })
+
+
 }
 
 //Função para trocar a cor da localização atual
@@ -126,6 +144,8 @@ function updateScreen(nextImg, text){
     let TW = new Typewriter(chatDiv, {
         delay: del,
     })
+
+    TW.pauseFor(250) //Espera inicial quando se muda a ação/localização
 
     switch (text){
 
@@ -201,6 +221,18 @@ function updateScreen(nextImg, text){
             .typeString(weird_rocksLines[4])
 
             .start()
+            break;
+
+        case 'cabin':
+            TW.typeString(cabinLines[0])
+            .pauseFor(1000)
+            .typeString(cabinLines[1])
+            .pauseFor(500)
+            .typeString(WWYD)
+            .typeString(cabinLines[2])
+            .typeString(cabinLines[3])
+            .start()
+            break;
         default:
             console.log('não encontrado')
             break;
@@ -269,4 +301,12 @@ var weird_rocksLines = {
     2: `What will you say? <br><br>`,
     3: `<a href="#"> Who are you?<br>`,
     4: `<a href="#"> What's the deal with your eye?`
+}
+
+var cabinLines = {
+    0: `You spot a small and miserable cabin at the edge of the island, the cabin has a skull hanged by the top of its only entrance.<br><br>`,
+    1: `By the side, you notice a dead tree with a small script carved on its trunk <br><br>`,
+
+    2: `<a href="#">Enter the cabin<br>`,
+    3: `<a href="#">Investigate the tree`,
 }

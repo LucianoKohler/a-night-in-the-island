@@ -104,6 +104,15 @@ body{
     text-decoration: none;
 }
 
+#map #tooltip{/*esse tooltip aparece toda vez que o mouse passa em uma localização possível no mapa*/
+    border: 1px solid white;
+    background-color: black;
+    padding: 3px;
+    position: absolute
+
+
+}
+
 #deathmessage{
     display: none; /*mudado para flex no js*/
     width: 100%;
