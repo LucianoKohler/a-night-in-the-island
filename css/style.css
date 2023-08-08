@@ -108,9 +108,8 @@ body{
     border: 1px solid white;
     background-color: black;
     padding: 3px;
-    position: absolute
-
-
+    position: absolute;
+    display: none;
 }
 
 #deathmessage{

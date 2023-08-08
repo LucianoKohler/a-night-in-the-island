@@ -61,26 +61,36 @@ mapDiv.appendChild(tooltip)
 
 
 for (let i=0; i<=(allPlaces.length-1); i++){
+
     allPlaces[i].addEventListener('click', () =>{
+        
         if(allPlaces[i].className!='goback'){
             place=allPlaces[i].className
             currentLocation = document.querySelectorAll('.'+place);
-            updateScreen(allPlaces[i].className, allPlaces[i].className)
-            UpdateColors();
+
+            if(!allPlaces[i].classList[1]){//Se NÃO houver a classe disabled
+                updateScreen(allPlaces[i].className, allPlaces[i].className)
+                UpdateColors();
+            }
         }
     })
 
     allPlaces[i].addEventListener('mousemove', (e) =>{
-        //Para capitalizar as localizações
-        tooltip.style.display = 'inline'
-        tooltip.innerHTML = allPlaces[i].className.charAt(0).toUpperCase() + (allPlaces[i].className).slice(1);
+        tooltip.style.display = 'inline';
+
+        if(allPlaces[i].classList[1]){
+            tooltip.innerHTML = '???'
+        }else{
+            tooltip.innerHTML = allPlaces[i].className.charAt(0).toUpperCase() + //Para capitalizar o primeiro caractere;
+            allPlaces[i].className.slice(1) //Para mostrar o resto da frase;
+            .replace('_', ' '); //Para retirar os _ e colocar espaços (deixar bonito;)
+        }
+
         tooltip.style.top = (e.clientY -20) +'px';
         tooltip.style.left = (e.clientX +10) +'px';
     })
     
-    allPlaces[i].addEventListener('mouseout', () =>{
-        tooltip.style.display = 'none'
-    })
+    allPlaces[i].onmouseout = () => tooltip.style.display = 'none'
 
 
 }
@@ -89,11 +99,9 @@ for (let i=0; i<=(allPlaces.length-1); i++){
 
 function UpdateColors(){
     for (let i=0; i<=(allPlaces.length-1); i++){
-        if(allPlaces[i].className==place){
-            allPlaces[i].style.color='yellow';
-        }else{
-            allPlaces[i].style.color='white'
-        }
+        if(allPlaces[i].className==place) allPlaces[i].style.color='yellow';
+        else                              allPlaces[i].style.color='white';
+        
     }
 }
 
@@ -176,6 +184,9 @@ function updateScreen(nextImg, text){
             .pauseFor(2000)
             .typeString(well_jumpLines[4])
             .start()
+
+
+            setTimeout(DyingAnimation, 12500); //Tempo certo para delay = 25;
             break;
 
         case 'forest':
@@ -292,12 +303,12 @@ var well_jumpLines = {
     1: `.`,
     2: `.`,
     3: `. right?<br><br>`,
-    4: `After some time, you hit the ground and die instantly, what was you thinking!?`
+    4: `After some time, you hit the ground and die instantly, what was you thinking?!`
 }
 
 var weird_rocksLines = {
-    0: `You find a weird arrangement of rocks between in the middle of the grass <br><br>`,
-    1: `-Heyo! <br><br>`,
+    0: `You find a weird arrangement of rocks in the middle of the grass <br><br>`,
+    1: `-Heyo! - The rock says <br><br>`,
     2: `What will you say? <br><br>`,
     3: `<a href="#"> Who are you?<br>`,
     4: `<a href="#"> What's the deal with your eye?`
