@@ -1,6 +1,6 @@
 var Stick = false
 
-let del = 5
+let del = 25
 //velocidade de escrita dos textos
 
 //BOTÕES PARA A TELA DE INÍCIO
@@ -55,27 +55,53 @@ var allPlaces = mapDiv.querySelectorAll('a')
 
 //adicionando eventlisteners para TODOS os links do menu
 
+let tooltip = document.createElement('span');
+tooltip.id = 'tooltip'
+mapDiv.appendChild(tooltip)
+
+
 for (let i=0; i<=(allPlaces.length-1); i++){
-    allPlaces[i].addEventListener('click', function(){
+
+    allPlaces[i].addEventListener('click', () =>{
+        
         if(allPlaces[i].className!='goback'){
             place=allPlaces[i].className
             currentLocation = document.querySelectorAll('.'+place);
-            updateScreen(allPlaces[i].className, allPlaces[i].className)
-            //Botar um updateScreen aqui.
-            UpdateColors();
+
+            if(!allPlaces[i].classList[1]){//Se NÃO houver a classe disabled
+                updateScreen(allPlaces[i].className, allPlaces[i].className)
+                UpdateColors();
+            }
         }
     })
+
+    allPlaces[i].addEventListener('mousemove', (e) =>{
+        tooltip.style.display = 'inline';
+
+        if(allPlaces[i].classList[1]){
+            tooltip.innerHTML = '???'
+        }else{
+            tooltip.innerHTML = allPlaces[i].className.charAt(0).toUpperCase() + //Para capitalizar o primeiro caractere;
+            allPlaces[i].className.slice(1) //Para mostrar o resto da frase;
+            .replace('_', ' '); //Para retirar os _ e colocar espaços (deixar bonito;)
+        }
+
+        tooltip.style.top = (e.clientY -20) +'px';
+        tooltip.style.left = (e.clientX +10) +'px';
+    })
+    
+    allPlaces[i].onmouseout = () => tooltip.style.display = 'none'
+
+
 }
 
 //Função para trocar a cor da localização atual
 
 function UpdateColors(){
     for (let i=0; i<=(allPlaces.length-1); i++){
-        if(allPlaces[i].className==place){
-            allPlaces[i].style.color='yellow';
-        }else{
-            allPlaces[i].style.color='white'
-        }
+        if(allPlaces[i].className==place) allPlaces[i].style.color='yellow';
+        else                              allPlaces[i].style.color='white';
+        
     }
 }
 
@@ -127,6 +153,8 @@ function updateScreen(nextImg, text){
         delay: del,
     })
 
+    TW.pauseFor(250) //Espera inicial quando se muda a ação/localização
+
     switch (text){
 
         case 'chooselocation':
@@ -156,6 +184,9 @@ function updateScreen(nextImg, text){
             .pauseFor(2000)
             .typeString(well_jumpLines[4])
             .start()
+
+
+            setTimeout(DyingAnimation, 12500); //Tempo certo para delay = 25;
             break;
 
         case 'forest':
@@ -201,6 +232,18 @@ function updateScreen(nextImg, text){
             .typeString(weird_rocksLines[4])
 
             .start()
+            break;
+
+        case 'cabin':
+            TW.typeString(cabinLines[0])
+            .pauseFor(1000)
+            .typeString(cabinLines[1])
+            .pauseFor(500)
+            .typeString(WWYD)
+            .typeString(cabinLines[2])
+            .typeString(cabinLines[3])
+            .start()
+            break;
         default:
             console.log('não encontrado')
             break;
@@ -260,13 +303,21 @@ var well_jumpLines = {
     1: `.`,
     2: `.`,
     3: `. right?<br><br>`,
-    4: `After some time, you hit the ground and die instantly, what was you thinking!?`
+    4: `After some time, you hit the ground and die instantly, what was you thinking?!`
 }
 
 var weird_rocksLines = {
-    0: `You find a weird arrangement of rocks between in the middle of the grass <br><br>`,
-    1: `-Heyo! <br><br>`,
+    0: `You find a weird arrangement of rocks in the middle of the grass <br><br>`,
+    1: `-Heyo! - The rock says <br><br>`,
     2: `What will you say? <br><br>`,
     3: `<a href="#"> Who are you?<br>`,
     4: `<a href="#"> What's the deal with your eye?`
+}
+
+var cabinLines = {
+    0: `You spot a small and miserable cabin at the edge of the island, the cabin has a skull hanged by the top of its only entrance.<br><br>`,
+    1: `By the side, you notice a dead tree with a small script carved on its trunk <br><br>`,
+
+    2: `<a href="#">Enter the cabin<br>`,
+    3: `<a href="#">Investigate the tree`,
 }
