@@ -1,4 +1,7 @@
 var Stick = false
+var sword1 = false
+var sword2 = false
+var sword3 = false
 
 let del = 25
 //velocidade de escrita dos textos
@@ -223,17 +226,78 @@ function updateScreen(nextImg, text){
             break;
         
         case 'weird_rocks':
-            TW.typeString(weird_rocksLines[0])
-            .pauseFor(500)
-            .typeString(weird_rocksLines[1])
-            .pauseFor(500)
-            .typeString(weird_rocksLines[2])
-            .typeString(weird_rocksLines[3])
-            .typeString(weird_rocksLines[4])
+            if(sword3 == false){
+                TW.typeString(weird_rocksLines[0])
+                .pauseFor(500)
+                .typeString(weird_rocksLines[1])
+                .pauseFor(500)
+                .typeString(weird_rocksLines[2])
+                .typeString(weird_rocksLines[3])
+                .typeString(weird_rocksLines[4])
+                .start()
+            }else{
+                TW.typeString(weird_rocksAngryRox[0])
+                .pauseFor(1000)
+                .typeString(weird_rocksAngryRox[1])
+                .pauseFor(1000)
+                .typeString(weird_rocksAngryRox[2])
+                .start()
+            }
+            break;
 
+        case 'weird_rocksWhoAreYou':
+            TW.typeString(weird_rocksWhoAreYouLines[0])
+            .pauseFor(500)
+            .typeString(weird_rocksWhoAreYouLines[1])
+            .typeString(weird_rocksWhoAreYouLines[2])
+            .typeString(weird_rocksWhoAreYouLines[3])
             .start()
             break;
 
+        case 'weird_rocksCabin':
+            TW.typeString(weird_rocksCabinLines[0])
+            .pauseFor(1000)
+            .typeString(weird_rocksCabinLines[1])
+            .pauseFor(2000)
+            .typeString(weird_rocksCabinLines[2])
+            .start()
+        break;
+
+        case 'weird_rocksEye':
+            TW.typeString(weird_rocksEyeLines[0])
+            .pauseFor(1000)
+            .typeString(weird_rocksEyeLines[1])
+            .pauseFor(1000)
+            .typeString(weird_rocksEyeLines[2])
+            .typeString(weird_rocksEyeLines[3])
+            .typeString(weird_rocksEyeLines[4])
+            .start()
+        break;
+
+        case 'weird_rocksNice':
+            TW.typeString(weird_rocksNiceLines[0])
+            .pauseFor(1000)
+            .typeString(WWYD)
+            .typeString(weird_rocksNiceLines[1])
+            .typeString(weird_rocksNiceLines[2])
+            .start()
+        break;
+
+        case 'weird_rocksStealEye':
+            TW.typeString(weird_rocksStealEye[0])
+            .pauseFor(1000)
+            .typeString(weird_rocksStealEye[1])
+            .pauseFor(1000)
+            .typeString(weird_rocksStealEye[2])
+            .start()
+
+            sword3 = true;
+        break;
+
+
+
+
+        
         case 'cabin':
             TW.typeString(cabinLines[0])
             .pauseFor(1000)
@@ -306,12 +370,55 @@ var well_jumpLines = {
     4: `After some time, you hit the ground and die instantly, what was you thinking?!`
 }
 
+
+
+
 var weird_rocksLines = {
     0: `You find a weird arrangement of rocks in the middle of the grass <br><br>`,
     1: `-Heyo! - The rock says <br><br>`,
     2: `What will you say? <br><br>`,
-    3: `<a href="#"> Who are you?<br>`,
-    4: `<a href="#"> What's the deal with your eye?`
+    3: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksWhoAreYou')"> Who are you?<br>`,
+    4: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksEye')"> What's the deal with your eye?`
+}
+
+var weird_rocksWhoAreYouLines = {
+    0: `- I'm Rox, Rox the rock, nice to meetcha pal!<br><br>`,
+    1: `What will you say?<br><br>`,
+    2: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksCabin')">Do you know who lives in the cabin?<br>`,
+    3: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksEye')">What's the deal with your eye?`
+}
+
+var weird_rocksCabinLines = {
+    0: `- Oh... Are you talking about Leshy? He's a spirit that makes bad things to people, I don't like to talk about that...<BR><BR>`,
+    1: `Leshy turned Rox into a lot of stones!<BR><BR>`,
+    2: `Rox starts crying pebbles, you decide to leave him alone for a bit...`
+}
+
+var weird_rocksEyeLines = {
+    0: `- Oh, this eye? It's my ultra sharp and shiny metal eye, cool huh?<br><br>`,
+    1: `You can't lie, that eye is awesome. <br><br>`,
+    2: `What will you say?<br><br>`,
+    3: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksWhoAreYou')"> Who are you?<br>`,
+    4: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksNice')"> Nice! Can I have it?<br>`,
+}
+
+var weird_rocksNiceLines = {
+    0: `- Of course not! This is MY eye and if you steal it, you will suffer the most ruthless punishment you'll ever feel!<br><br>`,
+    
+    1: `<a href="#">Not steal the eye<br>`,//mudar o cara abaixo para eyeless quando der
+    2: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksStealEye')">Steal the eye`,
+}
+
+var weird_rocksStealEye = {
+    0: `<b>you got Rox's eye! <br><br>`,
+    1: `- Ouch! Give it back! It's your last advice!<br><br>`,
+    2: `You can clearly tell that Rox is lying at this point, you just leave.`,
+}
+
+var weird_rocksAngryRox = {
+    0: `You get back to Rox the rock, now crying pebbles over his lost eye <br><br>`,
+    1: `- <i>sniff</i>, What do you want? Go away you heart of stone!<br><br>`,
+    2: `You think you already did to much to this poor rock, you turn around and leave.`
 }
 
 var cabinLines = {
