@@ -1,3 +1,5 @@
+var started = false;
+
 var Stick = false
 var sword1 = false
 var sword2 = false
@@ -10,17 +12,35 @@ let del = 25
 
 var startScreen = document.getElementById('start')
 var startButton = document.getElementById('startbutton')
-startButton.addEventListener('click', function(){
+
+
+//Para abrir o jogo
+
+let start = () => {
     startScreen.style.display = 'none';
-})
+    started = true;
 
-//Para abrir o jogo com a tecla "enter"
+    var twStart = new Typewriter(chatDiv, {
+        delay: del,
+    });
 
-document.addEventListener('keydown', function(event){
-    if(event.code='Enter'){
-        startScreen.style.display = 'none';
-    }
-})
+    twStart
+    .pauseFor(500)
+    .typeString(startLines[0])
+    .pauseFor(1000)
+    .typeString(startLines[1])
+    .typeString(WWYD)
+    .typeString(startLines[2])
+    .typeString(startLines[3])
+    .start()
+}
+
+document.onkeydown = (e) =>{
+    if(e.key =='Enter' && started == false) start();  
+};
+
+document.getElementById('startbutton').onclick = () => start();
+
 
 
 
@@ -113,6 +133,8 @@ function UpdateColors(){
 function DyingAnimation(){
     document.getElementById('gamescreen').style.display='none';
     document.getElementById('deathmessage').style.display='flex';
+    started = false;
+    //lembrar de resetar os itens ao morrer
 }
 
 document.addEventListener('keydown', function(event){
@@ -127,25 +149,18 @@ document.addEventListener('keydown', function(event){
 
 var chatDiv = document.getElementById('text');
 
-document.getElementById('startbutton').onclick = () =>{
-    var twStart = new Typewriter(chatDiv, {
-        delay: del,
-      });
 
-      twStart
-      .pauseFor(500)
-      .typeString(startLines[0])
-      .pauseFor(1000)
-      .typeString(startLines[1])
-      .typeString(WWYD)
-      .typeString(startLines[2])
-      .typeString(startLines[3])
-      .start()
-}
 
 function updateScreen(nextImg, text){
-    let NI = document.getElementById(nextImg)
-    console.log(nextImg, text)
+
+    let ImgQuery;
+
+    //Esses IFs abaixo são usados caso o player entre no local após certo acontecimento.
+    if(sword3 == true && nextImg == 'weird_rocks') ImgQuery = 'weird_rocksCrying';
+    else ImgQuery = nextImg;
+
+
+    let NI = document.getElementById(ImgQuery)
 
     //mudar imagem
     document.querySelector('.active').classList.remove('active')
@@ -371,8 +386,6 @@ var well_jumpLines = {
 }
 
 
-
-
 var weird_rocksLines = {
     0: `You find a weird arrangement of rocks in the middle of the grass <br><br>`,
     1: `-Heyo! - The rock says <br><br>`,
@@ -406,7 +419,7 @@ var weird_rocksNiceLines = {
     0: `- Of course not! This is MY eye and if you steal it, you will suffer the most ruthless punishment you'll ever feel!<br><br>`,
     
     1: `<a href="#">Not steal the eye<br>`,//mudar o cara abaixo para eyeless quando der
-    2: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksStealEye')">Steal the eye`,
+    2: `<a href="#" onclick="updateScreen('weird_rocksEyeless', 'weird_rocksStealEye')">Steal the eye`,
 }
 
 var weird_rocksStealEye = {
