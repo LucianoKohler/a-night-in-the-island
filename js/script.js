@@ -308,11 +308,7 @@ function updateScreen(nextImg, text){
 
             sword3 = true;
         break;
-
-
-
-
-        
+       
         case 'cabin':
             TW.typeString(cabinLines[0])
             .pauseFor(1000)
