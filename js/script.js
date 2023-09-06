@@ -334,8 +334,29 @@ function updateScreen(nextImg, text){
 
         case 'farmSeeCrops':
             if(sticker == true){
-
+                TW.typeString(FarmLinesWSticker[0])
+                .pauseFor(500)
+                .typeString(FarmLinesWSticker[1])
+                .pauseFor(500)
+                .typeString(FarmLinesWSticker[2])
+                .pauseFor(500)
+                .typeString(FarmLinesWSticker[3])
+                .pauseFor(1000)
+                .typeString(FarmLinesWSticker[4])
+                .pauseFor(1000)
+                .typeString(FarmLinesWSticker[5])
+                .start()
+            }else{
+                TW.typeString(FarmLinesWOSticker[0])
+                .pauseFor(1000)
+                .typeString(FarmLinesWOSticker[1])
+                .pauseFor(2000)
+                .typeString(WWYS)
+                .typeString(FarmLinesWOSticker[2])
+                .typeString(FarmLinesWOSticker[3])
+                .start()
             }
+            break;
 
         case 'farmMetal':
         TW.typeString(FarmLinesMetal[0])
@@ -479,29 +500,33 @@ var FarmLines = {
     0: `This lonely farm is far from the rest of the civilization, the farmer, quickly realizing you, approaches: <br><br>`,
     1: `- Oh my! Visitor!!! Welcome to ma farm, I plant carrots, potatoes, carrots, carrots, metal'n'carrots! How can I help'ya? <br><br>`,
     //WWYS
-    2: `<a href="#" onclick="updateScreen('farm', 'FarmSeeCrops')">Can I see your crops?</a> <br>`,//aaa
+    2: `<a href="#" onclick="updateScreen('farm', 'farmSeeCrops')">Can I see your crops?</a> <br>`,
     3: `<a href="#" onclick="updateScreen('farm', 'farmMetal')">You plant metal?</a> <br>`,
     4: `<a href="#" onclick="updateScreen('farm','farmBye')">Bye!</a> `
 }
 
-var FarmLinesWSticker = {
-    0: `Of course not! The carrots are my precious ons and I'ould never let anyone touch'em! <br><br>`,
-    0: `He seems really serious when talking this, and he has a rake, better listen to him <br><br>`,
-    //WWYS
-    0: ``,
-}
-
 var FarmLinesWOSticker = {
-
+    0: `- Of course not! The carrots are my precious ons and I'ould never let anyone touch'em! <br><br>`,
+    1: `He seems really serious when talking this, plus he has a rake, better listen to him <br><br>`,
+    //WWYS
+    2: `<a href="#" onclick="updateScreen('farm', 'farmMetal')">You plant metal?</a> <br>`,
+    3: `<a href="#" onclick="updateScreen('farm','farmBye')">Bye!</a> `
 }
 
-
+var FarmLinesWSticker = {
+    0: `- Of course no..`,
+    1: `wait, `,
+    2: `is that a carrot sticker? `,
+    3: `I LOVE CARROTS!!!`,
+    4: `- Boi y'can take a good look at'em, carrot brotha!`,
+    5: `You approach the plantation.`
+}
 
 var FarmLinesMetal = {
     0: `- Yeah! If carrots grow carrots, expensive metal grows more metal, are ya dum?<br><br>`,
     1: `You stay quiet, thinking that arguing about this would be like talking to a wall.<br><br>`,
     //WWYS
-    2: `<a href="#" onclick="updateScreen('farm','FarmSeeCrops')">Can I see your crops?</a><br>`, 
+    2: `<a href="#" onclick="updateScreen('farm','farmSeeCrops')">Can I see your crops?</a><br>`, 
     3: `<a href="#" onclick="updateScreen('farm','farmBye')">Bye!</a>`
 }
 
