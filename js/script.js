@@ -1,5 +1,5 @@
 var started = false;
-
+var sticker = true;
 var Stick = false
 var sword1 = false
 var sword2 = false
@@ -436,4 +436,8 @@ var cabinLines = {
 
     2: `<a href="#">Enter the cabin<br>`,
     3: `<a href="#">Investigate the tree`,
+}
+
+var FarmLines = {
+    0: `Oh my! Visitor!!! Welcome to ma farm, I plant carrots, potatoes, carrots, carrots, metal and carrots! How can I help'ya?`
 }
