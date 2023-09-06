@@ -5,7 +5,7 @@ var sword1 = false
 var sword2 = false
 var sword3 = false
 
-let del = 25
+let del = 2
 //velocidade de escrita dos textos
 
 //BOTÕES PARA A TELA DE INÍCIO
@@ -246,9 +246,9 @@ function updateScreen(nextImg, text){
                 .pauseFor(500)
                 .typeString(weird_rocksLines[1])
                 .pauseFor(500)
+                .typeString(WWYS)
                 .typeString(weird_rocksLines[2])
                 .typeString(weird_rocksLines[3])
-                .typeString(weird_rocksLines[4])
                 .start()
             }else{
                 TW.typeString(weird_rocksAngryRox[0])
@@ -263,9 +263,9 @@ function updateScreen(nextImg, text){
         case 'weird_rocksWhoAreYou':
             TW.typeString(weird_rocksWhoAreYouLines[0])
             .pauseFor(500)
+            .typeString(WWYS)
             .typeString(weird_rocksWhoAreYouLines[1])
             .typeString(weird_rocksWhoAreYouLines[2])
-            .typeString(weird_rocksWhoAreYouLines[3])
             .start()
             break;
 
@@ -283,9 +283,9 @@ function updateScreen(nextImg, text){
             .pauseFor(1000)
             .typeString(weird_rocksEyeLines[1])
             .pauseFor(1000)
+            .typeString(WWYS)
             .typeString(weird_rocksEyeLines[2])
             .typeString(weird_rocksEyeLines[3])
-            .typeString(weird_rocksEyeLines[4])
             .start()
         break;
 
@@ -319,6 +319,42 @@ function updateScreen(nextImg, text){
             .typeString(cabinLines[3])
             .start()
             break;
+
+        case 'farm':
+            TW.typeString(FarmLines[0])
+            .pauseFor(1000)
+            .typeString(FarmLines[1])
+            .pauseFor(1000)
+            .typeString(WWYS)
+            .typeString(FarmLines[2])
+            .typeString(FarmLines[3])
+            .typeString(FarmLines[4])
+            .start()
+        break;
+
+        case 'farmSeeCrops':
+            if(sticker == true){
+
+            }
+
+        case 'farmMetal':
+        TW.typeString(FarmLinesMetal[0])
+        .pauseFor(2000)
+        .typeString(FarmLinesMetal[1])
+        .pauseFor(1000)
+        .typeString(WWYS)
+        .typeString(FarmLinesMetal[2])
+        .typeString(FarmLinesMetal[3])
+        .start()
+            break;
+
+        case 'farmBye':
+            TW.typeString(FarmLinesBye[0])
+            .pauseFor(1500)
+            .typeString(FarmLinesBye[1])
+            .start()
+            break;
+
         default:
             console.log('não encontrado')
             break;
@@ -331,6 +367,7 @@ UpdateColors()
 //todos os <a> possuem a função de dar update no jogo, as variáveis inseridas são: a imagem a ser carregada e o texto a ser printado
 //criei essa var abaixo pois é muito repetida pelo jogo
 var WWYD = 'What will you do? <br><br>'
+var WWYS = 'What will you say? <br><br>'
 
 var chooseLines = {
     0: `You can use the map anytime you want to leave the place`,
@@ -339,14 +376,14 @@ var chooseLines = {
 var startLines = {
     0: `You wake up in front of a great and dense forest, without any memory of the last day, what happened? <br><br>`,
     1: `The only thing you can do now is to investigate. <br><br>`,
-
+    //WWYD
     2: `<a href="#" onclick="updateScreen('forest', 'enterForest')"> Enter the forest </a> <br>`,
     3: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`,
 }
 
 var forestLines = {
     0: `Back to forest you get.<br><br>`,
-
+    //WWYD
     1: `<a href="#" onclick="updateScreen('forest', 'enterForest')"> Enter the forest </a><br>`,
     2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`,
 }
@@ -354,21 +391,21 @@ var forestLines = {
 var enterForestLinesWOStick = {
     0: `You decided to enter further into the forest, unarmed and lost <br> <br>`,
     1: `By the ground, you find a somewhat straight stick on the ground, you got <b>an ordinary stick</b>! <br><br>`,
-
+    //WWYD
     2: `<a href="#">continue</a> <br>`,
     3: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`
 }
 
 var enterForestLinesWithStick = {
     0: `Back to the same place you are, you can still see the spot where you found your stick... <br><br>`,
-    
+    //WWYD
     1: `<a href="#">continue</a> <br>`,
     2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`
 }
 
 var wellLines = {
     0: ` In the distance, you discover an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies" <br><br>` ,
-
+    //WWYD
     1: ` <a href="#"> Throw a Coin<br>` ,
     2: ` <a href="#" onclick="updateScreen('well_jump', 'well_jump')"> Jump into the well` ,
 }
@@ -385,16 +422,16 @@ var well_jumpLines = {
 var weird_rocksLines = {
     0: `You find a weird arrangement of rocks in the middle of the grass <br><br>`,
     1: `-Heyo! - The rock says <br><br>`,
-    2: `What will you say? <br><br>`,
-    3: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksWhoAreYou')"> Who are you?<br>`,
-    4: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksEye')"> What's the deal with your eye?`
+    //WWYS
+    2: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksWhoAreYou')"> Who are you?<br>`,
+    3: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksEye')"> What's the deal with your eye?`
 }
 
 var weird_rocksWhoAreYouLines = {
     0: `- I'm Rox, Rox the rock, nice to meetcha pal!<br><br>`,
-    1: `What will you say?<br><br>`,
-    2: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksCabin')">Do you know who lives in the cabin?<br>`,
-    3: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksEye')">What's the deal with your eye?`
+    //WWYS
+    1: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksCabin')">Do you know who lives in the cabin?<br>`,
+    2: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksEye')">What's the deal with your eye?`
 }
 
 var weird_rocksCabinLines = {
@@ -406,15 +443,15 @@ var weird_rocksCabinLines = {
 var weird_rocksEyeLines = {
     0: `- Oh, this eye? It's my ultra sharp and shiny metal eye, cool huh?<br><br>`,
     1: `You can't lie, that eye is awesome. <br><br>`,
-    2: `What will you say?<br><br>`,
-    3: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksWhoAreYou')"> Who are you?<br>`,
-    4: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksNice')"> Nice! Can I have it?<br>`,
+    //WWYS
+    2: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksWhoAreYou')"> Who are you?<br>`,
+    3: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksNice')"> Nice! Can I have it?<br>`,
 }
 
 var weird_rocksNiceLines = {
     0: `- Of course not! This is MY eye and if you steal it, you will suffer the most ruthless punishment you'll ever feel!<br><br>`,
-    
-    1: `<a href="#">Not steal the eye<br>`,//mudar o cara abaixo para eyeless quando der
+    //WWYD
+    1: `<a href="#">Not steal the eye<br>`,//Fazer essa opção
     2: `<a href="#" onclick="updateScreen('weird_rocksEyeless', 'weird_rocksStealEye')">Steal the eye`,
 }
 
@@ -433,11 +470,42 @@ var weird_rocksAngryRox = {
 var cabinLines = {
     0: `You spot a small and miserable cabin at the edge of the island, the cabin has a skull hanged by the top of its only entrance.<br><br>`,
     1: `By the side, you notice a dead tree with a small script carved on its trunk <br><br>`,
-
+    //WWYD
     2: `<a href="#">Enter the cabin<br>`,
     3: `<a href="#">Investigate the tree`,
 }
 
 var FarmLines = {
-    0: `Oh my! Visitor!!! Welcome to ma farm, I plant carrots, potatoes, carrots, carrots, metal and carrots! How can I help'ya?`
+    0: `This lonely farm is far from the rest of the civilization, the farmer, quickly realizing you, approaches: <br><br>`,
+    1: `- Oh my! Visitor!!! Welcome to ma farm, I plant carrots, potatoes, carrots, carrots, metal'n'carrots! How can I help'ya? <br><br>`,
+    //WWYS
+    2: `<a href="#" onclick="updateScreen('farm', 'FarmSeeCrops')">Can I see your crops?</a> <br>`,//aaa
+    3: `<a href="#" onclick="updateScreen('farm', 'farmMetal')">You plant metal?</a> <br>`,
+    4: `<a href="#" onclick="updateScreen('farm','farmBye')">Bye!</a> `
+}
+
+var FarmLinesWSticker = {
+    0: `Of course not! The carrots are my precious ons and I'ould never let anyone touch'em! <br><br>`,
+    0: `He seems really serious when talking this, and he has a rake, better listen to him <br><br>`,
+    //WWYS
+    0: ``,
+}
+
+var FarmLinesWOSticker = {
+
+}
+
+
+
+var FarmLinesMetal = {
+    0: `- Yeah! If carrots grow carrots, expensive metal grows more metal, are ya dum?<br><br>`,
+    1: `You stay quiet, thinking that arguing about this would be like talking to a wall.<br><br>`,
+    //WWYS
+    2: `<a href="#" onclick="updateScreen('farm','FarmSeeCrops')">Can I see your crops?</a><br>`, 
+    3: `<a href="#" onclick="updateScreen('farm','farmBye')">Bye!</a>`
+}
+
+var FarmLinesBye = {
+    0: `- Bye visitor, may the carrots be with ya!<br><br>`,
+    1: `You really wanted to move away from that carrot crazy.`
 }
