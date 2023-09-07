@@ -62,6 +62,12 @@ body{
     grid-area: 1/8/4/11;
 }
 
+.sword1Sprite,
+.sword2Sprite,
+.sword3Sprite{
+    color: black;
+}
+
 #others{
     display: flex;
     align-items: center;
