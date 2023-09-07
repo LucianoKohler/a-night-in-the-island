@@ -1,7 +1,7 @@
 var started = false;
 var sticker = false;
 var Stick = false;
-var ticket = 0; 
+var ticket = 1; 
 //0 = Não tem o ticket
 //1 = Tem mas não usou
 //2 = Tem E já usou
@@ -478,6 +478,8 @@ function updateScreen(nextImg, text) {
         .typeString(wallUseTicketLines[3])
         .start()
         ticket = 2;
+        document.getElementsByClassName('cave')[0].classList.remove("disabled")
+        document.getElementsByClassName('cave')[1].classList.remove("disabled")
     break;
 
     case 'wallWhatTicket':
