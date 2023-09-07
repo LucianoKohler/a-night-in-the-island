@@ -1,7 +1,10 @@
 var started = false;
-var sticker = true;
+var sticker = false;
 var Stick = false;
-
+var ticket = 0; 
+//0 = Não tem o ticket
+//1 = Tem mas não usou
+//2 = Tem E já usou
 var sword1 = false;
 var sword2 = false;
 var sword3 = false;
@@ -184,6 +187,8 @@ function updateScreen(nextImg, text) {
   //Esses IFs abaixo são usados caso o player entre no local após certo acontecimento.
   if (sword3 == true && nextImg == "weird_rocks")
     ImgQuery = "weird_rocksCrying";
+  else if(ticket == 2 && nextImg == "wall")
+    ImgQuery = "wall-open";
   else ImgQuery = nextImg;
 
   let NI = document.getElementById(ImgQuery);
@@ -320,11 +325,11 @@ function updateScreen(nextImg, text) {
       break;
 
     case "weird_rocksNotStealEye":
-        TW.typeString(weird_rocksNotStealEyeLines[0])
+      TW.typeString(weird_rocksNotStealEyeLines[0])
         .pauseFor(500)
         .typeString(weird_rocksNotStealEyeLines[1])
         .start();
-        break;
+      break;
     case "weird_rocksStealEye":
       TW.typeString(weird_rocksStealEye[0])
         .pauseFor(1000)
@@ -360,11 +365,11 @@ function updateScreen(nextImg, text) {
           .typeString(farmLines[3])
           .typeString(farmLines[4])
           .start();
-        } else{
-            TW.typeString(farmLinesHilt[0])
-            .pauseFor(1000)
-            .typeString(farmLinesHilt[1])
-            .start()
+      } else {
+        TW.typeString(farmLinesHilt[0])
+          .pauseFor(1000)
+          .typeString(farmLinesHilt[1])
+          .start();
       }
       break;
 
@@ -428,6 +433,76 @@ function updateScreen(nextImg, text) {
         .start();
       sword2 = true;
       updateSword();
+      break;
+
+    case "wall":
+        if(ticket == 0){ //Se não tem
+            TW.typeString(wallLines[0])
+              .pauseFor(1000)
+              .typeString(wallLines[1])
+              .pauseFor(500)
+              .typeString(WWYS)
+      
+              .typeString(wallLines[3])
+              .typeString(wallLines[4])
+              .typeString(wallLines[5])
+              .start();
+        }else if(ticket == 1){ //Se tem, mas não usou
+            TW.typeString(wallLines[0])
+            .pauseFor(1000)
+            .typeString(wallLines[1])
+            .pauseFor(500)
+            .typeString(WWYS)
+            .typeString(wallLines[2])
+            .typeString(wallLines[3])
+            .typeString(wallLines[4])
+            .typeString(wallLines[5])
+            .start();
+        }else{ //Se tem E já usou
+            TW.typeString(wallAlreadyUsedTicket[0])
+            .pauseFor(1000)
+            .typeString(wallAlreadyUsedTicket[1])
+            .pauseFor(1000)
+            .typeString(wallAlreadyUsedTicket[2])
+            .start();        
+        }
+      break;
+
+    case 'wallUseTicket':
+        TW.typeString(wallUseTicketLines[0])
+        .pauseFor(1000)
+        .typeString(wallUseTicketLines[1])
+        .pauseFor(1500)
+        .typeString(wallUseTicketLines[2])
+        .pauseFor(1000)
+        .typeString(wallUseTicketLines[3])
+        .start()
+        ticket = 2;
+    break;
+
+    case 'wallWhatTicket':
+        TW.typeString(wallWhatTicketLines[0])
+        .pauseFor(1000)
+        .typeString(WWYS)
+        .typeString(wallWhatTicketLines[1])
+        .typeString(wallWhatTicketLines[2])
+        .start();
+        break;
+
+    case 'wallBeyondWall':
+        TW.typeString(wallBeyondWallLines[0])
+        .pauseFor(1000)
+        .typeString(WWYS)
+        .typeString(wallBeyondWallLines[1])
+        .typeString(wallBeyondWallLines[2])
+        .start();
+        break;
+
+    case "wallBye":
+      TW.typeString(wallByeLines[0])
+        .pauseFor(1000)
+        .typeString(wallByeLines[1])
+        .start();
       break;
 
     default:
@@ -530,10 +605,9 @@ var weird_rocksNiceLines = {
 };
 
 var weird_rocksNotStealEyeLines = {
-    0: `- Thanks mate! :D <br><br>`,
-    1: `Besides the eye and the threat, the rock doesn't show anything special, you are done with chatting with him for now.`,
-
-}
+  0: `- Thanks mate! :D <br><br>`,
+  1: `Besides the eye and the threat, the rock doesn't show anything special, you are done with chatting with him for now.`,
+};
 
 var weird_rocksStealEye = {
   0: `<b>you got Rox's eye! <br><br>`,
@@ -606,3 +680,45 @@ var farmLinesHilt = {
   0: `You see the farmer going goblin mode trying to find the metal part with his rake...<br><br>`,
   1: `Maybe it's better to not get near him.`,
 };
+
+var wallLines = {
+  0: `A massive wall blocks the way beyond it, a small guy inside a toll whick doesn't look much friendly stares at you:<br><br>`,
+  1: `- Hi, where's the ticket?<br><br>`,
+  //WWYS
+  2: `<a href="#" onclick="updateScreen('wall-open','wallUseTicket')">Here, I have a ticket</a><br>`,
+  3: `<a href="#" onclick="updateScreen('wall','wallWhatTicket')">Ticket? What do you mean?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">What's beyond this wall?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('wall','wallBye')">Bye!</a>`,
+};
+
+var wallWhatTicketLines = {
+  0: `- You need a ticket to pass the toll, go get one at the castle, they're nice to me.<br><br>`,
+  //WWYS
+  1: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">What's beyond this wall?</a><br>`,
+  2: `<a href="#" onclick="updateScreen('wall','wallBye')">Bye!</a>`,
+};
+
+var wallBeyondWallLines = {
+  0: `- A beatiful cavern with a demigod, you need to see it, so please, get a ticket!<br><br>`,
+  //WWYS
+  1: `<a href="#" onclick="updateScreen('wall','wallWhatTicket')">Ticket? What do you mean?</a><br>`,
+  2: `<a href="#" onclick="updateScreen('wall','wallBye')">Bye!</a>`,
+};
+
+var wallByeLines = {
+  0: `- Thank you for nothing, don't forget to buy a ticket! <br><br>`,
+  1: `Maybe you should take a look at what and where this ticket is.`,
+};
+
+var wallUseTicketLines = {
+    0: `You give the ticket to the thing, it gets really happy! <br><br>`,
+    1: `- OOOOOHH, THE BOSS WILL LET ME HAVE A DAY OFF!!!<br>`,
+    2: `- Ok, you may pass and admire the cave.<br><br>`,
+    3: `The pole besides him lifts, <b>you now have access to the cave</b>.`,
+}
+
+var wallAlreadyUsedTicket = {
+    0: `You see the thing again, trying to hold his smile in front of you: <br><br>`,
+    1: `- So? Pass, you don't have anything interesting for me now.<br><br>`,
+    2: `You try to say something, but the creature just says blablabla while covering its ears, what a child!`,
+}
