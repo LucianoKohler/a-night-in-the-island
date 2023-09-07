@@ -459,11 +459,11 @@ function updateScreen(nextImg, text) {
             .typeString(wallLines[5])
             .start();
         }else{ //Se tem E já usou
-            TW.typeString(wallAlreadyUsedTicket[0])
+            TW.typeString(wallAlreadyUsedTicketLines[0])
             .pauseFor(1000)
-            .typeString(wallAlreadyUsedTicket[1])
+            .typeString(wallAlreadyUsedTicketLines[1])
             .pauseFor(1000)
-            .typeString(wallAlreadyUsedTicket[2])
+            .typeString(wallAlreadyUsedTicketLines[2])
             .start();        
         }
       break;
@@ -719,8 +719,25 @@ var wallUseTicketLines = {
     3: `The pole besides him lifts, <b>you now have access to the cave</b>.`,
 }
 
-var wallAlreadyUsedTicket = {
+var wallAlreadyUsedTicketLines = {
     0: `You see the thing again, trying to hold his smile in front of you: <br><br>`,
     1: `- So? Pass, you don't have anything interesting for me now.<br><br>`,
     2: `You try to say something, but the creature just says blablabla while covering its ears, what a child!`,
+}
+
+var castleLines = {
+    0: `A big castle can be seen at the distance from the entire island,`,
+    1: ` the main gate is open,`,
+    2: ` you decide to enter it.`,
+}
+
+var EnterCastleLines = {
+    0: `People walk by, ignoring you, the buildings appear boring, and nothing attracts your attention.`,
+    1: `At the end of the main street, you find yourself at a bifurcation:`,
+    2: `To the left, we have the king ____'s palace`,
+    3: `To the left, a local shop which appear to have lots of goods`,
+
+    4: `Where do you want to go?`,
+    5: `<a href="#" onclick="updateScreen('king','king')">To the king's palace</a>`,
+    6: `<a href="#" onclick="updateScreen('shop','shop')">To the local store</a>`,
 }
