@@ -9,9 +9,10 @@ var sword1 = false;
 var sword2 = false;
 var sword3 = false;
 
-let del = 25;
+let del = 0;
 
 var castleEntered = false;
+var palaceEntered = false;
 //velocidade de escrita dos textos
 
 //BOTÕES PARA A TELA DE INÍCIO
@@ -189,13 +190,19 @@ function updateScreen(nextImg, text) {
   //Esses IFs abaixo são usados caso o player entre no local após certo acontecimento.
   if (sword3 == true && nextImg == "weird_rocks")
     ImgQuery = "weird_rocksCrying";
+  
   else if(ticket == 2 && nextImg == "wall")
     ImgQuery = "wall-open";
+  
   else if(castleEntered == true && nextImg == 'castle'){
     ImgQuery = 'bifurcation';
     text = 'castleEnter';
+    
+  }else if(palaceEntered == true && nextImg == 'king'){
+    text = 'palaceEnter'
+    
   }
-  else ImgQuery = nextImg;
+else ImgQuery = nextImg;
 
   let NI = document.getElementById(ImgQuery);
 
@@ -281,25 +288,44 @@ function updateScreen(nextImg, text) {
       .start()
       setTimeout(() => {
         updateScreen('bifurcation', 'castleEnter');
-      }, 6000);
+      }, 500);
       castleEntered = true;
       break;
 
     case 'castleEnter':
-      TW.typeString(EnterCastleLines[0])
+      TW.typeString(enterCastleLines[0])
       .pauseFor(1000)
-      .typeString(EnterCastleLines[1])
+      .typeString(enterCastleLines[1])
       .pauseFor(500)
-      .typeString(EnterCastleLines[2])
+      .typeString(enterCastleLines[2])
       .pauseFor(500)
-      .typeString(EnterCastleLines[3])
-      .pauseFor(1500)
-      .typeString(EnterCastleLines[4])
-      .typeString(EnterCastleLines[5])
-      .typeString(EnterCastleLines[6])
+      .typeString(enterCastleLines[3])
+      .pauseFor(500)
+      .typeString(enterCastleLines[4])
+      .typeString(enterCastleLines[5])
+      .typeString(enterCastleLines[6])
       .start()
       break;
 
+    case 'palaceEnterFirst':
+      TW.typeString(kingEnterFirstLines[0])
+      .pauseFor(1000)
+      .typeString(kingEnterFirstLines[1])
+      .pauseFor(1000)
+      .typeString(WWYS)
+      .typeString(kingEnterFirstLines[2])
+      .typeString(kingEnterFirstLines[3])
+      .typeString(kingEnterFirstLines[4])
+      .start()
+      break;
+      
+      case 'kingBye':
+        TW.typeString(kingByeLines[0])
+        .pauseFor(500)
+        .typeString(kingByeLines[1])
+        .start()
+        break;
+        
     case "weird_rocks":
       if (sword3 == false) {
         TW.typeString(weird_rocksLines[0])
@@ -765,20 +791,26 @@ var castleLines = {
     2: ` you decide to enter it.`,
 }
 
-var EnterCastleLines = {
+var enterCastleLines = {
     0: `People walk by, ignoring you, the buildings appear boring, and nothing attracts your attention. <br><br>`,
     1: `At the end of the main street, you find yourself at a bifurcation:<br><br>`,
     2: `To the left, we have the king ____'s palace<br>`, //mudar o nome pra ALGUM!
     3: `To the right, a local shop which appear to have lots of goods<br><br>`,
-
     4: `Where do you want to go?<br><br>`,
-    5: `<a href="#" onclick="updateScreen('king','king')">To the king's palace</a><br>`,
+    5: `<a href="#" onclick="updateScreen('king','palaceEnterFirst')">To the king's palace</a><br>`,
     6: `<a href="#" onclick="updateScreen('shop','shop')">To the local store</a>`,
 }
 
-var PalaceFirstLines = {
-  0: `Hello fellow citizen, or may I say... Stranger?`,
-  1: `<a href="#" onclick="updateScreen('king','king')">Who are you?</a>`,
-  2: `Hello fellow citizen, or may I say... Stranger?`,
-  3: `Hello fellow citizen, or may I say... Stranger?`
+var kingEnterFirstLines = {
+  0: `You enter the palace without any problems, looks like this place doesn't need much guards to be peaceful, at the end of the room, you see a king: <br><br>`,
+  1: `- Hello fellow citizen, or may I say... Stranger?<br><br>`,
+  //WWYS
+  2: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')">Who are you?</a><br>`,
+  3: `<a href="#" onclick="updateScreen('king','kingGoHome')">I need to go home</a><br>`,
+  4: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a>`
+}
+
+var kingByeLines = {
+  0: `- So long, stranger. <br><br>`,
+  1: `You exit the castle, inspired by seeing so many people like you living normally.`,
 }
