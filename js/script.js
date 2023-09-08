@@ -9,7 +9,9 @@ var sword1 = false;
 var sword2 = false;
 var sword3 = false;
 
-let del = 0;
+let del = 25;
+
+var castleEntered = false;
 //velocidade de escrita dos textos
 
 //BOTÕES PARA A TELA DE INÍCIO
@@ -189,6 +191,10 @@ function updateScreen(nextImg, text) {
     ImgQuery = "weird_rocksCrying";
   else if(ticket == 2 && nextImg == "wall")
     ImgQuery = "wall-open";
+  else if(castleEntered == true && nextImg == 'castle'){
+    ImgQuery = 'bifurcation';
+    text = 'castleEnter';
+  }
   else ImgQuery = nextImg;
 
   let NI = document.getElementById(ImgQuery);
@@ -264,6 +270,34 @@ function updateScreen(nextImg, text) {
           .start();
       }
 
+      break;
+
+    case 'castle':
+      TW.typeString(castleLines[0])
+      .pauseFor(500)
+      .typeString(castleLines[1])
+      .pauseFor(500)
+      .typeString(castleLines[2])
+      .start()
+      setTimeout(() => {
+        updateScreen('bifurcation', 'castleEnter');
+      }, 6000);
+      castleEntered = true;
+      break;
+
+    case 'castleEnter':
+      TW.typeString(EnterCastleLines[0])
+      .pauseFor(1000)
+      .typeString(EnterCastleLines[1])
+      .pauseFor(500)
+      .typeString(EnterCastleLines[2])
+      .pauseFor(500)
+      .typeString(EnterCastleLines[3])
+      .pauseFor(1500)
+      .typeString(EnterCastleLines[4])
+      .typeString(EnterCastleLines[5])
+      .typeString(EnterCastleLines[6])
+      .start()
       break;
 
     case "weird_rocks":
@@ -732,12 +766,19 @@ var castleLines = {
 }
 
 var EnterCastleLines = {
-    0: `People walk by, ignoring you, the buildings appear boring, and nothing attracts your attention.`,
-    1: `At the end of the main street, you find yourself at a bifurcation:`,
-    2: `To the left, we have the king ____'s palace`,
-    3: `To the left, a local shop which appear to have lots of goods`,
+    0: `People walk by, ignoring you, the buildings appear boring, and nothing attracts your attention. <br><br>`,
+    1: `At the end of the main street, you find yourself at a bifurcation:<br><br>`,
+    2: `To the left, we have the king ____'s palace<br>`, //mudar o nome pra ALGUM!
+    3: `To the right, a local shop which appear to have lots of goods<br><br>`,
 
-    4: `Where do you want to go?`,
-    5: `<a href="#" onclick="updateScreen('king','king')">To the king's palace</a>`,
+    4: `Where do you want to go?<br><br>`,
+    5: `<a href="#" onclick="updateScreen('king','king')">To the king's palace</a><br>`,
     6: `<a href="#" onclick="updateScreen('shop','shop')">To the local store</a>`,
+}
+
+var PalaceFirstLines = {
+  0: `Hello fellow citizen, or may I say... Stranger?`,
+  1: `<a href="#" onclick="updateScreen('king','king')">Who are you?</a>`,
+  2: `Hello fellow citizen, or may I say... Stranger?`,
+  3: `Hello fellow citizen, or may I say... Stranger?`
 }
