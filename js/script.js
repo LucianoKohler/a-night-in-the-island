@@ -1,7 +1,7 @@
 var started = false;
 var sticker = false;
 var Stick = false;
-var ticket = 1; 
+var ticket = 1;
 //0 = Não tem o ticket
 //1 = Tem mas não usou
 //2 = Tem E já usou
@@ -13,7 +13,7 @@ let del = 0;
 
 var castleEntered = false;
 var palaceEntered = false;
-var kingQuest = false;
+var kingQuest = true;
 var angelQuest = false;
 //velocidade de escrita dos textos
 
@@ -190,21 +190,22 @@ function updateScreen(nextImg, text) {
   let ImgQuery;
 
   //Esses IFs abaixo são usados caso o player entre no local após certo acontecimento.
-  if (sword3 == true && nextImg == "weird_rocks")
+  if (sword3 == true && nextImg == "weird_rocks") {
     ImgQuery = "weird_rocksCrying";
-  
-  else if(ticket == 2 && nextImg == "wall")
-    ImgQuery = "wall-open";
-  
-  else if(castleEntered == true && nextImg == 'castle'){
-    ImgQuery = 'bifurcation';
-    text = 'castleEnter';
-    
-  }else if(palaceEntered == true && nextImg == 'king'){
-    text = 'palaceEnter'
-    
   }
-else ImgQuery = nextImg;
+  else if (ticket == 2 && nextImg == "wall") {
+    ImgQuery = "wall-open";
+  }
+  else if (kingQuest == true && nextImg == "altar") {
+    ImgQuery = "altarAngel";
+  }
+  else if (castleEntered == true && nextImg == "castle") {
+    ImgQuery = "bifurcation";
+    text = "castleEnter";
+  }
+  else if (palaceEntered == true && nextImg == "king") {
+    text = "palaceEnter";
+  } else ImgQuery = nextImg;
 
   let NI = document.getElementById(ImgQuery);
 
@@ -281,98 +282,112 @@ else ImgQuery = nextImg;
 
       break;
 
-    case 'castle':
+    case "altar":
+      if (kingQuest == true) {
+      } else {
+        TW.typeString(altarAbandonedAltar[0])
+          .pauseFor(500)
+          .typeString(altarAbandonedAltar[1])
+          .pauseFor(500)
+          .typeString(altarAbandonedAltar[2])
+          .pauseFor(1000)
+          .typeString(altarAbandonedAltar[3])
+          .start();
+      }
+      break;
+
+    case "castle":
       TW.typeString(castleLines[0])
-      .pauseFor(500)
-      .typeString(castleLines[1])
-      .pauseFor(500)
-      .typeString(castleLines[2])
-      .start()
+        .pauseFor(500)
+        .typeString(castleLines[1])
+        .pauseFor(500)
+        .typeString(castleLines[2])
+        .start();
       setTimeout(() => {
-        updateScreen('bifurcation', 'castleEnter');
+        updateScreen("bifurcation", "castleEnter");
       }, 500);
       castleEntered = true;
       break;
 
-    case 'castleEnter':
+    case "castleEnter":
       TW.typeString(enterCastleLines[0])
-      .pauseFor(1000)
-      .typeString(enterCastleLines[1])
-      .pauseFor(500)
-      .typeString(enterCastleLines[2])
-      .pauseFor(500)
-      .typeString(enterCastleLines[3])
-      .pauseFor(500)
-      .typeString(enterCastleLines[4])
-      .typeString(enterCastleLines[5])
-      .typeString(enterCastleLines[6])
-      .start()
+        .pauseFor(1000)
+        .typeString(enterCastleLines[1])
+        .pauseFor(500)
+        .typeString(enterCastleLines[2])
+        .pauseFor(500)
+        .typeString(enterCastleLines[3])
+        .pauseFor(500)
+        .typeString(enterCastleLines[4])
+        .typeString(enterCastleLines[5])
+        .typeString(enterCastleLines[6])
+        .start();
       break;
 
-    case 'palaceEnterFirst':
+    case "palaceEnterFirst":
       TW.typeString(kingEnterFirstLines[0])
-      .pauseFor(1000)
-      .typeString(kingEnterFirstLines[1])
-      .pauseFor(1000)
-      .typeString(WWYS)
-      .typeString(kingEnterFirstLines[2])
-      .typeString(kingEnterFirstLines[3])
-      .typeString(kingEnterFirstLines[4])
-      .start()
+        .pauseFor(1000)
+        .typeString(kingEnterFirstLines[1])
+        .pauseFor(1000)
+        .typeString(WWYS)
+        .typeString(kingEnterFirstLines[2])
+        .typeString(kingEnterFirstLines[3])
+        .typeString(kingEnterFirstLines[4])
+        .start();
       break;
 
-    case 'kingWhoAreYou':
+    case "kingWhoAreYou":
       TW.typeString(kingWhoAreYouLines[0])
-      .pauseFor(500)
-      .typeString(kingWhoAreYouLines[1])
-      .pauseFor(500)
-      .typeString(kingWhoAreYouLines[2])
-      .pauseFor(1000)
-      .typeString(WWYS)
-      .typeString(kingWhoAreYouLines[3])
-      .typeString(kingWhoAreYouLines[4])
-      .typeString(kingWhoAreYouLines[5])
-      .start()
+        .pauseFor(500)
+        .typeString(kingWhoAreYouLines[1])
+        .pauseFor(500)
+        .typeString(kingWhoAreYouLines[2])
+        .pauseFor(1000)
+        .typeString(WWYS)
+        .typeString(kingWhoAreYouLines[3])
+        .typeString(kingWhoAreYouLines[4])
+        .typeString(kingWhoAreYouLines[5])
+        .start();
       break;
 
-    case 'kingMeetSameFate':
+    case "kingMeetSameFate":
       TW.typeString(kingMeetSameFateLines[0])
-      .pauseFor(500)
-      .typeString(kingMeetSameFateLines[1])
-      .pauseFor(500)
-      .typeString(kingMeetSameFateLines[2])
-      .pauseFor(500)
-      .typeString(kingMeetSameFateLines[3])
-      .pauseFor(500)
-      .typeString(kingMeetSameFateLines[4])
-      .pauseFor(1000)
-      .typeString(WWYS)
-      .typeString(kingMeetSameFateLines[5])
-      .typeString(kingMeetSameFateLines[6])
-      .start()
+        .pauseFor(500)
+        .typeString(kingMeetSameFateLines[1])
+        .pauseFor(500)
+        .typeString(kingMeetSameFateLines[2])
+        .pauseFor(500)
+        .typeString(kingMeetSameFateLines[3])
+        .pauseFor(500)
+        .typeString(kingMeetSameFateLines[4])
+        .pauseFor(1000)
+        .typeString(WWYS)
+        .typeString(kingMeetSameFateLines[5])
+        .typeString(kingMeetSameFateLines[6])
+        .start();
       break;
 
-    case 'kingGoHome':
+    case "kingGoHome":
       TW.typeString(kingGoHomeLines[0])
-      .pauseFor(1000)
-      .typeString(kingGoHomeLines[1])
-      .pauseFor(500)
-      .typeString(kingGoHomeLines[2])
-      .pauseFor(500)
-      .typeString(kingGoHomeLines[3])
-      .pauseFor(500)
-      .typeString(kingGoHomeLines[4])
-      .pauseFor(500)
-      .typeString(kingGoHomeLines[5])
-      .pauseFor(500)
-      .typeString(kingGoHomeLines[6])
-      .pauseFor(1500)
-      .typeString(kingGoHomeLines[7])
-      .start()
+        .pauseFor(1000)
+        .typeString(kingGoHomeLines[1])
+        .pauseFor(500)
+        .typeString(kingGoHomeLines[2])
+        .pauseFor(500)
+        .typeString(kingGoHomeLines[3])
+        .pauseFor(500)
+        .typeString(kingGoHomeLines[4])
+        .pauseFor(500)
+        .typeString(kingGoHomeLines[5])
+        .pauseFor(500)
+        .typeString(kingGoHomeLines[6])
+        .pauseFor(1500)
+        .typeString(kingGoHomeLines[7])
+        .start();
       break;
 
-      case `kingHowDoThis`:
-        TW.typeString(kingHowDoThisLines[0])
+    case `kingHowDoThis`:
+      TW.typeString(kingHowDoThisLines[0])
         .pauseFor(500)
         .typeString(kingHowDoThisLines[1])
         .pauseFor(500)
@@ -383,17 +398,17 @@ else ImgQuery = nextImg;
         .typeString(kingHowDoThisLines[4])
         .pauseFor(1500)
         .typeString(kingHowDoThisLines[5])
-        .start()
-        kingQuest = true;
-        break;
-      
-      case 'kingBye':
-        TW.typeString(kingByeLines[0])
+        .start();
+      kingQuest = true;
+      break;
+
+    case "kingBye":
+      TW.typeString(kingByeLines[0])
         .pauseFor(500)
         .typeString(kingByeLines[1])
-        .start()
-        break;
-        
+        .start();
+      break;
+
     case "weird_rocks":
       if (sword3 == false) {
         TW.typeString(weird_rocksLines[0])
@@ -564,69 +579,72 @@ else ImgQuery = nextImg;
       break;
 
     case "wall":
-        if(ticket == 0){ //Se não tem
-            TW.typeString(wallLines[0])
-              .pauseFor(1000)
-              .typeString(wallLines[1])
-              .pauseFor(500)
-              .typeString(WWYS)
-      
-              .typeString(wallLines[3])
-              .typeString(wallLines[4])
-              .typeString(wallLines[5])
-              .start();
-        }else if(ticket == 1){ //Se tem, mas não usou
-            TW.typeString(wallLines[0])
-            .pauseFor(1000)
-            .typeString(wallLines[1])
-            .pauseFor(500)
-            .typeString(WWYS)
-            .typeString(wallLines[2])
-            .typeString(wallLines[3])
-            .typeString(wallLines[4])
-            .typeString(wallLines[5])
-            .start();
-        }else{ //Se tem E já usou
-            TW.typeString(wallAlreadyUsedTicketLines[0])
-            .pauseFor(1000)
-            .typeString(wallAlreadyUsedTicketLines[1])
-            .pauseFor(1000)
-            .typeString(wallAlreadyUsedTicketLines[2])
-            .start();        
-        }
+      if (ticket == 0) {
+        //Se não tem
+        TW.typeString(wallLines[0])
+          .pauseFor(1000)
+          .typeString(wallLines[1])
+          .pauseFor(500)
+          .typeString(WWYS)
+
+          .typeString(wallLines[3])
+          .typeString(wallLines[4])
+          .typeString(wallLines[5])
+          .start();
+      } else if (ticket == 1) {
+        //Se tem, mas não usou
+        TW.typeString(wallLines[0])
+          .pauseFor(1000)
+          .typeString(wallLines[1])
+          .pauseFor(500)
+          .typeString(WWYS)
+          .typeString(wallLines[2])
+          .typeString(wallLines[3])
+          .typeString(wallLines[4])
+          .typeString(wallLines[5])
+          .start();
+      } else {
+        //Se tem E já usou
+        TW.typeString(wallAlreadyUsedTicketLines[0])
+          .pauseFor(1000)
+          .typeString(wallAlreadyUsedTicketLines[1])
+          .pauseFor(1000)
+          .typeString(wallAlreadyUsedTicketLines[2])
+          .start();
+      }
       break;
 
-    case 'wallUseTicket':
-        TW.typeString(wallUseTicketLines[0])
+    case "wallUseTicket":
+      TW.typeString(wallUseTicketLines[0])
         .pauseFor(1000)
         .typeString(wallUseTicketLines[1])
         .pauseFor(1500)
         .typeString(wallUseTicketLines[2])
         .pauseFor(1000)
         .typeString(wallUseTicketLines[3])
-        .start()
-        ticket = 2;
-        document.getElementsByClassName('cave')[0].classList.remove("disabled")
-        document.getElementsByClassName('cave')[1].classList.remove("disabled")
-    break;
+        .start();
+      ticket = 2;
+      document.getElementsByClassName("cave")[0].classList.remove("disabled");
+      document.getElementsByClassName("cave")[1].classList.remove("disabled");
+      break;
 
-    case 'wallWhatTicket':
-        TW.typeString(wallWhatTicketLines[0])
+    case "wallWhatTicket":
+      TW.typeString(wallWhatTicketLines[0])
         .pauseFor(1000)
         .typeString(WWYS)
         .typeString(wallWhatTicketLines[1])
         .typeString(wallWhatTicketLines[2])
         .start();
-        break;
+      break;
 
-    case 'wallBeyondWall':
-        TW.typeString(wallBeyondWallLines[0])
+    case "wallBeyondWall":
+      TW.typeString(wallBeyondWallLines[0])
         .pauseFor(1000)
         .typeString(WWYS)
         .typeString(wallBeyondWallLines[1])
         .typeString(wallBeyondWallLines[2])
         .start();
-        break;
+      break;
 
     case "wallBye":
       TW.typeString(wallByeLines[0])
@@ -841,33 +859,33 @@ var wallByeLines = {
 };
 
 var wallUseTicketLines = {
-    0: `You give the ticket to the thing, it gets really happy! <br><br>`,
-    1: `- OOOOOHH, THE BOSS WILL LET ME HAVE A DAY OFF!!!<br>`,
-    2: `- Ok, you may pass and admire the cave.<br><br>`,
-    3: `The pole besides him lifts, <b>you now have access to the cave</b>.`,
-}
+  0: `You give the ticket to the thing, it gets really happy! <br><br>`,
+  1: `- OOOOOHH, THE BOSS WILL LET ME HAVE A DAY OFF!!!<br>`,
+  2: `- Ok, you may pass and admire the cave.<br><br>`,
+  3: `The pole besides him lifts, <b>you now have access to the cave</b>.`,
+};
 
 var wallAlreadyUsedTicketLines = {
-    0: `You see the thing again, trying to hold his smile in front of you: <br><br>`,
-    1: `- So? Pass, you don't have anything interesting for me now.<br><br>`,
-    2: `You try to say something, but the creature just says blablabla while covering its ears, what a child!`,
-}
+  0: `You see the thing again, trying to hold his smile in front of you: <br><br>`,
+  1: `- So? Pass, you don't have anything interesting for me now.<br><br>`,
+  2: `You try to say something, but the creature just says blablabla while covering its ears, what a child!`,
+};
 
 var castleLines = {
-    0: `A big castle can be seen at the distance from the entire island,`,
-    1: ` the main gate is open,`,
-    2: ` you decide to enter it.`,
-}
+  0: `A big castle can be seen at the distance from the entire island,`,
+  1: ` the main gate is open,`,
+  2: ` you decide to enter it.`,
+};
 
 var enterCastleLines = {
-    0: `People walk by, ignoring you, the buildings appear boring, and nothing attracts your attention. <br><br>`,
-    1: `At the end of the main street, you find yourself at a bifurcation:<br><br>`,
-    2: `To the left, we have the king's palace<br>`, 
-    3: `To the right, a local shop which appear to have lots of goods<br><br>`,
-    4: `Where do you want to go?<br><br>`,
-    5: `<a href="#" onclick="updateScreen('king','palaceEnterFirst')">To the king's palace</a><br>`,
-    6: `<a href="#" onclick="updateScreen('shop','shop')">To the local store</a>`,
-}
+  0: `People walk by, ignoring you, the buildings appear boring, and nothing attracts your attention. <br><br>`,
+  1: `At the end of the main street, you find yourself at a bifurcation:<br><br>`,
+  2: `To the left, we have the king's palace<br>`,
+  3: `To the right, a local shop which appear to have lots of goods<br><br>`,
+  4: `Where do you want to go?<br><br>`,
+  5: `<a href="#" onclick="updateScreen('king','palaceEnterFirst')">To the king's palace</a><br>`,
+  6: `<a href="#" onclick="updateScreen('shop','shop')">To the local store</a>`,
+};
 
 var kingEnterFirstLines = {
   0: `You enter the palace without any problems, looks like this place doesn't need much guards to be peaceful, at the end of the room, you see a king: <br><br>`,
@@ -875,8 +893,8 @@ var kingEnterFirstLines = {
   //WWYS
   2: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')">Who are you?</a><br>`,
   3: `<a href="#" onclick="updateScreen('king','kingGoHome')">I need to go home</a><br>`,
-  4: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a>`
-}
+  4: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a>`,
+};
 
 var kingWhoAreYouLines = {
   0: `- I'm king Cyryenp, ruler of this kingdom, `,
@@ -885,8 +903,8 @@ var kingWhoAreYouLines = {
   //WWYS
   3: `<a href="#" onclick="updateScreen('king','kingMeetSameFate')">Did you meet the same fate?</a><br>`,
   4: `<a href="#" onclick="updateScreen('king','kingGoHome')">I need to go home</a><br>`,
-  5: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a>`
-}
+  5: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a>`,
+};
 
 var kingMeetSameFateLines = {
   0: `- Indeed, `,
@@ -896,8 +914,8 @@ var kingMeetSameFateLines = {
   4: ` we built this kingdom to have a place to live.<br><br>`,
   //WWYS
   5: `<a href="#" onclick="updateScreen('king','kingGoHome')">I need to go home</a><br>`,
-  6: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a>`
-}
+  6: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a>`,
+};
 
 var kingGoHomeLines = {
   0: `You told him about waking up here without your memories. <br><br>`,
@@ -908,8 +926,8 @@ var kingGoHomeLines = {
   5: ` which are now residents of this unescapable island, but maybe,`,
   6: ` if you're brave enough, `,
   6: ` you can get his sick mischiefs to an end! <br><br>`,
-  7: `<a href="#" onclick="updateScreen('king','kingHowDoThis')">How do I do this?</a>`
-}
+  7: `<a href="#" onclick="updateScreen('king','kingHowDoThis')">How do I do this?</a>`,
+};
 
 var kingHowDoThisLines = {
   0: `- Regular weapons won't work against him,`,
@@ -918,17 +936,24 @@ var kingHowDoThisLines = {
   3: ` Good luck,`,
   4: ` stranger. <br><br>`,
   5: ` The king just gave you a quest, you think there's nothing more to do other than trying.`,
-}
+};
 
 var kingByeLines = {
   0: `- So long, stranger. <br><br>`,
   1: `You exit the castle, inspired by seeing so many people like you living normally.`,
-}
+};
 
-var kingQuest = {
+var kingQuestLines = {
   0: `- Ah, I see, the legends are true,`,
   1: ` the Island Sword really exists... <br><br>`,
   2: ` But you don't have the materials to craft, as I can see, come back after getting 2 pieces of the sword.<br><br>`,
   3: `- Sadly, I don't know where the pieces reside now. <br><br>`,
   4: `You need to get those pieces in order to have a chance of ending <i>Leshy</i>.`,
-}
+};
+
+var altarAbandonedAltar = {
+  0: `Your way takes you to an abandoned altar without anything apparent,`,
+  1: ` upon getting closer, you find three empty notches, `,
+  2: `maybe you need to place someting there?<br><br>`,
+  3: `There's nothing more to investigate here.`,
+};
