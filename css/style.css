@@ -14,6 +14,10 @@ body{
     justify-content: center;
 }
 
+i{
+    color: green;
+}
+
 #gamescreen{
     outline: 1px solid white;
     width: 80%;

@@ -13,6 +13,8 @@ let del = 0;
 
 var castleEntered = false;
 var palaceEntered = false;
+var kingQuest = false;
+var angelQuest = false;
 //velocidade de escrita dos textos
 
 //BOTÕES PARA A TELA DE INÍCIO
@@ -318,6 +320,72 @@ else ImgQuery = nextImg;
       .typeString(kingEnterFirstLines[4])
       .start()
       break;
+
+    case 'kingWhoAreYou':
+      TW.typeString(kingWhoAreYouLines[0])
+      .pauseFor(500)
+      .typeString(kingWhoAreYouLines[1])
+      .pauseFor(500)
+      .typeString(kingWhoAreYouLines[2])
+      .pauseFor(1000)
+      .typeString(WWYS)
+      .typeString(kingWhoAreYouLines[3])
+      .typeString(kingWhoAreYouLines[4])
+      .typeString(kingWhoAreYouLines[5])
+      .start()
+      break;
+
+    case 'kingMeetSameFate':
+      TW.typeString(kingMeetSameFateLines[0])
+      .pauseFor(500)
+      .typeString(kingMeetSameFateLines[1])
+      .pauseFor(500)
+      .typeString(kingMeetSameFateLines[2])
+      .pauseFor(500)
+      .typeString(kingMeetSameFateLines[3])
+      .pauseFor(500)
+      .typeString(kingMeetSameFateLines[4])
+      .pauseFor(1000)
+      .typeString(WWYS)
+      .typeString(kingMeetSameFateLines[5])
+      .typeString(kingMeetSameFateLines[6])
+      .start()
+      break;
+
+    case 'kingGoHome':
+      TW.typeString(kingGoHomeLines[0])
+      .pauseFor(1000)
+      .typeString(kingGoHomeLines[1])
+      .pauseFor(500)
+      .typeString(kingGoHomeLines[2])
+      .pauseFor(500)
+      .typeString(kingGoHomeLines[3])
+      .pauseFor(500)
+      .typeString(kingGoHomeLines[4])
+      .pauseFor(500)
+      .typeString(kingGoHomeLines[5])
+      .pauseFor(500)
+      .typeString(kingGoHomeLines[6])
+      .pauseFor(1500)
+      .typeString(kingGoHomeLines[7])
+      .start()
+      break;
+
+      case `kingHowDoThis`:
+        TW.typeString(kingHowDoThisLines[0])
+        .pauseFor(500)
+        .typeString(kingHowDoThisLines[1])
+        .pauseFor(500)
+        .typeString(kingHowDoThisLines[2])
+        .pauseFor(1000)
+        .typeString(kingHowDoThisLines[3])
+        .pauseFor(1000)
+        .typeString(kingHowDoThisLines[4])
+        .pauseFor(1500)
+        .typeString(kingHowDoThisLines[5])
+        .start()
+        kingQuest = true;
+        break;
       
       case 'kingBye':
         TW.typeString(kingByeLines[0])
@@ -794,7 +862,7 @@ var castleLines = {
 var enterCastleLines = {
     0: `People walk by, ignoring you, the buildings appear boring, and nothing attracts your attention. <br><br>`,
     1: `At the end of the main street, you find yourself at a bifurcation:<br><br>`,
-    2: `To the left, we have the king ____'s palace<br>`, //mudar o nome pra ALGUM!
+    2: `To the left, we have the king's palace<br>`, 
     3: `To the right, a local shop which appear to have lots of goods<br><br>`,
     4: `Where do you want to go?<br><br>`,
     5: `<a href="#" onclick="updateScreen('king','palaceEnterFirst')">To the king's palace</a><br>`,
@@ -810,7 +878,57 @@ var kingEnterFirstLines = {
   4: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a>`
 }
 
+var kingWhoAreYouLines = {
+  0: `- I'm king Cyryenp, ruler of this kingdom, `,
+  1: `my people were brought here by <i>Leshy</i>, and now are away from their family, `,
+  2: `I serve as a guide for these poor souls who lost their home. <br><br>`,
+  //WWYS
+  3: `<a href="#" onclick="updateScreen('king','kingMeetSameFate')">Did you meet the same fate?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('king','kingGoHome')">I need to go home</a><br>`,
+  5: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a>`
+}
+
+var kingMeetSameFateLines = {
+  0: `- Indeed, `,
+  1: `I was the first one to get here, and got to spend my time alone for a long time, more people appeared here,`,
+  2: ` though,`,
+  3: ` and together,`,
+  4: ` we built this kingdom to have a place to live.<br><br>`,
+  //WWYS
+  5: `<a href="#" onclick="updateScreen('king','kingGoHome')">I need to go home</a><br>`,
+  6: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a>`
+}
+
+var kingGoHomeLines = {
+  0: `You told him about waking up here without your memories. <br><br>`,
+  1: `- Well,`,
+  2: ` actually, I have an idea that may help you:`,
+  3: ` <i>Leshy</i>,`,
+  4: ` the forest spirit might have done this to you, it has brought so many others here,`,
+  5: ` which are now residents of this unescapable island, but maybe,`,
+  6: ` if you're brave enough, `,
+  6: ` you can get his sick mischiefs to an end! <br><br>`,
+  7: `<a href="#" onclick="updateScreen('king','kingHowDoThis')">How do I do this?</a>`
+}
+
+var kingHowDoThisLines = {
+  0: `- Regular weapons won't work against him,`,
+  1: ` go to the shrine at southeast, you'll find an angel able to guide you better than me,`,
+  2: ` my suggestion for now is to go to the shop near here and see if there's anything useful there. <br><br>`,
+  3: ` Good luck,`,
+  4: ` stranger. <br><br>`,
+  5: ` The king just gave you a quest, you think there's nothing more to do other than trying.`,
+}
+
 var kingByeLines = {
   0: `- So long, stranger. <br><br>`,
   1: `You exit the castle, inspired by seeing so many people like you living normally.`,
+}
+
+var kingQuest = {
+  0: `- Ah, I see, the legends are true,`,
+  1: ` the Island Sword really exists... <br><br>`,
+  2: ` But you don't have the materials to craft, as I can see, come back after getting 2 pieces of the sword.<br><br>`,
+  3: `- Sadly, I don't know where the pieces reside now. <br><br>`,
+  4: `You need to get those pieces in order to have a chance of ending <i>Leshy</i>.`,
 }
