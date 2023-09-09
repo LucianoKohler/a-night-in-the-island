@@ -1,8 +1,8 @@
 var started = false;
 var sticker = false;
 var Stick = false;
-var ticket = 0;
 var coins = 0;
+var ticket = 0;
 //0 = Não tem o ticket
 //1 = Tem mas não usou
 //2 = Tem E já usou
@@ -12,7 +12,7 @@ var sword3 = false;
 var islandSword = false;
 
 var broadsword = false;
-var tunic = true;
+var tunic = false;
 var goggles = false;
 
 let del = 0;
@@ -150,22 +150,33 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-function updateInventory(){
-  if(broadsword == true){
-    document.getElementById('sword').style.display = 'none';
-    document.getElementById('swordunlocked').style.display = 'block';
+function updateInventory() {
+  if (broadsword == true) {
+    document.getElementById("sword").style.display = "none";
+    document.getElementById("swordunlocked").style.display = "block";
   }
-  if(tunic == true){
-    document.getElementById('tunic').style.display = 'none';
-    document.getElementById('tunicunlocked').style.display = 'block';
+  if (tunic == true) {
+    document.getElementById("tunic").style.display = "none";
+    document.getElementById("tunicunlocked").style.display = "block";
   }
-  if(goggles == true){
-    document.getElementById('goggles').style.display = 'none';
-    document.getElementById('gogglesunlocked').style.display = 'block';
+  if (goggles == true) {
+    document.getElementById("goggles").style.display = "none";
+    document.getElementById("gogglesunlocked").style.display = "block";
   }
 
-
-  document.getElementById('Coins').innerHTML = "Coins: " + coins;
+  switch (ticket) {
+    case 0:
+      document.getElementById("Pass").innerHTML = "Pass: No";
+      break;
+    case 1:
+      document.getElementById("Pass").innerHTML = "Pass: Yes";
+      break;
+    case 2:
+      document.getElementById("Pass").innerHTML = "Pass: Used";
+      break;
+  }
+  document.getElementById("Coins").innerHTML = "Coins: " + coins;
+  document.getElementById("Coins").innerHTML = "Coins: " + coins;
 }
 
 function updateSword() {
@@ -175,7 +186,7 @@ function updateSword() {
   if (sword1 == true) {
     for (let i = 0; i < sword1Sprite.length; i++) {
       sword1Sprite[i].style.color = "white";
-    };
+    }
   }
   if (sword2 == true) {
     for (let i = 0; i < sword2Sprite.length; i++) {
@@ -200,7 +211,8 @@ function FuseSword() {
   }
 
   document.getElementById("sword-title").innerHTML = "The Island Sword";
-  document.getElementById("sword-desc").innerHTML = "Powerful enough to kill anything in this place";
+  document.getElementById("sword-desc").innerHTML =
+    "Powerful enough to kill anything in this place";
 
   islandSword = true;
 }
@@ -226,20 +238,20 @@ function updateScreen(nextImg, text) {
   } else if (castleEntered == true && nextImg == "castle") {
     text = "castleEnter";
     ImgQuery = "bifurcation";
-  } else if (palaceEntered == true && text == "palaceEnterFirst") {
-    text = "palaceEnter";
+  } else if (palaceEntered == false && text == "palaceEnter") {
+    text = "palaceEnterFirst";
+    ImgQuery = "king";
   } else if (shopEntered == false && nextImg == "shop") {
-    text = "shopFirst"; 
+    text = "shopFirst";
     ImgQuery = nextImg;
-  } else if(islandEntered == false && nextImg == "island"){
+  } else if (islandEntered == false && nextImg == "island") {
     text = "islandFirst";
     ImgQuery = nextImg;
+  } else if (tunic == true && nextImg == "island") {
+    ImgQuery = "islandhole";
+  } else {
+    ImgQuery = nextImg;
   }
-  ImgQuery = nextImg;
-
-  console.log(nextImg)
-  console.log(text)
-
 
   let NI = document.getElementById(ImgQuery);
 
@@ -315,8 +327,8 @@ function updateScreen(nextImg, text) {
       }
       break;
 
-    case 'forestBear':
-       if(broadsword == true || islandSword == true){
+    case "forestBear":
+      if (broadsword == true || islandSword == true) {
         TW.typeString(ForestBearWSwordLines[0])
           .pauseFor(500)
           .typeString(ForestBearWSwordLines[1])
@@ -336,10 +348,10 @@ function updateScreen(nextImg, text) {
           .typeString(ForestBearWSwordLines[8])
           .pauseFor(500)
           .typeString(ForestBearWSwordLines[9])
-          .start();       
-          document.getElementsByClassName('pier')[0].classList.remove('disabled')
-        }else{
-          TW.typeString(ForestBearWOSwordLines[0])
+          .start();
+        document.getElementsByClassName("pier")[0].classList.remove("disabled");
+      } else {
+        TW.typeString(ForestBearWOSwordLines[0])
           .pauseFor(500)
           .typeString(ForestBearWOSwordLines[1])
           .pauseFor(1000)
@@ -352,23 +364,23 @@ function updateScreen(nextImg, text) {
           .typeString(ForestBearWOSwordLines[5])
           .pauseFor(500)
           .typeString(ForestBearWOSwordLines[6])
-          .start();       
-       }
-       break;
+          .start();
+      }
+      break;
 
-      case 'pier':
-        TW.typeString(pierLines[0])
+    case "pier":
+      TW.typeString(pierLines[0])
         .pauseFor(500)
         .typeString(WWYD)
         .typeString(pierLines[1])
         .typeString(pierLines[2])
-        .start();       
-        break;
+        .start();
+      break;
 
-      case 'pierStareSea':
+    case "pierStareSea":
 
-      case 'islandFirst':
-        TW.typeString(islandFirstLines[0])
+    case "islandFirst":
+      TW.typeString(islandFirstLines[0])
         .pauseFor(500)
         .typeString(islandFirstLines[1])
         .pauseFor(1000)
@@ -391,11 +403,33 @@ function updateScreen(nextImg, text) {
         .typeString(islandFirstLines[10])
         .pauseFor(1500)
         .typeString(islandFirstLines[11])
-        .start();       
-        islandEntered = true;
-        tunic = true;
-        updateInventory();
-        break;
+        .start();
+      islandEntered = true;
+      tunic = true;
+      updateInventory();
+
+      document.getElementsByClassName("island")[0].classList.remove("disabled");
+      document.getElementsByClassName("island")[1].classList.remove("disabled");
+      document.getElementsByClassName("island")[2].classList.remove("disabled");
+
+      place = "island";
+      UpdateColors();
+
+      break;
+
+    case "island":
+      TW.typeString(islandLines[0])
+        .pauseFor(500)
+        .typeString(WWYD)
+        .typeString(islandLines[1])
+        .typeString(islandLines[2])
+        .start();
+
+      place = "island";
+      UpdateColors();
+
+      break;
+
     case "altar":
       if (kingQuest == true) {
       } else {
@@ -417,11 +451,10 @@ function updateScreen(nextImg, text) {
         .pauseFor(500)
         .typeString(castleLines[2])
         .start();
-        castleEntered = true;
+      castleEntered = true;
       setTimeout(() => {
         updateScreen("bifurcation", "castleEnter");
       }, 500);
-
 
       break;
 
@@ -441,18 +474,30 @@ function updateScreen(nextImg, text) {
       break;
 
     case "palaceEnterFirst":
-      TW.typeString(kingEnterFirstLines[0])
+      TW.typeString(palaceEnterFirstLines[0])
         .pauseFor(1000)
-        .typeString(kingEnterFirstLines[1])
+        .typeString(palaceEnterFirstLines[1])
         .pauseFor(1000)
         .typeString(WWYS)
-        .typeString(kingEnterFirstLines[2])
-        .typeString(kingEnterFirstLines[3])
-        .typeString(kingEnterFirstLines[4])
-        .typeString(kingEnterFirstLines[5])
+        .typeString(palaceEnterFirstLines[2])
+        .typeString(palaceEnterFirstLines[3])
+        .typeString(palaceEnterFirstLines[4])
+        .typeString(palaceEnterFirstLines[5])
         .start();
-        palaceEntered = true;
+      palaceEntered = true;
       break;
+
+    case "palaceEnter":
+      TW.typeString(palaceEnterLines[0])
+        .pauseFor(500)
+        .typeString(WWYS)
+        .typeString(palaceEnterLines[1])
+        .typeString(palaceEnterLines[2])
+        .typeString(palaceEnterLines[3])
+        .typeString(palaceEnterLines[4])
+        .start();
+        break;
+
 
     case "kingWhoAreYou":
       TW.typeString(kingWhoAreYouLines[0])
@@ -544,6 +589,7 @@ function updateScreen(nextImg, text) {
         .typeString(shopFirstLines[3])
         .typeString(shopFirstLines[4])
         .typeString(shopFirstLines[5])
+        .typeString(shopFirstLines[6])
         .start();
       shopEntered = true;
       break;
@@ -554,22 +600,23 @@ function updateScreen(nextImg, text) {
         .typeString(shopLines[1])
         .typeString(shopLines[2])
         .typeString(shopLines[3])
+        .typeString(shopLines[4])
         .start();
-        break;
+      break;
 
     case "shopBroadsword":
       TW.typeString(shopBroadswordLines[0])
-      .pauseFor(500)
-      .typeString(shopBroadswordLines[1])
-      .pauseFor(1000)
-      .typeString(shopBroadswordLines[2])
-      .typeString(shopBroadswordLines[3])
-      .typeString(shopBroadswordLines[4])
-      .start();
+        .pauseFor(500)
+        .typeString(shopBroadswordLines[1])
+        .pauseFor(1000)
+        .typeString(shopBroadswordLines[2])
+        .typeString(shopBroadswordLines[3])
+        .typeString(shopBroadswordLines[4])
+        .start();
       break;
 
-      case "shopSticker":
-        TW.typeString(shopStickerLines[0])
+    case "shopSticker":
+      TW.typeString(shopStickerLines[0])
         .pauseFor(500)
         .typeString(shopStickerLines[1])
         .pauseFor(1000)
@@ -579,11 +626,11 @@ function updateScreen(nextImg, text) {
         .typeString(shopStickerLines[4])
         .typeString(shopStickerLines[5])
         .start();
-        break;
+      break;
 
-      case "shopPass":
-        if(kingQuest == false) {
-          TW.typeString(shopPassWOKingQuest[0])
+    case "shopPass":
+      if (kingQuest == false) {
+        TW.typeString(shopPassWOKingQuest[0])
           .pauseFor(500)
           .typeString(shopPassWOKingQuest[1])
           .pauseFor(500)
@@ -594,8 +641,8 @@ function updateScreen(nextImg, text) {
           .typeString(shopPassWOKingQuest[4])
           .typeString(shopPassWOKingQuest[5])
           .start();
-        }else{
-          TW.typeString(shopPassWKingQuest[0])
+      } else {
+        TW.typeString(shopPassWKingQuest[0])
           .pauseFor(500)
           .typeString(shopPassWKingQuest[1])
           .pauseFor(500)
@@ -610,9 +657,10 @@ function updateScreen(nextImg, text) {
           .typeString(shopPassWKingQuest[6])
           .start();
         ticket = 1;
-        }
+        updateInventory();
+      }
 
-        break;
+      break;
 
     case "weird_rocks":
       if (sword3 == false) {
@@ -829,6 +877,7 @@ function updateScreen(nextImg, text) {
         .typeString(wallUseTicketLines[3])
         .start();
       ticket = 2;
+      updateInventory();
       document.getElementsByClassName("cave")[0].classList.remove("disabled");
       document.getElementsByClassName("cave")[1].classList.remove("disabled");
       break;
@@ -927,13 +976,13 @@ var ForestBearWOSwordLines = {
   4: `The bear takes its first step towards you, and your legs start thinking better than you,`,
   5: ` before even realizing, you start to run away from the creature, getting back to the starting point,`,
   6: ` maybe you're not ready to fight such a big thing?`,
-}
+};
 
 var pierLines = {
   0: `A lonely pier with a ready-to-go little boat stands in front of you.<br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('island', 'island')">Row to the unknown</a><br>`,
-  2: `<a href="#" onclick="updateScreen('island', 'pierStareSea')">Stare at the sea</a><br>`,
+  2: `<a href="#" onclick="updateScreen('pier', 'pierStareSea')">Stare at the sea</a><br>`,
 };
 
 var islandFirstLines = {
@@ -948,8 +997,15 @@ var islandFirstLines = {
   8: ` you find a black mail, seemingly sturdy and, even more important:`,
   9: ` Stylish!<br><br>`,
   10: `<b>You got the dark Tunic!<b><br><br>`,
-  11: `<a href="#" onclick="updateScreen('islandhole', 'island')">Wahoo!</a><br>`,
-}
+  11: `<a href="#" onclick="updateScreen('islandhole', 'island')">Wahoo!</a>`,
+};
+
+var islandLines = {
+  0: `There you are, standing in front of a desert island with the hole that you made.<br><br>`,
+  //WWYD
+  1: `<a href="#" onclick="updateScreen('pier', 'IslandRowHorizon')">Row to the Horizon</a><br>`,
+  2: `<a href="#" onclick="updateScreen('island', 'IslandAppreciateLandscape')">Appreciate the landscape</a>`,
+};
 
 var wellLines = {
   0: ` In the distance, you discover an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies" <br><br>`,
@@ -1133,11 +1189,11 @@ var enterCastleLines = {
   2: `To the left, we have the king's palace<br>`,
   3: `To the right, a local shop which appear to have lots of goods<br><br>`,
   4: `Where do you want to go?<br><br>`,
-  5: `<a href="#" onclick="updateScreen('king','palaceEnterFirst')">To the king's palace</a><br>`,
+  5: `<a href="#" onclick="updateScreen('king','palaceEnter')">To the king's palace</a><br>`,
   6: `<a href="#" onclick="updateScreen('shop','shop')">To the local store</a>`,
 };
 
-var kingEnterFirstLines = {
+var palaceEnterFirstLines = {
   0: `You enter the palace without any problems, looks like this place doesn't need much guards to be peaceful, at the end of the room, you see a king: <br><br>`,
   1: `- Hello fellow citizen, or may I say... Stranger?<br><br>`,
   //WWYS
@@ -1146,6 +1202,16 @@ var kingEnterFirstLines = {
   4: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a><br><br>`,
   5: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
 };
+
+var palaceEnterLines ={
+  0: `Greetings again, stranger.<br><br>`,
+  //WWYS
+  1: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')">Who are you?</a><br>`,
+  2: `<a href="#" onclick="updateScreen('king','kingGoHome')">I need to go home</a><br>`,
+  3: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a><br><br>`,
+  4: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
+
+}
 
 var kingWhoAreYouLines = {
   0: `- I'm king Cyryenp, ruler of this kingdom, `,
@@ -1213,14 +1279,16 @@ var shopFirstLines = {
   2: ` I got a lot of stuff here, take a look!<br><br>`,
   3: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Broadsword (20 coins)</a><br>`,
   4: `<a href="#" onclick="updateScreen('shop','shopSticker')">Sticker (10 coins)</a><br>`,
-  5: `<a href="#" onclick="updateScreen('shop','shopPass')">Wall Pass (<s>1 coin</s> FREE!)</a><br>`,
+  5: `<a href="#" onclick="updateScreen('shop','shopPass')">Wall Pass (FREE!)</a><br><br>`,
+  6: `<a href="#" onclick="updateScreen('king','palaceEnter')">Go to the palace</a>`,
 };
 
 var shopLines = {
   0: `- Hey! Take a look at my stuff!<br><br>`,
   1: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Broadsword (20 coins)</a><br>`,
   2: `<a href="#" onclick="updateScreen('shop','shopSticker')">Sticker (10 coins)</a><br>`,
-  3: `<a href="#" onclick="updateScreen('shop','shopPass')">Wall Pass (<s>1 coin</s> FREE!)</a><br>`,
+  3: `<a href="#" onclick="updateScreen('shop','shopPass')">Wall Pass (FREE!)</a><br><br>`,
+  4: `<a href="#" onclick="updateScreen('king','palaceEnter')">Go to the palace</a>`,
 };
 
 var shopBroadswordLines = {
@@ -1246,8 +1314,8 @@ var shopPassWOKingQuest = {
   2: ` he doesn't even know that we sell them for free!`,
   3: ` poor lone guy...<br><br>`,
   4: `Sadly, the place is dangerous for citizens, and I can only give one to you with permission...<br><br>`,
-  5: `<a href="#" onclick="updateScreen('shop','shop')">Go back</a>`
-}
+  5: `<a href="#" onclick="updateScreen('shop','shop')">Go back</a>`,
+};
 
 var shopPassWKingQuest = {
   0: `- A pass to the caves,`,
@@ -1257,7 +1325,7 @@ var shopPassWKingQuest = {
   4: `- Oh, I get it,`,
   5: ` the king trusts you, then so do I, take it:<br><br>`,
   6: `<b>You got the Wall Pass!</b>`,
-}
+};
 
 var altarAbandonedAltar = {
   0: `Your way takes you to an abandoned altar without anything apparent,`,
