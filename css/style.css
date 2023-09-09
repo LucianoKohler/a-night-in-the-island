@@ -14,6 +14,10 @@ body{
     justify-content: center;
 }
 
+i{
+    color: green;
+}
+
 #gamescreen{
     outline: 1px solid white;
     width: 80%;
@@ -60,6 +64,12 @@ body{
 
 #inventory{
     grid-area: 1/8/4/11;
+}
+
+.sword1Sprite,
+.sword2Sprite,
+.sword3Sprite{
+    color: black;
 }
 
 #others{
@@ -167,6 +177,10 @@ button:active{
     display: flex;
     justify-content: center;
     border: none;
+}
+
+#swordunlocked, #gogglesunlocked, #tunicunlocked{
+    display: none;
 }
 
 #inventory #inventorylogo{
