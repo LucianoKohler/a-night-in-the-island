@@ -11,7 +11,7 @@ var sword2 = false;
 var sword3 = false;
 var islandSword = false;
 
-var broadsword = false;
+var broadsword = true;
 var tunic = false;
 var goggles = false;
 
@@ -318,11 +318,13 @@ function updateScreen(nextImg, text) {
         TW.typeString(enterForestLinesWOStick[0])
           .pauseFor(500)
           .typeString(enterForestLinesWOStick[1])
+          .pauseFor(500)
+          .typeString(enterForestLinesWOStick[2])
           .pauseFor(1000)
 
           .typeString(WWYD)
-          .typeString(enterForestLinesWOStick[2])
           .typeString(enterForestLinesWOStick[3])
+          .typeString(enterForestLinesWOStick[4])
           .start();
       }
       break;
@@ -378,6 +380,21 @@ function updateScreen(nextImg, text) {
       break;
 
     case "pierStareSea":
+      TW.typeString(pierStareSeaLines[0])
+      .pauseFor(500)
+      .typeString(pierStareSeaLines[1])
+      .pauseFor(1000)
+      .typeString(pierStareSeaLines[2])
+      .pauseFor(500)
+      .typeString(pierStareSeaLines[3])
+      .pauseFor(1000)
+      .typeString(pierStareSeaLines[4])
+      .pauseFor(1000)
+      .typeString(pierStareSeaLines[5])
+      .pauseFor(1500)
+      .typeString(pierStareSeaLines[6])
+      .start();
+      break;
 
     case "islandFirst":
       TW.typeString(islandFirstLines[0])
@@ -427,9 +444,61 @@ function updateScreen(nextImg, text) {
 
       place = "island";
       UpdateColors();
-
       break;
 
+    case "islandRowHorizonPart1":
+      TW.typeString(islandRowHorizonPart1Lines[0])
+      .pauseFor(500)
+      .typeString(islandRowHorizonPart1Lines[1])
+      .pauseFor(500)
+      .typeString(islandRowHorizonPart1Lines[2])
+      .start();
+      break;
+
+      case "islandRowHorizonPart2":
+        TW.typeString(islandRowHorizonPart2Lines[0])
+        .pauseFor(500)
+        .typeString(islandRowHorizonPart2Lines[1])
+        .pauseFor(500)
+        .typeString(islandRowHorizonPart2Lines[2])
+        .pauseFor(1000)
+        .typeString(islandRowHorizonPart2Lines[3])
+        .pauseFor(500)
+        .typeString(islandRowHorizonPart2Lines[4])
+        .pauseFor(1000)
+        .typeString(WWYD)
+        .typeString(islandRowHorizonPart2Lines[5])
+        .typeString(islandRowHorizonPart2Lines[6])
+        .start();
+        place = 'pier';
+        UpdateColors();
+        break;
+
+      case "islandAppreciateLandscape":
+        TW.typeString(islandAppreciateLandscapeLines[0])
+        .pauseFor(1000)
+        .typeString(islandAppreciateLandscapeLines[1])
+        .pauseFor(500)
+        .typeString(islandAppreciateLandscapeLines[2])
+        .pauseFor(500)
+        .typeString(islandAppreciateLandscapeLines[3])
+        .pauseFor(500)
+        .typeString(islandAppreciateLandscapeLines[4])
+        .pauseFor(500)
+        .typeString(islandAppreciateLandscapeLines[5])
+        .pauseFor(500)
+        .typeString(islandAppreciateLandscapeLines[6])
+        .pauseFor(500)
+        .typeString(islandAppreciateLandscapeLines[7])
+        .pauseFor(1000)
+        .typeString(islandAppreciateLandscapeLines[8])
+        .pauseFor(500)
+        .typeString(islandAppreciateLandscapeLines[9])
+        .pauseFor(500)
+        .typeString(islandAppreciateLandscapeLines[10])
+        .start();
+        break;
+  
     case "altar":
       if (kingQuest == true) {
       } else {
@@ -941,18 +1010,19 @@ var forestLines = {
 };
 
 var enterForestLinesWOStick = {
-  0: `You decided to enter further into the forest, not knowing what may be at the other side of it <br> <br>`,
-  1: `By the ground, you find a somewhat straight stick on the ground, you got <b>an ordinary stick</b>! <br><br>`,
+  0: `You decided to enter further into the forest, not knowing what may be at the other side of it.<br><br>`,
+  1: `By the ground, you find a somewhat straight stick on the ground:<br><br>`,
+  2: `<b>You got an ordinary stick</b>! <br><br>`,
   //WWYD
-  2: `<a href="#" onclick="updateScreen('forest', 'forestBear')">continue</a> <br>`,
-  3: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`,
+  3: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continue</a> <br>`,
+  4: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Retreat from the forest`,
 };
 
 var enterForestLinesWithStick = {
   0: `Back to the same place you are, you can still see the spot where you found your stick... <br><br>`,
   //WWYD
-  1: `<a href="#" onclick="updateScreen('forest', 'forestBear')">continue</a> <br>`,
-  2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`,
+  1: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continue</a> <br>`,
+  2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Retreat from the forest`,
 };
 
 var ForestBearWSwordLines = {
@@ -981,9 +1051,19 @@ var ForestBearWOSwordLines = {
 var pierLines = {
   0: `A lonely pier with a ready-to-go little boat stands in front of you.<br><br>`,
   //WWYD
-  1: `<a href="#" onclick="updateScreen('island', 'island')">Row to the unknown</a><br>`,
-  2: `<a href="#" onclick="updateScreen('pier', 'pierStareSea')">Stare at the sea</a><br>`,
+  1: `<a href="#" onclick="updateScreen('island', 'island')">Sail with the boat</a><br>`,
+  2: `<a href="#" onclick="updateScreen('pier', 'pierStareSea')">Stare at the sea</a>`,
 };
+
+var pierStareSeaLines = {
+  0: `You look into the water, realizing:`,
+  1: ` You don't remember your face!<br><br>`,
+  2: `Upon bending to the sea, you only see the moon and stars reflected by the water's transparency.`,
+  3: ` Where is your reflexion?`,
+  4: ` Where is...`,
+  5: ` You?<br><br>`,
+  6: ` <a href="#" onclick="updateScreen('pier', 'pier')">Go back</a>`,
+}
 
 var islandFirstLines = {
   0: `You hop on the boat, wrap your hands around the oars, and start rowing,`,
@@ -1003,9 +1083,40 @@ var islandFirstLines = {
 var islandLines = {
   0: `There you are, standing in front of a desert island with the hole that you made.<br><br>`,
   //WWYD
-  1: `<a href="#" onclick="updateScreen('pier', 'IslandRowHorizon')">Row to the Horizon</a><br>`,
-  2: `<a href="#" onclick="updateScreen('island', 'IslandAppreciateLandscape')">Appreciate the landscape</a>`,
+  1: `<a href="#" onclick="updateScreen('island', 'islandRowHorizonPart1')">Row to the Horizon</a><br>`,
+  2: `<a href="#" onclick="updateScreen('island', 'islandAppreciateLandscape')">Appreciate the landscape</a>`,
 };
+
+var islandAppreciateLandscapeLines = {
+  0: `You look at the horizon.<br><br>`,
+  1: `Water,`,
+  2: ` stars`,
+  3: ` and the moon,`,
+  4: ` that's all, why are you here?`,
+  5: ` Who took you here?`,
+  6: ` Was it...`,
+  7: ` Magic?<br><br>`,
+  8: `You must end your quest,`,
+  9: ` maybe then you'll be able to know your fate on the island.<br><br>`,
+  10: `<a href="#" onclick="updateScreen('island', 'island')">Go back</a>`,
+}
+
+var islandRowHorizonPart1Lines = {
+ 0: `You continue your journey to the unknown,`, 
+ 1: ` maybe the time will guide you to the right way.<br><br>`, 
+ 2: `<a href="#" onclick="updateScreen('pier', 'islandRowHorizonPart2')">Continue</a>`, 
+}
+
+var islandRowHorizonPart2Lines = {
+ 0: `After minutes,`, 
+ 1: ` the confimation that this place is not normal appears:`, 
+ 2: ` You returned back to the pier!`, 
+ 3: ` You did not turn the boat, and neither the waves did,`, 
+ 4: ` it seems that you're stuck for real and that magic really exists after all...<br><br>`, 
+ //WWYD
+ 5: `<a href="#" onclick="updateScreen('island', 'island')">Sail with the boat</a><br>`,
+ 6: `<a href="#" onclick="updateScreen('pier', 'pierStareSea')">Stare at the sea</a><br>`,
+}
 
 var wellLines = {
   0: ` In the distance, you discover an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies" <br><br>`,
@@ -1302,7 +1413,7 @@ var shopBroadswordLines = {
 var shopStickerLines = {
   0: `- A silly carrot sticker, dunno what would you do with it,`,
   1: ` it's funny, though!<br><br>`,
-  2: `At the back of the card, you discover that someone named "Emmy" drew it.<br><br>`,
+  2: `At the back of the card, you discover that someone named "EmmyLing" drew it.<br><br>`,
   3: `Wanna buy it?<br><br>`,
   4: `<a href="#" onclick="updateScreen('shop','shopStickerYes')">Yes</a><br>`,
   5: `<a href="#" onclick="updateScreen('shop','shop')">No</a>`,
