@@ -179,6 +179,10 @@ button:active{
     border: none;
 }
 
+#swordunlocked, #gogglesunlocked, #tunicunlocked{
+    display: none;
+}
+
 #inventory #inventorylogo{
     font-size: .8vw;
 }
