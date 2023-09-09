@@ -1,7 +1,7 @@
 var started = false;
 var sticker = false;
 var Stick = false;
-var ticket = 1;
+var ticket = 0;
 //0 = Não tem o ticket
 //1 = Tem mas não usou
 //2 = Tem E já usou
@@ -14,7 +14,7 @@ let del = 0;
 var castleEntered = false;
 var palaceEntered = false;
 var shopEntered = false;
-var kingQuest = true;
+var kingQuest = false;
 var angelQuest = false;
 //velocidade de escrita dos textos
 
@@ -190,28 +190,28 @@ var chatDiv = document.getElementById("text");
 function updateScreen(nextImg, text) {
   let ImgQuery;
 
+
   //Esses IFs abaixo são usados caso o player entre no local após certo acontecimento.
   if (sword3 == true && nextImg == "weird_rocks") {
     ImgQuery = "weird_rocksCrying";
-  }
-  else if (ticket == 2 && nextImg == "wall") {
+  } else if (ticket == 2 && nextImg == "wall") {
     ImgQuery = "wall-open";
-  }
-  else if (kingQuest == true && nextImg == "altar") {
+  } else if (kingQuest == true && nextImg == "altar") {
     ImgQuery = "altarAngel";
-  }
-  else if (castleEntered == true && nextImg == "castle") {
-    ImgQuery = "bifurcation";
+  } else if (castleEntered == true && nextImg == "castle") {
     text = "castleEnter";
-  }
-  else if (palaceEntered == true && nextImg == "king") {
+    ImgQuery = "bifurcation";
+  } else if (palaceEntered == true && text == "palaceEnterFirst") {
     text = "palaceEnter";
-  } else if(shopEntered == false && nextImg == 'shop') {
-    text = 'shopFirst'; //arrumar aqui
-  }  else ImgQuery = nextImg;
-  console.log(shopEntered)
+  } else if (shopEntered == false && nextImg == "shop") {
+    text = "shopFirst"; //arrumar aqui
+    ImgQuery = nextImg;
+  }
+  ImgQuery = nextImg;
+
   console.log(nextImg)
   console.log(text)
+
 
   let NI = document.getElementById(ImgQuery);
 
@@ -309,10 +309,12 @@ function updateScreen(nextImg, text) {
         .pauseFor(500)
         .typeString(castleLines[2])
         .start();
+        castleEntered = true;
       setTimeout(() => {
         updateScreen("bifurcation", "castleEnter");
       }, 500);
-      castleEntered = true;
+
+
       break;
 
     case "castleEnter":
@@ -341,6 +343,7 @@ function updateScreen(nextImg, text) {
         .typeString(kingEnterFirstLines[4])
         .typeString(kingEnterFirstLines[5])
         .start();
+        palaceEntered = true;
       break;
 
     case "kingWhoAreYou":
@@ -409,6 +412,7 @@ function updateScreen(nextImg, text) {
         .typeString(kingHowDoThisLines[5])
         .pauseFor(1500)
         .typeString(kingHowDoThisLines[6])
+        .pauseFor(500)
         .typeString(kingHowDoThisLines[7])
         .start();
       kingQuest = true;
@@ -422,7 +426,7 @@ function updateScreen(nextImg, text) {
         .start();
       break;
 
-    case 'shopFirst':
+    case "shopFirst":
       TW.typeString(shopFirstLines[0])
         .pauseFor(500)
         .typeString(shopFirstLines[1])
@@ -433,17 +437,75 @@ function updateScreen(nextImg, text) {
         .typeString(shopFirstLines[4])
         .typeString(shopFirstLines[5])
         .start();
-        shopEntered = true;
+      shopEntered = true;
+      break;
+
+    case "shop":
+      TW.typeString(shopLines[0])
+        .pauseFor(500)
+        .typeString(shopLines[1])
+        .typeString(shopLines[2])
+        .typeString(shopLines[3])
+        .start();
         break;
-      
-        case 'shop':
-          TW.typeString(shopFirstLines[0])
+
+    case "shopBroadsword":
+      TW.typeString(shopBroadswordLines[0])
+      .pauseFor(500)
+      .typeString(shopBroadswordLines[1])
+      .pauseFor(1000)
+      .typeString(shopBroadswordLines[2])
+      .typeString(shopBroadswordLines[3])
+      .typeString(shopBroadswordLines[4])
+      .start();
+      break;
+
+      case "shopSticker":
+        TW.typeString(shopStickerLines[0])
+        .pauseFor(500)
+        .typeString(shopStickerLines[1])
+        .pauseFor(1000)
+        .typeString(shopStickerLines[2])
+        .pauseFor(500)
+        .typeString(shopStickerLines[3])
+        .typeString(shopStickerLines[4])
+        .typeString(shopStickerLines[5])
+        .start();
+        break;
+
+      case "shopPass":
+        if(kingQuest == false) {
+          TW.typeString(shopPassWOKingQuest[0])
           .pauseFor(500)
-          .typeString(shopFirstLines[1])
-          .typeString(shopFirstLines[2])
-          .typeString(shopFirstLines[3])
+          .typeString(shopPassWOKingQuest[1])
+          .pauseFor(500)
+          .typeString(shopPassWOKingQuest[2])
+          .pauseFor(500)
+          .typeString(shopPassWOKingQuest[3])
+          .pauseFor(1000)
+          .typeString(shopPassWOKingQuest[4])
+          .typeString(shopPassWOKingQuest[5])
           .start();
-        
+        }else{
+          TW.typeString(shopPassWKingQuest[0])
+          .pauseFor(500)
+          .typeString(shopPassWKingQuest[1])
+          .pauseFor(500)
+          .typeString(shopPassWKingQuest[2])
+          .pauseFor(500)
+          .typeString(shopPassWKingQuest[3])
+          .pauseFor(1000)
+          .typeString(shopPassWKingQuest[4])
+          .pauseFor(500)
+          .typeString(shopPassWKingQuest[5])
+          .pauseFor(1000)
+          .typeString(shopPassWKingQuest[6])
+          .start();
+        ticket = 1;
+        }
+
+        break;
+
     case "weird_rocks":
       if (sword3 == false) {
         TW.typeString(weird_rocksLines[0])
@@ -930,7 +992,6 @@ var kingEnterFirstLines = {
   3: `<a href="#" onclick="updateScreen('king','kingGoHome')">I need to go home</a><br>`,
   4: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a><br><br>`,
   5: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
-
 };
 
 var kingWhoAreYouLines = {
@@ -983,7 +1044,6 @@ var kingByeLines = {
   0: `- So long, stranger. <br><br>`,
   1: `You exit the castle, inspired by seeing so many people like you living normally.<br><br>`,
   2: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
-
 };
 
 var kingQuestLines = {
@@ -999,23 +1059,51 @@ var shopFirstLines = {
   1: `- Helllooooww, I'm Joobireu, the little wizard apprentice AND shopkeeper!`,
   2: ` I got a lot of stuff here, take a look!<br><br>`,
   3: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Broadsword (20 coins)</a><br>`,
-  4: `<a href="#" onclick="updateScreen('shop','shop')">Sticker (10 coins)</a><br>`,
-  5: `<a href="#" onclick="updateScreen('shop','shop')">Wall Pass (<s>1 coin</s> FREE!)</a><br>`,
+  4: `<a href="#" onclick="updateScreen('shop','shopSticker')">Sticker (10 coins)</a><br>`,
+  5: `<a href="#" onclick="updateScreen('shop','shopPass')">Wall Pass (<s>1 coin</s> FREE!)</a><br>`,
 };
 
 var shopLines = {
-  0: ` Welcome back! Take a look at my stuff!<br><br>`,
+  0: `- Hey! Take a look at my stuff!<br><br>`,
   1: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Broadsword (20 coins)</a><br>`,
-  2: `<a href="#" onclick="updateScreen('shop','shop')">Sticker (10 coins)</a><br>`,
-  3: `<a href="#" onclick="updateScreen('shop','shop')">Wall Pass (<s>1 coin</s> FREE!)</a><br>`,
+  2: `<a href="#" onclick="updateScreen('shop','shopSticker')">Sticker (10 coins)</a><br>`,
+  3: `<a href="#" onclick="updateScreen('shop','shopPass')">Wall Pass (<s>1 coin</s> FREE!)</a><br>`,
+};
+
+var shopBroadswordLines = {
+  0: `- A steel broadsword, forged by the kingdom's best swordsmith:`,
+  1: ` Kyle Kompos!<br><br>`,
+  2: `Wanna buy it?<br><br>`,
+  3: `<a href="#" onclick="updateScreen('shop','shopBroadswordYes')">Yes</a><br>`,
+  4: `<a href="#" onclick="updateScreen('shop','shop')">No</a>`,
+};
+
+var shopStickerLines = {
+  0: `- A silly carrot sticker, dunno what would you do with it,`,
+  1: ` it's funny, though!<br><br>`,
+  2: `At the back of the card, you discover that someone named "Emmy" drew it.<br><br>`,
+  3: `Wanna buy it?<br><br>`,
+  4: `<a href="#" onclick="updateScreen('shop','shopStickerYes')">Yes</a><br>`,
+  5: `<a href="#" onclick="updateScreen('shop','shop')">No</a>`,
+};
+
+var shopPassWOKingQuest = {
+  0: `- A pass to the caves,`,
+  1: ` it's cheap cuz' there isn't anything interesting there, we only sell them so the wall doorman gets to feel important with its work,`,
+  2: ` he doesn't even know that we sell them for free!`,
+  3: ` poor lone guy...<br><br>`,
+  4: `Sadly, the place is dangerous for citizens, and I can only give one to you with permission...<br><br>`,
+  5: `<a href="#" onclick="updateScreen('shop','shop')">Go back</a>`
 }
 
-var shopBroadsword = {
-  0: `A steel broadsword, forged by the kingdom's best swordsmith:`,
-  0: ` Kyle Kompos!<br><br>`,
-  0: `Wanna buy it?<br><br>`,
-  0: `<a href="#" onclick="updateScreen('shop','shopBroadswordYes')">Yes</a><br>`,
-  0: `<a href="#" onclick="updateScreen('shop','shopBroadswordNo')">No</a>`,
+var shopPassWKingQuest = {
+  0: `- A pass to the caves,`,
+  1: ` it's cheap cuz' there isn't anything interesting there, we only sell them so the wall doorman gets to feel important with its work,`,
+  2: ` he doesn't even know that we sell them for free!`,
+  3: ` poor lone guy...<br><br>`,
+  4: `- Oh, I get it,`,
+  5: ` the king trusts you, then so do I, take it:<br><br>`,
+  6: `<b>You got the Wall Pass!</b>`,
 }
 
 var altarAbandonedAltar = {
@@ -1024,4 +1112,3 @@ var altarAbandonedAltar = {
   2: `maybe you need to place someting there?<br><br>`,
   3: `There's nothing more to investigate here.`,
 };
-
