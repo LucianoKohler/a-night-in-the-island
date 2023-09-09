@@ -2,18 +2,25 @@ var started = false;
 var sticker = false;
 var Stick = false;
 var ticket = 0;
+var coins = 0;
 //0 = Não tem o ticket
 //1 = Tem mas não usou
 //2 = Tem E já usou
 var sword1 = false;
 var sword2 = false;
 var sword3 = false;
+var islandSword = false;
+
+var broadsword = false;
+var tunic = true;
+var goggles = false;
 
 let del = 0;
 
 var castleEntered = false;
 var palaceEntered = false;
 var shopEntered = false;
+var islandEntered = false;
 var kingQuest = false;
 var angelQuest = false;
 //velocidade de escrita dos textos
@@ -143,6 +150,24 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+function updateInventory(){
+  if(broadsword == true){
+    document.getElementById('sword').style.display = 'none';
+    document.getElementById('swordunlocked').style.display = 'block';
+  }
+  if(tunic == true){
+    document.getElementById('tunic').style.display = 'none';
+    document.getElementById('tunicunlocked').style.display = 'block';
+  }
+  if(goggles == true){
+    document.getElementById('goggles').style.display = 'none';
+    document.getElementById('gogglesunlocked').style.display = 'block';
+  }
+
+
+  document.getElementById('Coins').innerHTML = "Coins: " + coins;
+}
+
 function updateSword() {
   let sword1Sprite = document.getElementsByClassName("sword1Sprite");
   let sword2Sprite = document.getElementsByClassName("sword2Sprite");
@@ -150,7 +175,7 @@ function updateSword() {
   if (sword1 == true) {
     for (let i = 0; i < sword1Sprite.length; i++) {
       sword1Sprite[i].style.color = "white";
-    }
+    };
   }
   if (sword2 == true) {
     for (let i = 0; i < sword2Sprite.length; i++) {
@@ -175,8 +200,9 @@ function FuseSword() {
   }
 
   document.getElementById("sword-title").innerHTML = "The Island Sword";
-  document.getElementById("sword-desc").innerHTML =
-    "Powerful enough to kill anything in this place";
+  document.getElementById("sword-desc").innerHTML = "Powerful enough to kill anything in this place";
+
+  islandSword = true;
 }
 
 document.addEventListener("keydown", (e) => {
@@ -189,7 +215,6 @@ var chatDiv = document.getElementById("text");
 
 function updateScreen(nextImg, text) {
   let ImgQuery;
-
 
   //Esses IFs abaixo são usados caso o player entre no local após certo acontecimento.
   if (sword3 == true && nextImg == "weird_rocks") {
@@ -204,7 +229,10 @@ function updateScreen(nextImg, text) {
   } else if (palaceEntered == true && text == "palaceEnterFirst") {
     text = "palaceEnter";
   } else if (shopEntered == false && nextImg == "shop") {
-    text = "shopFirst"; //arrumar aqui
+    text = "shopFirst"; 
+    ImgQuery = nextImg;
+  } else if(islandEntered == false && nextImg == "island"){
+    text = "islandFirst";
     ImgQuery = nextImg;
   }
   ImgQuery = nextImg;
@@ -285,9 +313,89 @@ function updateScreen(nextImg, text) {
           .typeString(enterForestLinesWOStick[3])
           .start();
       }
-
       break;
 
+    case 'forestBear':
+       if(broadsword == true || islandSword == true){
+        TW.typeString(ForestBearWSwordLines[0])
+          .pauseFor(500)
+          .typeString(ForestBearWSwordLines[1])
+          .pauseFor(1000)
+          .typeString(ForestBearWSwordLines[2])
+          .pauseFor(500)
+          .typeString(ForestBearWSwordLines[3])
+          .pauseFor(500)
+          .typeString(ForestBearWSwordLines[4])
+          .pauseFor(1000)
+          .typeString(ForestBearWSwordLines[5])
+          .pauseFor(500)
+          .typeString(ForestBearWSwordLines[6])
+          .pauseFor(1000)
+          .typeString(ForestBearWSwordLines[7])
+          .pauseFor(500)
+          .typeString(ForestBearWSwordLines[8])
+          .pauseFor(500)
+          .typeString(ForestBearWSwordLines[9])
+          .start();       
+          document.getElementsByClassName('pier')[0].classList.remove('disabled')
+        }else{
+          TW.typeString(ForestBearWOSwordLines[0])
+          .pauseFor(500)
+          .typeString(ForestBearWOSwordLines[1])
+          .pauseFor(1000)
+          .typeString(ForestBearWOSwordLines[2])
+          .pauseFor(500)
+          .typeString(ForestBearWOSwordLines[3])
+          .pauseFor(500)
+          .typeString(ForestBearWOSwordLines[4])
+          .pauseFor(500)
+          .typeString(ForestBearWOSwordLines[5])
+          .pauseFor(500)
+          .typeString(ForestBearWOSwordLines[6])
+          .start();       
+       }
+       break;
+
+      case 'pier':
+        TW.typeString(pierLines[0])
+        .pauseFor(500)
+        .typeString(WWYD)
+        .typeString(pierLines[1])
+        .typeString(pierLines[2])
+        .start();       
+        break;
+
+      case 'pierStareSea':
+
+      case 'islandFirst':
+        TW.typeString(islandFirstLines[0])
+        .pauseFor(500)
+        .typeString(islandFirstLines[1])
+        .pauseFor(1000)
+        .typeString(islandFirstLines[2])
+        .pauseFor(500)
+        .typeString(islandFirstLines[3])
+        .pauseFor(1000)
+        .typeString(islandFirstLines[4])
+        .pauseFor(500)
+        .typeString(islandFirstLines[5])
+        .pauseFor(500)
+        .typeString(islandFirstLines[6])
+        .pauseFor(500)
+        .typeString(islandFirstLines[7])
+        .pauseFor(500)
+        .typeString(islandFirstLines[8])
+        .pauseFor(1000)
+        .typeString(islandFirstLines[9])
+        .pauseFor(1500)
+        .typeString(islandFirstLines[10])
+        .pauseFor(1500)
+        .typeString(islandFirstLines[11])
+        .start();       
+        islandEntered = true;
+        tunic = true;
+        updateInventory();
+        break;
     case "altar":
       if (kingQuest == true) {
       } else {
@@ -784,25 +892,70 @@ var forestLines = {
 };
 
 var enterForestLinesWOStick = {
-  0: `You decided to enter further into the forest, unarmed and lost <br> <br>`,
+  0: `You decided to enter further into the forest, not knowing what may be at the other side of it <br> <br>`,
   1: `By the ground, you find a somewhat straight stick on the ground, you got <b>an ordinary stick</b>! <br><br>`,
   //WWYD
-  2: `<a href="#">continue</a> <br>`,
+  2: `<a href="#" onclick="updateScreen('forest', 'forestBear')">continue</a> <br>`,
   3: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`,
 };
 
 var enterForestLinesWithStick = {
   0: `Back to the same place you are, you can still see the spot where you found your stick... <br><br>`,
   //WWYD
-  1: `<a href="#">continue</a> <br>`,
+  1: `<a href="#" onclick="updateScreen('forest', 'forestBear')">continue</a> <br>`,
   2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`,
 };
+
+var ForestBearWSwordLines = {
+  0: `You go further into the forest, the path leads you to...`,
+  1: ` A bear!<br><br>`,
+  2: `You quickly draw your sword,`,
+  3: ` without realizing,`,
+  4: ` the angle of it starts to reflect the moonglow at a crazy intensity, the light beam scared the bear away!<br><br>`,
+  5: `You get grateful for the smith who made this sword,`,
+  6: ` after all, you don't know how to use a sword...<br><br>`,
+  7: `You continue through the forest until you reach the end of it,`,
+  8: ` on the other side, you find a lonely pier, with a small boat hanging on the water.<br><br>`,
+  9: `<b>You got access to the pier!</b>`,
+};
+
+var ForestBearWOSwordLines = {
+  0: `You go further into the forest, the path leads you to...`,
+  1: ` A bear!<br><br>`,
+  2: `You firmly hold your stick,`,
+  3: ` ready to fight for your life, no turning back!<br><br>`,
+  4: `The bear takes its first step towards you, and your legs start thinking better than you,`,
+  5: ` before even realizing, you start to run away from the creature, getting back to the starting point,`,
+  6: ` maybe you're not ready to fight such a big thing?`,
+}
+
+var pierLines = {
+  0: `A lonely pier with a ready-to-go little boat stands in front of you.<br><br>`,
+  //WWYD
+  1: `<a href="#" onclick="updateScreen('island', 'island')">Row to the unknown</a><br>`,
+  2: `<a href="#" onclick="updateScreen('island', 'pierStareSea')">Stare at the sea</a><br>`,
+};
+
+var islandFirstLines = {
+  0: `You hop on the boat, wrap your hands around the oars, and start rowing,`,
+  1: ` without directions, only with the intention to go somewhere.`,
+  2: ` A few minutes of only listening to the waves' sound takes you to a small island,`,
+  3: ` you decide to stop there.<br><br>`,
+  4: `Upon arriving, nothing stands there except a plam tree and a giant X marking something,`,
+  5: ` you take your bare hands and start digging the mark, since this place mustn't have many shovels around.<br><br>`,
+  6: `The digging hurt, but it was worth it,`,
+  7: ` after getting your hands numb,`,
+  8: ` you find a black mail, seemingly sturdy and, even more important:`,
+  9: ` Stylish!<br><br>`,
+  10: `<b>You got the dark Tunic!<b><br><br>`,
+  11: `<a href="#" onclick="updateScreen('islandhole', 'island')">Wahoo!</a><br>`,
+}
 
 var wellLines = {
   0: ` In the distance, you discover an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies" <br><br>`,
   //WWYD
   1: ` <a href="#"> Throw a Coin<br>`,
-  2: ` <a href="#" onclick="updateScreen('well_jump', 'well_jump')"> Jump into the well`,
+  2: ` <a href="#" onclick="updateScreen('well_jump', 'well_jump')"> Jump into the well</a>`,
 };
 
 var well_jumpLines = {
