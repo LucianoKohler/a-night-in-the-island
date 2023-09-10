@@ -1,7 +1,7 @@
 var started = false;
 var sticker = false;
 var Stick = false;
-var coins = 31;
+var coins = 0;
 var pass = 0;
 //0 = Não tem o pass
 //1 = Tem mas não usou
@@ -14,7 +14,7 @@ var islandSword = false;
 
 var broadsword = false;
 var tunic = false;
-var goggles = false;
+var goggles = true;
 
 let del = 0; //mudar pra 25
 
@@ -23,7 +23,7 @@ var castleEntered = false;
 var palaceEntered = true;
 var shopEntered = false;
 var islandEntered = false;
-var kingQuest = true;
+var kingQuest = false;
 var angelVisited = false;
 
 //BOTÕES PARA A TELA DE INÍCIO
@@ -241,7 +241,11 @@ function updateScreen(nextImg, text) {
     ImgQuery = "angel";
   } else if (tunic == true && nextImg == "island") {
     ImgQuery = "islandhole";
-  } else if (
+  } else if(goggles == true && nextImg == 'well') {
+    ImgQuery = 'wellPoor'
+  } else if(sword1 ==  true && nextImg == 'king'){
+    ImgQuery = 'kingPommelless'
+  }else if (
     (broadsword == true && text == "shopBroadswordYes") ||
     (sticker == true && text == "shopStickerYes") ||
     ((pass == 1 || pass == 2) && text == "shopPass")
@@ -1475,7 +1479,7 @@ var wellLinesAfterGoggles = {
   0: `You get back to the well,`,
   1: ` the sign is still talking about you being poor.<br><br>`,
   2: ` "It's just a silly well, ignore it"<br><br>`,
-  3: ` You say to yourself.`,
+  3: ` You say to yourself, backing off.`,
 }
 
 var wellThrowCoinLines = {
