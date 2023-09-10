@@ -166,6 +166,11 @@ button:active{
     font-size: 1.2em;
 }
 
+#chat a::before{
+    content: "• ";
+    line-height: 24px;
+}
+
 #inventory{
     overflow-x: hidden;
     overflow-y: scroll;
