@@ -1,13 +1,13 @@
 var started = false;
-var sticker = true;
+var sticker = false;
 var Stick = false;
 var coins = 0;
 var pass = 0;
 //0 = Não tem o pass
 //1 = Tem mas não usou
 //2 = Tem E já usou
-var sword1 = true;
-var sword2 = true;
+var sword1 = false;
+var sword2 = false;
 var sword3 = false;
 var islandSword = false;
 
@@ -22,7 +22,7 @@ var castleEntered = false;
 var palaceEntered = false;
 var shopEntered = false;
 var islandEntered = false;
-var kingQuest = true;
+var kingQuest = false;
 var angelQuest = false;
 //velocidade de escrita dos textos
 
@@ -234,11 +234,10 @@ function updateScreen(nextImg, text) {
     ImgQuery = "weirdRocksCrying";
   } else if (pass == 2 && nextImg == "wall") {
     ImgQuery = "wall-open";
+  } else if(castleEntered == true && nextImg == 'castle'){
+    ImgQuery = 'bifurcation'
   } else if (kingQuest == true && nextImg == "altar") {
     ImgQuery = "angel";
-  } else if (castleEntered == true && nextImg == "castle") {
-    text = "castleEnter";
-    ImgQuery = "bifurcation";
   } else if (tunic == true && nextImg == "island") {
     ImgQuery = "islandhole";
   } else if (
@@ -279,19 +278,17 @@ function updateScreen(nextImg, text) {
         .start();
       break;
 
-    case "well_jump":
-      TW.typeString(well_jumpLines[0])
+    case "wellLookInside":
+      TW.typeString(wellLookInsideLines[0])
+        .pauseFor(500)
+        .typeString(wellLookInsideLines[1])
+        .pauseFor(500)
+        .typeString(wellLookInsideLines[2])
+        .pauseFor(500)
+        .typeString(wellLookInsideLines[3])
         .pauseFor(1000)
-        .typeString(well_jumpLines[1])
-        .pauseFor(1000)
-        .typeString(well_jumpLines[2])
-        .pauseFor(1000)
-        .typeString(well_jumpLines[3])
-        .pauseFor(2000)
-        .typeString(well_jumpLines[4])
+        .typeString(wellLookInsideLines[4])
         .start();
-
-      setTimeout(DyingAnimation, 12500); //Tempo certo para delay = 25;
       break;
 
     case "forest":
@@ -703,21 +700,18 @@ function updateScreen(nextImg, text) {
       break;
 
     case "castle":
-      TW.typeString(castleLines[0])
+      if(castleEntered == false){
+        TW.typeString(castleLines[0])
         .pauseFor(500)
         .typeString(castleLines[1])
         .pauseFor(500)
         .typeString(castleLines[2])
+        .pauseFor(500)
+        .typeString(castleLines[3])
         .start();
-      castleEntered = true;
-      setTimeout(() => {
-        updateScreen("bifurcation", "castleEnter");
-      }, 500);
-
-      break;
-
-    case "castleEnter":
-      TW.typeString(enterCastleLines[0])
+        castleEntered = true;
+      }else{
+        TW.typeString(enterCastleLines[0])
         .pauseFor(1000)
         .typeString(enterCastleLines[1])
         .pauseFor(500)
@@ -729,9 +723,8 @@ function updateScreen(nextImg, text) {
         .typeString(enterCastleLines[5])
         .typeString(enterCastleLines[6])
         .start();
+      }
       break;
-
-
 
     case "palaceEnter":
       if(palaceEntered == true){
@@ -1351,15 +1344,15 @@ var wellLines = {
   0: ` In the distance, you discover an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies" <br><br>`,
   //WWYD
   1: ` <a href="#"> Throw a Coin<br>`,
-  2: ` <a href="#" onclick="updateScreen('well_jump', 'well_jump')"> Jump into the well</a>`,
+  2: ` <a href="#" onclick="updateScreen('well', 'wellLookInside')">Look inside the well</a>`,
 };
 
-var well_jumpLines = {
-  0: `Without any fear, you hop into the well, after all, that's how games work!<br><br>`,
-  1: `.`,
-  2: `.`,
-  3: `. right?<br><br>`,
-  4: `After some time, you hit the ground and die instantly, what was you thinking?!`,
+var wellLookInsideLines = {
+  0: `You lean into the well, checking if there was something,`,
+  1: ` no water,`,
+  2: ` no bucket,`,
+  3: ` only a black endless hole with a hanging torn rope.<br><br>`,
+  4: `<a href="#" onclick="updateScreen('well', 'well')">Go back</a>`,
 };
 
 var weirdRocksLines = {
@@ -1520,7 +1513,8 @@ var wallAlreadyUsedPassLines = {
 var castleLines = {
   0: `A big castle can be seen at the distance from the entire island,`,
   1: ` the main gate is open,`,
-  2: ` you decide to enter it.`,
+  2: ` you may enter it.<br><br>`,
+  3: `<a href="#" onclick="updateScreen('bifurcation','castle')">Enter it</a>`
 };
 
 var enterCastleLines = {
