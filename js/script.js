@@ -6,6 +6,7 @@ var pass = 0;
 //0 = Não tem o pass
 //1 = Tem mas não usou
 //2 = Tem E já usou
+
 var sword1 = false;
 var sword2 = false;
 var sword3 = false;
@@ -23,8 +24,7 @@ var palaceEntered = false;
 var shopEntered = false;
 var islandEntered = false;
 var kingQuest = false;
-var angelQuest = false;
-//velocidade de escrita dos textos
+var angelVisited = false;
 
 //BOTÕES PARA A TELA DE INÍCIO
 
@@ -506,7 +506,7 @@ function updateScreen(nextImg, text) {
       break;
 
     case "altar":
-      if (kingQuest == true && angelQuest == true) { 
+      if (kingQuest == true && angelVisited == true) { 
         TW.typeString(altarLines[0])
           .pauseFor(500)
           .typeString(altarLines[1])
@@ -544,7 +544,7 @@ function updateScreen(nextImg, text) {
           .typeString(altarFirstLines[12])
           .typeString(altarFirstLines[13])
           .start();
-          angelQuest = true;
+          angelVisited = true;
       }else{
         TW.typeString(altarAbandonedLines[0])
           .pauseFor(500)
@@ -608,6 +608,25 @@ function updateScreen(nextImg, text) {
           .pauseFor(500)
           .typeString(angelFuseSwordPart1Lines[4])
           .start();
+        }else{
+          TW.typeString(angelPartsBadFeelingLines[0])
+          .pauseFor(500)
+          .typeString(angelPartsBadFeelingLines[1])
+          .pauseFor(500)
+          .typeString(angelPartsBadFeelingLines[2])
+          .pauseFor(1000)
+          .typeString(angelPartsBadFeelingLines[3])
+          .pauseFor(500)
+          .typeString(angelPartsBadFeelingLines[4])
+          .pauseFor(500)
+          .typeString(angelPartsBadFeelingLines[5])
+          .pauseFor(500)
+          .typeString(WWYS)
+          .typeString(angelPartsGeneralLines[0])
+          .typeString(angelPartsGeneralLines[1])
+          .typeString(angelPartsGeneralLines[2])
+          .typeString(angelPartsGeneralLines[3])
+          .start();
         }
         break;
 
@@ -645,6 +664,8 @@ function updateScreen(nextImg, text) {
         .start();
 
         FuseSword();
+        break;
+
     case 'angelWhoAreYou':
       TW.typeString(angelWhoAreYouLines[0])
       .pauseFor(500)
@@ -727,17 +748,7 @@ function updateScreen(nextImg, text) {
       break;
 
     case "palaceEnter":
-      if(palaceEntered == true){
-        TW.typeString(palaceEnterLines[0])
-        .pauseFor(500)
-        .typeString(WWYS)
-        .typeString(palaceEnterLines[1])
-        .typeString(palaceEnterLines[2])
-        .typeString(palaceEnterLines[3])
-        .typeString(palaceEnterLines[4])
-        .start();
-
-      }else{
+      if(palaceEntered == false){
         TW.typeString(palaceEnterFirstLines[0])
         .pauseFor(1000)
         .typeString(palaceEnterFirstLines[1])
@@ -749,6 +760,39 @@ function updateScreen(nextImg, text) {
         .typeString(palaceEnterFirstLines[5])
         .start();
       palaceEntered = true;
+      }else if(sword1 == true && sword2 == true && sword3 == false){
+        TW.typeString(kingGivePommelLines[0])
+        .pauseFor(500)
+        .typeString(kingGivePommelLines[1])
+        .pauseFor(500)
+        .typeString(kingGivePommelLines[2])
+        .pauseFor(1000)
+        .typeString(kingGivePommelLines[3])
+        .pauseFor(500)
+        .typeString(kingGivePommelLines[4])
+        .pauseFor(500)
+        .typeString(kingGivePommelLines[5])
+        .pauseFor(1000)
+        .typeString(kingGivePommelLines[6])
+        .pauseFor(500)
+        .typeString(kingGivePommelLines[7])
+        .pauseFor(500)
+        .typeString(kingGivePommelLines[8])
+        .pauseFor(500)
+        .typeString(kingGivePommelLines[9])
+        .pauseFor(1000)
+        .typeString(kingGivePommelLines[10])
+        .start();
+        sword3 = true;
+      }else{
+        TW.typeString(palaceEnterLines[0])
+        .pauseFor(500)
+        .typeString(WWYS)
+        .typeString(palaceEnterLines[1])
+        .typeString(palaceEnterLines[2])
+        .typeString(palaceEnterLines[3])
+        .typeString(palaceEnterLines[4])
+        .start();
       }
       break;
 
@@ -883,14 +927,34 @@ function updateScreen(nextImg, text) {
 
     case "shopBroadswordYes":
       if(coins >= 20){
-
+        TW.typeString(shopBroadswordYesLines[0])
+        .pauseFor(500)
+        .typeString(shopBroadswordYesLines[1])
+        .pauseFor(1000)
+        .typeString(shopBroadswordYesLines[2])
+        .pauseFor(500)
+        .typeString(shopBroadswordYesLines[3])
+        .start();
+        broadsword = true;
+        coins-=20;
+        updateInventory();
       } else{
         updateScreen('shop', 'shopTooPoor')
       }
       break;
     case "shopStickerYes":
       if(coins >= 10){
-
+        TW.typeString(shopStickerYesLines[0])
+        .pauseFor(500)
+        .typeString(shopStickerYesLines[1])
+        .pauseFor(1000)
+        .typeString(shopStickerYesLines[2])
+        .pauseFor(500)
+        .typeString(shopStickerYesLines[3])
+        .start();
+        sticker = true;
+        coins-=10;
+        updateInventory();
       } else{
         updateScreen('shop', 'shopTooPoor')
       }
@@ -1598,6 +1662,21 @@ var kingByeLines = {
   2: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
 };
 
+var kingGivePommelLines = {
+  0: `- Hello again, stranger,`,
+  1: ` how's your quest going?<br><br>`,
+  2: `You tell him that you only need the pommel to finish the sword.<br><br>`,
+  3: `- Speak no more.<br><br>`,
+  4: `The king removes an ornament from his throne, and gives it to you:<br><br>`,
+  5: `<b>You got the King's Pommel!</b><br><br>`,
+  6: `- This pommel was the only part of the sword that we found,`,
+  7: ` to keep it safe,`,
+  8: ` I guarded it within my throne, but now`,
+  9: ` it has a better use, the angel knows what to do now.<br><br>`,
+  10: `You should go to the angel and finish this sword hunting.`,
+
+}
+
 var kingQuestLines = {
   0: `- Ah, I see, the legends are true,`,
   1: ` the Island Sword really exists... <br><br>`,
@@ -1632,6 +1711,13 @@ var shopBroadswordLines = {
   4: `<a href="#" onclick="updateScreen('shop','shop')">No</a>`,
 };
 
+var shopBroadswordYesLines = {
+  0: `- Katching! - Says the little wizard:<br><br>`,
+  1: `<b>You got the Steel Broadsword!</b><br><br>`,
+  2: `The sword is REALLY heavy, you know that you'll have problems with using it<br><br>`,
+  3: `<a href="#" onclick="updateScreen('shop','shop')">Better than nothing!</a>`,
+};
+
 var shopStickerLines = {
   0: `- A silly carrot sticker, dunno what would you do with it,`,
   1: ` it's funny, though!<br><br>`,
@@ -1639,6 +1725,13 @@ var shopStickerLines = {
   3: `Wanna buy it?<br><br>`,
   4: `<a href="#" onclick="updateScreen('shop','shopStickerYes')">Yes</a><br>`,
   5: `<a href="#" onclick="updateScreen('shop','shop')">No</a>`,
+};
+
+var shopStickerYesLines = {
+  0: `- Katching! - Says the little wizard:<br><br>`,
+  1: `<b>You got the Carrot Sticker!</b><br><br>`,
+  2: `Without a place to glue it, you glue it to your clothing.<br><br>`,
+  3: `<a href="#" onclick="updateScreen('shop','shop')">Feeling stylish!</a>`,
 };
 
 var shopPassWOKingQuest = {
@@ -1654,7 +1747,7 @@ var shopPassWKingQuest = {
   0: `- A pass to the caves,`,
   1: ` it's free cuz' there isn't anything interesting there, we only sell them so the wall doorman gets to feel important with its work,`,
   2: ` he doesn't even know that we sell them for free!`,
-  3: ` poor lone guy...<br><br>`,
+  3: ` Poor lone guy...<br><br>`,
   4: `- Oh, I get it,`,
   5: ` the king trusts you, then so do I, take it:<br><br>`,
   6: `<b>You got the Wall Pass!</b><br><br>`,
@@ -1694,7 +1787,7 @@ var altarLines = {
 var altarFirstLines = {
   0: `- Hello little child,`,
   1: ` I see that the king has called me to help you with your quest of defeating the evil spirit <i>Leshy</i>.<br><br>`,
-  2: `- As the king said, regular weapons won't work against his body,`,
+  2: `- As the king said, regular weapons won't work against <i>his</i> body,`,
   3: ` we will need to use fire against fire,`,
   4: ` a sword soaked with magic:`,
   5: ` <b>The Island Sword.</b><br><br>`,
@@ -1714,20 +1807,36 @@ var angelParts1Lines = {
   1: ` I don't know if that's useful,`,  
   2: ` but it is surely worth a shot.<br><br>`,  
   //WWYS
+  //GeneralLines
 }
 
 var angelParts2Lines = {
   0: `- I felt a little bit of magic coming the west of the island,`,  
   1: ` maybe someone powerful is keeping a part for itself!<br><br>`,  
   //WWYS
+  //GeneralLines
 }
+
 var angelParts3Lines = {
   0: `- Now that we have two parts,`,
   1: ` we only need the pommel, the main part of the sword's superpowers,`,
   2: ` go talk to the king,`,
   3: ` he knows where it is.<br><br>`,
   //WWYS
-}
+  //GeneralLines
+};
+
+var angelPartsBadFeelingLines = {
+  0: `- We got the mightiest weapon of this island.`,
+  1: ` But something feels...`,
+  2: ` Off,`,
+  3: ` what if just it is not enough to defeat <i>him</i>?`,
+  4: ` I have a bad feeling about this,`,
+  5: `  <i>Leshy</i> is dirty, and will do anything to kill anyone who bothers him.<br><br>`,
+  //WWYS
+  //GeneralLines
+};
+
 
 var angelPartsGeneralLines = { //Falas usadas nas três perguntas de onde estão as partes de espada
   0: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
