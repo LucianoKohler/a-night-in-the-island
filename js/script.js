@@ -11,7 +11,7 @@ var sword2 = false;
 var sword3 = false;
 var islandSword = false;
 
-var broadsword = false;
+var broadsword = true;
 var tunic = false;
 var goggles = false;
 
@@ -22,7 +22,7 @@ var castleEntered = false;
 var palaceEntered = false;
 var shopEntered = false;
 var islandEntered = false;
-var kingQuest = false;
+var kingQuest = true;
 var angelQuest = false;
 //velocidade de escrita dos textos
 
@@ -239,15 +239,6 @@ function updateScreen(nextImg, text) {
   } else if (castleEntered == true && nextImg == "castle") {
     text = "castleEnter";
     ImgQuery = "bifurcation";
-  } else if (palaceEntered == false && text == "palaceEnter") {
-    text = "palaceEnterFirst";
-    ImgQuery = "king";
-  } else if (shopEntered == false && nextImg == "shop") {
-    text = "shopFirst";
-    ImgQuery = nextImg;
-  } else if (islandEntered == false && nextImg == "island") {
-    text = "islandFirst";
-    ImgQuery = nextImg;
   } else if (tunic == true && nextImg == "island") {
     ImgQuery = "islandhole";
   } else if (
@@ -415,8 +406,19 @@ function updateScreen(nextImg, text) {
         .start();
       break;
 
-    case "islandFirst":
-      TW.typeString(islandFirstLines[0])
+    case "island":
+      if(islandEntered == true){
+        TW.typeString(islandLines[0])
+          .pauseFor(500)
+          .typeString(WWYD)
+          .typeString(islandLines[1])
+          .typeString(islandLines[2])
+          .start();
+  
+        place = "island";
+        UpdateColors();
+      }else{
+        TW.typeString(islandFirstLines[0])
         .pauseFor(500)
         .typeString(islandFirstLines[1])
         .pauseFor(1000)
@@ -450,19 +452,7 @@ function updateScreen(nextImg, text) {
 
       place = "island";
       UpdateColors();
-
-      break;
-
-    case "island":
-      TW.typeString(islandLines[0])
-        .pauseFor(500)
-        .typeString(WWYD)
-        .typeString(islandLines[1])
-        .typeString(islandLines[2])
-        .start();
-
-      place = "island";
-      UpdateColors();
+      }
       break;
 
     case "islandRowHorizonPart1":
@@ -519,15 +509,49 @@ function updateScreen(nextImg, text) {
       break;
 
     case "altar":
-      if (kingQuest == true) {
-      } else {
-        TW.typeString(altarAbandonedAltar[0])
+      if (kingQuest == true && angelQuest == true) { 
+        TW.typeString(altarLines[0])
           .pauseFor(500)
-          .typeString(altarAbandonedAltar[1])
+          .typeString(altarLines[1])
           .pauseFor(500)
-          .typeString(altarAbandonedAltar[2])
+          .typeString(WWYS)
+          .typeString(altarLines[2])
+          .typeString(altarLines[3])
+          .typeString(altarLines[4])
+          .start();
+      } else if(kingQuest == true){
+        TW.typeString(altarFirstLines[0])
+        .pauseFor(500)
+          .typeString(altarFirstLines[1])
           .pauseFor(1000)
-          .typeString(altarAbandonedAltar[3])
+          .typeString(altarFirstLines[2])
+          .pauseFor(500)
+          .typeString(altarFirstLines[3])
+          .pauseFor(500)
+          .typeString(altarFirstLines[4])
+          .pauseFor(500)
+          .typeString(altarFirstLines[5])
+          .pauseFor(1000)
+          .typeString(altarFirstLines[6])
+          .pauseFor(500)
+          .typeString(altarFirstLines[7])
+          .pauseFor(500)
+          .typeString(altarFirstLines[8])
+          .pauseFor(1000)
+          .typeString(WWYS)
+          .typeString(altarFirstLines[9])
+          .typeString(altarFirstLines[10])
+          .typeString(altarFirstLines[11])
+          .start();
+          angelQuest = true;
+      }else{
+        TW.typeString(altarAbandonedLines[0])
+          .pauseFor(500)
+          .typeString(altarAbandonedLines[1])
+          .pauseFor(500)
+          .typeString(altarAbandonedLines[2])
+          .pauseFor(1000)
+          .typeString(altarAbandonedLines[3])
           .start();
       }
       break;
@@ -561,8 +585,21 @@ function updateScreen(nextImg, text) {
         .start();
       break;
 
-    case "palaceEnterFirst":
-      TW.typeString(palaceEnterFirstLines[0])
+
+
+    case "palaceEnter":
+      if(palaceEntered == true){
+        TW.typeString(palaceEnterLines[0])
+        .pauseFor(500)
+        .typeString(WWYS)
+        .typeString(palaceEnterLines[1])
+        .typeString(palaceEnterLines[2])
+        .typeString(palaceEnterLines[3])
+        .typeString(palaceEnterLines[4])
+        .start();
+
+      }else{
+        TW.typeString(palaceEnterFirstLines[0])
         .pauseFor(1000)
         .typeString(palaceEnterFirstLines[1])
         .pauseFor(1000)
@@ -573,17 +610,7 @@ function updateScreen(nextImg, text) {
         .typeString(palaceEnterFirstLines[5])
         .start();
       palaceEntered = true;
-      break;
-
-    case "palaceEnter":
-      TW.typeString(palaceEnterLines[0])
-        .pauseFor(500)
-        .typeString(WWYS)
-        .typeString(palaceEnterLines[1])
-        .typeString(palaceEnterLines[2])
-        .typeString(palaceEnterLines[3])
-        .typeString(palaceEnterLines[4])
-        .start();
+      }
       break;
 
     case "kingWhoAreYou":
@@ -666,8 +693,17 @@ function updateScreen(nextImg, text) {
         .start();
       break;
 
-    case "shopFirst":
-      TW.typeString(shopFirstLines[0])
+    case "shop":
+      if(shopEntered == true){
+        TW.typeString(shopLines[0])
+          .pauseFor(500)
+          .typeString(shopLines[1])
+          .typeString(shopLines[2])
+          .typeString(shopLines[3])
+          .typeString(shopLines[4])
+          .start();
+      }else{
+        TW.typeString(shopFirstLines[0])
         .pauseFor(500)
         .typeString(shopFirstLines[1])
         .pauseFor(500)
@@ -679,16 +715,7 @@ function updateScreen(nextImg, text) {
         .typeString(shopFirstLines[6])
         .start();
       shopEntered = true;
-      break;
-
-    case "shop":
-      TW.typeString(shopLines[0])
-        .pauseFor(500)
-        .typeString(shopLines[1])
-        .typeString(shopLines[2])
-        .typeString(shopLines[3])
-        .typeString(shopLines[4])
-        .start();
+      }
       break;
 
     case "shopBroadsword":
@@ -1506,9 +1533,34 @@ var shopOnlyOnePerPersonLines = {
   2: `<a href="#" onclick="updateScreen('shop','shop')">Go back</a>`,
 };
 
-var altarAbandonedAltar = {
+var altarAbandonedLines = {
   0: `Your way takes you to an abandoned altar without anything apparent,`,
   1: ` upon getting closer, you find three empty notches, `,
   2: `maybe you need to place someting there?<br><br>`,
   3: `There's nothing more to investigate here.`,
 };
+
+var altarLines = {
+  0: `- Welcome again,`,
+  1: ` my child.<br><br>`,
+  //WWYS
+  2: `<a href="#" onclick="updateScreen('shop','shop')">Ask about the parts</a><br>`,
+  3: `<a href="#" onclick="updateScreen('shop','shop')">How did the sword disappear?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('shop','shop')">Why don't you search the sword by yourself?</a>`,
+}
+
+var altarFirstLines = {
+  0: `- Hello little child,`,
+  1: ` I see that the king has called me to help you with your quest of defeating the evil spirit <i>Leshy</i>.<br><br>`,
+  2: `- As the king said, regular weapons won't work against his body,`,
+  3: ` we will need to use fire against fire,`,
+  4: ` a sword soaked with magic:`,
+  5: ` <b>The Island Sword.</b><br><br>`,
+  6: `- This altar once was a place to keep it safe, but time passed, and <i>Leshy</i> thought fast and got rid of it.`,
+  7: ` But hope is not lost! The sword can't leave the island, so it must be here, and if not, its parts are.`,
+  8: ` We just need to find them and take them here.<br><br>`,
+  //WWYS
+  9:  `<a href="#" onclick="updateScreen('shop','shop')">Ask about the parts</a><br>`,
+  10: `<a href="#" onclick="updateScreen('shop','shop')">How did the sword disappear?</a><br>`,
+  11: `<a href="#" onclick="updateScreen('shop','shop')">Why don't you search the sword by yourself?</a>`,
+}
