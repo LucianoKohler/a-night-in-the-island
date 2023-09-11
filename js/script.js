@@ -25,6 +25,7 @@ var shopEntered = false;
 var islandEntered = false;
 var kingQuest = false;
 var angelVisited = false;
+var goblinVisited = false;
 
 //BOTÕES PARA A TELA DE INÍCIO
 
@@ -1320,6 +1321,46 @@ function updateScreen(nextImg, text) {
         .start();
       break;
 
+    case "cave":
+    TW.typeString(caveLines[0])
+    .pauseFor(500)
+    .typeString(caveLines[1])
+    .pauseFor(500)
+    .typeString(caveLines[2])
+    .start();
+    break;
+
+    case "goblin":
+        if(goblinVisited == false){
+            TW.typeString(goblinFirstLines[0])
+            .pauseFor(500)
+            .typeString(goblinFirstLines[1])
+            .pauseFor(500)
+            .typeString(goblinFirstLines[2])
+            .pauseFor(500)
+            .typeString(goblinFirstLines[3])
+            .pauseFor(500)
+            .typeString(goblinFirstLines[4])
+            .pauseFor(500)
+            .typeString(WWYS)
+            .typeString(goblinFirstLines[5])
+            .typeString(goblinFirstLines[6])
+            .typeString(goblinFirstLines[7])
+            .start();
+            goblinVisited = true;
+        }else{
+            console.log("já entrou")
+        }
+        break;
+
+        case 'goblinBye':
+            TW.typeString(goblinByeLines[0])
+            .pauseFor(500)
+            .typeString(goblinByeLines[1])
+            .pauseFor(500)
+            .typeString(goblinByeLines[2])
+            .start()
+            break;
     default:
       console.log("não encontrado");
       break;
@@ -1656,7 +1697,7 @@ var wallUsePassLines = {
   0: `You give the Pass to the thing, it gets really happy! <br><br>`,
   1: `- OOOOOHH, THE BOSS WILL LET ME HAVE A DAY OFF!!!<br>`,
   2: `- Ok, you may pass and admire the cave.<br><br>`,
-  3: `The pole besides him lifts, <b>you now have access to the cave</b>.`,
+  3: `The pole besides him lifts, <b>you now have access to the cave!</b>.`,
 };
 
 var wallAlreadyUsedPassLines = {
@@ -1664,6 +1705,48 @@ var wallAlreadyUsedPassLines = {
   1: `- So? Pass, you don't have anything interesting for me now.<br><br>`,
   2: `You try to say something, but the creature just says blablabla while covering its ears, what a child!`,
 };
+
+var caveLines = {
+    0: `A big cave stands in front of you,`,
+    1: ` you can hear small growls coming from it.<br><br>`,
+    2: `<a href="#" onclick="updateScreen('goblin','goblin')">Enter it.</a>`,
+};
+
+var goblinFirstLines = {
+    0:`The cave smells like mold and has the sound of dripping water from the dripstones along with the growls,`,
+    1:` walking further shows you the so called demigod that the doorman spoke about:`,
+    2:` A small goblin near a "treasure",`,
+    3:` which is actually just a small pile of coins on the ground.<br><br>`,
+    4:`- Who dares to enter my domain?<br><br>`,
+    //WWYS
+    5: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Who are you?</a><br>`,
+    6: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">What's that gold?</a><br>`,
+    7: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
+};
+
+var goblinWhoAreYouLines = {
+    0: `I'm Barretos, the demigod,`,
+    0: ` the keeper of the island's biggest treasure,`,
+    0: ` the inhabitant of the oldest cave on the island,`,
+    0: ` the most green being here,`,
+    0: ` the mightiest warrior of...<br><br>`,
+    0: `You yell for him that you got it<br><br>`,
+    0: `- Of course you got...<br><br>`,
+    0: ``, //TERMINAR!!!
+}
+
+    
+
+
+
+
+
+
+var goblinByeLines = {
+    0: `- Bye, sucker,`,
+    1: ` bring me something to eat next time!<br><br>`,
+    2: `Who this guy think it is?`,
+}
 
 var castleLines = {
   0: `A big castle can be seen at the distance from the entire island,`,
