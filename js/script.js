@@ -1,19 +1,20 @@
 var started = false;
-var sticker = true;
+var sticker = false;
 var Stick = false;
 var coins = 0;
 var pass = 0;
 //0 = Não tem o pass
 //1 = Tem mas não usou
 //2 = Tem E já usou
-var sword1 = false;
-var sword2 = false;
-var sword3 = false;
+
+var sword1 = false; //Pommel
+var sword2 = false; //Hilt
+var sword3 = false; //Blade
 var islandSword = false;
 
 var broadsword = false;
 var tunic = false;
-var goggles = false;
+var goggles = true;
 
 let del = 0; //mudar pra 25
 
@@ -23,8 +24,9 @@ var palaceEntered = false;
 var shopEntered = false;
 var islandEntered = false;
 var kingQuest = false;
-var angelQuest = false;
-//velocidade de escrita dos textos
+var angelVisited = false;
+var goblinGotMoney = false;
+var goblinVisited = false;
 
 //BOTÕES PARA A TELA DE INÍCIO
 
@@ -152,7 +154,12 @@ document.addEventListener("keydown", function (e) {
 });
 
 function updateInventory() {
+
+  document.getElementById("Coins").innerHTML = "Coins: " + coins;
+  document.getElementById("Coins").innerHTML = "Coins: " + coins;
+
   if (broadsword == true) {
+  
     document.getElementById("sword").style.display = "none";
     document.getElementById("swordunlocked").style.display = "block";
   }
@@ -176,14 +183,11 @@ function updateInventory() {
       document.getElementById("Pass").innerHTML = "Pass: Used";
       break;
   }
-  document.getElementById("Coins").innerHTML = "Coins: " + coins;
-  document.getElementById("Coins").innerHTML = "Coins: " + coins;
-}
 
-function updateSword() {
   let sword1Sprite = document.getElementsByClassName("sword1Sprite");
   let sword2Sprite = document.getElementsByClassName("sword2Sprite");
   let sword3Sprite = document.getElementsByClassName("sword3Sprite");
+
   if (sword1 == true) {
     for (let i = 0; i < sword1Sprite.length; i++) {
       sword1Sprite[i].style.color = "white";
@@ -200,6 +204,7 @@ function updateSword() {
     }
   }
 }
+
 
 function FuseSword() {
   let swordFused = document.getElementsByClassName("swordFused");
@@ -230,31 +235,27 @@ function updateScreen(nextImg, text) {
   let ImgQuery;
 
   //Esses IFs abaixo são usados caso o player entre no local após certo acontecimento.
-  if (sword3 == true && nextImg == "weird_rocks") {
-    ImgQuery = "weird_rocksCrying";
+  if (sword3 == true && nextImg == "weirdRocks") {
+    ImgQuery = "weirdRocksCrying";
   } else if (pass == 2 && nextImg == "wall") {
     ImgQuery = "wall-open";
-  } else if (kingQuest == true && nextImg == "altar") {
-    ImgQuery = "altarAngel";
   } else if (castleEntered == true && nextImg == "castle") {
-    text = "castleEnter";
     ImgQuery = "bifurcation";
-  } else if (palaceEntered == false && text == "palaceEnter") {
-    text = "palaceEnterFirst";
-    ImgQuery = "king";
-  } else if (shopEntered == false && nextImg == "shop") {
-    text = "shopFirst";
-    ImgQuery = nextImg;
-  } else if (islandEntered == false && nextImg == "island") {
-    text = "islandFirst";
-    ImgQuery = nextImg;
+  } else if (kingQuest == true && nextImg == "altar") {
+    ImgQuery = "angel";
   } else if (tunic == true && nextImg == "island") {
     ImgQuery = "islandhole";
+  } else if(goggles == true && nextImg == 'well') {
+    ImgQuery = 'wellPoor'
+  } else if(goblinGotMoney == true && nextImg == 'goblin'){
+    ImgQuery = 'goblinCry'
+  } else if(sword1 ==  true && nextImg == 'king'){
+    ImgQuery = 'kingPommelless'
   } else if (
     (broadsword == true && text == "shopBroadswordYes") ||
     (sticker == true && text == "shopStickerYes") ||
-    ((pass == 1 || pass == 2) && text == 'shopPass')
-    ) {
+    ((pass == 1 || pass == 2) && text == "shopPass")
+  ) {
     text = "shopOnlyOnePerPerson";
     ImgQuery = nextImg;
   } else {
@@ -280,27 +281,67 @@ function updateScreen(nextImg, text) {
       break;
 
     case "well":
-      TW.typeString(wellLines[0])
-        .pauseFor(500)
-        .typeString(WWYD)
-        .typeString(wellLines[1])
-        .typeString(wellLines[2])
-        .start();
+      if (goggles == false) {
+        TW.typeString(wellLines[0])
+          .pauseFor(500)
+          .typeString(WWYD)
+          .typeString(wellLines[1])
+          .typeString(wellLines[2])
+          .start();
+      } else {
+        TW.typeString(wellLinesAfterGoggles[0])
+          .pauseFor(500)
+          .typeString(wellLinesAfterGoggles[1])
+          .pauseFor(500)
+          .typeString(wellLinesAfterGoggles[2])
+          .pauseFor(500)
+          .typeString(wellLinesAfterGoggles[3])
+          .start();      
+        }
       break;
 
-    case "well_jump":
-      TW.typeString(well_jumpLines[0])
-        .pauseFor(1000)
-        .typeString(well_jumpLines[1])
-        .pauseFor(1000)
-        .typeString(well_jumpLines[2])
-        .pauseFor(1000)
-        .typeString(well_jumpLines[3])
-        .pauseFor(2000)
-        .typeString(well_jumpLines[4])
+    case "wellThrowCoin":
+      if (coins >= 1) {
+        TW.typeString(wellThrowCoinLines[0])
+          .pauseFor(1000)
+          .typeString(wellThrowCoinLines[1])
+          .pauseFor(1000)
+          .typeString(wellThrowCoinLines[2])
+          .pauseFor(500)
+          .typeString(wellThrowCoinLines[3])
+          .pauseFor(1000)
+          .typeString(wellThrowCoinLines[4])
+          .pauseFor(500)
+          .typeString(wellThrowCoinLines[5])
+          .pauseFor(1000)
+          .typeString(wellThrowCoinLines[6])
+          .start();
+        goggles = true;
+        coins-=1;
+        updateInventory();
+      } else {
+        TW.typeString(wellThrowCoinWOCoinLines[0])
+        .pauseFor(500)
+        .typeString(wellThrowCoinWOCoinLines[1])
+        .pauseFor(500)
+        .typeString(wellThrowCoinWOCoinLines[2])
+        .pauseFor(500)
+        .typeString(wellThrowCoinWOCoinLines[3])
         .start();
+      }
+      break;
 
-      setTimeout(DyingAnimation, 12500); //Tempo certo para delay = 25;
+    case "wellLookInside":
+      TW.typeString(wellLookInsideLines[0])
+        .pauseFor(500)
+        .typeString(wellLookInsideLines[1])
+        .pauseFor(500)
+        .typeString(wellLookInsideLines[2])
+        .pauseFor(500)
+        .typeString(wellLookInsideLines[3])
+        .pauseFor(1000)
+        .typeString(wellLookInsideLines[4])
+        .start();
       break;
 
     case "forest":
@@ -415,54 +456,59 @@ function updateScreen(nextImg, text) {
         .start();
       break;
 
-    case "islandFirst":
-      TW.typeString(islandFirstLines[0])
-        .pauseFor(500)
-        .typeString(islandFirstLines[1])
-        .pauseFor(1000)
-        .typeString(islandFirstLines[2])
-        .pauseFor(500)
-        .typeString(islandFirstLines[3])
-        .pauseFor(1000)
-        .typeString(islandFirstLines[4])
-        .pauseFor(500)
-        .typeString(islandFirstLines[5])
-        .pauseFor(500)
-        .typeString(islandFirstLines[6])
-        .pauseFor(500)
-        .typeString(islandFirstLines[7])
-        .pauseFor(500)
-        .typeString(islandFirstLines[8])
-        .pauseFor(1000)
-        .typeString(islandFirstLines[9])
-        .pauseFor(1500)
-        .typeString(islandFirstLines[10])
-        .pauseFor(1500)
-        .typeString(islandFirstLines[11])
-        .start();
-      islandEntered = true;
-      tunic = true;
-      updateInventory();
-
-      document.getElementsByClassName("island")[0].classList.remove("disabled");
-      document.getElementsByClassName("island")[1].classList.remove("disabled");
-      document.getElementsByClassName("island")[2].classList.remove("disabled");
-
-      place = "island";
-      UpdateColors();
-
-      break;
-
     case "island":
-      TW.typeString(islandLines[0])
-        .pauseFor(500)
-        .typeString(WWYD)
-        .typeString(islandLines[1])
-        .typeString(islandLines[2])
-        .start();
+      if (islandEntered == true) {
+        TW.typeString(islandLines[0])
+          .pauseFor(500)
+          .typeString(WWYD)
+          .typeString(islandLines[1])
+          .typeString(islandLines[2])
+          .start();
 
-      place = "island";
-      UpdateColors();
+        place = "island";
+        UpdateColors();
+      } else {
+        TW.typeString(islandFirstLines[0])
+          .pauseFor(500)
+          .typeString(islandFirstLines[1])
+          .pauseFor(1000)
+          .typeString(islandFirstLines[2])
+          .pauseFor(500)
+          .typeString(islandFirstLines[3])
+          .pauseFor(1000)
+          .typeString(islandFirstLines[4])
+          .pauseFor(500)
+          .typeString(islandFirstLines[5])
+          .pauseFor(500)
+          .typeString(islandFirstLines[6])
+          .pauseFor(500)
+          .typeString(islandFirstLines[7])
+          .pauseFor(500)
+          .typeString(islandFirstLines[8])
+          .pauseFor(1000)
+          .typeString(islandFirstLines[9])
+          .pauseFor(1500)
+          .typeString(islandFirstLines[10])
+          .pauseFor(1500)
+          .typeString(islandFirstLines[11])
+          .start();
+        islandEntered = true;
+        tunic = true;
+        updateInventory();
+
+        document
+          .getElementsByClassName("island")[0]
+          .classList.remove("disabled");
+        document
+          .getElementsByClassName("island")[1]
+          .classList.remove("disabled");
+        document
+          .getElementsByClassName("island")[2]
+          .classList.remove("disabled");
+
+        place = "island";
+        UpdateColors();
+      }
       break;
 
     case "islandRowHorizonPart1":
@@ -519,71 +565,308 @@ function updateScreen(nextImg, text) {
       break;
 
     case "altar":
-      if (kingQuest == true) {
-      } else {
-        TW.typeString(altarAbandonedAltar[0])
+      if (kingQuest == true && angelVisited == true) {
+        TW.typeString(altarLines[0])
           .pauseFor(500)
-          .typeString(altarAbandonedAltar[1])
+          .typeString(altarLines[1])
           .pauseFor(500)
-          .typeString(altarAbandonedAltar[2])
+          .typeString(WWYS)
+          .typeString(altarLines[2])
+          .typeString(altarLines[3])
+          .typeString(altarLines[4])
+          .typeString(altarLines[5])
+          .typeString(altarLines[6])
+          .start();
+      } else if (kingQuest == true) {
+        TW.typeString(altarFirstLines[0])
+          .pauseFor(500)
+          .typeString(altarFirstLines[1])
           .pauseFor(1000)
-          .typeString(altarAbandonedAltar[3])
+          .typeString(altarFirstLines[2])
+          .pauseFor(500)
+          .typeString(altarFirstLines[3])
+          .pauseFor(500)
+          .typeString(altarFirstLines[4])
+          .pauseFor(500)
+          .typeString(altarFirstLines[5])
+          .pauseFor(1000)
+          .typeString(altarFirstLines[6])
+          .pauseFor(500)
+          .typeString(altarFirstLines[7])
+          .pauseFor(500)
+          .typeString(altarFirstLines[8])
+          .pauseFor(1000)
+          .typeString(WWYS)
+          .typeString(altarFirstLines[9])
+          .typeString(altarFirstLines[10])
+          .typeString(altarFirstLines[11])
+          .typeString(altarFirstLines[12])
+          .typeString(altarFirstLines[13])
+          .start();
+        angelVisited = true;
+      } else {
+        TW.typeString(altarAbandonedLines[0])
+          .pauseFor(500)
+          .typeString(altarAbandonedLines[1])
+          .pauseFor(500)
+          .typeString(altarAbandonedLines[2])
+          .pauseFor(1000)
+          .typeString(altarAbandonedLines[3])
           .start();
       }
       break;
 
-    case "castle":
-      TW.typeString(castleLines[0])
-        .pauseFor(500)
-        .typeString(castleLines[1])
-        .pauseFor(500)
-        .typeString(castleLines[2])
-        .start();
-      castleEntered = true;
-      setTimeout(() => {
-        updateScreen("bifurcation", "castleEnter");
-      }, 500);
-
+    case "angelAskAboutQuest":
+      if (sword2 == false) {
+        TW.typeString(angelParts2Lines[0])
+          .pauseFor(500)
+          .typeString(angelParts2Lines[1])
+          .pauseFor(500)
+          .typeString(angelParts2Lines[2])
+          .pauseFor(500)
+          .typeString(WWYS)
+          .typeString(angelPartsGeneralLines[0])
+          .typeString(angelPartsGeneralLines[1])
+          .typeString(angelPartsGeneralLines[2])
+          .typeString(angelPartsGeneralLines[3])
+          .start();
+      } else if (sword3 == false) {
+        TW.typeString(angelParts3Lines[0])
+          .pauseFor(500)
+          .typeString(angelParts3Lines[1])
+          .pauseFor(500)
+          .typeString(WWYS)
+          .typeString(angelPartsGeneralLines[0])
+          .typeString(angelPartsGeneralLines[1])
+          .typeString(angelPartsGeneralLines[2])
+          .typeString(angelPartsGeneralLines[3])
+          .start();
+      } else if (sword1 == false) {
+        TW.typeString(angelParts1Lines[0])
+          .pauseFor(500)
+          .typeString(angelParts1Lines[1])
+          .pauseFor(500)
+          .typeString(angelParts1Lines[2])
+          .pauseFor(500)
+          .typeString(angelParts1Lines[3])
+          .pauseFor(500)
+          .typeString(WWYS)
+          .typeString(angelPartsGeneralLines[0])
+          .typeString(angelPartsGeneralLines[1])
+          .typeString(angelPartsGeneralLines[2])
+          .typeString(angelPartsGeneralLines[3])
+          .start();
+      } else if (islandSword == false) {
+        TW.typeString(angelFuseSwordPart1Lines[0])
+          .pauseFor(500)
+          .typeString(angelFuseSwordPart1Lines[1])
+          .pauseFor(500)
+          .typeString(angelFuseSwordPart1Lines[2])
+          .pauseFor(500)
+          .typeString(angelFuseSwordPart1Lines[3])
+          .pauseFor(500)
+          .typeString(angelFuseSwordPart1Lines[4])
+          .start();
+      } else {
+        TW.typeString(angelPartsBadFeelingLines[0])
+          .pauseFor(500)
+          .typeString(angelPartsBadFeelingLines[1])
+          .pauseFor(500)
+          .typeString(angelPartsBadFeelingLines[2])
+          .pauseFor(1000)
+          .typeString(angelPartsBadFeelingLines[3])
+          .pauseFor(500)
+          .typeString(angelPartsBadFeelingLines[4])
+          .pauseFor(500)
+          .typeString(angelPartsBadFeelingLines[5])
+          .pauseFor(500)
+          .typeString(WWYS)
+          .typeString(angelPartsGeneralLines[0])
+          .typeString(angelPartsGeneralLines[1])
+          .typeString(angelPartsGeneralLines[2])
+          .typeString(angelPartsGeneralLines[3])
+          .start();
+      }
       break;
 
-    case "castleEnter":
-      TW.typeString(enterCastleLines[0])
+    case "altarFuseSword":
+      TW.typeString(angelFuseSwordPart2Lines[0])
+        .pauseFor(500)
+        .typeString(angelFuseSwordPart2Lines[1])
+        .pauseFor(500)
+        .typeString(angelFuseSwordPart2Lines[2])
+        .pauseFor(500)
+        .typeString(angelFuseSwordPart2Lines[3])
         .pauseFor(1000)
-        .typeString(enterCastleLines[1])
-        .pauseFor(500)
-        .typeString(enterCastleLines[2])
-        .pauseFor(500)
-        .typeString(enterCastleLines[3])
-        .pauseFor(500)
-        .typeString(enterCastleLines[4])
-        .typeString(enterCastleLines[5])
-        .typeString(enterCastleLines[6])
+        .typeString(angelFuseSwordPart2Lines[4])
         .start();
       break;
 
-    case "palaceEnterFirst":
-      TW.typeString(palaceEnterFirstLines[0])
+    case "altarFuseSwordAftermath":
+      TW.typeString(angelFuseSwordPart3Lines[0])
+        .pauseFor(500)
+        .typeString(angelFuseSwordPart3Lines[1])
         .pauseFor(1000)
-        .typeString(palaceEnterFirstLines[1])
+        .typeString(angelFuseSwordPart3Lines[2])
         .pauseFor(1000)
+        .typeString(angelFuseSwordPart3Lines[3])
+        .pauseFor(500)
+        .typeString(angelFuseSwordPart3Lines[4])
+        .pauseFor(500)
+        .typeString(angelFuseSwordPart3Lines[5])
+        .pauseFor(500)
         .typeString(WWYS)
-        .typeString(palaceEnterFirstLines[2])
-        .typeString(palaceEnterFirstLines[3])
-        .typeString(palaceEnterFirstLines[4])
-        .typeString(palaceEnterFirstLines[5])
+        .typeString(angelPartsGeneralLines[0])
+        .typeString(angelPartsGeneralLines[1])
+        .typeString(angelPartsGeneralLines[2])
+        .typeString(angelPartsGeneralLines[3])
         .start();
-      palaceEntered = true;
+
+      FuseSword();
+      break;
+
+    case "angelWhoAreYou":
+      TW.typeString(angelWhoAreYouLines[0])
+        .pauseFor(500)
+        .typeString(angelWhoAreYouLines[1])
+        .pauseFor(500)
+        .typeString(angelWhoAreYouLines[2])
+        .pauseFor(500)
+        .typeString(WWYS)
+        .typeString(angelWhoAreYouLines[3])
+        .typeString(angelWhoAreYouLines[4])
+        .typeString(angelWhoAreYouLines[5])
+        .typeString(angelWhoAreYouLines[6])
+        .start();
+      break;
+
+    case "angelHowSwordDisappear":
+      TW.typeString(angelHowSwordDisappearLines[0])
+        .pauseFor(500)
+        .typeString(angelHowSwordDisappearLines[1])
+        .pauseFor(500)
+        .typeString(angelHowSwordDisappearLines[2])
+        .pauseFor(500)
+        .typeString(angelHowSwordDisappearLines[3])
+        .pauseFor(500)
+        .typeString(WWYS)
+        .typeString(angelHowSwordDisappearLines[4])
+        .typeString(angelHowSwordDisappearLines[5])
+        .typeString(angelHowSwordDisappearLines[6])
+        .typeString(angelHowSwordDisappearLines[7])
+        .start();
+      break;
+
+    case "angelSearchSwordYourself":
+      TW.typeString(angelSearchSwordYourselfLines[0])
+        .pauseFor(500)
+        .typeString(angelSearchSwordYourselfLines[1])
+        .pauseFor(500)
+        .typeString(angelSearchSwordYourselfLines[2])
+        .pauseFor(500)
+        .typeString(WWYS)
+        .typeString(angelSearchSwordYourselfLines[3])
+        .typeString(angelSearchSwordYourselfLines[4])
+        .typeString(angelSearchSwordYourselfLines[5])
+        .typeString(angelSearchSwordYourselfLines[6])
+        .start();
+      break;
+
+    case "angelBye":
+      TW.typeString(angelByeLines[0])
+        .pauseFor(500)
+        .typeString(angelByeLines[1])
+        .start();
+      break;
+
+    case "castle":
+      if (castleEntered == false) {
+        TW.typeString(castleLines[0])
+          .pauseFor(500)
+          .typeString(castleLines[1])
+          .pauseFor(500)
+          .typeString(castleLines[2])
+          .pauseFor(500)
+          .typeString(castleLines[3])
+          .start();
+        castleEntered = true;
+      } else {
+        TW.typeString(enterCastleLines[0])
+          .pauseFor(1000)
+          .typeString(enterCastleLines[1])
+          .pauseFor(500)
+          .typeString(enterCastleLines[2])
+          .pauseFor(500)
+          .typeString(enterCastleLines[3])
+          .pauseFor(500)
+          .typeString(enterCastleLines[4])
+          .typeString(enterCastleLines[5])
+          .typeString(enterCastleLines[6])
+          .start();
+      }
       break;
 
     case "palaceEnter":
-      TW.typeString(palaceEnterLines[0])
-        .pauseFor(500)
-        .typeString(WWYS)
-        .typeString(palaceEnterLines[1])
-        .typeString(palaceEnterLines[2])
-        .typeString(palaceEnterLines[3])
-        .typeString(palaceEnterLines[4])
-        .start();
+      if (palaceEntered == false) {
+        TW.typeString(palaceEnterFirstLines[0])
+          .pauseFor(1000)
+          .typeString(palaceEnterFirstLines[1])
+          .pauseFor(1000)
+          .typeString(WWYS)
+          .typeString(palaceEnterFirstLines[2])
+          .typeString(palaceEnterFirstLines[3])
+          .typeString(palaceEnterFirstLines[4])
+          .typeString(palaceEnterFirstLines[5])
+          .start();
+        palaceEntered = true;
+      } else if (sword1 == false && sword2 == true && sword3 == true) {
+        TW.typeString(kingGivePommelLines[0])
+          .pauseFor(500)
+          .typeString(kingGivePommelLines[1])
+          .pauseFor(500)
+          .typeString(kingGivePommelLines[2])
+          .pauseFor(1000)
+          .typeString(kingGivePommelLines[3])
+          .pauseFor(500)
+          .typeString(kingGivePommelLines[4])
+          .pauseFor(500)
+          .typeString(kingGivePommelLines[5])
+          .pauseFor(1000)
+          .typeString(kingGivePommelLines[6])
+          .pauseFor(500)
+          .typeString(kingGivePommelLines[7])
+          .pauseFor(500)
+          .typeString(kingGivePommelLines[8])
+          .pauseFor(500)
+          .typeString(kingGivePommelLines[9])
+          .pauseFor(1000)
+          .typeString(kingGivePommelLines[10])
+          .start();
+      } else {
+        TW.typeString(palaceEnterLines[0])
+          .pauseFor(500)
+          .typeString(WWYS)
+          .typeString(palaceEnterLines[1])
+          .typeString(palaceEnterLines[2])
+          .typeString(palaceEnterLines[3])
+          .typeString(palaceEnterLines[4])
+          .start();
+      }
+      break;
+
+    case 'kingPommelPart2':
+      TW.typeString(kingPommelPart2Lines[0])
+      .pauseFor(500)
+      .typeString(kingPommelPart2Lines[1])
+      .pauseFor(500)
+      .typeString(kingPommelPart2Lines[2])
+      .pauseFor(500)
+      .typeString(kingPommelPart2Lines[3])
+      .pauseFor(500)
+      .typeString(kingPommelPart2Lines[4])
+      .start();
+      sword1 = true;
+      updateInventory();
       break;
 
     case "kingWhoAreYou":
@@ -666,29 +949,29 @@ function updateScreen(nextImg, text) {
         .start();
       break;
 
-    case "shopFirst":
-      TW.typeString(shopFirstLines[0])
-        .pauseFor(500)
-        .typeString(shopFirstLines[1])
-        .pauseFor(500)
-        .typeString(shopFirstLines[2])
-        .pauseFor(500)
-        .typeString(shopFirstLines[3])
-        .typeString(shopFirstLines[4])
-        .typeString(shopFirstLines[5])
-        .typeString(shopFirstLines[6])
-        .start();
-      shopEntered = true;
-      break;
-
     case "shop":
-      TW.typeString(shopLines[0])
-        .pauseFor(500)
-        .typeString(shopLines[1])
-        .typeString(shopLines[2])
-        .typeString(shopLines[3])
-        .typeString(shopLines[4])
-        .start();
+      if (shopEntered == true) {
+        TW.typeString(shopLines[0])
+          .pauseFor(500)
+          .typeString(shopLines[1])
+          .typeString(shopLines[2])
+          .typeString(shopLines[3])
+          .typeString(shopLines[4])
+          .start();
+      } else {
+        TW.typeString(shopFirstLines[0])
+          .pauseFor(500)
+          .typeString(shopFirstLines[1])
+          .pauseFor(500)
+          .typeString(shopFirstLines[2])
+          .pauseFor(500)
+          .typeString(shopFirstLines[3])
+          .typeString(shopFirstLines[4])
+          .typeString(shopFirstLines[5])
+          .typeString(shopFirstLines[6])
+          .start();
+        shopEntered = true;
+      }
       break;
 
     case "shopBroadsword":
@@ -716,17 +999,37 @@ function updateScreen(nextImg, text) {
       break;
 
     case "shopBroadswordYes":
-      if(coins >= 20){
-
-      } else{
-        updateScreen('shop', 'shopTooPoor')
+      if (coins >= 20) {
+        TW.typeString(shopBroadswordYesLines[0])
+          .pauseFor(500)
+          .typeString(shopBroadswordYesLines[1])
+          .pauseFor(1000)
+          .typeString(shopBroadswordYesLines[2])
+          .pauseFor(500)
+          .typeString(shopBroadswordYesLines[3])
+          .start();
+        broadsword = true;
+        coins -= 20;
+        updateInventory();
+      } else {
+        updateScreen("shop", "shopTooPoor");
       }
       break;
     case "shopStickerYes":
-      if(coins >= 10){
-
-      } else{
-        updateScreen('shop', 'shopTooPoor')
+      if (coins >= 10) {
+        TW.typeString(shopStickerYesLines[0])
+          .pauseFor(500)
+          .typeString(shopStickerYesLines[1])
+          .pauseFor(1000)
+          .typeString(shopStickerYesLines[2])
+          .pauseFor(500)
+          .typeString(shopStickerYesLines[3])
+          .start();
+        sticker = true;
+        coins -= 10;
+        updateInventory();
+      } else {
+        updateScreen("shop", "shopTooPoor");
       }
       break;
     case "shopTooPoor":
@@ -781,92 +1084,81 @@ function updateScreen(nextImg, text) {
       }
       break;
 
-    case "weird_rocks":
+    case "weirdRocks":
       if (sword3 == false) {
-        TW.typeString(weird_rocksLines[0])
+        TW.typeString(weirdRocksLines[0])
           .pauseFor(500)
-          .typeString(weird_rocksLines[1])
+          .typeString(weirdRocksLines[1])
           .pauseFor(500)
           .typeString(WWYS)
-          .typeString(weird_rocksLines[2])
-          .typeString(weird_rocksLines[3])
+          .typeString(weirdRocksLines[2])
+          .typeString(weirdRocksLines[3])
           .start();
       } else {
-        TW.typeString(weird_rocksAngryRox[0])
+        TW.typeString(weirdRocksAngryRox[0])
           .pauseFor(1000)
-          .typeString(weird_rocksAngryRox[1])
+          .typeString(weirdRocksAngryRox[1])
           .pauseFor(1000)
-          .typeString(weird_rocksAngryRox[2])
+          .typeString(weirdRocksAngryRox[2])
           .start();
       }
       break;
 
-    case "weird_rocksWhoAreYou":
-      TW.typeString(weird_rocksWhoAreYouLines[0])
+    case "weirdRocksWhoAreYou":
+      TW.typeString(weirdRocksWhoAreYouLines[0])
         .pauseFor(500)
         .typeString(WWYS)
-        .typeString(weird_rocksWhoAreYouLines[1])
-        .typeString(weird_rocksWhoAreYouLines[2])
+        .typeString(weirdRocksWhoAreYouLines[1])
+        .typeString(weirdRocksWhoAreYouLines[2])
         .start();
       break;
 
-    case "weird_rocksCabin":
-      TW.typeString(weird_rocksCabinLines[0])
+    case "weirdRocksCabin":
+      TW.typeString(weirdRocksCabinLines[0])
         .pauseFor(1000)
-        .typeString(weird_rocksCabinLines[1])
+        .typeString(weirdRocksCabinLines[1])
         .pauseFor(2000)
-        .typeString(weird_rocksCabinLines[2])
+        .typeString(weirdRocksCabinLines[2])
         .start();
       break;
 
-    case "weird_rocksEye":
-      TW.typeString(weird_rocksEyeLines[0])
+    case "weirdRocksEye":
+      TW.typeString(weirdRocksEyeLines[0])
         .pauseFor(1000)
-        .typeString(weird_rocksEyeLines[1])
+        .typeString(weirdRocksEyeLines[1])
         .pauseFor(1000)
         .typeString(WWYS)
-        .typeString(weird_rocksEyeLines[2])
-        .typeString(weird_rocksEyeLines[3])
+        .typeString(weirdRocksEyeLines[2])
+        .typeString(weirdRocksEyeLines[3])
         .start();
       break;
 
-    case "weird_rocksNice":
-      TW.typeString(weird_rocksNiceLines[0])
+    case "weirdRocksNice":
+      TW.typeString(weirdRocksNiceLines[0])
         .pauseFor(1000)
         .typeString(WWYD)
-        .typeString(weird_rocksNiceLines[1])
-        .typeString(weird_rocksNiceLines[2])
+        .typeString(weirdRocksNiceLines[1])
+        .typeString(weirdRocksNiceLines[2])
         .start();
       break;
 
-    case "weird_rocksNotStealEye":
-      TW.typeString(weird_rocksNotStealEyeLines[0])
+    case "weirdRocksNotStealEye":
+      TW.typeString(weirdRocksNotStealEyeLines[0])
         .pauseFor(500)
-        .typeString(weird_rocksNotStealEyeLines[1])
+        .typeString(weirdRocksNotStealEyeLines[1])
         .start();
       break;
-    case "weird_rocksStealEye":
-      TW.typeString(weird_rocksStealEye[0])
+    case "weirdRocksStealEye":
+      TW.typeString(weirdRocksStealEye[0])
         .pauseFor(1000)
-        .typeString(weird_rocksStealEye[1])
+        .typeString(weirdRocksStealEye[1])
         .pauseFor(1000)
-        .typeString(weird_rocksStealEye[2])
+        .typeString(weirdRocksStealEye[2])
         .start();
 
       sword3 = true;
-      updateSword();
+      updateInventory();
 
-      break;
-
-    case "cabin":
-      TW.typeString(cabinLines[0])
-        .pauseFor(1000)
-        .typeString(cabinLines[1])
-        .pauseFor(500)
-        .typeString(WWYD)
-        .typeString(cabinLines[2])
-        .typeString(cabinLines[3])
-        .start();
       break;
 
     case "farm":
@@ -911,9 +1203,6 @@ function updateScreen(nextImg, text) {
           .pauseFor(1000)
           .typeString(farmLinesWSticker[5])
           .start();
-        setTimeout(() => {
-          updateScreen("farm-zoom", "farmApproach");
-        }, 10000); //tempo bom para um delay de 25 no TW
       }
       break;
 
@@ -947,7 +1236,7 @@ function updateScreen(nextImg, text) {
         .typeString(farmLinesApproach[4])
         .start();
       sword2 = true;
-      updateSword();
+      updateInventory();
       break;
 
     case "wall":
@@ -1026,6 +1315,245 @@ function updateScreen(nextImg, text) {
         .start();
       break;
 
+    case "cave":
+    TW.typeString(caveLines[0])
+    .pauseFor(500)
+    .typeString(caveLines[1])
+    .pauseFor(500)
+    .typeString(caveLines[2])
+    .start();
+    break;
+
+    case "goblin":
+      if(goblinGotMoney == false){
+
+       if(goblinVisited == false){
+            TW.typeString(goblinFirstLines[0])
+            .pauseFor(500)
+            .typeString(goblinFirstLines[1])
+            .pauseFor(500)
+            .typeString(goblinFirstLines[2])
+            .pauseFor(500)
+            .typeString(goblinFirstLines[3])
+            .pauseFor(500)
+            .typeString(goblinFirstLines[4])
+            .pauseFor(500)
+            .typeString(WWYS)
+            .typeString(goblinFirstLines[5])
+            .typeString(goblinFirstLines[6])
+            .typeString(goblinFirstLines[7])
+            .start();
+            goblinVisited = true;
+        }else{
+          TW.typeString(goblinLines[0])
+          .pauseFor(500)
+          .typeString(goblinLines[1])
+          .pauseFor(500)
+          .typeString(WWYS)
+          .typeString(goblinLines[2])
+          .typeString(goblinLines[3])
+          .typeString(goblinLines[4])
+          .start();
+        }
+      }else{
+        TW.typeString(goblinAfterGotMoneyLines[0])
+        .pauseFor(500)
+        .typeString(goblinAfterGotMoneyLines[1])
+        .pauseFor(500)
+        .typeString(goblinAfterGotMoneyLines[2])
+        .pauseFor(1000)
+        .typeString(goblinAfterGotMoneyLines[3])
+        .pauseFor(500)
+        .typeString(goblinAfterGotMoneyLines[4])
+        .start();
+
+      }
+
+        break;
+
+        case "goblinWhoAreYou":
+          TW.typeString(goblinWhoAreYouLines[0])
+          .pauseFor(750)
+          .typeString(goblinWhoAreYouLines[1])
+          .pauseFor(750)
+          .typeString(goblinWhoAreYouLines[2])
+          .pauseFor(750)
+          .typeString(goblinWhoAreYouLines[3])
+          .pauseFor(750)
+          .typeString(goblinWhoAreYouLines[4])
+          .typeString(goblinWhoAreYouLines[5])
+          .pauseFor(500)
+          .typeString(goblinWhoAreYouLines[6])
+          .pauseFor(500)
+          .typeString(WWYS)
+          .typeString(goblinWhoAreYouLines[7])
+          .typeString(goblinWhoAreYouLines[8])
+          .start();
+          break;
+
+        case "goblinWhatGold":
+          TW.typeString(goblinWhatGoldLines[0])
+          .pauseFor(500)
+          .typeString(goblinWhatGoldLines[1])
+          .pauseFor(500)
+          .typeString(goblinWhatGoldLines[2])
+          .pauseFor(500)
+          .typeString(goblinWhatGoldLines[3])
+          .pauseFor(500)
+          .typeString(goblinWhatGoldLines[4])
+          .pauseFor(500)
+          .typeString(goblinWhatGoldLines[5])
+          .start();
+          break;
+
+        case "goblinNotMuch":
+          TW.typeString(goblinNotMuchLines[0])
+          .pauseFor(500)
+          .typeString(goblinNotMuchLines[1])
+          .pauseFor(500)
+          .typeString(goblinNotMuchLines[2])
+          .pauseFor(500)
+          .typeString(goblinNotMuchLines[3])
+          .pauseFor(500)
+          .typeString(WWYS)
+          .typeString(goblinNotMuchLines[4])
+          .typeString(goblinNotMuchLines[5])
+          .start();
+          break;
+
+        case "goblinTruth":
+          TW.typeString(goblinTruthLines[0])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[1])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[2])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[3])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[4])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[5])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[6])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[7])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[8])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[9])
+          .start();
+          break;
+
+        case "goblinBluff":
+          TW.typeString(goblinBluffLines[0])
+          .pauseFor(500)
+          .typeString(goblinBluffLines[1])
+          .pauseFor(500)
+          .typeString(goblinBluffLines[2])
+          .pauseFor(500)
+          .typeString(goblinBluffLines[3])
+          .pauseFor(500)
+          .typeString(goblinBluffLines[4])
+          .pauseFor(500)
+          .typeString(goblinBluffLines[5])
+          .pauseFor(500)
+          .typeString(goblinBluffLines[6])
+          .start();
+          break;
+
+        case "goblinComeOn":
+        TW.typeString(goblinComeOnLines[0])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[1])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[2])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[3])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[4])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[5])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[6])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[7])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[8])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[9])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[10])
+        .start();
+        break;
+
+        case "goblinMoney":
+          TW.typeString(goblinMoneyLines[0])
+          .pauseFor(500)
+          .typeString(goblinMoneyLines[1])
+          .pauseFor(500)
+          .typeString(goblinMoneyLines[2])
+          .pauseFor(500)
+          .typeString(goblinMoneyLines[3])
+          .pauseFor(1000)
+          .typeString(goblinMoneyLines[4])
+          .pauseFor(1500)
+          .typeString(goblinMoneyLines[5])
+          .pauseFor(500)
+          .typeString(goblinMoneyLines[6])
+          .start();
+
+          goblinGotMoney = true;
+          coins += 31;
+          updateInventory();
+          break;
+
+        case 'goblinBye':
+            TW.typeString(goblinByeLines[0])
+            .pauseFor(500)
+            .typeString(goblinByeLines[1])
+            .pauseFor(500)
+            .typeString(goblinByeLines[2])
+            .start()
+            break;
+
+      case "cabin":
+        TW.typeString(cabinLines[0])
+          .pauseFor(1000)
+          .typeString(cabinLines[1])
+          .pauseFor(500)
+          .typeString(WWYD)
+          .typeString(cabinLines[2])
+          .typeString(cabinLines[3])
+          .start();
+        break;
+
+        case "cabinTree":
+          if(goggles){
+            TW.typeString(cabinLinesWGoggles[0])
+            .pauseFor(500)
+            .typeString(cabinLinesWGoggles[1])
+            .pauseFor(500)
+            .typeString(cabinLinesWGoggles[2])
+            .pauseFor(500)
+            .typeString(cabinLinesWGoggles[3])
+            .pauseFor(1000)
+            .typeString(cabinLinesWGoggles[4])
+            .pauseFor(1000)
+            .typeString(cabinLinesWGoggles[5])
+            .start();
+          }else{
+            TW.typeString(cabinLinesWOGoggles[0])
+            .pauseFor(500)
+            .typeString(cabinLinesWOGoggles[1])
+            .pauseFor(500)
+            .typeString(cabinLinesWOGoggles[2])
+            .pauseFor(1000)
+            .typeString(cabinLinesWOGoggles[3])
+            .pauseFor(1000)
+            .typeString(cabinLinesWOGoggles[4])
+            .start();
+          }
+        break;
     default:
       console.log("não encontrado");
       break;
@@ -1036,7 +1564,7 @@ UpdateColors();
 
 //"BANCO DE DADOS" PARA AS FALAS DO JOGO
 //todos os <a> possuem a função de dar update no jogo, as variáveis inseridas são: a imagem a ser carregada e o texto a ser printado
-//criei essa var abaixo pois é muito repetida pelo jogo
+//criei essas variáveis abaixo pois é muito repetida pelo percurso do jogo
 var WWYD = "What will you do? <br><br>";
 var WWYS = "What will you say? <br><br>";
 
@@ -1175,79 +1703,98 @@ var islandRowHorizonPart2Lines = {
 };
 
 var wellLines = {
-  0: ` In the distance, you discover an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies" <br><br>`,
+  0: `In the distance, you discover an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies" <br><br>`,
   //WWYD
-  1: ` <a href="#"> Throw a Coin<br>`,
-  2: ` <a href="#" onclick="updateScreen('well_jump', 'well_jump')"> Jump into the well</a>`,
+  1: `<a href="#" onclick="updateScreen('well', 'wellThrowCoin')">Throw a Coin</a><br>`,
+  2: `<a href="#" onclick="updateScreen('well', 'wellLookInside')">Look inside the well</a>`,
 };
 
-var well_jumpLines = {
-  0: `Without any fear, you hop into the well, after all, that's how games work!<br><br>`,
-  1: `.`,
-  2: `.`,
-  3: `. right?<br><br>`,
-  4: `After some time, you hit the ground and die instantly, what was you thinking?!`,
+var wellLinesAfterGoggles = {
+  0: `You get back to the well,`,
+  1: ` the sign is still talking about you being poor.<br><br>`,
+  2: ` "It's just a silly well, ignore it"<br><br>`,
+  3: ` You say to yourself, backing off.`,
+}
+
+var wellThrowCoinLines = {
+  0: `You get one coin from the rest of your money, you then reach near the well and throw it to the endless hole.<br><br>`,
+  1: `You hear some noises, and then, a pair of goggles gets spit out of the well,`,
+  2: `You recognize them as those party goggles with a spiral decal on the lenses:<br><br>`,
+  3: `<b>You got the Spiral Goggles!</b><br><br>`,
+  4: `Wearing them makes you really dizzy, and after removing them, you notice that the sign changed its text:<br><br>`,
+  5: `"You're poor, You're thrash"<br><br>`,
+  6: `What a rude well! You don't want to stay near him anymore.`,
 };
 
-var weird_rocksLines = {
-  0: `You find a weird arrangement of rocks in the middle of the grass <br><br>`,
-  1: `-Heyo! - The rock says <br><br>`,
+var wellThrowCoinWOCoinLines = {
+  0: `You search around your pockets,`,
+  1: ` but you realize that you don't have any money with you right now,`,
+  2: ` what a shame...<br><br>`,
+  3: `<a href="#" onclick="updateScreen('well', 'well')">Go back</a>`
+
+}
+
+
+
+var wellLookInsideLines = {
+  0: `You lean into the well, checking if there was something,`,
+  1: ` no water,`,
+  2: ` no bucket,`,
+  3: ` only a black endless hole with a hanging torn rope.<br><br>`,
+  4: `<a href="#" onclick="updateScreen('well', 'well')">Go back</a>`,
+};
+
+var weirdRocksLines = {
+  0: `You find a weird arrangement of rocks in the middle of the grass:<br><br>`,
+  1: `-Heyo! - The rock says.<br><br>`,
   //WWYS
-  2: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksWhoAreYou')"> Who are you?<br>`,
-  3: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksEye')"> What's the deal with your eye?`,
+  2: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksWhoAreYou')"> Who are you?<br>`,
+  3: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksEye')"> What's the deal with your eye?`,
 };
 
-var weird_rocksWhoAreYouLines = {
+var weirdRocksWhoAreYouLines = {
   0: `- I'm Rox, Rox the rock, nice to meetcha pal!<br><br>`,
   //WWYS
-  1: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksCabin')">Do you know who lives in the cabin?<br>`,
-  2: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksEye')">What's the deal with your eye?`,
+  1: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksCabin')">Do you know who lives in the cabin?<br>`,
+  2: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksEye')">What's the deal with your eye?`,
 };
 
-var weird_rocksCabinLines = {
+var weirdRocksCabinLines = {
   0: `- Oh... Are you talking about Leshy? He's a spirit that makes bad things to people, I don't like to talk about that...<BR><BR>`,
   1: `Leshy turned Rox into a lot of stones!<BR><BR>`,
   2: `Rox starts crying pebbles, you decide to leave him alone for a bit...`,
 };
 
-var weird_rocksEyeLines = {
+var weirdRocksEyeLines = {
   0: `- Oh, this eye? It's my ultra sharp and shiny metal eye, cool huh?<br><br>`,
   1: `You can't lie, that eye is awesome. <br><br>`,
   //WWYS
-  2: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksWhoAreYou')"> Who are you?<br>`,
-  3: `<a href="#" onclick="updateScreen('weird_rocks', 'weird_rocksNice')"> Nice! Can I have it?<br>`,
+  2: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksWhoAreYou')"> Who are you?<br>`,
+  3: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksNice')"> Nice! Can I have it?<br>`,
 };
 
-var weird_rocksNiceLines = {
+var weirdRocksNiceLines = {
   0: `- Of course not! This is MY eye and if you steal it, you will suffer the most ruthless punishment you'll ever feel!<br><br>`,
   //WWYD
-  1: `<a href="#" onclick="updateScreen('weird_rocks','weird_rocksNotStealEye')">Not steal the eye<br>`, //Fazer essa opção
-  2: `<a href="#" onclick="updateScreen('weird_rocksEyeless', 'weird_rocksStealEye')">Steal the eye`,
+  1: `<a href="#" onclick="updateScreen('weirdRocks','weirdRocksNotStealEye')">Not steal the eye<br>`, //Fazer essa opção
+  2: `<a href="#" onclick="updateScreen('weirdRocksEyeless', 'weirdRocksStealEye')">Steal the eye`,
 };
 
-var weird_rocksNotStealEyeLines = {
+var weirdRocksNotStealEyeLines = {
   0: `- Thanks mate! :D <br><br>`,
   1: `Besides the eye and the threat, the rock doesn't show anything special, you are done with chatting with him for now.`,
 };
 
-var weird_rocksStealEye = {
+var weirdRocksStealEye = {
   0: `<b>you got Rox's eye! <br><br>`,
   1: `- Ouch! Give it back! It's your last advice!<br><br>`,
   2: `You can clearly tell that Rox is lying at this point, you just leave.`,
 };
 
-var weird_rocksAngryRox = {
+var weirdRocksAngryRox = {
   0: `You get back to Rox the rock, now crying pebbles over his lost eye <br><br>`,
-  1: `- <i>sniff</i>, What do you want? Go away you heart of stone!<br><br>`,
+  1: `- Sniff, What do you want? Go away you heart of stone!<br><br>`,
   2: `You think you already did to much to this poor rock, you turn around and leave.`,
-};
-
-var cabinLines = {
-  0: `You spot a small and miserable cabin at the edge of the island, the cabin has a skull hanged by the top of its only entrance.<br><br>`,
-  1: `By the side, you notice a dead tree with a small script carved on its trunk <br><br>`,
-  //WWYD
-  2: `<a href="#">Enter the cabin<br>`,
-  3: `<a href="#">Investigate the tree`,
 };
 
 var farmLines = {
@@ -1268,12 +1815,12 @@ var farmLinesWOSticker = {
 };
 
 var farmLinesWSticker = {
-  0: `- Of course no..`,
-  1: `wait, `,
+  0: `- Of course no...`,
+  1: ` wait, `,
   2: `is that a carrot sticker? `,
   3: `I LOVE CARROTS!!! <br><br>`,
   4: `- Boi y'can take a good look at'em, carrot brotha! <br><br>`,
-  5: `You approach the plantation.`,
+  5: `<a href="#" onclick="updateScreen('farmZoom','farmApproach')">Approach the plantation</a>`,
 };
 
 var farmLinesMetal = {
@@ -1291,7 +1838,7 @@ var farmLinesBye = {
 
 var farmLinesApproach = {
   0: `As you pass your eyes through the plantation, you find something weird, it looks like a shiny tube<br><br>`,
-  1: `You think the farmar won't mind if one carrot goes away, so you pull the tube.<br><br>`,
+  1: `You think the farmer won't mind if one carrot goes away, so you pull the tube.<br><br>`,
   2: `It looked really stuck to the ground among other vegetables, but you win the fight against it and pull a beautiful hilt from the ground.<br><br>`,
   3: `<b>You got the farmer's hilt!</b><br><br>`,
   4: `You hope the farmer didn't notice it, you run trying to get out of his view.`,
@@ -1335,7 +1882,7 @@ var wallUsePassLines = {
   0: `You give the Pass to the thing, it gets really happy! <br><br>`,
   1: `- OOOOOHH, THE BOSS WILL LET ME HAVE A DAY OFF!!!<br>`,
   2: `- Ok, you may pass and admire the cave.<br><br>`,
-  3: `The pole besides him lifts, <b>you now have access to the cave</b>.`,
+  3: `The pole besides him lifts, <b>you now have access to the cave!</b>.`,
 };
 
 var wallAlreadyUsedPassLines = {
@@ -1344,10 +1891,131 @@ var wallAlreadyUsedPassLines = {
   2: `You try to say something, but the creature just says blablabla while covering its ears, what a child!`,
 };
 
+var caveLines = {
+    0: `A big cave stands in front of you,`,
+    1: ` you can hear small growls coming from it.<br><br>`,
+    2: `<a href="#" onclick="updateScreen('goblin','goblin')">Enter it.</a>`,
+};
+
+var goblinFirstLines = {
+    0:`The cave smells like mold and has the sound of dripping water from the dripstones along with the growls,`,
+    1:` walking further shows you the so called demigod that the doorman spoke about:`,
+    2:` A small goblin near a "treasure",`,
+    3:` which is actually just a small pile of coins on the ground.<br><br>`,
+    4:`- Who dares to enter my domain?<br><br>`,
+    //WWYS
+    5: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Who are you?</a><br>`,
+    6: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">What's that gold?</a><br>`,
+    7: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
+};
+
+var goblinLines = {
+  0:`You get back to the inside of the cave,`,
+  1:` the goblin is still there.<br><br>`,
+  //WWYS
+  2: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Who are you?</a><br>`,
+  3: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">What's that gold?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
+};
+
+var goblinAfterGotMoneyLines = {
+  0: `You get back to the cave,`,
+  1: ` the goblin is still crying,`,
+  2: ` you're not good with cheering someone up,`,
+  3: ` plus you stole its money,`,
+  4: ` maaaaybe it's better to forget him by now.`,
+}
+
+var goblinWhoAreYouLines = {
+    0: `- I'm Barretos, the demigod,`,
+    1: ` the keeper of the island's biggest treasure,`,
+    2: ` the inhabitant of the oldest cave on the island,`,
+    3: ` the most green being here,`,
+    4: ` the mightiest warrior of...<br><br>`,
+    5: `You yell at him that you already got it.<br><br>`,
+    6: `- Of course you got...<br><br>`,
+    //WWYS
+    7: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">What's that gold?</a><br>`,
+    8: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
+};
+
+var goblinWhatGoldLines = {
+  0: `- It's my treasure,`,
+  1: ` MY treasure,`,
+  2: ` envy me, I'm the richest man in the island!`,
+  3: ` If you cry enough, I may give you a penny...`,
+  4: ` HAHA!<br><br>`,
+  5: `<a href="#" onclick="updateScreen('goblin','goblinNotMuch')">That's not much to be honest...</a>`
+};
+
+var goblinNotMuchLines = {
+  0: `What do you mean?`,
+  1: ` It's a lot! The shopkeeper said that to me!`,
+  2: ` The money that he gets from the pass is passed to ME,`,
+  3: ` and I get RICH!<br><br>`,
+  //WWYS
+  4: `<a href="#" onclick="updateScreen('goblin','goblinTruth')">(Say the truth) Yeah but I got the pass for free...</a><br>`,
+  5: `<a href="#" onclick="updateScreen('goblin','goblinBluff')">(Bluff) I have much more money than you, haha.</a>`,
+};
+
+var goblinBluffLines = {
+  0: `- No,`,
+  1: ` that's impossible,`,
+  2: ` there can only be one richest man in the island,`,
+  3: ` THAT'S IT.`, 
+  4: ` LET'S FIGHT, THE WINNER KEEPS ALL THE MONEY!<br><br>`,
+  5: `The goblin's moss green skin color starts to turn into a boiling red color.<br><br>`,
+  6: `<a href="#" onclick="updateScreen('goblin','goblinComeOn')">Come on!</a>`,
+};
+
+var goblinTruthLines = {
+  0: `- You're telling me that you entered MY cave WITHOUT GIVING ME MONEY?`,
+  1: ` No, this can't happen,`,
+  2: ` since you got here for free,`,
+  3: ` YOU'LL HAVE TO TURN INTO MY MINION, FOREVER!`,
+  4: ` GIVE UP, I AM UNBEATABLE!<br><br>`,
+  5: `You defy the goblin, saying that if you defeat him, you can get to keep the treasure for yourself.<br><br>`,
+  6: `- I DON'T CARE,`, 
+  7:` PREPARE TO FEEL THE WRATH OF BARRETOS!!!<br><br>`,
+  8: `The goblin's moss green skin color starts to turn into a boiling red color.<br><br>`,
+  9: `<a href="#" onclick="updateScreen('goblin','goblinComeOn')">Come on!</a>`,
+};
+
+var goblinComeOnLines = {
+  0: `The goblin starts to come at your direction,`,
+  1: ` its small legs make this process a little long,`,
+  2: ` long enough to give time to pick up a rock from the ground.`,
+  3: ` You throw it:<br><br>`,
+  4: `Bullseye! The rock hits the goblin's face!`,
+  5: ` It falls on the ground and starts crying...<br><br>`,
+  6: `- Uff...`,
+  7: ` Why did you do that?`,
+  8: ` That's foul play!`,
+  9: ` Go away!<br><br>`,
+  10: `<a href="#" onclick="updateScreen('goblinCry','goblinMoney')">Take the money</a>`
+};
+
+var goblinMoneyLines = {
+  0: `You are not dumb.`,
+  1: ` Money may help you with getting geared up,`,
+  2: ` and you won the fight!`,
+  3: ` you get the mediocre pile of money from the ground.<br><br>`,
+  4: `<b>You got exactly 31 coins!</b><br><br>`,
+  5: `You let the goblin crying at its cave,`,
+  6: ` that guy is too annoying.`,
+};
+
+var goblinByeLines = {
+    0: `- Bye, sucker,`,
+    1: ` bring me something to eat next time!<br><br>`,
+    2: `Who this guy think it is?`,
+};
+
 var castleLines = {
   0: `A big castle can be seen at the distance from the entire island,`,
   1: ` the main gate is open,`,
-  2: ` you decide to enter it.`,
+  2: ` you may enter it.<br><br>`,
+  3: `<a href="#" onclick="updateScreen('bifurcation','castle')">Enter it</a>`,
 };
 
 var enterCastleLines = {
@@ -1407,10 +2075,10 @@ var kingGoHomeLines = {
   1: `- Well,`,
   2: ` actually, I have an idea that may help you:`,
   3: ` <i>Leshy</i>,`,
-  4: ` the forest spirit might have done this to you, it has brought so many others here,`,
+  4: ` the forest spirit might have done this to you, <i>it</i> has brought so many others here,`,
   5: ` which are now residents of this unescapable island, but maybe,`,
   6: ` if you're brave enough, `,
-  6: ` you can get his sick mischiefs to an end! <br><br>`,
+  6: ` you can get <i>its</i> sick mischiefs to an end! <br><br>`,
   7: `<a href="#" onclick="updateScreen('king','kingHowDoThis')">How do I do this?</a>`,
 };
 
@@ -1431,13 +2099,24 @@ var kingByeLines = {
   2: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
 };
 
-var kingQuestLines = {
-  0: `- Ah, I see, the legends are true,`,
-  1: ` the Island Sword really exists... <br><br>`,
-  2: ` But you don't have the materials to craft, as I can see, come back after getting 2 pieces of the sword.<br><br>`,
-  3: `- Sadly, I don't know where the pieces reside now. <br><br>`,
-  4: `You need to get those pieces in order to have a chance of ending <i>Leshy</i>.`,
+var kingGivePommelLines = {
+  0: `- Hello again, stranger,`,
+  1: ` how's your quest going?<br><br>`,
+  2: `You tell him that you only need the pommel to finish the sword.<br><br>`,
+  3: `- Speak no more.<br><br>`,
+  4: `The king removes an ornament from his throne, and gives it to you:<br><br>`,
+  5: `<b>You got the King's Pommel!</b><br><br>`,
+  6: `<a href="#" onclick="updateScreen('kingPommelless','kingPommelPart2')">Finally!</a>`
 };
+
+var kingPommelPart2Lines = {
+  0: `- This pommel was the only part of the sword that we found,`,
+  1: ` to keep it safe,`,
+  2: ` I guarded it within my throne, but now`,
+  3: ` it has a better use, the angel knows what to do now.<br><br>`,
+  4: `You should go to the angel and finish this sword hunting.`,
+
+}
 
 var shopFirstLines = {
   0: `You enter the building and are greeted with a friendly shopkeeper: <br><br>`,
@@ -1465,6 +2144,13 @@ var shopBroadswordLines = {
   4: `<a href="#" onclick="updateScreen('shop','shop')">No</a>`,
 };
 
+var shopBroadswordYesLines = {
+  0: `- Katching! - Says the little wizard:<br><br>`,
+  1: `<b>You got the Steel Broadsword!</b><br><br>`,
+  2: `The sword is REALLY heavy, you know that you'll have problems with using it<br><br>`,
+  3: `<a href="#" onclick="updateScreen('shop','shop')">Better than nothing!</a>`,
+};
+
 var shopStickerLines = {
   0: `- A silly carrot sticker, dunno what would you do with it,`,
   1: ` it's funny, though!<br><br>`,
@@ -1472,6 +2158,13 @@ var shopStickerLines = {
   3: `Wanna buy it?<br><br>`,
   4: `<a href="#" onclick="updateScreen('shop','shopStickerYes')">Yes</a><br>`,
   5: `<a href="#" onclick="updateScreen('shop','shop')">No</a>`,
+};
+
+var shopStickerYesLines = {
+  0: `- Katching! - Says the little wizard:<br><br>`,
+  1: `<b>You got the Carrot Sticker!</b><br><br>`,
+  2: `Without a place to glue it, you glue it to your clothing.<br><br>`,
+  3: `<a href="#" onclick="updateScreen('shop','shop')">Feeling stylish!</a>`,
 };
 
 var shopPassWOKingQuest = {
@@ -1487,7 +2180,7 @@ var shopPassWKingQuest = {
   0: `- A pass to the caves,`,
   1: ` it's free cuz' there isn't anything interesting there, we only sell them so the wall doorman gets to feel important with its work,`,
   2: ` he doesn't even know that we sell them for free!`,
-  3: ` poor lone guy...<br><br>`,
+  3: ` Poor lone guy...<br><br>`,
   4: `- Oh, I get it,`,
   5: ` the king trusts you, then so do I, take it:<br><br>`,
   6: `<b>You got the Wall Pass!</b><br><br>`,
@@ -1506,9 +2199,171 @@ var shopOnlyOnePerPersonLines = {
   2: `<a href="#" onclick="updateScreen('shop','shop')">Go back</a>`,
 };
 
-var altarAbandonedAltar = {
+var altarAbandonedLines = {
   0: `Your way takes you to an abandoned altar without anything apparent,`,
   1: ` upon getting closer, you find three empty notches, `,
   2: `maybe you need to place someting there?<br><br>`,
   3: `There's nothing more to investigate here.`,
 };
+
+var altarLines = {
+  0: `- Welcome again,`,
+  1: ` my child.<br><br>`,
+  //WWYS
+  2: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
+  3: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">How did the sword disappear?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Why didn't you search the sword by yourself?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
+};
+
+var altarFirstLines = {
+  0: `- Hello little child,`,
+  1: ` I see that the king has called me to help you with your quest of defeating the evil spirit <i>Leshy</i>.<br><br>`,
+  2: `- As the king said, regular weapons won't work against <i>its</i> body,`,
+  3: ` we will need to use fire against fire,`,
+  4: ` a sword soaked with magic:`,
+  5: ` <b>The Island Sword.</b><br><br>`,
+  6: `- This altar once was a place to keep it safe, but time passed, and <i>Leshy</i> thought fast and got rid of it.`,
+  7: ` But hope is not lost! The sword can't leave the island, so it must be here, and if not, its parts are.`,
+  8: ` We just need to find them and take them here.<br><br>`,
+  //WWYS
+  9: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
+  10: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
+  11: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">How did the sword disappear?</a><br>`,
+  12: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Why didn't you search the sword by yourself?</a><br>`,
+  13: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
+};
+
+var angelParts2Lines = {
+  0: `- I once heard the farmer talking about "planting metal",`,
+  1: ` I don't know if that's useful,`,
+  2: ` but it is surely worth a shot.<br><br>`,
+  //WWYS
+  //GeneralLines
+};
+
+var angelParts3Lines = {
+  0: `- I felt a little bit of magic coming the west of the island,`,
+  1: ` maybe someone powerful is keeping a part for itself!<br><br>`,
+  //WWYS
+  //GeneralLines
+};
+
+var angelParts1Lines = {
+  0: `- Now that we have two parts,`,
+  1: ` we only need the pommel, the main part of the sword's superpowers,`,
+  2: ` go talk to the king,`,
+  3: ` he knows where it is.<br><br>`,
+  //WWYS
+  //GeneralLines
+};
+
+var angelPartsBadFeelingLines = {
+  0: `- We got the mightiest weapon of this island.`,
+  1: ` But something feels...`,
+  2: ` Off,`,
+  3: ` what if just it is not enough to defeat <i>him</i>?`,
+  4: ` I have a bad feeling about this,`,
+  5: `  <i>Leshy</i> is dirty, and will do anything to kill anyone who bothers him.<br><br>`,
+  //WWYS
+  //GeneralLines
+};
+
+var angelPartsGeneralLines = {
+  //Falas usadas nas três perguntas de onde estão as partes de espada
+  0: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
+  1: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">How did the sword disappear?</a><br>`,
+  2: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Why didn't you search the sword by yourself?</a><br>`,
+  3: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
+};
+
+var angelFuseSwordPart1Lines = {
+  0: `- We did it,`,
+  1: ` my child!`,
+  2: ` We got all the necessary pieces to refuse the Sword!<br><br>`,
+  3: `- Now, place the parts at their notches and take a step back.<br><br>`,
+  4: `<a href="#" onclick="updateScreen('altarlightbeam','altarFuseSword')">Do what they asked</a>`,
+};
+
+var angelFuseSwordPart2Lines = {
+  0: `The angel retreats from the altar,`,
+  1: `and after 5 steps of backing off,`,
+  2: ` a giant light beam strucks the`,
+  3: ` altar, making a deafening noise of a lightning, together with a blinding light...<br><br>`,
+  4: `<a href="#" onclick="updateScreen('angel','altarFuseSwordAftermath')">And?</a>`,
+};
+
+var angelFuseSwordPart3Lines = {
+  0: `The light beam disappears into thin air,`,
+  1: ` and you're left with the so called blade capable of slaying anything.<br><br>`,
+  2: `<b>You got The Island Sword!</b><br><br>`,
+  3: `- There it is! In all of its glory!`,
+  4: ` I'm grateful for your help, my child,`,
+  5: ` you deserve it, keep it and use it to end this island's suffering.<br><br>`,
+  //WWYS
+};
+
+var angelWhoAreYouLines = {
+  0: `- I'm Maldio,`,
+  1: ` Maldio the angel,`,
+  2: ` I work here as a swordkeeper, but I failed my job... Now I stay here, waiting for someone to come and help with the swordfinding.<br><br>`,
+  //WWYS
+  3: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
+  4: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">How did the sword disappear?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Why didn't you search the sword by yourself?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
+};
+
+var angelHowSwordDisappearLines = {
+  0: `- I was playing RPG with my angel friends at the castle's tavern and,`,
+  1: ` unfortunately,`,
+  2: ` Leshy took the cue and stole the sword while I was away, and now it is gone,`,
+  3: ` and no one helped me with finding it...<br><br>`,
+  //WWYS
+  4: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
+  5: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Why didn't you search the sword by yourself?</a><br>`,
+  7: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
+};
+
+var angelSearchSwordYourselfLines = {
+  0: `- I don't have a fisic body! <br><br>`,
+  1: `You think that this makes sense<br><br>`,
+  2: `- But that's not the main problem, I am also a little shy...<br><br>`,
+  //WWYS
+  3: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
+  4: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">How did the sword disappear?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
+};
+
+var angelByeLines = {
+  0: `- Bye my child,`,
+  1: ` good luck with the sword finding.`,
+};
+
+var cabinLines = {
+  0: `You spot a small and miserable cabin at the edge of the island, the cabin has a skull hanged by the top of its only entrance.<br><br>`,
+  1: `By the side, you notice a dead tree with a small script carved on its trunk <br><br>`,
+  //WWYD
+  2: `<a href="#">Enter the cabin</a><br>`,
+  3: `<a href="#" onclick="updateScreen('cabin','cabinTree')">Investigate the tree</a>`,
+};
+
+var cabinLinesWOGoggles = {
+  0: `Upon coming closer to the tree,`,
+  1: ` the carving becomes clear,`,
+  2: ` it's a text written:<br><br>`,
+  3: `<b>You can't slay him.</b><br><br>`,
+  4: `<a href="#" onclick="updateScreen('cabin','cabin')">Go back</a>`,
+}
+
+var cabinLinesWGoggles = {
+  0: `Upon coming closer to the tree,`,
+  1: ` the headache from using the goggles gets REALLY strong,`,
+  2: ` but you can still see what's carved,`,
+  3: ` it's a text:<br><br>`,
+  4: `<b>You can slay him.</b><br><br>`,
+  5: `<a href="#" onclick="updateScreen('cabin','cabin')">Go back</a>`,
+}
