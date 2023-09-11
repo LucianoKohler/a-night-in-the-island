@@ -7,9 +7,9 @@ var pass = 0;
 //1 = Tem mas não usou
 //2 = Tem E já usou
 
-var sword1 = true; //Pommel
-var sword2 = true; //Hilt
-var sword3 = true; //Blade
+var sword1 = false; //Pommel
+var sword2 = false; //Hilt
+var sword3 = false; //Blade
 var islandSword = false;
 
 var broadsword = false;
@@ -20,11 +20,12 @@ let del = 0; //mudar pra 25
 
 var BearScared = false;
 var castleEntered = false;
-var palaceEntered = true;
+var palaceEntered = false;
 var shopEntered = false;
 var islandEntered = false;
 var kingQuest = false;
 var angelVisited = false;
+var goblinGotMoney = false;
 var goblinVisited = false;
 
 //BOTÕES PARA A TELA DE INÍCIO
@@ -153,9 +154,11 @@ document.addEventListener("keydown", function (e) {
 });
 
 function updateInventory() {
+
+  document.getElementById("Coins").innerHTML = "Coins: " + coins;
+  document.getElementById("Coins").innerHTML = "Coins: " + coins;
+
   if (broadsword == true) {
-    document.getElementById("Coins").innerHTML = "Coins: " + coins;
-    document.getElementById("Coins").innerHTML = "Coins: " + coins;
   
     document.getElementById("sword").style.display = "none";
     document.getElementById("swordunlocked").style.display = "block";
@@ -244,9 +247,11 @@ function updateScreen(nextImg, text) {
     ImgQuery = "islandhole";
   } else if(goggles == true && nextImg == 'well') {
     ImgQuery = 'wellPoor'
+  } else if(goblinGotMoney == true && nextImg == 'goblin'){
+    ImgQuery = 'goblinCry'
   } else if(sword1 ==  true && nextImg == 'king'){
     ImgQuery = 'kingPommelless'
-  }else if (
+  } else if (
     (broadsword == true && text == "shopBroadswordYes") ||
     (sticker == true && text == "shopStickerYes") ||
     ((pass == 1 || pass == 2) && text == "shopPass")
@@ -1156,17 +1161,6 @@ function updateScreen(nextImg, text) {
 
       break;
 
-    case "cabin":
-      TW.typeString(cabinLines[0])
-        .pauseFor(1000)
-        .typeString(cabinLines[1])
-        .pauseFor(500)
-        .typeString(WWYD)
-        .typeString(cabinLines[2])
-        .typeString(cabinLines[3])
-        .start();
-      break;
-
     case "farm":
       if (sword2 == false) {
         TW.typeString(farmLines[0])
@@ -1331,7 +1325,9 @@ function updateScreen(nextImg, text) {
     break;
 
     case "goblin":
-        if(goblinVisited == false){
+      if(goblinGotMoney == false){
+
+       if(goblinVisited == false){
             TW.typeString(goblinFirstLines[0])
             .pauseFor(500)
             .typeString(goblinFirstLines[1])
@@ -1349,9 +1345,167 @@ function updateScreen(nextImg, text) {
             .start();
             goblinVisited = true;
         }else{
-            console.log("já entrou")
+          TW.typeString(goblinLines[0])
+          .pauseFor(500)
+          .typeString(goblinLines[1])
+          .pauseFor(500)
+          .typeString(WWYS)
+          .typeString(goblinLines[2])
+          .typeString(goblinLines[3])
+          .typeString(goblinLines[4])
+          .start();
         }
+      }else{
+        TW.typeString(goblinAfterGotMoneyLines[0])
+        .pauseFor(500)
+        .typeString(goblinAfterGotMoneyLines[1])
+        .pauseFor(500)
+        .typeString(goblinAfterGotMoneyLines[2])
+        .pauseFor(1000)
+        .typeString(goblinAfterGotMoneyLines[3])
+        .pauseFor(500)
+        .typeString(goblinAfterGotMoneyLines[4])
+        .start();
+
+      }
+
         break;
+
+        case "goblinWhoAreYou":
+          TW.typeString(goblinWhoAreYouLines[0])
+          .pauseFor(750)
+          .typeString(goblinWhoAreYouLines[1])
+          .pauseFor(750)
+          .typeString(goblinWhoAreYouLines[2])
+          .pauseFor(750)
+          .typeString(goblinWhoAreYouLines[3])
+          .pauseFor(750)
+          .typeString(goblinWhoAreYouLines[4])
+          .typeString(goblinWhoAreYouLines[5])
+          .pauseFor(500)
+          .typeString(goblinWhoAreYouLines[6])
+          .pauseFor(500)
+          .typeString(WWYS)
+          .typeString(goblinWhoAreYouLines[7])
+          .typeString(goblinWhoAreYouLines[8])
+          .start();
+          break;
+
+        case "goblinWhatGold":
+          TW.typeString(goblinWhatGoldLines[0])
+          .pauseFor(500)
+          .typeString(goblinWhatGoldLines[1])
+          .pauseFor(500)
+          .typeString(goblinWhatGoldLines[2])
+          .pauseFor(500)
+          .typeString(goblinWhatGoldLines[3])
+          .pauseFor(500)
+          .typeString(goblinWhatGoldLines[4])
+          .pauseFor(500)
+          .typeString(goblinWhatGoldLines[5])
+          .start();
+          break;
+
+        case "goblinNotMuch":
+          TW.typeString(goblinNotMuchLines[0])
+          .pauseFor(500)
+          .typeString(goblinNotMuchLines[1])
+          .pauseFor(500)
+          .typeString(goblinNotMuchLines[2])
+          .pauseFor(500)
+          .typeString(goblinNotMuchLines[3])
+          .pauseFor(500)
+          .typeString(WWYS)
+          .typeString(goblinNotMuchLines[4])
+          .typeString(goblinNotMuchLines[5])
+          .start();
+          break;
+
+        case "goblinTruth":
+          TW.typeString(goblinTruthLines[0])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[1])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[2])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[3])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[4])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[5])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[6])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[7])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[8])
+          .pauseFor(500)
+          .typeString(goblinTruthLines[9])
+          .start();
+          break;
+
+        case "goblinBluff":
+          TW.typeString(goblinBluffLines[0])
+          .pauseFor(500)
+          .typeString(goblinBluffLines[1])
+          .pauseFor(500)
+          .typeString(goblinBluffLines[2])
+          .pauseFor(500)
+          .typeString(goblinBluffLines[3])
+          .pauseFor(500)
+          .typeString(goblinBluffLines[4])
+          .pauseFor(500)
+          .typeString(goblinBluffLines[5])
+          .pauseFor(500)
+          .typeString(goblinBluffLines[6])
+          .start();
+          break;
+
+        case "goblinComeOn":
+        TW.typeString(goblinComeOnLines[0])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[1])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[2])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[3])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[4])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[5])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[6])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[7])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[8])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[9])
+        .pauseFor(500)
+        .typeString(goblinComeOnLines[10])
+        .start();
+        break;
+
+        case "goblinMoney":
+          TW.typeString(goblinMoneyLines[0])
+          .pauseFor(500)
+          .typeString(goblinMoneyLines[1])
+          .pauseFor(500)
+          .typeString(goblinMoneyLines[2])
+          .pauseFor(500)
+          .typeString(goblinMoneyLines[3])
+          .pauseFor(1000)
+          .typeString(goblinMoneyLines[4])
+          .pauseFor(1500)
+          .typeString(goblinMoneyLines[5])
+          .pauseFor(500)
+          .typeString(goblinMoneyLines[6])
+          .start();
+
+          goblinGotMoney = true;
+          coins += 31;
+          updateInventory();
+          break;
 
         case 'goblinBye':
             TW.typeString(goblinByeLines[0])
@@ -1361,6 +1515,45 @@ function updateScreen(nextImg, text) {
             .typeString(goblinByeLines[2])
             .start()
             break;
+
+      case "cabin":
+        TW.typeString(cabinLines[0])
+          .pauseFor(1000)
+          .typeString(cabinLines[1])
+          .pauseFor(500)
+          .typeString(WWYD)
+          .typeString(cabinLines[2])
+          .typeString(cabinLines[3])
+          .start();
+        break;
+
+        case "cabinTree":
+          if(goggles){
+            TW.typeString(cabinLinesWGoggles[0])
+            .pauseFor(500)
+            .typeString(cabinLinesWGoggles[1])
+            .pauseFor(500)
+            .typeString(cabinLinesWGoggles[2])
+            .pauseFor(500)
+            .typeString(cabinLinesWGoggles[3])
+            .pauseFor(1000)
+            .typeString(cabinLinesWGoggles[4])
+            .pauseFor(1000)
+            .typeString(cabinLinesWGoggles[5])
+            .start();
+          }else{
+            TW.typeString(cabinLinesWOGoggles[0])
+            .pauseFor(500)
+            .typeString(cabinLinesWOGoggles[1])
+            .pauseFor(500)
+            .typeString(cabinLinesWOGoggles[2])
+            .pauseFor(1000)
+            .typeString(cabinLinesWOGoggles[3])
+            .pauseFor(1000)
+            .typeString(cabinLinesWOGoggles[4])
+            .start();
+          }
+        break;
     default:
       console.log("não encontrado");
       break;
@@ -1371,7 +1564,7 @@ UpdateColors();
 
 //"BANCO DE DADOS" PARA AS FALAS DO JOGO
 //todos os <a> possuem a função de dar update no jogo, as variáveis inseridas são: a imagem a ser carregada e o texto a ser printado
-//criei essa var abaixo pois é muito repetida pelo jogo
+//criei essas variáveis abaixo pois é muito repetida pelo percurso do jogo
 var WWYD = "What will you do? <br><br>";
 var WWYS = "What will you say? <br><br>";
 
@@ -1604,14 +1797,6 @@ var weirdRocksAngryRox = {
   2: `You think you already did to much to this poor rock, you turn around and leave.`,
 };
 
-var cabinLines = {
-  0: `You spot a small and miserable cabin at the edge of the island, the cabin has a skull hanged by the top of its only entrance.<br><br>`,
-  1: `By the side, you notice a dead tree with a small script carved on its trunk <br><br>`,
-  //WWYD
-  2: `<a href="#">Enter the cabin<br>`,
-  3: `<a href="#">Investigate the tree`,
-};
-
 var farmLines = {
   0: `This lonely farm is far from the rest of the civilization, the farmer, quickly realizing you, approaches: <br><br>`,
   1: `- Oh my! Visitor!!! Welcome to ma farm, I plant carrots, potatoes, carrots, carrots, metal'n'carrots! How can I help'ya? <br><br>`,
@@ -1724,29 +1909,107 @@ var goblinFirstLines = {
     7: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
 };
 
-var goblinWhoAreYouLines = {
-    0: `I'm Barretos, the demigod,`,
-    0: ` the keeper of the island's biggest treasure,`,
-    0: ` the inhabitant of the oldest cave on the island,`,
-    0: ` the most green being here,`,
-    0: ` the mightiest warrior of...<br><br>`,
-    0: `You yell for him that you got it<br><br>`,
-    0: `- Of course you got...<br><br>`,
-    0: ``, //TERMINAR!!!
+var goblinLines = {
+  0:`You get back to the inside of the cave,`,
+  1:` the goblin is still there.<br><br>`,
+  //WWYS
+  2: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Who are you?</a><br>`,
+  3: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">What's that gold?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
+};
+
+var goblinAfterGotMoneyLines = {
+  0: `You get back to the cave,`,
+  1: ` the goblin is still crying,`,
+  2: ` you're not good with cheering someone up,`,
+  3: ` plus you stole its money,`,
+  4: ` maaaaybe it's better to forget him by now.`,
 }
 
-    
+var goblinWhoAreYouLines = {
+    0: `- I'm Barretos, the demigod,`,
+    1: ` the keeper of the island's biggest treasure,`,
+    2: ` the inhabitant of the oldest cave on the island,`,
+    3: ` the most green being here,`,
+    4: ` the mightiest warrior of...<br><br>`,
+    5: `You yell at him that you already got it.<br><br>`,
+    6: `- Of course you got...<br><br>`,
+    //WWYS
+    7: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">What's that gold?</a><br>`,
+    8: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
+};
 
+var goblinWhatGoldLines = {
+  0: `- It's my treasure,`,
+  1: ` MY treasure,`,
+  2: ` envy me, I'm the richest man in the island!`,
+  3: ` If you cry enough, I may give you a penny...`,
+  4: ` HAHA!<br><br>`,
+  5: `<a href="#" onclick="updateScreen('goblin','goblinNotMuch')">That's not much to be honest...</a>`
+};
 
+var goblinNotMuchLines = {
+  0: `What do you mean?`,
+  1: ` It's a lot! The shopkeeper said that to me!`,
+  2: ` The money that he gets from the pass is passed to ME,`,
+  3: ` and I get RICH!<br><br>`,
+  //WWYS
+  4: `<a href="#" onclick="updateScreen('goblin','goblinTruth')">(Say the truth) Yeah but I got the pass for free...</a><br>`,
+  5: `<a href="#" onclick="updateScreen('goblin','goblinBluff')">(Bluff) I have much more money than you, haha.</a>`,
+};
 
+var goblinBluffLines = {
+  0: `- No,`,
+  1: ` that's impossible,`,
+  2: ` there can only be one richest man in the island,`,
+  3: ` THAT'S IT.`, 
+  4: ` LET'S FIGHT, THE WINNER KEEPS ALL THE MONEY!<br><br>`,
+  5: `The goblin's moss green skin color starts to turn into a boiling red color.<br><br>`,
+  6: `<a href="#" onclick="updateScreen('goblin','goblinComeOn')">Come on!</a>`,
+};
 
+var goblinTruthLines = {
+  0: `- You're telling me that you entered MY cave WITHOUT GIVING ME MONEY?`,
+  1: ` No, this can't happen,`,
+  2: ` since you got here for free,`,
+  3: ` YOU'LL HAVE TO TURN INTO MY MINION, FOREVER!`,
+  4: ` GIVE UP, I AM UNBEATABLE!<br><br>`,
+  5: `You defy the goblin, saying that if you defeat him, you can get to keep the treasure for yourself.<br><br>`,
+  6: `- I DON'T CARE,`, 
+  7:` PREPARE TO FEEL THE WRATH OF BARRETOS!!!<br><br>`,
+  8: `The goblin's moss green skin color starts to turn into a boiling red color.<br><br>`,
+  9: `<a href="#" onclick="updateScreen('goblin','goblinComeOn')">Come on!</a>`,
+};
 
+var goblinComeOnLines = {
+  0: `The goblin starts to come at your direction,`,
+  1: ` its small legs make this process a little long,`,
+  2: ` long enough to give time to pick up a rock from the ground.`,
+  3: ` You throw it:<br><br>`,
+  4: `Bullseye! The rock hits the goblin's face!`,
+  5: ` It falls on the ground and starts crying...<br><br>`,
+  6: `- Uff...`,
+  7: ` Why did you do that?`,
+  8: ` That's foul play!`,
+  9: ` Go away!<br><br>`,
+  10: `<a href="#" onclick="updateScreen('goblinCry','goblinMoney')">Take the money</a>`
+};
+
+var goblinMoneyLines = {
+  0: `You are not dumb.`,
+  1: ` Money may help you with getting geared up,`,
+  2: ` and you won the fight!`,
+  3: ` you get the mediocre pile of money from the ground.<br><br>`,
+  4: `<b>You got exactly 31 coins!</b><br><br>`,
+  5: `You let the goblin crying at its cave,`,
+  6: ` that guy is too annoying.`,
+};
 
 var goblinByeLines = {
     0: `- Bye, sucker,`,
     1: ` bring me something to eat next time!<br><br>`,
     2: `Who this guy think it is?`,
-}
+};
 
 var castleLines = {
   0: `A big castle can be seen at the distance from the entire island,`,
@@ -2079,3 +2342,28 @@ var angelByeLines = {
   0: `- Bye my child,`,
   1: ` good luck with the sword finding.`,
 };
+
+var cabinLines = {
+  0: `You spot a small and miserable cabin at the edge of the island, the cabin has a skull hanged by the top of its only entrance.<br><br>`,
+  1: `By the side, you notice a dead tree with a small script carved on its trunk <br><br>`,
+  //WWYD
+  2: `<a href="#">Enter the cabin</a><br>`,
+  3: `<a href="#" onclick="updateScreen('cabin','cabinTree')">Investigate the tree</a>`,
+};
+
+var cabinLinesWOGoggles = {
+  0: `Upon coming closer to the tree,`,
+  1: ` the carving becomes clear,`,
+  2: ` it's a text written:<br><br>`,
+  3: `<b>You can't slay him.</b><br><br>`,
+  4: `<a href="#" onclick="updateScreen('cabin','cabin')">Go back</a>`,
+}
+
+var cabinLinesWGoggles = {
+  0: `Upon coming closer to the tree,`,
+  1: ` the headache from using the goggles gets REALLY strong,`,
+  2: ` but you can still see what's carved,`,
+  3: ` it's a text:<br><br>`,
+  4: `<b>You can slay him.</b><br><br>`,
+  5: `<a href="#" onclick="updateScreen('cabin','cabin')">Go back</a>`,
+}
