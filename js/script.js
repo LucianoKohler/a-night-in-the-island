@@ -1554,7 +1554,27 @@ function updateScreen(nextImg, text) {
             .start();
           }
         break;
-    default:
+      case 'cabinEnter':
+        TW.typeString(EnterCabinLines[0])
+        .pauseFor(500)
+        .typeString(EnterCabinLines[1])
+        .pauseFor(1000)
+        .typeString(EnterCabinLines[2])
+        .pauseFor(1000)
+        .typeString(EnterCabinLines[3])
+        .pauseFor(1000)
+        .typeString(EnterCabinLines[4])
+        .pauseFor(1000)
+        .typeString(EnterCabinLines[5])
+        .pauseFor(500)
+        .typeString(EnterCabinLines[6])
+        .pauseFor(500)
+        .typeString(EnterCabinLines[7])
+        .pauseFor(500)
+        .typeString(EnterCabinLines[8])
+        .start();
+      
+default:
       console.log("não encontrado");
       break;
   }
@@ -2347,7 +2367,7 @@ var cabinLines = {
   0: `You spot a small and miserable cabin at the edge of the island, the cabin has a skull hanged by the top of its only entrance.<br><br>`,
   1: `By the side, you notice a dead tree with a small script carved on its trunk <br><br>`,
   //WWYD
-  2: `<a href="#">Enter the cabin</a><br>`,
+  2: `<a href="#" onclick="updateScreen('cabin','cabinEnter')">Enter the cabin</a><br>`,
   3: `<a href="#" onclick="updateScreen('cabin','cabinTree')">Investigate the tree</a>`,
 };
 
@@ -2367,3 +2387,31 @@ var cabinLinesWGoggles = {
   4: `<b>You can slay him.</b><br><br>`,
   5: `<a href="#" onclick="updateScreen('cabin','cabin')">Go back</a>`,
 }
+
+var EnterCabinLines = {
+  0: `You decided to enter the cabin,`,
+  1: ` what really resides inside of it is still unknown.<br><br>`,
+  2: `Inside of it, everything is pitch black,`,
+  3: ` the ground is sticky,`,
+  4: ` nothing moves,`,
+  5: ` there isn't... Anything.`,
+  6: ` Moments before going back outside,`,
+  7: ` the door shuts, and you hear a voice from the darkness:<br><br>`,
+  8: `<a href="#" onclick="updateScreen('cabin','cabinFate')">Listen to it</a><br>`,
+};
+
+var CabinLostSoulLines = {
+  0: `- What do we have here...`,
+  1: ` A lost soul. <br><br>`,
+  2: `The entity pulls off a pendulum made out of sticks and starts so swing it.`,
+  3: ` You can't look away from it,`,
+  4: ` its movement,`,
+  5: ` its form,`,
+  6: ` its swiftness,`,
+  7: ` it calms you down...<br><br>`,
+  8: ` <b>you are not in control of yourself...</b><br><br>`,
+  9: `- I will end this quickly,`,
+  10: ` I don't see any bad intentions coming from you...<br><br>`,
+  11: `Your adventure ends here.`
+} 
+
