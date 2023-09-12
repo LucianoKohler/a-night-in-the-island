@@ -14,7 +14,7 @@ var islandSword = false;
 
 var broadsword = false;
 var tunic = false;
-var goggles = true;
+var goggles = false;
 
 let del = 0; //mudar pra 25
 
@@ -1247,7 +1247,6 @@ function updateScreen(nextImg, text) {
           .typeString(wallLines[1])
           .pauseFor(500)
           .typeString(WWYS)
-
           .typeString(wallLines[3])
           .typeString(wallLines[4])
           .typeString(wallLines[5])
@@ -1573,7 +1572,35 @@ function updateScreen(nextImg, text) {
         .pauseFor(500)
         .typeString(EnterCabinLines[8])
         .start();
-      
+          break;
+        case 'cabinFate':
+          if(kingQuest == false){
+            TW.typeString(EnterCabinLines[0])
+            .pauseFor(500)
+            .typeString(EnterCabinLines[1])
+            .pauseFor(1000)
+            .typeString(EnterCabinLines[2])
+            .pauseFor(1000)
+            .typeString(EnterCabinLines[3])
+            .pauseFor(1000)
+            .typeString(EnterCabinLines[4])
+            .pauseFor(1000)
+            .typeString(EnterCabinLines[5])
+            .pauseFor(500)
+            .typeString(EnterCabinLines[6])
+            .pauseFor(500)
+            .typeString(EnterCabinLines[7])
+            .pauseFor(500)
+            .typeString(EnterCabinLines[8])
+            .pauseFor(1000)
+            .typeString(EnterCabinLines[9])
+            .pauseFor(500)
+            .typeString(EnterCabinLines[10])
+            .pauseFor(1000)
+            .typeString(EnterCabinLines[11])
+            .start();
+          }
+          break;
 default:
       console.log("não encontrado");
       break;
@@ -2397,7 +2424,7 @@ var EnterCabinLines = {
   5: ` there isn't... Anything.`,
   6: ` Moments before going back outside,`,
   7: ` the door shuts, and you hear a voice from the darkness:<br><br>`,
-  8: `<a href="#" onclick="updateScreen('cabin','cabinFate')">Listen to it</a><br>`,
+  8: `<a href="#" onclick="updateScreen('leshy','cabinFate')">Listen to it</a><br>`,
 };
 
 var CabinLostSoulLines = {

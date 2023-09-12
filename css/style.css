@@ -18,6 +18,10 @@ i{
     color: green;
 }
 
+#leshy, #leshyskull{
+    user-select: none;
+}
+
 #gamescreen{
     outline: 1px solid white;
     width: 80%;
@@ -229,4 +233,8 @@ button:active{
 #chat::-webkit-scrollbar-thumb:hover
 {
     background: #aaa; 
+}
+
+.darkness{
+    color: grey;
 }
