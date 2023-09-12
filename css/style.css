@@ -18,9 +18,9 @@ i{
     color: green;
 }
 
-#leshy, #leshyskull{
+/* #leshy, #leshySkull, #leshyBurn, #leshyFinalForm{
     user-select: none;
-}
+} */
 
 #gamescreen{
     outline: 1px solid white;
@@ -235,6 +235,45 @@ button:active{
     background: #aaa; 
 }
 
+#leshy, #leshySkull{
+    color: rgb(139, 139, 139);
+}
+
 .darkness{
-    color: grey;
+    color: rgb(95, 95, 95);
+}
+
+.darkness2{
+    color: rgb(33, 33, 33);
+}
+.darkness3{
+    color: rgb(4, 4, 4);
+}
+
+.light{
+    color: white;
+}
+
+.light-fire{
+    color: rgb(255, 231, 187);
+}
+
+.fire{
+    color: orange;
+}
+
+#leshyBurn{
+    background-color: rgb(5, 2, 0);
+    color: rgb(202, 78, 0);
+}
+
+#leshyBurn .darkness{
+    color: rgb(124, 37, 0);
+}
+#leshyBurn .darkness2{
+    color: rgb(65, 19, 0);
+}
+
+#leshyBurn .darkness3{
+    color: rgb(15, 4, 0);
 }

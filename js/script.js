@@ -14,7 +14,7 @@ var islandSword = false;
 
 var broadsword = false;
 var tunic = false;
-var goggles = false;
+var goggles = true;
 
 let del = 0; //mudar pra 25
 
@@ -23,7 +23,7 @@ var castleEntered = false;
 var palaceEntered = false;
 var shopEntered = false;
 var islandEntered = false;
-var kingQuest = false;
+var kingQuest = true;
 var angelVisited = false;
 var goblinGotMoney = false;
 var goblinVisited = false;
@@ -154,12 +154,10 @@ document.addEventListener("keydown", function (e) {
 });
 
 function updateInventory() {
-
   document.getElementById("Coins").innerHTML = "Coins: " + coins;
   document.getElementById("Coins").innerHTML = "Coins: " + coins;
 
   if (broadsword == true) {
-  
     document.getElementById("sword").style.display = "none";
     document.getElementById("swordunlocked").style.display = "block";
   }
@@ -205,7 +203,6 @@ function updateInventory() {
   }
 }
 
-
 function FuseSword() {
   let swordFused = document.getElementsByClassName("swordFused");
   let swordUnfused = document.getElementsByClassName("swordUnfused");
@@ -231,6 +228,12 @@ document.addEventListener("keydown", (e) => {
 
 var chatDiv = document.getElementById("text");
 
+function disableMovement() {
+  for (let i = 0; i < allPlaces.length; i++) {
+    allPlaces[i].classList.add("disabled");
+  }
+}
+
 function updateScreen(nextImg, text) {
   let ImgQuery;
 
@@ -245,12 +248,12 @@ function updateScreen(nextImg, text) {
     ImgQuery = "angel";
   } else if (tunic == true && nextImg == "island") {
     ImgQuery = "islandhole";
-  } else if(goggles == true && nextImg == 'well') {
-    ImgQuery = 'wellPoor'
-  } else if(goblinGotMoney == true && nextImg == 'goblin'){
-    ImgQuery = 'goblinCry'
-  } else if(sword1 ==  true && nextImg == 'king'){
-    ImgQuery = 'kingPommelless'
+  } else if (goggles == true && nextImg == "well") {
+    ImgQuery = "wellPoor";
+  } else if (goblinGotMoney == true && nextImg == "goblin") {
+    ImgQuery = "goblinCry";
+  } else if (sword1 == true && nextImg == "king") {
+    ImgQuery = "kingPommelless";
   } else if (
     (broadsword == true && text == "shopBroadswordYes") ||
     (sticker == true && text == "shopStickerYes") ||
@@ -296,8 +299,8 @@ function updateScreen(nextImg, text) {
           .typeString(wellLinesAfterGoggles[2])
           .pauseFor(500)
           .typeString(wellLinesAfterGoggles[3])
-          .start();      
-        }
+          .start();
+      }
       break;
 
     case "wellThrowCoin":
@@ -317,17 +320,17 @@ function updateScreen(nextImg, text) {
           .typeString(wellThrowCoinLines[6])
           .start();
         goggles = true;
-        coins-=1;
+        coins -= 1;
         updateInventory();
       } else {
         TW.typeString(wellThrowCoinWOCoinLines[0])
-        .pauseFor(500)
-        .typeString(wellThrowCoinWOCoinLines[1])
-        .pauseFor(500)
-        .typeString(wellThrowCoinWOCoinLines[2])
-        .pauseFor(500)
-        .typeString(wellThrowCoinWOCoinLines[3])
-        .start();
+          .pauseFor(500)
+          .typeString(wellThrowCoinWOCoinLines[1])
+          .pauseFor(500)
+          .typeString(wellThrowCoinWOCoinLines[2])
+          .pauseFor(500)
+          .typeString(wellThrowCoinWOCoinLines[3])
+          .start();
       }
       break;
 
@@ -854,17 +857,17 @@ function updateScreen(nextImg, text) {
       }
       break;
 
-    case 'kingPommelPart2':
+    case "kingPommelPart2":
       TW.typeString(kingPommelPart2Lines[0])
-      .pauseFor(500)
-      .typeString(kingPommelPart2Lines[1])
-      .pauseFor(500)
-      .typeString(kingPommelPart2Lines[2])
-      .pauseFor(500)
-      .typeString(kingPommelPart2Lines[3])
-      .pauseFor(500)
-      .typeString(kingPommelPart2Lines[4])
-      .start();
+        .pauseFor(500)
+        .typeString(kingPommelPart2Lines[1])
+        .pauseFor(500)
+        .typeString(kingPommelPart2Lines[2])
+        .pauseFor(500)
+        .typeString(kingPommelPart2Lines[3])
+        .pauseFor(500)
+        .typeString(kingPommelPart2Lines[4])
+        .start();
       sword1 = true;
       updateInventory();
       break;
@@ -1315,19 +1318,18 @@ function updateScreen(nextImg, text) {
       break;
 
     case "cave":
-    TW.typeString(caveLines[0])
-    .pauseFor(500)
-    .typeString(caveLines[1])
-    .pauseFor(500)
-    .typeString(caveLines[2])
-    .start();
-    break;
+      TW.typeString(caveLines[0])
+        .pauseFor(500)
+        .typeString(caveLines[1])
+        .pauseFor(500)
+        .typeString(caveLines[2])
+        .start();
+      break;
 
     case "goblin":
-      if(goblinGotMoney == false){
-
-       if(goblinVisited == false){
-            TW.typeString(goblinFirstLines[0])
+      if (goblinGotMoney == false) {
+        if (goblinVisited == false) {
+          TW.typeString(goblinFirstLines[0])
             .pauseFor(500)
             .typeString(goblinFirstLines[1])
             .pauseFor(500)
@@ -1342,126 +1344,125 @@ function updateScreen(nextImg, text) {
             .typeString(goblinFirstLines[6])
             .typeString(goblinFirstLines[7])
             .start();
-            goblinVisited = true;
-        }else{
+          goblinVisited = true;
+        } else {
           TW.typeString(goblinLines[0])
-          .pauseFor(500)
-          .typeString(goblinLines[1])
-          .pauseFor(500)
-          .typeString(WWYS)
-          .typeString(goblinLines[2])
-          .typeString(goblinLines[3])
-          .typeString(goblinLines[4])
-          .start();
+            .pauseFor(500)
+            .typeString(goblinLines[1])
+            .pauseFor(500)
+            .typeString(WWYS)
+            .typeString(goblinLines[2])
+            .typeString(goblinLines[3])
+            .typeString(goblinLines[4])
+            .start();
         }
-      }else{
+      } else {
         TW.typeString(goblinAfterGotMoneyLines[0])
-        .pauseFor(500)
-        .typeString(goblinAfterGotMoneyLines[1])
-        .pauseFor(500)
-        .typeString(goblinAfterGotMoneyLines[2])
-        .pauseFor(1000)
-        .typeString(goblinAfterGotMoneyLines[3])
-        .pauseFor(500)
-        .typeString(goblinAfterGotMoneyLines[4])
-        .start();
-
+          .pauseFor(500)
+          .typeString(goblinAfterGotMoneyLines[1])
+          .pauseFor(500)
+          .typeString(goblinAfterGotMoneyLines[2])
+          .pauseFor(1000)
+          .typeString(goblinAfterGotMoneyLines[3])
+          .pauseFor(500)
+          .typeString(goblinAfterGotMoneyLines[4])
+          .start();
       }
 
-        break;
+      break;
 
-        case "goblinWhoAreYou":
-          TW.typeString(goblinWhoAreYouLines[0])
-          .pauseFor(750)
-          .typeString(goblinWhoAreYouLines[1])
-          .pauseFor(750)
-          .typeString(goblinWhoAreYouLines[2])
-          .pauseFor(750)
-          .typeString(goblinWhoAreYouLines[3])
-          .pauseFor(750)
-          .typeString(goblinWhoAreYouLines[4])
-          .typeString(goblinWhoAreYouLines[5])
-          .pauseFor(500)
-          .typeString(goblinWhoAreYouLines[6])
-          .pauseFor(500)
-          .typeString(WWYS)
-          .typeString(goblinWhoAreYouLines[7])
-          .typeString(goblinWhoAreYouLines[8])
-          .start();
-          break;
+    case "goblinWhoAreYou":
+      TW.typeString(goblinWhoAreYouLines[0])
+        .pauseFor(750)
+        .typeString(goblinWhoAreYouLines[1])
+        .pauseFor(750)
+        .typeString(goblinWhoAreYouLines[2])
+        .pauseFor(750)
+        .typeString(goblinWhoAreYouLines[3])
+        .pauseFor(750)
+        .typeString(goblinWhoAreYouLines[4])
+        .typeString(goblinWhoAreYouLines[5])
+        .pauseFor(500)
+        .typeString(goblinWhoAreYouLines[6])
+        .pauseFor(500)
+        .typeString(WWYS)
+        .typeString(goblinWhoAreYouLines[7])
+        .typeString(goblinWhoAreYouLines[8])
+        .start();
+      break;
 
-        case "goblinWhatGold":
-          TW.typeString(goblinWhatGoldLines[0])
-          .pauseFor(500)
-          .typeString(goblinWhatGoldLines[1])
-          .pauseFor(500)
-          .typeString(goblinWhatGoldLines[2])
-          .pauseFor(500)
-          .typeString(goblinWhatGoldLines[3])
-          .pauseFor(500)
-          .typeString(goblinWhatGoldLines[4])
-          .pauseFor(500)
-          .typeString(goblinWhatGoldLines[5])
-          .start();
-          break;
+    case "goblinWhatGold":
+      TW.typeString(goblinWhatGoldLines[0])
+        .pauseFor(500)
+        .typeString(goblinWhatGoldLines[1])
+        .pauseFor(500)
+        .typeString(goblinWhatGoldLines[2])
+        .pauseFor(500)
+        .typeString(goblinWhatGoldLines[3])
+        .pauseFor(500)
+        .typeString(goblinWhatGoldLines[4])
+        .pauseFor(500)
+        .typeString(goblinWhatGoldLines[5])
+        .start();
+      break;
 
-        case "goblinNotMuch":
-          TW.typeString(goblinNotMuchLines[0])
-          .pauseFor(500)
-          .typeString(goblinNotMuchLines[1])
-          .pauseFor(500)
-          .typeString(goblinNotMuchLines[2])
-          .pauseFor(500)
-          .typeString(goblinNotMuchLines[3])
-          .pauseFor(500)
-          .typeString(WWYS)
-          .typeString(goblinNotMuchLines[4])
-          .typeString(goblinNotMuchLines[5])
-          .start();
-          break;
+    case "goblinNotMuch":
+      TW.typeString(goblinNotMuchLines[0])
+        .pauseFor(500)
+        .typeString(goblinNotMuchLines[1])
+        .pauseFor(500)
+        .typeString(goblinNotMuchLines[2])
+        .pauseFor(500)
+        .typeString(goblinNotMuchLines[3])
+        .pauseFor(500)
+        .typeString(WWYS)
+        .typeString(goblinNotMuchLines[4])
+        .typeString(goblinNotMuchLines[5])
+        .start();
+      break;
 
-        case "goblinTruth":
-          TW.typeString(goblinTruthLines[0])
-          .pauseFor(500)
-          .typeString(goblinTruthLines[1])
-          .pauseFor(500)
-          .typeString(goblinTruthLines[2])
-          .pauseFor(500)
-          .typeString(goblinTruthLines[3])
-          .pauseFor(500)
-          .typeString(goblinTruthLines[4])
-          .pauseFor(500)
-          .typeString(goblinTruthLines[5])
-          .pauseFor(500)
-          .typeString(goblinTruthLines[6])
-          .pauseFor(500)
-          .typeString(goblinTruthLines[7])
-          .pauseFor(500)
-          .typeString(goblinTruthLines[8])
-          .pauseFor(500)
-          .typeString(goblinTruthLines[9])
-          .start();
-          break;
+    case "goblinTruth":
+      TW.typeString(goblinTruthLines[0])
+        .pauseFor(500)
+        .typeString(goblinTruthLines[1])
+        .pauseFor(500)
+        .typeString(goblinTruthLines[2])
+        .pauseFor(500)
+        .typeString(goblinTruthLines[3])
+        .pauseFor(500)
+        .typeString(goblinTruthLines[4])
+        .pauseFor(500)
+        .typeString(goblinTruthLines[5])
+        .pauseFor(500)
+        .typeString(goblinTruthLines[6])
+        .pauseFor(500)
+        .typeString(goblinTruthLines[7])
+        .pauseFor(500)
+        .typeString(goblinTruthLines[8])
+        .pauseFor(500)
+        .typeString(goblinTruthLines[9])
+        .start();
+      break;
 
-        case "goblinBluff":
-          TW.typeString(goblinBluffLines[0])
-          .pauseFor(500)
-          .typeString(goblinBluffLines[1])
-          .pauseFor(500)
-          .typeString(goblinBluffLines[2])
-          .pauseFor(500)
-          .typeString(goblinBluffLines[3])
-          .pauseFor(500)
-          .typeString(goblinBluffLines[4])
-          .pauseFor(500)
-          .typeString(goblinBluffLines[5])
-          .pauseFor(500)
-          .typeString(goblinBluffLines[6])
-          .start();
-          break;
+    case "goblinBluff":
+      TW.typeString(goblinBluffLines[0])
+        .pauseFor(500)
+        .typeString(goblinBluffLines[1])
+        .pauseFor(500)
+        .typeString(goblinBluffLines[2])
+        .pauseFor(500)
+        .typeString(goblinBluffLines[3])
+        .pauseFor(500)
+        .typeString(goblinBluffLines[4])
+        .pauseFor(500)
+        .typeString(goblinBluffLines[5])
+        .pauseFor(500)
+        .typeString(goblinBluffLines[6])
+        .start();
+      break;
 
-        case "goblinComeOn":
-        TW.typeString(goblinComeOnLines[0])
+    case "goblinComeOn":
+      TW.typeString(goblinComeOnLines[0])
         .pauseFor(500)
         .typeString(goblinComeOnLines[1])
         .pauseFor(500)
@@ -1483,125 +1484,230 @@ function updateScreen(nextImg, text) {
         .pauseFor(500)
         .typeString(goblinComeOnLines[10])
         .start();
-        break;
+      break;
 
-        case "goblinMoney":
-          TW.typeString(goblinMoneyLines[0])
-          .pauseFor(500)
-          .typeString(goblinMoneyLines[1])
-          .pauseFor(500)
-          .typeString(goblinMoneyLines[2])
-          .pauseFor(500)
-          .typeString(goblinMoneyLines[3])
-          .pauseFor(1000)
-          .typeString(goblinMoneyLines[4])
-          .pauseFor(1500)
-          .typeString(goblinMoneyLines[5])
-          .pauseFor(500)
-          .typeString(goblinMoneyLines[6])
-          .start();
-
-          goblinGotMoney = true;
-          coins += 31;
-          updateInventory();
-          break;
-
-        case 'goblinBye':
-            TW.typeString(goblinByeLines[0])
-            .pauseFor(500)
-            .typeString(goblinByeLines[1])
-            .pauseFor(500)
-            .typeString(goblinByeLines[2])
-            .start()
-            break;
-
-      case "cabin":
-        TW.typeString(cabinLines[0])
-          .pauseFor(1000)
-          .typeString(cabinLines[1])
-          .pauseFor(500)
-          .typeString(WWYD)
-          .typeString(cabinLines[2])
-          .typeString(cabinLines[3])
-          .start();
-        break;
-
-        case "cabinTree":
-          if(goggles){
-            TW.typeString(cabinLinesWGoggles[0])
-            .pauseFor(500)
-            .typeString(cabinLinesWGoggles[1])
-            .pauseFor(500)
-            .typeString(cabinLinesWGoggles[2])
-            .pauseFor(500)
-            .typeString(cabinLinesWGoggles[3])
-            .pauseFor(1000)
-            .typeString(cabinLinesWGoggles[4])
-            .pauseFor(1000)
-            .typeString(cabinLinesWGoggles[5])
-            .start();
-          }else{
-            TW.typeString(cabinLinesWOGoggles[0])
-            .pauseFor(500)
-            .typeString(cabinLinesWOGoggles[1])
-            .pauseFor(500)
-            .typeString(cabinLinesWOGoggles[2])
-            .pauseFor(1000)
-            .typeString(cabinLinesWOGoggles[3])
-            .pauseFor(1000)
-            .typeString(cabinLinesWOGoggles[4])
-            .start();
-          }
-        break;
-      case 'cabinEnter':
-        TW.typeString(EnterCabinLines[0])
+    case "goblinMoney":
+      TW.typeString(goblinMoneyLines[0])
         .pauseFor(500)
-        .typeString(EnterCabinLines[1])
-        .pauseFor(1000)
-        .typeString(EnterCabinLines[2])
-        .pauseFor(1000)
-        .typeString(EnterCabinLines[3])
-        .pauseFor(1000)
-        .typeString(EnterCabinLines[4])
-        .pauseFor(1000)
-        .typeString(EnterCabinLines[5])
+        .typeString(goblinMoneyLines[1])
         .pauseFor(500)
-        .typeString(EnterCabinLines[6])
+        .typeString(goblinMoneyLines[2])
         .pauseFor(500)
-        .typeString(EnterCabinLines[7])
+        .typeString(goblinMoneyLines[3])
+        .pauseFor(1000)
+        .typeString(goblinMoneyLines[4])
+        .pauseFor(1500)
+        .typeString(goblinMoneyLines[5])
         .pauseFor(500)
-        .typeString(EnterCabinLines[8])
+        .typeString(goblinMoneyLines[6])
         .start();
-          break;
-        case 'cabinFate':
-          if(kingQuest == false){
-            TW.typeString(EnterCabinLines[0])
+
+      goblinGotMoney = true;
+      coins += 31;
+      updateInventory();
+      break;
+
+    case "goblinBye":
+      TW.typeString(goblinByeLines[0])
+        .pauseFor(500)
+        .typeString(goblinByeLines[1])
+        .pauseFor(500)
+        .typeString(goblinByeLines[2])
+        .start();
+      break;
+
+    case "cabin":
+      TW.typeString(cabinLines[0])
+        .pauseFor(1000)
+        .typeString(cabinLines[1])
+        .pauseFor(500)
+        .typeString(WWYD)
+        .typeString(cabinLines[2])
+        .typeString(cabinLines[3])
+        .start();
+      break;
+
+    case "cabinTree":
+      if (goggles) {
+        TW.typeString(cabinLinesWGoggles[0])
+          .pauseFor(500)
+          .typeString(cabinLinesWGoggles[1])
+          .pauseFor(500)
+          .typeString(cabinLinesWGoggles[2])
+          .pauseFor(500)
+          .typeString(cabinLinesWGoggles[3])
+          .pauseFor(1000)
+          .typeString(cabinLinesWGoggles[4])
+          .pauseFor(1000)
+          .typeString(cabinLinesWGoggles[5])
+          .start();
+      } else {
+        TW.typeString(cabinLinesWOGoggles[0])
+          .pauseFor(500)
+          .typeString(cabinLinesWOGoggles[1])
+          .pauseFor(500)
+          .typeString(cabinLinesWOGoggles[2])
+          .pauseFor(1000)
+          .typeString(cabinLinesWOGoggles[3])
+          .pauseFor(1000)
+          .typeString(cabinLinesWOGoggles[4])
+          .start();
+      }
+      break;
+    case "cabinEnter":
+      disableMovement();
+      TW.typeString(CabinEnterLines[0])
+        .pauseFor(500)
+        .typeString(CabinEnterLines[1])
+        .pauseFor(1000)
+        .typeString(CabinEnterLines[2])
+        .pauseFor(1000)
+        .typeString(CabinEnterLines[3])
+        .pauseFor(1000)
+        .typeString(CabinEnterLines[4])
+        .pauseFor(1000)
+        .typeString(CabinEnterLines[5])
+        .pauseFor(500)
+        .typeString(CabinEnterLines[6])
+        .pauseFor(500)
+        .typeString(CabinEnterLines[7])
+        .pauseFor(500)
+        .typeString(CabinEnterLines[8])
+        .start();
+      break;
+    case "cabinFate":
+      if (kingQuest == false) {
+        TW.typeString(leshyLostSoulLines[0])
+          .pauseFor(500)
+          .typeString(leshyLostSoulLines[1])
+          .pauseFor(1500)
+          .typeString(leshyLostSoulLines[2])
+          .pauseFor(1000)
+          .typeString(leshyLostSoulLines[3])
+          .pauseFor(1000)
+          .typeString(leshyLostSoulLines[4])
+          .pauseFor(1000)
+          .typeString(leshyLostSoulLines[5])
+          .pauseFor(500)
+          .typeString(leshyLostSoulLines[6])
+          .pauseFor(500)
+          .typeString(leshyLostSoulLines[7])
+          .pauseFor(500)
+          .typeString(leshyLostSoulLines[8])
+          .pauseFor(1000)
+          .typeString(leshyLostSoulLines[9])
+          .pauseFor(500)
+          .typeString(leshyLostSoulLines[10])
+          .pauseFor(1000)
+          .typeString(YAEH)
+          .start();
+      } else {
+        if (goggles == false) {
+          TW.typeString(leshyWOGogglesLines[0])
             .pauseFor(500)
-            .typeString(EnterCabinLines[1])
+            .typeString(leshyWOGogglesLines[1])
+            .pauseFor(1500)
+            .typeString(leshyWOGogglesLines[2])
             .pauseFor(1000)
-            .typeString(EnterCabinLines[2])
+            .typeString(leshyWOGogglesLines[3])
             .pauseFor(1000)
-            .typeString(EnterCabinLines[3])
+            .typeString(leshyWOGogglesLines[4])
             .pauseFor(1000)
-            .typeString(EnterCabinLines[4])
-            .pauseFor(1000)
-            .typeString(EnterCabinLines[5])
+            .typeString(leshyWOGogglesLines[5])
             .pauseFor(500)
-            .typeString(EnterCabinLines[6])
+            .typeString(leshyWOGogglesLines[6])
             .pauseFor(500)
-            .typeString(EnterCabinLines[7])
+            .typeString(leshyWOGogglesLines[7])
             .pauseFor(500)
-            .typeString(EnterCabinLines[8])
+            .typeString(leshyWOGogglesLines[8])
             .pauseFor(1000)
-            .typeString(EnterCabinLines[9])
-            .pauseFor(500)
-            .typeString(EnterCabinLines[10])
+            .typeString(leshyWOGogglesLines[9])
             .pauseFor(1000)
-            .typeString(EnterCabinLines[11])
+            .typeString(leshyWOGogglesLines[10])
+            .pauseFor(1000)
+            .typeString(leshyWOGogglesLines[11])
+            .pauseFor(1000)
+            .typeString(leshyWOGogglesLines[12])
+            .pauseFor(1000)
+            .typeString(YAEH)
             .start();
-          }
+        } else {
+          TW.typeString(leshyWGogglesLines[0])
+            .pauseFor(500)
+            .typeString(leshyWGogglesLines[1])
+            .pauseFor(1500)
+            .typeString(leshyWGogglesLines[2])
+            .pauseFor(1000)
+            .typeString(leshyWGogglesLines[3])
+            .pauseFor(1000)
+            .typeString(leshyWGogglesLines[4])
+            .pauseFor(1000)
+            .typeString(leshyWGogglesLines[5])
+            .pauseFor(500)
+            .typeString(leshyWGogglesLines[6])
+            .pauseFor(500)
+            .typeString(leshyWGogglesLines[7])
+            .pauseFor(500)
+            .typeString(leshyWGogglesLines[8])
+            .pauseFor(1000)
+            .typeString(leshyWGogglesLines[9])
+            .pauseFor(3000)
+            .typeString(leshyWGogglesLines[10])
+            .pauseFor(1000)
+            .typeString(leshyWGogglesLines[11])
+            .pauseFor(1000)
+            .typeString(leshyWGogglesLines[12])
+            .pauseFor(1000)
+            .typeString(leshyWGogglesLines[13])
+            .pauseFor(1000)
+            .typeString(leshyWGogglesLines[14])
+            .pauseFor(1000)
+            .typeString(leshyWGogglesLines[15])
+            .start();
+        }
+      }
+      break;
+      
+      case "leshyPassTest1":
+        TW.typeString(leshySkullLines[0])
+        .pauseFor(500)
+        .typeString(leshySkullLines[1])
+        .pauseFor(1000)
+        .typeString(leshySkullLines[2])
+        .pauseFor(1000)
+        .typeString(leshySkullLines[3])
+        .pauseFor(500)
+        .typeString(leshySkullLines[4])
+        .start();
+        break;
+        
+        case 'leshyBurn':
+          if(tunic == false){
+          TW.typeString(leshyWODarkTunicLines[0])
+          .pauseFor(1000)
+          .typeString(leshyWODarkTunicLines[1])
+          .pauseFor(500)
+          .typeString(leshyWODarkTunicLines[2])
+          .pauseFor(1000)
+          .typeString(leshyWODarkTunicLines[3])
+          .pauseFor(500)
+          .typeString(leshyWODarkTunicLines[4])
+          .pauseFor(1000)
+          .typeString(leshyWODarkTunicLines[5])
+          .pauseFor(1000)
+          .typeString(leshyWODarkTunicLines[6])
+          .pauseFor(500)
+          .typeString(leshyWODarkTunicLines[7])
+          .pauseFor(1000)
+          .typeString(leshyWODarkTunicLines[8])
+          .pauseFor(1000)
+          .typeString(YAEH)
+          .start();
+        }else{
+
+        }
           break;
-default:
+    default:
       console.log("não encontrado");
       break;
   }
@@ -1614,6 +1720,7 @@ UpdateColors();
 //criei essas variáveis abaixo pois é muito repetida pelo percurso do jogo
 var WWYD = "What will you do? <br><br>";
 var WWYS = "What will you say? <br><br>";
+var YAEH = "Your adventure ends here"
 
 var chooseLines = {
   0: `You can use the map anytime you want to leave the place`,
@@ -1761,7 +1868,7 @@ var wellLinesAfterGoggles = {
   1: ` the sign is still talking about you being poor.<br><br>`,
   2: ` "It's just a silly well, ignore it"<br><br>`,
   3: ` You say to yourself, backing off.`,
-}
+};
 
 var wellThrowCoinLines = {
   0: `You get one coin from the rest of your money, you then reach near the well and throw it to the endless hole.<br><br>`,
@@ -1777,11 +1884,8 @@ var wellThrowCoinWOCoinLines = {
   0: `You search around your pockets,`,
   1: ` but you realize that you don't have any money with you right now,`,
   2: ` what a shame...<br><br>`,
-  3: `<a href="#" onclick="updateScreen('well', 'well')">Go back</a>`
-
-}
-
-
+  3: `<a href="#" onclick="updateScreen('well', 'well')">Go back</a>`,
+};
 
 var wellLookInsideLines = {
   0: `You lean into the well, checking if there was something,`,
@@ -1939,26 +2043,26 @@ var wallAlreadyUsedPassLines = {
 };
 
 var caveLines = {
-    0: `A big cave stands in front of you,`,
-    1: ` you can hear small growls coming from it.<br><br>`,
-    2: `<a href="#" onclick="updateScreen('goblin','goblin')">Enter it.</a>`,
+  0: `A big cave stands in front of you,`,
+  1: ` you can hear small growls coming from it.<br><br>`,
+  2: `<a href="#" onclick="updateScreen('goblin','goblin')">Enter it.</a>`,
 };
 
 var goblinFirstLines = {
-    0:`The cave smells like mold and has the sound of dripping water from the dripstones along with the growls,`,
-    1:` walking further shows you the so called demigod that the doorman spoke about:`,
-    2:` A small goblin near a "treasure",`,
-    3:` which is actually just a small pile of coins on the ground.<br><br>`,
-    4:`- Who dares to enter my domain?<br><br>`,
-    //WWYS
-    5: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Who are you?</a><br>`,
-    6: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">What's that gold?</a><br>`,
-    7: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
+  0: `The cave smells like mold and has the sound of dripping water from the dripstones along with the growls,`,
+  1: ` walking further shows you the so called demigod that the doorman spoke about:`,
+  2: ` A small goblin near a "treasure",`,
+  3: ` which is actually just a small pile of coins on the ground.<br><br>`,
+  4: `- Who dares to enter my domain?<br><br>`,
+  //WWYS
+  5: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Who are you?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">What's that gold?</a><br>`,
+  7: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
 };
 
 var goblinLines = {
-  0:`You get back to the inside of the cave,`,
-  1:` the goblin is still there.<br><br>`,
+  0: `You get back to the inside of the cave,`,
+  1: ` the goblin is still there.<br><br>`,
   //WWYS
   2: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Who are you?</a><br>`,
   3: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">What's that gold?</a><br>`,
@@ -1971,19 +2075,19 @@ var goblinAfterGotMoneyLines = {
   2: ` you're not good with cheering someone up,`,
   3: ` plus you stole its money,`,
   4: ` maaaaybe it's better to forget him by now.`,
-}
+};
 
 var goblinWhoAreYouLines = {
-    0: `- I'm Barretos, the demigod,`,
-    1: ` the keeper of the island's biggest treasure,`,
-    2: ` the inhabitant of the oldest cave on the island,`,
-    3: ` the most green being here,`,
-    4: ` the mightiest warrior of...<br><br>`,
-    5: `You yell at him that you already got it.<br><br>`,
-    6: `- Of course you got...<br><br>`,
-    //WWYS
-    7: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">What's that gold?</a><br>`,
-    8: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
+  0: `- I'm Barretos, the demigod,`,
+  1: ` the keeper of the island's biggest treasure,`,
+  2: ` the inhabitant of the oldest cave on the island,`,
+  3: ` the most green being here,`,
+  4: ` the mightiest warrior of...<br><br>`,
+  5: `You yell at him that you already got it.<br><br>`,
+  6: `- Of course you got...<br><br>`,
+  //WWYS
+  7: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">What's that gold?</a><br>`,
+  8: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
 };
 
 var goblinWhatGoldLines = {
@@ -1992,7 +2096,7 @@ var goblinWhatGoldLines = {
   2: ` envy me, I'm the richest man in the island!`,
   3: ` If you cry enough, I may give you a penny...`,
   4: ` HAHA!<br><br>`,
-  5: `<a href="#" onclick="updateScreen('goblin','goblinNotMuch')">That's not much to be honest...</a>`
+  5: `<a href="#" onclick="updateScreen('goblin','goblinNotMuch')">That's not much to be honest...</a>`,
 };
 
 var goblinNotMuchLines = {
@@ -2009,7 +2113,7 @@ var goblinBluffLines = {
   0: `- No,`,
   1: ` that's impossible,`,
   2: ` there can only be one richest man in the island,`,
-  3: ` THAT'S IT.`, 
+  3: ` THAT'S IT.`,
   4: ` LET'S FIGHT, THE WINNER KEEPS ALL THE MONEY!<br><br>`,
   5: `The goblin's moss green skin color starts to turn into a boiling red color.<br><br>`,
   6: `<a href="#" onclick="updateScreen('goblin','goblinComeOn')">Come on!</a>`,
@@ -2022,8 +2126,8 @@ var goblinTruthLines = {
   3: ` YOU'LL HAVE TO TURN INTO MY MINION, FOREVER!`,
   4: ` GIVE UP, I AM UNBEATABLE!<br><br>`,
   5: `You defy the goblin, saying that if you defeat him, you can get to keep the treasure for yourself.<br><br>`,
-  6: `- I DON'T CARE,`, 
-  7:` PREPARE TO FEEL THE WRATH OF BARRETOS!!!<br><br>`,
+  6: `- I DON'T CARE,`,
+  7: ` PREPARE TO FEEL THE WRATH OF BARRETOS!!!<br><br>`,
   8: `The goblin's moss green skin color starts to turn into a boiling red color.<br><br>`,
   9: `<a href="#" onclick="updateScreen('goblin','goblinComeOn')">Come on!</a>`,
 };
@@ -2039,7 +2143,7 @@ var goblinComeOnLines = {
   7: ` Why did you do that?`,
   8: ` That's foul play!`,
   9: ` Go away!<br><br>`,
-  10: `<a href="#" onclick="updateScreen('goblinCry','goblinMoney')">Take the money</a>`
+  10: `<a href="#" onclick="updateScreen('goblinCry','goblinMoney')">Take the money</a>`,
 };
 
 var goblinMoneyLines = {
@@ -2053,9 +2157,9 @@ var goblinMoneyLines = {
 };
 
 var goblinByeLines = {
-    0: `- Bye, sucker,`,
-    1: ` bring me something to eat next time!<br><br>`,
-    2: `Who this guy think it is?`,
+  0: `- Bye, sucker,`,
+  1: ` bring me something to eat next time!<br><br>`,
+  2: `Who this guy think it is?`,
 };
 
 var castleLines = {
@@ -2153,7 +2257,7 @@ var kingGivePommelLines = {
   3: `- Speak no more.<br><br>`,
   4: `The king removes an ornament from his throne, and gives it to you:<br><br>`,
   5: `<b>You got the King's Pommel!</b><br><br>`,
-  6: `<a href="#" onclick="updateScreen('kingPommelless','kingPommelPart2')">Finally!</a>`
+  6: `<a href="#" onclick="updateScreen('kingPommelless','kingPommelPart2')">Finally!</a>`,
 };
 
 var kingPommelPart2Lines = {
@@ -2162,8 +2266,7 @@ var kingPommelPart2Lines = {
   2: ` I guarded it within my throne, but now`,
   3: ` it has a better use, the angel knows what to do now.<br><br>`,
   4: `You should go to the angel and finish this sword hunting.`,
-
-}
+};
 
 var shopFirstLines = {
   0: `You enter the building and are greeted with a friendly shopkeeper: <br><br>`,
@@ -2394,7 +2497,7 @@ var cabinLines = {
   0: `You spot a small and miserable cabin at the edge of the island, the cabin has a skull hanged by the top of its only entrance.<br><br>`,
   1: `By the side, you notice a dead tree with a small script carved on its trunk <br><br>`,
   //WWYD
-  2: `<a href="#" onclick="updateScreen('cabin','cabinEnter')">Enter the cabin</a><br>`,
+  2: `<a href="#" onclick="updateScreen('empty','cabinEnter')">Enter the cabin</a><br>`,
   3: `<a href="#" onclick="updateScreen('cabin','cabinTree')">Investigate the tree</a>`,
 };
 
@@ -2404,7 +2507,7 @@ var cabinLinesWOGoggles = {
   2: ` it's a text written:<br><br>`,
   3: `<b>You can't slay him.</b><br><br>`,
   4: `<a href="#" onclick="updateScreen('cabin','cabin')">Go back</a>`,
-}
+};
 
 var cabinLinesWGoggles = {
   0: `Upon coming closer to the tree,`,
@@ -2413,9 +2516,9 @@ var cabinLinesWGoggles = {
   3: ` it's a text:<br><br>`,
   4: `<b>You can slay him.</b><br><br>`,
   5: `<a href="#" onclick="updateScreen('cabin','cabin')">Go back</a>`,
-}
+};
 
-var EnterCabinLines = {
+var CabinEnterLines = {
   0: `You decided to enter the cabin,`,
   1: ` what really resides inside of it is still unknown.<br><br>`,
   2: `Inside of it, everything is pitch black,`,
@@ -2424,21 +2527,89 @@ var EnterCabinLines = {
   5: ` there isn't... Anything.`,
   6: ` Moments before going back outside,`,
   7: ` the door shuts, and you hear a voice from the darkness:<br><br>`,
-  8: `<a href="#" onclick="updateScreen('leshy','cabinFate')">Listen to it</a><br>`,
+  8: `<a href="#" onclick="updateScreen('leshy','cabinFate')">Listen to it</a>`,
 };
 
-var CabinLostSoulLines = {
+var leshyLostSoulLines = {
   0: `- What do we have here...`,
-  1: ` A lost soul. <br><br>`,
-  2: `The entity pulls off a pendulum made out of sticks and starts so swing it.`,
+  1: ` <b>A lost soul.</b><br><br>`,
+  2: `The entity pulls off a pendulum made out of sticks and starts to swing it.`,
   3: ` You can't look away from it,`,
   4: ` its movement,`,
   5: ` its form,`,
   6: ` its swiftness,`,
   7: ` it calms you down...<br><br>`,
-  8: ` <b>you are not in control of yourself...</b><br><br>`,
+  8: ` <b>You are not in control of yourself...</b><br><br>`,
   9: `- I will end this quickly,`,
   10: ` I don't see any bad intentions coming from you...<br><br>`,
-  11: `Your adventure ends here.`
-} 
+  //YAEH
+};
 
+var leshyWOGogglesLines = {
+  0: `- What do we have here...`,
+  1: ` <b>A brave warrior?</b><br><br>`,
+  2: `The entity pulls off a pendulum made out of sticks and starts to swing it.`,
+  3: ` You can't look away from it,`,
+  4: ` its movement,`,
+  5: ` its form,`,
+  6: ` its swiftness,`,
+  7: ` it calms you down...<br><br>`,
+  8: ` <b>You are not in control of yourself...</b><br><br>`,
+  9: `- You thought that only your will was enough to end me?<br><br>`,
+  10: `Leshy throws a dagger to your feet,`,
+  11: ` you are forced take it, `,
+  12: ` you start to point the dagger to your heart.<br><br>`,
+  //YAEH
+};
+
+var leshyWGogglesLines = {
+  0: `- What do we have here...`,
+  1: ` <b>A brave warrior?</b><br><br>`,
+  2: `The entity pulls off a pendulum made out of sticks and starts to swing it.`,
+  3: ` You can't look away from it,`,
+  4: ` its movement,`,
+  5: ` its form,`,
+  6: ` its swiftness,`,
+  7: ` it calms you down...<br><br>`,
+  8: ` <b>You are not in control of yourself...</b><br><br>`,
+  9: `- You thought that only your will was enough to end me?<br><br>`,
+  10: `Your legs crumble,`,
+  11: ` and you fall,`,
+  12: ` straight into the ground,`,
+  13: ` the goggles made you dizzy again,`,
+  14: ` and the impact made you snap out of the control!<br><br>`,
+  15: `<a href="#" onclick="updateScreen('leshySkull','leshyPassTest1')">Pull yourself together</a>`,
+};
+
+var leshySkullLines = {
+  0: `- I see, that you have something special,`,
+  1: ` sadly, I have more than one trick.<br><br>`,
+  2: `A skull with a candle across it appears, held by a gruesome hand.<br><br>`,
+  3: `- Burn.<br><br>`,
+  4: `<a href="#" onclick="updateScreen('leshyBurn','leshyBurn')">Continue</a>`,
+};
+
+var leshyWODarkTunicLines = {
+  0: `He throws the skull at your feet,`,
+  1: ` the sticky floor begins to burn,`,
+  2: ` quickly spreading into your upper body.<br><br>`,
+  3: `The heat is to much,`,
+  4: ` you run to the door hoping that you can flee,`,
+  5: ` but it won't budge,`,
+  6: ` you just accept that you'll burn with this cabin,`,
+  7: ` and luckily,`,
+  8: ` with Leshy as well.<br><br>`,
+};     
+
+
+var leshyWDarkTunicLines = {
+  0: `He throws the skull at your feet,`,
+  1: ` the sticky floor begins to burn,`,
+  2: ` quickly spreading into your upper body.<br><br>`,
+  3: `The heat is to much,`,
+  4: ` but the dark tunic absorbs the fire,`,
+  5: ` rapidly disappearing after Leshy's killing attempt.<br><br>`,
+  6: ` `,//FAZER!!!
+  7: ` `,
+  8: ` `,
+};
