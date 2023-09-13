@@ -8,7 +8,7 @@ html, body{height: 100%; margin: 0px; padding: 0px;}
 
 *{
     font-family: monospace;
-    color: var(--main) !important;
+    color: var(--main);
 }
 
 
@@ -34,9 +34,9 @@ i{
     font-style: normal !important;
 }
 
-/* #leshy, #leshySkull, #leshyBurn, #leshyFinalForm{
+#leshy, #leshySkull, #leshyBurn{
     user-select: none;
-} */
+}
 
 #gamescreen{
     outline: 1px solid var(--main);
@@ -89,7 +89,7 @@ i{
 .sword1Sprite,
 .sword2Sprite,
 .sword3Sprite{
-    color: var(--bg) !important;
+    color: var(--bg) ;
 }
 
 #others{
