@@ -1850,9 +1850,37 @@ function updateScreen(nextImg, text) {
           .typeString(YAEH)
           .start();
         }else{
-          console.log('testeeAAAAAAAA')
+          TW.typeString(leshyFinalVictoryLines[0])
+          .pauseFor(1000)
+          .typeString(leshyFinalVictoryLines[1])
+          .pauseFor(500)
+          .typeString(leshyFinalVictoryLines[2])
+          .pauseFor(1000)
+          .typeString(leshyFinalVictoryLines[3])
+          .pauseFor(1000)
+          .typeString(leshyFinalVictoryLines[4])
+          .pauseFor(1000)
+          .typeString(leshyFinalVictoryLines[5])
+          .pauseFor(1000)
+          .typeString(leshyFinalVictoryLines[6])
+          .pauseFor(1500)
+          .typeString(leshyFinalVictoryLines[7])
+          .pauseFor(1500)
+          .typeString(leshyFinalVictoryLines[8])
+          .pauseFor(500)
+          .typeString(leshyFinalVictoryLines[9])
+          .pauseFor(1000)
+          .typeString(leshyFinalVictoryLines[10])
+          .pauseFor(1000)
+          .typeString(leshyFinalVictoryLines[11])
+          .pauseFor(1000)
+          .typeString(leshyFinalVictoryLines[12])
+          .start()
         }
         break;
+
+      case "leshyAftermath":
+        
     default:
       console.log("não encontrado");
       break;
@@ -2827,30 +2855,35 @@ var leshyFinalDefeatLines = {
 
 var leshyFinalVictoryLines = {
   0: `You hold your magical blade uptight,`,
-  0: ` the weapon is much more lighter than it looks,`,
-  0: ` making slicing much more effective.<br><br>`,
-  6: `You rush to the eye,`,
-  7: ` it doesn't do anything other than staring at you,`,
-  8: ` each step makes your strength grow bigger,`,
-  9: ` as if all of the island's vitality was within you.<br><br>`,
-  10: `<b>You slash the eye's pupil.</b><br><br>`,
-  0: `The person inside the pupil begins to glow,`,
-  0: ` while the rest of the eye starts to quickly rot before your eyes,`,
-  0: `- The Island sword...`,
-  0: ` I underestimated you...<br><br>`,
-  0: `Suddenly, the eye gets totally rotten,`,
-  0: ` leaving a giant hole in the wall,`,
-  0: ` the moonglow washes you`,
-  0: ` and you take the moment to calm yourself,`,
-  0: ` your "You" starts to come back,`,
-  0: ` you start to remember your name,`,
-  0: ` your history,`,
-  0: ` your life,`,
-  0: ` everything is back.`,
-  11: `<a href="#" onclick="updateScreen('leshyAngel','leshyAftermath')">Victory at last...</a>`
+  1: ` the weapon is much more lighter than it looks,`,
+  2: ` making slicing much more effective.<br><br>`,
+  3: `You rush to the eye,`,
+  4: ` it doesn't do anything other than staring at you,`,
+  5: ` each step makes your strength grow bigger,`,
+  6: ` as if all of the island's vitality was within you.<br><br>`,
+  7: `<b>You slash the eye's pupil.</b><br><br>`,
+  8: `The person inside the pupil begins to glow,`,
+  9: ` while the rest of the eye starts to quickly rot before your eyes:<br><br>`,
+  10: `- The Island sword...`,
+  11: ` I underestimated you...<br><br>`,
+  12: `<a href="#" onclick="updateScreen('leshyAftermath','leshyAftermath')">Victory at last...</a>`
 }
 
 var leshyAftermathLines = {
+  0: `Suddenly, the eye gets totally rotten,`,
+  1: ` leaving a giant hole in the wall,`,
+  2: ` the moonglow washes you`,
+  3: ` and you take the moment to calm yourself,`,
+  4: ` your "You" starts to come back,`,
+  5: ` you start to remember your name,`,
+  6: ` your history,`,
+  7: ` your life,`,
+  8: ` everything is back.<br><br>`,
+  9: `<a href="#" onclick="updateScreen('leshyAngel','leshyAftermath')">Something is approaching...</a>`
+
+}
+
+var leshyAngelLines = {
 
   0: ` Maldio the angel phases through the cabin's walls after this conversation with yourself:<br><br>`,
   0: `- I can't believe it,`,
