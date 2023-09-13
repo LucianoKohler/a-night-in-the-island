@@ -10,10 +10,10 @@ var pass = 0;
 var sword1 = false; //Pommel
 var sword2 = false; //Hilt
 var sword3 = false; //Blade
-var islandSword = false;
+var islandSword = true;
 
 var broadsword = false;
-var tunic = false;
+var tunic = true;
 var goggles = true;
 
 let del = 0; //mudar pra 25
@@ -263,6 +263,10 @@ function updateScreen(nextImg, text) {
     ImgQuery = nextImg;
   } else {
     ImgQuery = nextImg;
+  }
+
+  if(nextImg == "leshyFinalForm"){
+    document.querySelector(':root').style.setProperty('--main', 'green');
   }
 
   let NI = document.getElementById(ImgQuery);
@@ -1614,11 +1618,11 @@ function updateScreen(nextImg, text) {
             .typeString(leshyWOGogglesLines[4])
             .pauseFor(1000)
             .typeString(leshyWOGogglesLines[5])
-            .pauseFor(500)
+            .pauseFor(1000)
             .typeString(leshyWOGogglesLines[6])
-            .pauseFor(500)
+            .pauseFor(1000)
             .typeString(leshyWOGogglesLines[7])
-            .pauseFor(500)
+            .pauseFor(1000)
             .typeString(leshyWOGogglesLines[8])
             .pauseFor(1000)
             .typeString(leshyWOGogglesLines[9])
@@ -1643,11 +1647,11 @@ function updateScreen(nextImg, text) {
             .typeString(leshyWGogglesLines[4])
             .pauseFor(1000)
             .typeString(leshyWGogglesLines[5])
-            .pauseFor(500)
+            .pauseFor(1000)
             .typeString(leshyWGogglesLines[6])
-            .pauseFor(500)
+            .pauseFor(1000)
             .typeString(leshyWGogglesLines[7])
-            .pauseFor(500)
+            .pauseFor(1000)
             .typeString(leshyWGogglesLines[8])
             .pauseFor(1000)
             .typeString(leshyWGogglesLines[9])
@@ -1667,23 +1671,23 @@ function updateScreen(nextImg, text) {
         }
       }
       break;
-      
-      case "leshyPassTest1":
-        TW.typeString(leshySkullLines[0])
+
+    case "leshyPassTest1":
+      TW.typeString(leshySkullLines[0])
         .pauseFor(500)
         .typeString(leshySkullLines[1])
         .pauseFor(1000)
         .typeString(leshySkullLines[2])
         .pauseFor(1000)
         .typeString(leshySkullLines[3])
-        .pauseFor(500)
+        .pauseFor(1000)
         .typeString(leshySkullLines[4])
         .start();
-        break;
-        
-        case 'leshyBurn':
-          if(tunic == false){
-          TW.typeString(leshyWODarkTunicLines[0])
+      break;
+
+    case 'leshyBurn':
+      if (tunic == false) {
+        TW.typeString(leshyWODarkTunicLines[0])
           .pauseFor(1000)
           .typeString(leshyWODarkTunicLines[1])
           .pauseFor(500)
@@ -1703,10 +1707,152 @@ function updateScreen(nextImg, text) {
           .pauseFor(1000)
           .typeString(YAEH)
           .start();
-        }else{
+      } else {
+        TW.typeString(leshyWDarkTunicLines[0])
+          .pauseFor(1000)
+          .typeString(leshyWDarkTunicLines[1])
+          .pauseFor(500)
+          .typeString(leshyWDarkTunicLines[2])
+          .pauseFor(1000)
+          .typeString(leshyWDarkTunicLines[3])
+          .pauseFor(1000)
+          .typeString(leshyWDarkTunicLines[4])
+          .pauseFor(500)
+          .typeString(leshyWDarkTunicLines[5])
+          .pauseFor(1000)
+          .typeString(leshyWDarkTunicLines[6])
+          .pauseFor(500)
+          .typeString(leshyWDarkTunicLines[7])
+          .pauseFor(500)
+          .typeString(leshyWDarkTunicLines[8])
+          .pauseFor(1000)
+          .typeString(leshyWDarkTunicLines[9])
+          .start();
+      }
+      break;
 
+      case "leshyTransform":
+        TW.typeString(leshyTransformation[0])
+          .pauseFor(1000)
+          .typeString(leshyTransformation[1])
+          .pauseFor(1000)
+          .typeString(leshyTransformation[2])
+          .pauseFor(500)
+          .typeString(leshyTransformation[3])
+          .pauseFor(1000)
+          .typeString(leshyTransformation[4])
+          .pauseFor(1000)
+          .typeString(leshyTransformation[5])
+          .pauseFor(1000)
+          .typeString(leshyTransformation[6])
+          .pauseFor(1000)
+          .typeString(leshyTransformation[7])
+          .pauseFor(1000)
+          .typeString(leshyTransformation[8])
+          .start();
+        break;
+
+        case "leshyFinalForm":
+          TW.typeString(leshyFinalFormLines[0])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[1])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[2])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[3])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[4])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[5])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[6])
+          .pauseFor(500)
+          .typeString(leshyFinalFormLines[7])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[8])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[9])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[10])
+          .pauseFor(500)
+          .typeString(leshyFinalFormLines[11])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[12])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[13])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[14])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[15])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[16])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[17])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[18])
+          .pauseFor(1000)
+          .typeString(leshyFinalFormLines[19])
+          .start();
+      break;
+
+      case "leshyFinalTest":
+        if(islandSword == false){
+          TW.typeString(leshyFinalDefeatLines[0])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[1])
+          .pauseFor(500)
+          .typeString(leshyFinalDefeatLines[2])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[3])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[4])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[5])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[6])
+          .pauseFor(500)
+          .typeString(leshyFinalDefeatLines[7])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[8])
+          .pauseFor(500)
+          .typeString(leshyFinalDefeatLines[9])
+          .pauseFor(1500)
+          .typeString(leshyFinalDefeatLines[10])
+          .pauseFor(1500)
+          .typeString(leshyFinalDefeatLines[11])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[12])
+          .pauseFor(1500)
+          .typeString(leshyFinalDefeatLines[13])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[14])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[15])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[16])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[17])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[18])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[19])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[20])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[21])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[22])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[23])
+          .pauseFor(1000)
+          .typeString(leshyFinalDefeatLines[24])
+          .pauseFor(1000)
+          .typeString(YAEH)
+          .start();
+        }else{
+          console.log('testeeAAAAAAAA')
         }
-          break;
+        break;
     default:
       console.log("não encontrado");
       break;
@@ -1717,10 +1863,10 @@ UpdateColors();
 
 //"BANCO DE DADOS" PARA AS FALAS DO JOGO
 //todos os <a> possuem a função de dar update no jogo, as variáveis inseridas são: a imagem a ser carregada e o texto a ser printado
-//criei essas variáveis abaixo pois é muito repetida pelo percurso do jogo
+//Criei essas variáveis abaixo pois são muito repetidas pelo percurso do jogo
 var WWYD = "What will you do? <br><br>";
 var WWYS = "What will you say? <br><br>";
-var YAEH = "Your adventure ends here"
+var YAEH = "Your adventure ends here.";
 
 var chooseLines = {
   0: `You can use the map anytime you want to leave the place`,
@@ -2599,7 +2745,7 @@ var leshyWODarkTunicLines = {
   6: ` you just accept that you'll burn with this cabin,`,
   7: ` and luckily,`,
   8: ` with Leshy as well.<br><br>`,
-};     
+};
 
 
 var leshyWDarkTunicLines = {
@@ -2609,7 +2755,108 @@ var leshyWDarkTunicLines = {
   3: `The heat is to much,`,
   4: ` but the dark tunic absorbs the fire,`,
   5: ` rapidly disappearing after Leshy's killing attempt.<br><br>`,
-  6: ` `,//FAZER!!!
-  7: ` `,
-  8: ` `,
+  6: `- I thought that they got rid, of this thing a long time ago...`,
+  7: ` It doesn't matter, if you want it that badly,`,
+  8: ` let's end this.<br><br>`,
+  9: `<a href="#" onclick="updateScreen('empty','leshyPassTest2')">Continue</a>`
+};
+
+var leshyTransformation = {
+  0: `The pair of eyes disappear in the darkness.<br><br>`,
+  1: `The deafening silence of the cabin soon turn into a loud orchestra of craking wood,`,
+  2: ` as if it was being destroyed,`,
+  3: ` plank by plank.`,
+  4: ` The noise stops before you have time to process what was happening.<br><br>`,
+  5: `.`,
+  6: ` .`,
+  7: ` .<br><br>`,
+  8: `<a href="#" onclick="updateScreen('leshyFinalForm','leshyFinalForm')">Face the enemy</a>`,
+};
+
+var leshyFinalFormLines = {
+  0: `The small pair of eyes doesn't exist anymore.<br><br>`,
+  1: `The putrid hand which held the skull doesn't exist anymore.<br><br>`,
+  2: `Your enemy has changed,`,
+  3: ` what before appeared to be a moving corpse,`,
+  4: ` now is a colossal eye that lights the entire cabin with a dark green glow,`,
+  5: ` making its presence more than obvious.<br><br>`,
+  6: `The worst part,`,
+  7: ` though,`,
+  8: ` is that the monster's pupil isn't regular,`,
+  9: ` something is moving inside of it,`,
+  10: ` knocking from the inside,`,
+  11: ` begging for freedom,`,
+  12: ` that thing...<br><br>`,
+  13: `<b>Is you.</b><br><br>`,
+  14: `Even though your face is a mystery for yourself after you first arrived at the island,`,
+  15: ` you can't think of anything else other than you being the one imprisioned by Leshy's evil intentions.<br><br>`,
+  16: `You've found a way to exit the island,`,
+  17: ` but one final thing is necessary to do so:<br><br>`,
+  18: `<b>YOU NEED TO SAVE YOURSELF!</b><br><br>`,
+  19: `<a href="#" onclick="updateScreen('empty','leshyFinalTest')">End this</a>`,
+};
+
+var leshyFinalDefeatLines = {
+  0: `You hold your broadsword uptight,`,
+  1: ` for some reason,`,
+  2: ` it isn't as heavy as before,`,
+  3: ` maybe it's the adrenalin,`,
+  4: ` maybe it's the will to end everything,`,
+  5: ` but in the end, it doesn't matter at all.<br><br>`,
+  6: `You rush to the eye,`,
+  7: ` it doesn't do anything other than staring at you,`,
+  8: ` each step makes your strength grow bigger,`,
+  9: ` as if all of the island's vitality was within you.<br><br>`,
+  10: `<b>You slash the eye's pupil.</b><br><br>`,
+  11: `The head of the imprisioned one starts to fall from their neck,`,
+  12: ` <b>but so does yours.</b><br><br>`,
+  13: `The feeling of having the island by your side was fake,`,
+  14: ` the certainty that this fight was already won was fake,`,
+  15: ` and maybe the chance of ending this suffering was never real at all.<br><br>`,
+  16: `As your head hits the ground,`,
+  17: ` you can only notice the green eye looking at you:<br><br>`,
+  18: `- Killed by your own hands,`,
+  19: ` the saddest way to end your life.<br><br>`,
+  20: `A regular sword,`,
+  21: ` even if sharpened to its limit,`,
+  22: ` can't slice the transcendental.`,
+  23: ` Only what's not from the material world can slice the unsliceable.<br><br>`,
+  24: ` That's your final thought before you succumb to death's call.<br><br>`,
+  //YAEH
+};
+
+var leshyFinalVictoryLines = {
+  0: `You hold your magical blade uptight,`,
+  0: ` the weapon is much more lighter than it looks,`,
+  0: ` making slicing much more effective.<br><br>`,
+  6: `You rush to the eye,`,
+  7: ` it doesn't do anything other than staring at you,`,
+  8: ` each step makes your strength grow bigger,`,
+  9: ` as if all of the island's vitality was within you.<br><br>`,
+  10: `<b>You slash the eye's pupil.</b><br><br>`,
+  0: `The person inside the pupil begins to glow,`,
+  0: ` while the rest of the eye starts to quickly rot before your eyes,`,
+  0: `- The Island sword...`,
+  0: ` I underestimated you...<br><br>`,
+  0: `Suddenly, the eye gets totally rotten,`,
+  0: ` leaving a giant hole in the wall,`,
+  0: ` the moonglow washes you`,
+  0: ` and you take the moment to calm yourself,`,
+  0: ` your "You" starts to come back,`,
+  0: ` you start to remember your name,`,
+  0: ` your history,`,
+  0: ` your life,`,
+  0: ` everything is back.`,
+  11: `<a href="#" onclick="updateScreen('leshyAngel','leshyAftermath')">Victory at last...</a>`
+}
+
+var leshyAftermathLines = {
+
+  0: ` Maldio the angel phases through the cabin's walls after this conversation with yourself:<br><br>`,
+  0: `- I can't believe it,`,
+  0: ` you managed to defeat the evil spirit!`,
+  0: ` You know what that means?`,
+  0: `- You gently nod your head`,
+  0: ``,
+  0: ``,//fazer arte do anjo e da porta
 };
