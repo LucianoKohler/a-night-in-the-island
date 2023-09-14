@@ -182,8 +182,8 @@ for (let i = 0; i <= allPlaces.length - 1; i++) {
 
 function UpdateColors() {
   for (let i = 0; i <= allPlaces.length - 1; i++) {
-    if (allPlaces[i].className == place) allPlaces[i].style.color = "yellow";
-    else allPlaces[i].style.color = "white";
+    if (allPlaces[i].className == place) allPlaces[i].style.color = "#cfcf00";
+    else allPlaces[i].style.color = "var(--main)";
   }
 }
 
