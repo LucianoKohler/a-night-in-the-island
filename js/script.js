@@ -31,12 +31,12 @@ var goblinVisited = false;
 //BOTÕES PARA A TELA DE INÍCIO
 
 var startScreen = document.getElementById("start");
-var gameScreen = document.getElementById("gamescreen")
-var startButton = document.getElementById("startbutton");
+var gameScreen = document.getElementById("gamescreen");
+var creditsScreen = document.getElementById("credits");
 
 //Para abrir o jogo
 
-let start = () => {
+function start(){
   if(!started){
     startScreen.style.display = "none";
     gameScreen.style.display = "grid";
@@ -58,15 +58,18 @@ let start = () => {
   }else{
     startScreen.style.display = "none";
     gameScreen.style.display = "grid";
-
   }
 };
 
-document.onkeydown = (e) => {
-  if (e.key == "Enter" && started == false) start();
-};
+function credits(){
+  startScreen.style.display = 'none';
+  gameScreen.style.display = 'none';
+  creditsScreen.style.display = 'block';
+}
 
-document.getElementById("startbutton").onclick = () => start();
+document.onkeydown = (e) => {
+  if (e.key == "Enter" && !started) start();
+};
 
 var othersDiv = document.getElementById("others");
 var mapDiv = document.getElementById("map");
@@ -2641,7 +2644,7 @@ var shopBroadswordYesLines = {
 var shopStickerLines = {
   0: `- A silly carrot sticker, dunno what would you do with it,`,
   1: ` it's funny, though!<br><br>`,
-  2: `At the back of the card, you discover that someone named "EmmyLing" drew it.<br><br>`,
+  2: `At the back of the card, you discover that someone named "Mittens" drew it.<br><br>`,
   3: `Wanna buy it?<br><br>`,
   4: `<a href="#" onclick="updateScreen('shop','shopStickerYes')">Yes</a><br>`,
   5: `<a href="#" onclick="updateScreen('shop','shop')">No</a>`,

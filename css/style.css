@@ -365,6 +365,15 @@ button:active{
 }
 
 #winScreen p{
-    width: 100%;
+    width: 80%;
     text-align: center;
+}
+
+#credits{
+    display: none;
+    border: 1px solid var(--main);
+    width: 50%;
+    height:fit-content;
+    text-align: justify;
+    padding: 10px 50px 20px 50px;
 }
