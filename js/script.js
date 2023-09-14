@@ -2,7 +2,7 @@ var started = false;
 var sticker = true;
 var Stick = true;
 var coins = 0;
-var pass = 2;
+var pass = 0;
 //0 = Não tem o pass
 //1 = Tem mas não usou
 //2 = Tem E já usou
@@ -10,20 +10,20 @@ var pass = 2;
 var sword1 = false; //Pommel
 var sword2 = false; //Hilt
 var sword3 = false; //Blade
-var islandSword = false;
+var islandSword = true;
 
 var broadsword = false;
-var tunic = false;
-var goggles = false;
+var tunic = true;
+var goggles = true;
 
-let del = 20; //mudar pra 25
+let del = 20;
 
 var BearScared = false;
 var castleEntered = false;
 var palaceEntered = false;
 var shopEntered = false;
 var islandEntered = false;
-var kingQuest = false;
+var kingQuest = true;
 var angelVisited = false;
 var goblinGotMoney = false;
 var goblinVisited = false;
@@ -124,7 +124,11 @@ let palettes = [
 let currentPalette = 0;
 
 function setPalette(step){
-  currentPalette+= step
+  if(step == 'default'){
+    currentPalette = 0;
+  }else{
+    currentPalette+= step
+  }
   if(currentPalette == 6) currentPalette = 0
   if(currentPalette == -1)currentPalette = 5;
   
@@ -272,10 +276,14 @@ document.addEventListener("keydown", (e) => {
 
 var chatDiv = document.getElementById("text");
 
-function disableMovement() {
-  for (let i = 0; i < allPlaces.length; i++) {
+function disableKeyFeatures(){//Usado na hora da luta contra Leshy
+  for (let i = 0; i < allPlaces.length; i++) {//Andar pelo mapa
     allPlaces[i].classList.add("disabled");
   }
+
+  setPalette('default')
+  document.getElementById('paletteForward').onclick = "";//Mudar paleta
+  document.getElementById('paletteBack').onclick = "";
 }
 
 function updateScreen(nextImg, text) {
@@ -1603,7 +1611,9 @@ function updateScreen(nextImg, text) {
       }
       break;
     case "cabinEnter":
-      disableMovement();
+
+      disableKeyFeatures();
+
       TW.typeString(CabinEnterLines[0])
         .pauseFor(500)
         .typeString(CabinEnterLines[1])
@@ -1966,19 +1976,19 @@ function updateScreen(nextImg, text) {
       .typeString(leshyAngelLines[8])
       .pauseFor(1000)
       .typeString(leshyAngelLines[9])
-      .pauseFor(500)
+      .pauseFor(1000)
       .typeString(leshyAngelLines[10])
-      .pauseFor(500)
+      .pauseFor(1000)
       .typeString(leshyAngelLines[11])
       .pauseFor(1000)
       .typeString(leshyAngelLines[12])
       .pauseFor(500)
       .typeString(leshyAngelLines[13])
-      .pauseFor(500)
+      .pauseFor(1000)
       .typeString(leshyAngelLines[14])
-      .pauseFor(500)
+      .pauseFor(1000)
       .typeString(leshyAngelLines[15])
-      .pauseFor(500)
+      .pauseFor(1000)
       .typeString(leshyAngelLines[16])
       .pauseFor(1500)
       .typeString(leshyAngelLines[17])
@@ -1986,8 +1996,6 @@ function updateScreen(nextImg, text) {
       .typeString(leshyAngelLines[18])
       .pauseFor(500)
       .typeString(leshyAngelLines[19])
-      .pauseFor(500)
-      .typeString(leshyAngelLines[20])
       .start();
       break;
 
@@ -2021,6 +2029,16 @@ function updateScreen(nextImg, text) {
       console.log("não encontrado");
       break;
   }
+}
+
+//TERMINAR A FUNÇÃO!!!
+
+function winGame(){
+  gameScreen.style.display = 'none'
+  winScreen.style.display = 'flex'
+  let TWEnding = new Typewriter(chatDiv, {
+    delay: del,
+  });
 }
 
 UpdateColors();
@@ -2831,7 +2849,7 @@ var cabinLinesWGoggles = {
 };
 
 var CabinEnterLines = {
-  0: `You decided to enter the cabin,`,
+  0: `You decided to enter the dark cabin,`,
   1: ` what really resides inside of it is still unknown.<br><br>`,
   2: `Inside of it, everything is pitch black,`,
   3: ` the ground is sticky,`,
@@ -3025,7 +3043,7 @@ var leshyAngelLines = {
   2: ` you managed to defeat the evil spirit!`,
   3: ` You know what that means?<br><br>`,
   4: `You remain quiet,`,
-  5: ` waiting for the answer<br><br>`,
+  5: ` waiting for the answer...<br><br>`,
   6: `- It means that the island is free from Leshy's curse,`,
   7: ` and everyone can go back home,`,
   8: ` including you!<br><br>`,
@@ -3033,13 +3051,13 @@ var leshyAngelLines = {
   10: ` you get up,`,
   11: ` excited to know how.<br><br>`,
   12: `- I won't make this long,`,
-  13: ` I know how are homesick.<br><br>`,
+  13: ` I know that you're homesick.<br><br>`,
   14: `The angel proceeds into getting close to Leshy's remains,`,
   15: ` you didn't even realize that they were there,`,
   16: ` Maldio starts to manipulate the small portions of magic that remained in the pile of nothing...<br><br>`,
-  17: `That's it,`,
+  17: `- That's it,`,
   18: ` look behind you!<br><br>`,
-  20: `<a href="#" onclick="updateScreen('finalDoor','ending')">Turn Around</a>`,
+  19: `<a href="#" onclick="updateScreen('finalDoor','ending')">Turn Around</a>`,
 };
 
 var endingLines = {
@@ -3054,5 +3072,5 @@ var endingLines = {
   8: ` you see your home on the other side,`,
   9: ` you turn around to say the last goodbye to Maldio,`,
   10: ` this wouldn't be possible without their help.<br><br>`,
-  11: `<b>You exit the cabin.</b>`,
+  11: `<a href="#" onclick="winGame();">Go through the door</a>`,
 };

@@ -357,3 +357,10 @@ button:active{
     color: rgb(15, 4, 0);
 }
 
+#winScreen{
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    text-align: center;
+}
