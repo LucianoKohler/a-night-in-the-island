@@ -169,6 +169,12 @@ i{
     gap: 20px;
 }
 
+.arrow{
+    padding: 5px;
+    user-select: none;
+    cursor: pointer;
+}
+
 
 .mainColor, .bgColor{
     border: 1px solid var(--main);

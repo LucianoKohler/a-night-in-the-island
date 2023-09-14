@@ -1062,9 +1062,9 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
 
             <h3>Text speed</h3>
             <p>Change how fast the text is shown on the chat</p>
-            <span id="decrementSpeed">&lt;</span>
-            <span>Medium</span>
-            <span id="incrementSpeed">&gt;</span>
+            <span class="arrow" id="decrementSpeed" onclick="setTextSpeed(-1)">&lt;</span>
+            <span style="width: 50px; display: inline-block;" id="speedName">Medium</span>
+            <span class="arrow" id="incrementSpeed" onclick="setTextSpeed(1)">&gt;</span>
 
           </div>
 
@@ -1073,12 +1073,12 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
             <h3>Color Palette</h3>
             <p>Choose the color of the game</p>
             <div id="palette">
-              <span id="paletteBack" onclick="setPalette(-1)">&lt;</span>
+              <span class="arrow" id="paletteBack" onclick="setPalette(-1)">&lt;</span>
               <span class="mainColor"></span>
               <span class="bgColor"></span>
-              <span id="paletteForward" onclick="setPalette(1)">&gt;</span>
+              <span class="arrow" id="paletteForward" onclick="setPalette(1)">&gt;</span>
             </div>
-            <p>Default</p>
+            <p id="paletteName">Default</p>
 
           </div>
         </div>

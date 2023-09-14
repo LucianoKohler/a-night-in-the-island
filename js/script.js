@@ -75,43 +75,57 @@ function UpdateInfoDiv(div){
   else othersDiv.style.display = "flex";
 }
 
+//Mudar velocidade do texto
+
+let speeds = [
+  ['25', 'Slow'],
+  ['20', 'Medium'],
+  ['10', 'Fast'],
+  ['0', 'FASTER!'],
+]
+
+let currentSpeed = 1;
+
+function setTextSpeed(step){
+
+  currentSpeed += step;
+
+  if(speed == 4) speed = 0;
+  if(speed == -1)speed = 3;
+
+  del = speeds[currentSpeed][0];
+  document.getElementById('speedName').innerHTML = speeds[speed][1]
+}
+
+//Mudar paleta de cor
 
 let palettes = [
   ['#ffffff', '#000000', "default"],
+  ['#cfab4a', '#292b30', 'Fall Forest'],
+  ['#13e600', '#172115', 'Vivid Grove'],
+  ['#fcd1d7', '#42202d', 'Sakuras Festival'],
+  ['#adc3e8', '#0d132a', 'Coast Mangrove'],
   ['#000000','#ffffff','inverted'],
-  ['', ''],
-  [],
-  [],
-  [],
-  [],
 ];
 
 let currentPalette = 0;
 
 function setPalette(step){
   currentPalette+= step
-  if(currentPalette == 6){
-    currentPalette = 0
-  }else if(currentPalette == -1){
-    currentPalette = 5
-  }
-  document.querySelector(':root').style.setProperty('--main', palettes[currentLocation][0])
-  document.querySelector(':root').style.setProperty('--bg', palettes[currentLocation][1])
-
+  if(currentPalette == 6) currentPalette = 0
+  if(currentPalette == -1)currentPalette = 5;
+  
+  document.querySelector(':root').style.setProperty('--main', palettes[currentPalette][0])
+  document.querySelector(':root').style.setProperty('--bg', palettes[currentPalette][1])
+  document.getElementById("paletteName").innerHTML = palettes[currentPalette][2]
   console.log(currentPalette)
-}
-
-
-
-
+};
 
 //Fazendo com que a localização atual fique amarela no mapa
 
 var place = "forest";
 var currentLocation = document.querySelectorAll("." + place);
 var allPlaces = mapDiv.querySelectorAll("a");
-
-//adicionando eventlisteners para TODOS os links do menu
 
 let tooltip = document.createElement("span");
 tooltip.id = "tooltip";
