@@ -146,6 +146,8 @@ i{
 #settings{
     grid-area: 4/8/7/11;
     display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
     height: 100%;
     width: 100%;
     text-align: center;
@@ -156,7 +158,6 @@ i{
     padding: 15px 0;
     margin: 0 auto;
     border: none;
-    border-bottom: 1px solid var(--main);
 }
 
 #settings h3{margin: 0;}
@@ -175,6 +176,15 @@ i{
     cursor: pointer;
 }
 
+#speedName{
+    width: 50px; 
+    display: inline-block;
+}
+
+#paletteName{
+    margin: 10px 0 0 0 !important;
+    
+}
 
 .mainColor, .bgColor{
     border: 1px solid var(--main);
@@ -187,6 +197,10 @@ i{
 .mainColor{background-color: var(--main);}
 .bgColor{background-color: var(--bg);}
 
+#settings button{
+    width: 80%;
+
+}
 
 #deathmessage{
     display: none; /*mudado para flex no js*/

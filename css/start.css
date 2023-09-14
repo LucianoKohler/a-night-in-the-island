@@ -30,8 +30,8 @@
     text-transform: uppercase;
     border-radius: 3px;
     border: none;
-    background-color: black;
-    outline: 2px solid white;
+    background-color: var(--bg);
+    outline: 2px solid var(--main);
     width: 150px;
     height: 150px;
     font-size: 1.4em;

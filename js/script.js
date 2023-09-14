@@ -31,27 +31,35 @@ var goblinVisited = false;
 //BOTÕES PARA A TELA DE INÍCIO
 
 var startScreen = document.getElementById("start");
+var gameScreen = document.getElementById("gamescreen")
 var startButton = document.getElementById("startbutton");
 
 //Para abrir o jogo
 
 let start = () => {
-  startScreen.style.display = "none";
-  started = true;
+  if(!started){
+    startScreen.style.display = "none";
+    gameScreen.style.display = "grid";
+    started = true;
+  
+    var twStart = new Typewriter(chatDiv, {
+      delay: del,
+    });
+  
+    twStart
+      .pauseFor(500)
+      .typeString(startLines[0])
+      .pauseFor(1000)
+      .typeString(startLines[1])
+      .typeString(WWYD)
+      .typeString(startLines[2])
+      .typeString(startLines[3])
+      .start();
+  }else{
+    startScreen.style.display = "none";
+    gameScreen.style.display = "grid";
 
-  var twStart = new Typewriter(chatDiv, {
-    delay: del,
-  });
-
-  twStart
-    .pauseFor(500)
-    .typeString(startLines[0])
-    .pauseFor(1000)
-    .typeString(startLines[1])
-    .typeString(WWYD)
-    .typeString(startLines[2])
-    .typeString(startLines[3])
-    .start();
+  }
 };
 
 document.onkeydown = (e) => {
@@ -71,8 +79,13 @@ function UpdateInfoDiv(div){
   mapDiv.style.display = "none";
 
        if(div == 'map') mapDiv.style.display = "block";
-  else if (div == 'settings') settingsDiv.style.display = "block"
+  else if (div == 'settings') settingsDiv.style.display = "flex"
   else othersDiv.style.display = "flex";
+}
+
+function toMainMenu(){
+  document.getElementById('gamescreen').style.display = 'none';
+  document.getElementById('start').style.display = 'flex';
 }
 
 //Mudar velocidade do texto
@@ -90,22 +103,22 @@ function setTextSpeed(step){
 
   currentSpeed += step;
 
-  if(speed == 4) speed = 0;
-  if(speed == -1)speed = 3;
+  if(currentSpeed == 4) currentSpeed = 0;
+  if(currentSpeed == -1)currentSpeed = 3;
 
   del = speeds[currentSpeed][0];
-  document.getElementById('speedName').innerHTML = speeds[speed][1]
+  document.getElementById('speedName').innerHTML = speeds[currentSpeed][1]
 }
 
 //Mudar paleta de cor
 
 let palettes = [
-  ['#ffffff', '#000000', "default"],
+  ['#ffffff', '#000000', "Default"],
   ['#cfab4a', '#292b30', 'Fall Forest'],
   ['#13e600', '#172115', 'Vivid Grove'],
   ['#fcd1d7', '#42202d', 'Sakuras Festival'],
   ['#adc3e8', '#0d132a', 'Coast Mangrove'],
-  ['#000000','#ffffff','inverted'],
+  ['#000000', '#ffffff', 'Inverted'],
 ];
 
 let currentPalette = 0;
