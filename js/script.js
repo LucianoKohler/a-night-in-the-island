@@ -1,6 +1,6 @@
 var started = false;
-var sticker = true;
-var Stick = true;
+var sticker = false;
+var Stick = false;
 var coins = 0;
 var pass = 0;
 //0 = Não tem o pass
@@ -10,11 +10,11 @@ var pass = 0;
 var sword1 = false; //Pommel
 var sword2 = false; //Hilt
 var sword3 = false; //Blade
-var islandSword = true;
+var islandSword = false;
 
 var broadsword = false;
-var tunic = true;
-var goggles = true;
+var tunic = false;
+var goggles = false;
 
 let del = 20;
 
@@ -23,7 +23,7 @@ var castleEntered = false;
 var palaceEntered = false;
 var shopEntered = false;
 var islandEntered = false;
-var kingQuest = true;
+var kingQuest = false;
 var angelVisited = false;
 var goblinGotMoney = false;
 var goblinVisited = false;
@@ -1957,6 +1957,7 @@ function updateScreen(nextImg, text) {
       break;
 
     case "leshyAngel":
+      setPalette('default');
       TW.typeString(leshyAngelLines[0])
       .pauseFor(1000)
       .typeString(leshyAngelLines[1])
@@ -2034,11 +2035,17 @@ function updateScreen(nextImg, text) {
 //TERMINAR A FUNÇÃO!!!
 
 function winGame(){
-  gameScreen.style.display = 'none'
-  winScreen.style.display = 'flex'
-  let TWEnding = new Typewriter(chatDiv, {
-    delay: del,
+  let endingText = document.getElementById('endingText')
+  gameScreen.style.display = 'none';
+  winScreen.style.display = 'flex';
+
+  let TWEnding = new Typewriter(endingText, {
+    delay: 75,
   });
+
+  TWEnding.pauseFor(250)
+  .typeString('<b>You exited the cabin.</b>')
+  .start()
 }
 
 UpdateColors();
@@ -2861,8 +2868,8 @@ var CabinEnterLines = {
 };
 
 var leshyLostSoulLines = {
-  0: `- What do we have here...`,
-  1: ` <b>A lost soul.</b><br><br>`,
+  0: `<i>- What do we have here...`,
+  1: `<b><i> A lost soul.</b><br><br>`,
   2: `The entity pulls off a pendulum made out of sticks and starts to swing it.`,
   3: ` You can't look away from it,`,
   4: ` its movement,`,
@@ -2870,14 +2877,14 @@ var leshyLostSoulLines = {
   6: ` its swiftness,`,
   7: ` it calms you down...<br><br>`,
   8: ` <b>You are not in control of yourself...</b><br><br>`,
-  9: `- I will end this quickly,`,
-  10: ` I don't see any bad intentions coming from you...<br><br>`,
+  9: `<i>- I will end this quickly,`,
+  10: `<i> I don't see any bad intentions coming from you...<br><br>`,
   //YAEH
 };
 
 var leshyWOGogglesLines = {
-  0: `- What do we have here...`,
-  1: ` <b>A brave warrior?</b><br><br>`,
+  0: `<i>- What do we have here...`,
+  1: `<b><i> A brave warrior?</b><br><br>`,
   2: `The entity pulls off a pendulum made out of sticks and starts to swing it.`,
   3: ` You can't look away from it,`,
   4: ` its movement,`,
@@ -2885,16 +2892,16 @@ var leshyWOGogglesLines = {
   6: ` its swiftness,`,
   7: ` it calms you down...<br><br>`,
   8: ` <b>You are not in control of yourself...</b><br><br>`,
-  9: `- You thought that only your will was enough to end me?<br><br>`,
-  10: `Leshy throws a dagger to your feet,`,
+  9: `<i>- You thought that only your will was enough to end me?<br><br>`,
+  10: `<i>Leshy</i> throws a dagger to your feet,`,
   11: ` you are forced take it, `,
   12: ` you start to point the dagger to your heart.<br><br>`,
   //YAEH
 };
 
 var leshyWGogglesLines = {
-  0: `- What do we have here...`,
-  1: ` <b>A brave warrior?</b><br><br>`,
+  0: `<i>- What do we have here...`,
+  1: `<b><i> A brave warrior.</b><br><br>`,
   2: `The entity pulls off a pendulum made out of sticks and starts to swing it.`,
   3: ` You can't look away from it,`,
   4: ` its movement,`,
@@ -2902,7 +2909,7 @@ var leshyWGogglesLines = {
   6: ` its swiftness,`,
   7: ` it calms you down...<br><br>`,
   8: ` <b>You are not in control of yourself...</b><br><br>`,
-  9: `- You thought that only your will was enough to end me?<br><br>`,
+  9: `<i>- You thought that only your will was enough to end me?<br><br>`,
   10: `Your legs crumble,`,
   11: ` and you fall,`,
   12: ` straight into the ground,`,
@@ -2912,15 +2919,15 @@ var leshyWGogglesLines = {
 };
 
 var leshySkullLines = {
-  0: `- I see, that you have something special,`,
-  1: ` sadly, I have more than one trick.<br><br>`,
+  0: `<i>- I see, that you have something special,`,
+  1: `<i> sadly, I have more than one trick.<br><br>`,
   2: `A skull with a candle across it appears, held by a gruesome hand.<br><br>`,
-  3: `- Burn.<br><br>`,
+  3: `<i>- Burn.<br><br>`,
   4: `<a href="#" onclick="updateScreen('leshyBurn','leshyBurn')">Continue</a>`,
 };
 
 var leshyWODarkTunicLines = {
-  0: `He throws the skull at your feet,`,
+  0: `<i>Leshy</i> throws the skull at your feet,`,
   1: ` the sticky floor begins to burn,`,
   2: ` quickly spreading into your upper body.<br><br>`,
   3: `The heat is to much,`,
@@ -2928,19 +2935,19 @@ var leshyWODarkTunicLines = {
   5: ` but it won't budge,`,
   6: ` you just accept that you'll burn with this cabin,`,
   7: ` and luckily,`,
-  8: ` with Leshy as well.<br><br>`,
+  8: ` with <i>Leshy</i> as well.<br><br>`,
 };
 
 var leshyWDarkTunicLines = {
-  0: `He throws the skull at your feet,`,
+  0: `<i>Leshy</i> throws the skull at your feet,`,
   1: ` the sticky floor begins to burn,`,
   2: ` quickly spreading into your upper body.<br><br>`,
   3: `The heat is to much,`,
   4: ` but the dark tunic absorbs the fire,`,
   5: ` rapidly disappearing after Leshy's killing attempt.<br><br>`,
-  6: `- I thought that they got rid, of this thing a long time ago...`,
-  7: ` It doesn't matter, if you want it that badly,`,
-  8: ` let's end this.<br><br>`,
+  6: `<i>- I thought that they got rid, of this thing a long time ago...`,
+  7: `<i> It doesn't matter, if you want it that badly,`,
+  8: `<i> let's end this.<br><br>`,
   9: `<a href="#" onclick="updateScreen('empty','leshyTransform')">Continue</a>`,
 };
 
