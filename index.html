@@ -22,8 +22,8 @@
 
             <div class="buttons">
                 <button id="startbutton">Start</button>
-                <button>Settings</button>
                 <button>Info</button>
+                <button>Credits</button>
             </div>
     </div>
     <div id="gamescreen">
@@ -993,15 +993,15 @@ e o text-align não quebrar o frame da espada.-->
         <div id="chat">&gt; <p style="display: inline;" id="text"></p></div>
         <div id="others">
             <ul>
-                <li><button id="tomap" onclick="toMap()" href="#">Map</button></li>
-                <li><button id=""href="#" onclick="updateScreen('leshy','leshyTransform')">Settings</button></li>
+                <li><button id="tomap" onclick="UpdateInfoDiv('map')" href="#">Map</button></li>
+                <li><button id=""href="#" onclick="UpdateInfoDiv('settings')">Settings</button></li>
                 <li><button id="backtomainmenu" onclick="toMainMenu()" href="#">Exit</button></li>
             </ul>
         </div>
         <div id="map"><pre>
-<a href="#" class= 'goback' onclick="toOthers()">        </a>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<a href="#" class= 'goback' onclick="toOthers()">  &lt;---  </a>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<a href="#" class= 'goback' onclick="toOthers()">        </a>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<a href="#" class= 'goback' onclick="UpdateInfoDiv()">        </a>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<a href="#" class= 'goback' onclick="UpdateInfoDiv()">  &lt;---  </a>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<a href="#" class= 'goback' onclick="UpdateInfoDiv()">        </a>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/‾‾‾‾‾‾‾‾\~~~~~~~~~~~
 ~~~~~~~~~~/‾‾‾‾‾‾‾‾‾‾‾\~~~~~/‾‾‾‾‾\~~~~/    <a href="#" class="cabin">/‾\</a>   \~~~~~~~~~~
 ~~~~~~~~~/   <a href="#" class="castle">  /‾\  </a>   ‾‾‾‾‾  <a href="#" class="well">(o)</a>  ‾‾‾‾     <a href="#" class="cabin">| |</a>    \~~~~~~~~~
@@ -1038,10 +1038,10 @@ e o text-align não quebrar o frame da espada.-->
 ~~~~~~~~~/     /‾\     ‾‾‾‾‾  (o)  ‾‾‾‾     | |    \~~~~~~~~~
 ~~~~~~~~{    /\ + /\                                |~~~~~~~~
 ~~~~~~~/     |__#__|                  .              ]~~~~~~~
-~~~~~~{                     '                   /\   |~~~~~~~
-~~~~~~~\       .                               /  \  |~~~~~~~
-~~~~~~~~\                 \\\\\               / /\ \  \~~~~~~
-~~~~~~~~~\ '-'            \\\\\\  ,                   |~~~~~~
+~~~~~~{                     '                        |~~~~~~~
+~~~~~~~\       .                                     |~~~~~~~
+~~~~~~~~\                 \\\\\                ===    \~~~~~~
+~~~~~~~~~\ '-'            \\\\\\  ,             ‾     |~~~~~~
 ~~~~~~~~~~\___       .     \\\\\  /\        ,         |~~~~~~
 ~~~~~~~~~~~~~~|                      _____            |~~~~~~
 ~~~~~~~~~~~~~~|                     /~~~~~\   ;:;:    |~~~~~~
@@ -1057,18 +1057,40 @@ e o text-align não quebrar o frame da espada.-->
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
         </div>
+        <div id="settings">
+          <div class="option">
+
+            <h3>Text speed</h3>
+            <p>Change how fast the text is shown on the chat</p>
+            <span id="decrementSpeed">&lt;</span>
+            <span>Medium</span>
+            <span id="incrementSpeed">&gt;</span>
+
+          </div>
+
+          <div class="option">
+
+            <h3>Color Palette</h3>
+            <p>Choose the color of the game</p>
+            <div id="palette">
+              <span id="paletteBack" onclick="setPalette(-1)">&lt;</span>
+              <span class="mainColor"></span>
+              <span class="bgColor"></span>
+              <span id="paletteForward" onclick="setPalette(1)">&gt;</span>
+            </div>
+            <p>Default</p>
+
+          </div>
+        </div>
     </div>
     <div id="deathmessage">
-        <pre
-        >  _____
+        <pre>  _____
  /     \
 | () () |
  \  ^  /
   |||||
   |||||</pre>
-        <div class="break">&zwnj;</div>
-        <p>The end comes to everyone...</p>
-        <div class="break">&zwnj;</div>
+        <p><b>Remember: <i>You can't defeat a god.</i></b></p>
         <button onclick="location.reload()">Restart</button>
     </div>
 

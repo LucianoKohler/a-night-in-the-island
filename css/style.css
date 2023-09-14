@@ -47,7 +47,7 @@ i{
     grid-template-rows: repeat(6, 1fr);
 }
 
-#gamescreen div{
+#main, #chat, #inventory, #others, #map, #settings{
     border: 1px solid var(--main);
 }
 
@@ -142,18 +142,61 @@ i{
     display: none;
 }
 
+
+#settings{
+    grid-area: 4/8/7/11;
+    display: none;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+#settings .option{
+    width: 80%;
+    padding: 15px 0;
+    margin: 0 auto;
+    border: none;
+    border-bottom: 1px solid var(--main);
+}
+
+#settings h3{margin: 0;}
+#settings p{margin-top: 0;}
+
+#palette{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.mainColor, .bgColor{
+    border: 1px solid var(--main);
+    border-radius: 5px;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+}
+
+.mainColor{background-color: var(--main);}
+.bgColor{background-color: var(--bg);}
+
+
 #deathmessage{
     display: none; /*mudado para flex no js*/
+    flex-direction: column;
     width: 100%;
     height: 50%;
     align-items: center;
     justify-content: center;
+    gap: 40px;
     flex-wrap: wrap;
     color: #fff;
 }
 
 #deathmessage pre{
     font-size: 2em;
+    margin: 0;
 }
 
 button{

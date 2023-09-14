@@ -7,26 +7,26 @@ var pass = 2;
 //1 = Tem mas não usou
 //2 = Tem E já usou
 
-var sword1 = true; //Pommel
-var sword2 = true; //Hilt
-var sword3 = true; //Blade
-var islandSword = true;
+var sword1 = false; //Pommel
+var sword2 = false; //Hilt
+var sword3 = false; //Blade
+var islandSword = false;
 
-var broadsword = true;
-var tunic = true;
-var goggles = true;
+var broadsword = false;
+var tunic = false;
+var goggles = false;
 
 let del = 20; //mudar pra 25
 
-var BearScared = true;
-var castleEntered = true;
-var palaceEntered = true;
-var shopEntered = true;
-var islandEntered = true;
-var kingQuest = true;
-var angelVisited = true;
-var goblinGotMoney = true;
-var goblinVisited = true;
+var BearScared = false;
+var castleEntered = false;
+var palaceEntered = false;
+var shopEntered = false;
+var islandEntered = false;
+var kingQuest = false;
+var angelVisited = false;
+var goblinGotMoney = false;
+var goblinVisited = false;
 
 //BOTÕES PARA A TELA DE INÍCIO
 
@@ -60,27 +60,50 @@ document.onkeydown = (e) => {
 
 document.getElementById("startbutton").onclick = () => start();
 
-//Para ciclar entre mapa e others
 var othersDiv = document.getElementById("others");
 var mapDiv = document.getElementById("map");
+var settingsDiv = document.getElementById("settings");
 
-//Funções para mudar as divs, utilizadas no HTML
-
-function toMainMenu() {
-  startScreen.style.display = "flex";
-  document.getElementById("deathmessage").style.display = "none";
-  document.getElementById("gamescreen").style.display = "grid";
-}
-
-function toMap() {
+//Cicla as divs que ficam dentro da div pai "others", chamada no HTML
+function UpdateInfoDiv(div){
   othersDiv.style.display = "none";
-  mapDiv.style.display = "block";
+  settingsDiv.style.display = "none";
+  mapDiv.style.display = "none";
+
+       if(div == 'map') mapDiv.style.display = "block";
+  else if (div == 'settings') settingsDiv.style.display = "block"
+  else othersDiv.style.display = "flex";
 }
 
-function toOthers() {
-  mapDiv.style.display = "none";
-  othersDiv.style.display = "flex";
+
+let palettes = [
+  ['#ffffff', '#000000', "default"],
+  ['#000000','#ffffff','inverted'],
+  ['', ''],
+  [],
+  [],
+  [],
+  [],
+];
+
+let currentPalette = 0;
+
+function setPalette(step){
+  currentPalette+= step
+  if(currentPalette == 6){
+    currentPalette = 0
+  }else if(currentPalette == -1){
+    currentPalette = 5
+  }
+  document.querySelector(':root').style.setProperty('--main', palettes[currentLocation][0])
+  document.querySelector(':root').style.setProperty('--bg', palettes[currentLocation][1])
+
+  console.log(currentPalette)
 }
+
+
+
+
 
 //Fazendo com que a localização atual fique amarela no mapa
 
@@ -137,21 +160,15 @@ function UpdateColors() {
   }
 }
 
-//Métodos de morrer aqui
-
-function DyingAnimation() {
+function dyingAnimation() {
   document.getElementById("gamescreen").style.display = "none";
   document.getElementById("deathmessage").style.display = "flex";
-  started = false;
-  //lembrar de resetar os itens ao morrer
 }
 
-document.addEventListener("keydown", function (e) {
-  if (e.key == "d" || e.key == "D") {
-    console.log("MORREU");
-    DyingAnimation();
-  }
-});
+document.addEventListener('keydown', (e) => {
+  if(e.key == "D")
+  dyingAnimation();
+})
 
 function updateInventory() {
   document.getElementById("Coins").innerHTML = "Coins: " + coins;
@@ -1988,7 +2005,7 @@ FuseSword();
 //Criei essas variáveis abaixo pois são muito repetidas pelo percurso do jogo
 var WWYD = "What will you do? <br><br>";
 var WWYS = "What will you say? <br><br>";
-var YAEH = "Your adventure ends here.";
+var YAEH = `<a href="#" onclick="dyingAnimation()">Your adventure ends here.</a>`;
 
 var chooseLines = {
   0: `You can use the map anytime you want to leave the place`,
