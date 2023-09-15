@@ -2048,8 +2048,6 @@ function updateScreen(nextImg, text) {
   }
 }
 
-//TERMINAR A FUNÇÃO!!!
-
 function winGame(){
   let endingText = document.getElementById('endingText')
   gameScreen.style.display = 'none';
@@ -2065,7 +2063,6 @@ function winGame(){
 }
 
 UpdateColors();
-updateInventory();
 
 //"BANCO DE DADOS" PARA AS FALAS DO JOGO
 //todos os <a> possuem a função de dar update no jogo, as variáveis inseridas são: a imagem a ser carregada e o texto a ser printado
