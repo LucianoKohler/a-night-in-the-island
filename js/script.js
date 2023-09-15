@@ -2001,6 +2001,8 @@ function updateScreen(nextImg, text) {
       .typeString(leshyAngelLines[18])
       .pauseFor(500)
       .typeString(leshyAngelLines[19])
+      .pauseFor(500)
+      .typeString(leshyAngelLines[20])
       .start();
       break;
 
@@ -3066,8 +3068,9 @@ var leshyAngelLines = {
   15: ` you didn't even realize that they were there,`,
   16: ` Maldio starts to manipulate the small portions of magic that remained in the pile of nothing...<br><br>`,
   17: `- That's it,`,
-  18: ` look behind you!<br><br>`,
-  19: `<a href="#" onclick="updateScreen('finalDoor','ending')">Turn Around</a>`,
+  18: ` the portal is open,`,
+  19: ` look behind you!<br><br>`,
+  20: `<a href="#" onclick="updateScreen('finalDoor','ending')">Turn Around</a>`,
 };
 
 var endingLines = {
