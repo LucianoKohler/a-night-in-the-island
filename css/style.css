@@ -296,6 +296,7 @@ button:active {
     overflow: auto;
 }
 
+
 #inventory .aligntext {
     width: 100%;
     height: auto;
@@ -310,16 +311,12 @@ button:active {
     display: none;
 }
 
-#inventorylogo {
-    font-size: .8vw;
-}
-
 #inventory p {
     margin-left: 15px;
 }
 
 #inventory pre {
-    font-size: .9em;
+    font-size: calc(.5vw + 35%);
     padding: 5px;
 }
 
@@ -380,13 +377,4 @@ button:active {
 #winScreen p {
     width: 80%;
     text-align: center;
-}
-
-#credits {
-    display: none;
-    border: 1px solid var(--main);
-    width: 50%;
-    height: fit-content;
-    text-align: justify;
-    padding: 10px 50px 20px 50px;
 }

@@ -87,8 +87,9 @@ function UpdateInfoDiv(div){
 }
 
 function toMainMenu(){
-  document.getElementById('gamescreen').style.display = 'none';
-  document.getElementById('start').style.display = 'flex';
+  gameScreen.style.display = 'none';
+  creditsScreen.style.display = 'none';
+  startScreen.style.display = 'flex';
 }
 
 //Mudar velocidade do texto

@@ -47,11 +47,30 @@
     background-color: white; 
 }
 
+#credits {
+    display: none;
+    border: 1px solid var(--main);
+    width: 50%;
+    height: fit-content;
+    text-align: justify;
+    padding: 20px 30px 20px 30px;
+}
+
+#credits h1{
+    margin: 0;
+}
+
 @media (max-height: 500px){
     #start{
         gap: 20px;
     }
     .buttons button{
         height: 75px;
+    }
+
+    #credits{
+        width: 80%;
+        height: 80%;
+        overflow: auto;
     }
 }
