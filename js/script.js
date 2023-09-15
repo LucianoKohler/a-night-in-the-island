@@ -10,11 +10,11 @@ var pass = 0;
 var sword1 = false; //Pommel
 var sword2 = false; //Hilt
 var sword3 = false; //Blade
-var islandSword = true;
+var islandSword = false;
 
-var broadsword = true;
-var tunic = true;
-var goggles = true;
+var broadsword = false;
+var tunic = false;
+var goggles = false;
 
 let del = 20;
 
