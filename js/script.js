@@ -10,11 +10,11 @@ var pass = 0;
 var sword1 = false; //Pommel
 var sword2 = false; //Hilt
 var sword3 = false; //Blade
-var islandSword = false;
+var islandSword = true;
 
-var broadsword = false;
-var tunic = false;
-var goggles = false;
+var broadsword = true;
+var tunic = true;
+var goggles = true;
 
 let del = 20;
 
@@ -47,15 +47,25 @@ function start(){
     });
   
     twStart
-      .pauseFor(500)
+    .pauseFor(500)
       .typeString(startLines[0])
-      .pauseFor(1000)
+      .pauseFor(500)
       .typeString(startLines[1])
-      .typeString(WWYD)
+      .pauseFor(500)
       .typeString(startLines[2])
+      .pauseFor(500)
       .typeString(startLines[3])
+      .pauseFor(500)
+      .typeString(startLines[4])
+      .pauseFor(500)
+      .typeString(startLines[5])
+      .pauseFor(500)
+      .typeString(WWYD)
+      .typeString(startLines[6])
+      .typeString(startLines[7])
       .start();
   }else{
+
     startScreen.style.display = "none";
     gameScreen.style.display = "grid";
   }
@@ -2069,11 +2079,15 @@ var chooseLines = {
 };
 
 var startLines = {
-  0: `You wake up in front of a great and dense forest, without any memory of the last day, what happened? <br><br>`,
-  1: `The only thing you can do now is to investigate. <br><br>`,
+  0: `You wake up in front of a great and dense forest,`,
+  1: ` you don't remember your home,`,
+  2: ` your life,`,
+  3: ` and not even your name,`,
+  4: ` you're lost,`,
+  5: ` and the only thing that you can do now is to search for help.<br><br>`,
   //WWYD
-  2: `<a href="#" onclick="updateScreen('forest', 'enterForest')"> Enter the forest </a> <br>`,
-  3: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`,
+  6: `<a href="#" onclick="updateScreen('forest', 'enterForest')"> Enter the forest </a> <br>`,
+  7: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`,
 };
 
 var forestLines = {
