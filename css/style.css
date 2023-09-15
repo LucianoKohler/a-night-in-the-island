@@ -1,18 +1,23 @@
-html, body{height: 100%; margin: 0px; padding: 0px;}
+html,
+body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
 
-:root{
+:root {
     --main: #ffffff;
     --bg: #000000;
     --leshy: #008000;
 }
 
-*{
+* {
     font-family: monospace;
     color: var(--main);
 }
 
 
-body{
+body {
     background-color: var(--bg);
     overflow: hidden;
     display: flex;
@@ -21,24 +26,26 @@ body{
     justify-content: center;
 }
 
-i{
+i {
     color: var(--leshy);
 }
 
-#leshyFinalForm{
+#leshyFinalForm {
     color: var(--leshy);
 }
 
-#leshyFinalForm i{
+#leshyFinalForm i {
     color: rgb(0, 255, 0);
     font-style: normal !important;
 }
 
-#leshy, #leshySkull, #leshyBurn{
+#leshy,
+#leshySkull,
+#leshyBurn {
     user-select: none;
 }
 
-#gamescreen{
+#gamescreen {
     outline: 1px solid var(--main);
     width: 80%;
     height: 80%;
@@ -47,15 +54,23 @@ i{
     grid-template-rows: repeat(6, 1fr);
 }
 
-#main, #chat, #inventory, #others, #map, #settings{
+#main,
+#chat,
+#inventory,
+#others,
+#map,
+#settings {
     border: 1px solid var(--main);
+    width: 100%;
+    box-sizing: border-box;
+
 }
 
-#main{
+#main {
     grid-area: 1/1/5/8;
 }
 
-#main{
+#main {
     font-size: .9vw;
     display: flex;
     flex-direction: column;
@@ -64,35 +79,35 @@ i{
     overflow: hidden;
 }
 
-#main pre{
+#main pre {
     display: none;
     margin: 0;
 }
 
-#main .active{
+#main .active {
     display: block;
 }
 
-.mainline{
+.mainline {
     border: none !important;
 }
 
-#chat{
+#chat {
     grid-area: 5/1/8/8;
     overflow: auto;
 }
 
-#inventory{
+#inventory {
     grid-area: 1/8/4/11;
 }
 
 .sword1Sprite,
 .sword2Sprite,
-.sword3Sprite{
-    color: var(--bg) ;
+.sword3Sprite {
+    color: var(--bg);
 }
 
-#others{
+#others {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -100,24 +115,24 @@ i{
     grid-area: 4/8/7/11;
 }
 
-#others ul{
+#others ul {
     list-style-type: none;
     padding: 0;
     width: 100%;
     height: 100%;
 }
 
-#others ul li{
+#others ul li {
     width: 100%;
     height: 33.33333%;
 }
 
-#others ul li button{
+#others ul li button {
     width: 100%;
     height: 100%;
-    }
+}
 
-#map{
+#map {
     grid-area: 4/8/7/11;
     font-size: 0.7vw;
     text-align: center;
@@ -126,15 +141,16 @@ i{
     overflow: hidden;
 }
 
-#map pre{
+#map pre {
     margin: 1% 0 0 0;
 }
 
-#map a{
+#map a {
     text-decoration: none;
 }
 
-#map #tooltip{/*esse tooltip aparece toda vez que o mouse passa em uma localização possível no mapa*/
+#map #tooltip {
+    /*esse tooltip aparece toda vez que o mouse passa em uma localização possível no mapa*/
     border: 1px solid var(--main);
     background-color: var(--bg);
     padding: 3px;
@@ -143,7 +159,7 @@ i{
 }
 
 
-#settings{
+#settings {
     grid-area: 4/8/7/11;
     display: none;
     flex-direction: column;
@@ -151,42 +167,56 @@ i{
     height: 100%;
     width: 100%;
     text-align: center;
+    overflow: auto;
 }
 
-#settings .option{
+@media (max-height: 800px) {
+    #settings {
+        justify-content: start;
+    }
+}
+
+
+#settings .option {
     width: 80%;
     padding: 15px 0;
     margin: 0 auto;
     border: none;
 }
 
-#settings h3{margin: 0;}
-#settings p{margin-top: 0;}
+#settings h3 {
+    margin: 0;
+}
 
-#palette{
+#settings p {
+    margin-top: 0;
+}
+
+#palette {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
 }
 
-.arrow{
+.arrow {
     padding: 5px;
     user-select: none;
     cursor: pointer;
 }
 
-#speedName{
-    width: 50px; 
+#speedName {
+    width: 50px;
     display: inline-block;
 }
 
-#paletteName{
+#paletteName {
     margin: 10px 0 0 0 !important;
-    
+
 }
 
-.mainColor, .bgColor{
+.mainColor,
+.bgColor {
     border: 1px solid var(--main);
     border-radius: 5px;
     display: inline-block;
@@ -194,16 +224,22 @@ i{
     width: 30px;
 }
 
-.mainColor{background-color: var(--main);}
-.bgColor{background-color: var(--bg);}
+.mainColor {
+    background-color: var(--main);
+}
 
-#settings button{
+.bgColor {
+    background-color: var(--bg);
+}
+
+#settings button {
     width: 80%;
 
 }
 
-#deathmessage{
-    display: none; /*mudado para flex no js*/
+#deathmessage {
+    display: none;
+    /*mudado para flex no js*/
     flex-direction: column;
     width: 100%;
     height: 50%;
@@ -214,12 +250,12 @@ i{
     color: #fff;
 }
 
-#deathmessage pre{
+#deathmessage pre {
     font-size: 2em;
     margin: 0;
 }
 
-button{
+button {
     text-transform: uppercase;
     border-radius: 3px;
     border: none;
@@ -230,36 +266,38 @@ button{
     font-size: 1.4em;
 }
 
-.break{
-    width: 100%;
-}
-
-button:hover{
+button:hover {
     background-color: rgba(255, 255, 255, 0.3);
     transition: 0.1s ease-in;
     cursor: pointer;
 }
 
-button:active{
-    background-color: var(--main); 
+button:active {
+    background-color: var(--main);
 }
 
-#chat{
+#chat {
     padding: 15px;
-    font-size: 1.2em;
 }
 
-#chat a::before{
+#chat,
+#inventory,
+#settings {
+    font-size: calc(.4em + 1vh);
+
+}
+
+#chat a::before {
     content: "• ";
     line-height: 24px;
 }
 
-#inventory{
-    overflow-x: hidden;
-    overflow-y: scroll;
+#inventory {
+    overflow: auto;
 }
 
-#inventory .aligntext{
+
+#inventory .aligntext {
     width: 100%;
     height: auto;
     display: flex;
@@ -267,113 +305,76 @@ button:active{
     border: none;
 }
 
-#swordunlocked, #gogglesunlocked, #tunicunlocked{
+#swordunlocked,
+#gogglesunlocked,
+#tunicunlocked {
     display: none;
 }
 
-#inventory #inventorylogo{
-    font-size: .8vw;
-}
-
-#inventory p{
+#inventory p {
     margin-left: 15px;
 }
 
-#inventory pre{
-    font-size: .9em;
+#inventory pre {
+    font-size: calc(.5vw + 35%);
     padding: 5px;
-    
 }
 
-#inventory pre h3{
+#inventory pre h3 {
     display: inline;
     font-size: 1.3em;
 }
 
-#inventory::-webkit-scrollbar, 
-#chat::-webkit-scrollbar{
-    width: 10px;
+@media (pointer: fine) {
+    /*quando o pointer é fino, ou seja, de PC*/
+
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+
+    ::-webkit-scrollbar-track {
+        background-color: var(--bg);
+        border: 1px solid var(--main);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--main);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #aaa;
+}
 }
 
-#inventory::-webkit-scrollbar-track, 
-#chat::-webkit-scrollbar-track
-{
-    background-color: var(--bg);
-    border: 1px solid var(--main);
-}
+#leshy, #leshySkull {color: rgb(139, 139, 139);}
 
-#inventory::-webkit-scrollbar-thumb, 
-#chat::-webkit-scrollbar-thumb
-{
-    background: var(--main);
-}
+.darkness  {color: rgb(95, 95, 95);}
+.darkness2 {color: rgb(33, 33, 33);}
+.darkness3 {color: rgb(4, 4, 4);}
 
-#inventory::-webkit-scrollbar-thumb:hover
-#chat::-webkit-scrollbar-thumb:hover
-{
-    background: #aaa; 
-}
+.light {color: var(--main);}
+.light-fire {color: rgb(255, 231, 187);}
+.fire {color: orange;}
 
-#leshy, #leshySkull{
-    color: rgb(139, 139, 139);
-}
-
-.darkness{
-    color: rgb(95, 95, 95);
-}
-
-.darkness2{
-    color: rgb(33, 33, 33);
-}
-.darkness3{
-    color: rgb(4, 4, 4);
-}
-
-.light{
-    color: var(--main);
-}
-
-.light-fire{
-    color: rgb(255, 231, 187);
-}
-
-.fire{
-    color: orange;
-}
-
-#leshyBurn{
+#leshyBurn {
     background-color: rgb(5, 2, 0);
     color: rgb(202, 78, 0);
 }
 
-#leshyBurn .darkness{
-    color: rgb(124, 37, 0);
-}
-#leshyBurn .darkness2{
-    color: rgb(65, 19, 0);
-}
+#leshyBurn .darkness  {color: rgb(124, 37, 0);}
+#leshyBurn .darkness2 {color: rgb(65, 19, 0);}
+#leshyBurn .darkness3 {color: rgb(15, 4, 0);}
 
-#leshyBurn .darkness3{
-    color: rgb(15, 4, 0);
-}
-
-#winScreen{
+#winScreen {
     width: 100%;
     height: 100%;
     display: none;
     align-items: center;
 }
 
-#winScreen p{
+#winScreen p {
     width: 80%;
     text-align: center;
-}
-
-#credits{
-    display: none;
-    border: 1px solid var(--main);
-    width: 50%;
-    height:fit-content;
-    text-align: justify;
-    padding: 10px 50px 20px 50px;
 }
