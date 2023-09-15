@@ -37,10 +37,6 @@
     font-size: 1.4em;
 }
 
-.break{
-    width: 100%;
-}
-
 .buttons button:hover{
     background-color: rgba(255, 255, 255, 0.3);
     transition: 0.1s ease-in;
@@ -49,4 +45,13 @@
 
 .buttons button:active{
     background-color: white; 
+}
+
+@media (max-height: 500px){
+    #start{
+        gap: 20px;
+    }
+    .buttons button{
+        height: 75px;
+    }
 }

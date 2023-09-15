@@ -2053,7 +2053,6 @@ function winGame(){
 
 UpdateColors();
 updateInventory();
-FuseSword();
 
 //"BANCO DE DADOS" PARA AS FALAS DO JOGO
 //todos os <a> possuem a função de dar update no jogo, as variáveis inseridas são: a imagem a ser carregada e o texto a ser printado
@@ -2251,9 +2250,9 @@ var weirdRocksWhoAreYouLines = {
 };
 
 var weirdRocksCabinLines = {
-  0: `- Oh... Are you talking about Leshy? He's a spirit that makes bad things to people, I don't like to talk about that...<BR><BR>`,
-  1: `Leshy turned Rox into a lot of stones!<BR><BR>`,
-  2: `Rox starts crying pebbles, you decide to leave him alone for a bit...`,
+  0: `- Oh... Are you talking about <i>Leshy</i>? <i>It</i> is a spirit that makes bad things to people, I don't like to talk about that...<BR><BR>`,
+  1: `<i>Leshy</i> turned Rox into a lot of stones!<BR><BR>`,
+  2: `Rox starts crying pebbles, you decide to leave it alone for a bit...`,
 };
 
 var weirdRocksEyeLines = {
@@ -2566,7 +2565,7 @@ var kingGoHomeLines = {
   1: `- Well,`,
   2: ` actually, I have an idea that may help you:`,
   3: ` <i>Leshy</i>,`,
-  4: ` the forest spirit might have done this to you, <i>it</i> has brought so many others here,`,
+  4: ` <i>the forest spirit</i> might have done this to you, <i>it</i> has brought so many others here,`,
   5: ` which are now residents of this unescapable island, but maybe,`,
   6: ` if you're brave enough, `,
   6: ` you can get <i>its</i> sick mischiefs to an end! <br><br>`,
@@ -2808,7 +2807,7 @@ var angelWhoAreYouLines = {
 var angelHowSwordDisappearLines = {
   0: `- I was playing RPG with my angel friends at the castle's tavern and,`,
   1: ` unfortunately,`,
-  2: ` Leshy took the cue and stole the sword while I was away, and now it is gone,`,
+  2: ` <i>Leshy</i> took the cue and stole the sword while I was away, and now it is gone,`,
   3: ` and no one helped me with finding it...<br><br>`,
   //WWYS
   4: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
@@ -2947,7 +2946,7 @@ var leshyWDarkTunicLines = {
   2: ` quickly spreading into your upper body.<br><br>`,
   3: `The heat is to much,`,
   4: ` but the dark tunic absorbs the fire,`,
-  5: ` rapidly disappearing after Leshy's killing attempt.<br><br>`,
+  5: ` rapidly disappearing after <i>Leshy's</i> killing attempt.<br><br>`,
   6: `<i>- I thought that they got rid, of this thing a long time ago...`,
   7: `<i> It doesn't matter, if you want it that badly,`,
   8: `<i> let's end this.<br><br>`,
@@ -2956,7 +2955,7 @@ var leshyWDarkTunicLines = {
 
 var leshyTransformation = {
   0: `The pair of eyes disappear in the darkness.<br><br>`,
-  1: `The deafening silence of the cabin soon turn into a loud orchestra of craking wood,`,
+  1: `The deafening silence of the cabin soon turns into a loud orchestra of craking wood,`,
   2: ` as if it was being destroyed,`,
   3: ` plank by plank.`,
   4: ` The noise stops before you have time to process what was happening.<br><br>`,
@@ -2982,7 +2981,7 @@ var leshyFinalFormLines = {
   12: ` that thing...<br><br>`,
   13: `<b>Is you.</b><br><br>`,
   14: `Even though your face is a mystery for yourself after you first arrived at the island,`,
-  15: ` you can't think of anything else other than you being the one imprisioned by Leshy's evil intentions.<br><br>`,
+  15: ` you can't think of anything else other than you being the one imprisioned by <i>Leshy's</i> evil intentions.<br><br>`,
   16: `You've found a way to exit the island,`,
   17: ` but one final thing is necessary to do so:<br><br>`,
   18: `<b>YOU NEED TO SAVE YOURSELF!</b><br><br>`,
@@ -3054,7 +3053,7 @@ var leshyAngelLines = {
   3: ` You know what that means?<br><br>`,
   4: `You remain quiet,`,
   5: ` waiting for the answer...<br><br>`,
-  6: `- It means that the island is free from Leshy's curse,`,
+  6: `- It means that the island is free from <i>Leshy's</i> curse,`,
   7: ` and everyone can go back home,`,
   8: ` including you!<br><br>`,
   9: ` Words can't describe your feelings right now,`,
@@ -3062,7 +3061,7 @@ var leshyAngelLines = {
   11: ` excited to know how.<br><br>`,
   12: `- I won't make this long,`,
   13: ` I know that you're homesick.<br><br>`,
-  14: `The angel proceeds into getting close to Leshy's remains,`,
+  14: `The angel proceeds into getting close to the <i>eye's</i> remains,`,
   15: ` you didn't even realize that they were there,`,
   16: ` Maldio starts to manipulate the small portions of magic that remained in the pile of nothing...<br><br>`,
   17: `- That's it,`,
