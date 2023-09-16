@@ -138,7 +138,7 @@ i {
     text-align: center;
     display: none;
     border: 1px solid var(--main);
-    overflow: hidden;
+    overflow: auto;
 }
 
 #map pre {
