@@ -138,14 +138,15 @@ i {
     text-align: center;
     display: none;
     border: 1px solid var(--main);
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
-@media (min-width: 2300px) and (max-height: 1000px) {
+@media screen and (min-aspect-ratio: 9/4) {
     #map{
-        overflow: auto;
+        overflow-y: auto;
     }
-}
+  }
 
 #map pre {
     margin: 1% 0 0 0;
@@ -322,13 +323,24 @@ button:active {
 }
 
 #inventory pre {
-    font-size: calc(.5vw + 35%);
+    font-size: .7vw;
     padding: 5px;
 }
 
 #inventory pre h3 {
     display: inline;
     font-size: 1.3em;
+}
+
+#inventoryTitle{
+    font-size: .8vw !important;
+
+}
+
+#islandSword{
+    user-select: none; 
+    text-align: center;
+    font-size: .7vw !important;
 }
 
 @media (pointer: fine) {
@@ -378,6 +390,7 @@ button:active {
     height: 100%;
     display: none;
     align-items: center;
+    justify-content: center;
 }
 
 #winScreen p {
