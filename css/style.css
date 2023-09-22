@@ -372,6 +372,7 @@ button:active {
     height: 100%;
     display: none;
     align-items: center;
+    justify-content: center;
 }
 
 #winScreen p {
