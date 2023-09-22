@@ -77,10 +77,6 @@ function credits(){
   creditsScreen.style.display = 'block';
 }
 
-document.onkeydown = (e) => {
-  if (e.key == "Enter" && !started) start();
-};
-
 var othersDiv = document.getElementById("others");
 var mapDiv = document.getElementById("map");
 var settingsDiv = document.getElementById("settings");
@@ -349,7 +345,7 @@ function updateScreen(nextImg, text) {
 
   switch (text) {
     case "chooselocation":
-      TW.typeString(chooseLines[0]).start();
+      TW.typeString(chooseLines[0]).pauseFor(500).typeString(chooseLines[1]).start();
       break;
 
     case "well":
@@ -498,6 +494,7 @@ function updateScreen(nextImg, text) {
           .typeString(ForestBearWOSwordLines[5])
           .pauseFor(500)
           .typeString(ForestBearWOSwordLines[6])
+          .typeString(ForestBearWOSwordLines[7])
           .start();
       }
       break;
@@ -2071,7 +2068,8 @@ var WWYS = "What will you say? <br><br>";
 var YAEH = `<a href="#" onclick="dyingAnimation()">Your adventure ends here.</a>`;
 
 var chooseLines = {
-  0: `You can use the map anytime you want to leave the place`,
+  0: `You can use the map anytime you want to leave the place you currently are,`,
+  0: `use it if you feel stuck!`,
 };
 
 var startLines = {
@@ -2112,7 +2110,7 @@ var enterForestLinesWithStick = {
   0: `Back to the same place you are, you can still see the spot where you found your stick... <br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continue</a> <br>`,
-  2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Retreat from the forest`,
+  2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Retreat from the forest</a>`,
 };
 
 var ForestBearWSwordLines = {
@@ -2135,7 +2133,8 @@ var ForestBearWOSwordLines = {
   3: ` ready to fight for your life, no turning back!<br><br>`,
   4: `The bear takes its first step towards you, and your legs start thinking better than you,`,
   5: ` before even realizing, you start to run away from the creature, getting back to the starting point,`,
-  6: ` maybe you're not ready to fight such a big thing?`,
+  6: ` maybe you're not ready to fight such a big thing?<br><br>`,
+  7: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">What to do now?</a>`
 };
 
 var pierLines = {
@@ -2160,7 +2159,7 @@ var islandFirstLines = {
   1: ` without directions, only with the intention to go somewhere.`,
   2: ` A few minutes of only listening to the waves' sound takes you to a small island,`,
   3: ` you decide to stop there.<br><br>`,
-  4: `Upon arriving, nothing stands there except a plam tree and a giant X marking something,`,
+  4: `Upon arriving, nothing stands there except a palm tree and a giant X marking something,`,
   5: ` you take your bare hands and start digging the mark, since this place mustn't have many shovels around.<br><br>`,
   6: `The digging hurt, but it was worth it,`,
   7: ` after getting your hands numb,`,
