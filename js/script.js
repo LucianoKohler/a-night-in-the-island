@@ -149,7 +149,6 @@ function setPalette(step){
   document.querySelector(':root').style.setProperty('--main', palettes[currentPalette][0])
   document.querySelector(':root').style.setProperty('--bg', palettes[currentPalette][1])
   document.getElementById("paletteName").innerHTML = palettes[currentPalette][2]
-  console.log(currentPalette)
 };
 
 //Fazendo com que a localização atual fique amarela no mapa
