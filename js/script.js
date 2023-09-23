@@ -33,10 +33,15 @@ var goblinVisited = false;
 var startScreen = document.getElementById("start");
 var gameScreen = document.getElementById("gamescreen");
 var creditsScreen = document.getElementById("credits");
+var howToPlayScreen = document.getElementById("howtoplay");
 
 //Para abrir o jogo
 
-function start(){
+function updateStart(div){
+  switch (div){
+
+    case 'start':
+      
   if(!started){
     startScreen.style.display = "none";
     gameScreen.style.display = "grid";
@@ -65,16 +70,21 @@ function start(){
       .typeString(startLines[7])
       .start();
   }else{
-
     startScreen.style.display = "none";
     gameScreen.style.display = "grid";
   }
-};
-
-function credits(){
-  startScreen.style.display = 'none';
-  gameScreen.style.display = 'none';
-  creditsScreen.style.display = 'block';
+  break;
+    case 'howtoplay':
+      startScreen.style.display = 'none';
+      gameScreen.style.display = 'none';
+      howToPlayScreen.style.display = 'block';
+      break;
+    case 'credits':
+      startScreen.style.display = 'none';
+      gameScreen.style.display = 'none';
+      creditsScreen.style.display = 'block';
+      break;
+  }
 }
 
 var othersDiv = document.getElementById("others");
