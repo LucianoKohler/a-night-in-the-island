@@ -17,6 +17,9 @@ var tunic = false;
 var goggles = false;
 
 let del = 20;
+let smallDel = 500; //Delays usados para dar uma pausa entre frases
+let bigDel = 1000;
+let HugeDel = 1500;
 
 var BearScared = false;
 var castleEntered = false;
@@ -50,25 +53,27 @@ function updateStart(div) {
         });
 
         twStart
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(startLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(startLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(startLines[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(startLines[3])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(startLines[4])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(startLines[5])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(WWYD)
           .typeString(startLines[6])
           .typeString(startLines[7])
           .start();
       } else {
         startScreen.style.display = "none";
+        gameScreen.style.display = "none";
+        creditsScreen.style.display = "none";
         gameScreen.style.display = "grid";
       }
       break;
@@ -143,11 +148,9 @@ let palettes = [
 let currentPalette = 0;
 
 function setPalette(step) {
-  if (step == "default") {
-    currentPalette = 0;
-  } else {
+
     currentPalette += step;
-  }
+  
   if (currentPalette == 6) currentPalette = 0;
   if (currentPalette == -1) currentPalette = 5;
 
@@ -159,6 +162,30 @@ function setPalette(step) {
     .style.setProperty("--bg", palettes[currentPalette][1]);
   document.getElementById("paletteName").innerHTML =
     palettes[currentPalette][2];
+}
+
+//Mudar delay entre frases
+
+let betweenDelays = [
+  [500, 1000, 1500, "Normal"],
+  [250, 500, 750, "Halved"],
+  [0, 0, 0, "None"],
+];
+
+let currentDelay = 0;
+
+function setDelayTime(step){
+
+  currentDelay += step;
+
+  if (currentDelay == 3) currentDelay = 0;
+  if (currentDelay == -1) currentDelay = 2;
+
+  smallDel = betweenDelays[currentDelay][0];
+  bigDel = betweenDelays[currentDelay][1];
+  HugeDel = betweenDelays[currentDelay][2];
+
+  document.getElementById("delayName").innerHTML = betweenDelays[currentDelay][3];
 }
 
 //Fazendo com que a localização atual fique amarela no mapa
@@ -361,7 +388,7 @@ function updateScreen(nextImg, text) {
   switch (text) {
     case "chooselocation":
       TW.typeString(chooseLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(chooseLines[1])
         .start();
       break;
@@ -369,18 +396,18 @@ function updateScreen(nextImg, text) {
     case "well":
       if (goggles == false) {
         TW.typeString(wellLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(WWYD)
           .typeString(wellLines[1])
           .typeString(wellLines[2])
           .start();
       } else {
         TW.typeString(wellLinesAfterGoggles[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(wellLinesAfterGoggles[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(wellLinesAfterGoggles[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(wellLinesAfterGoggles[3])
           .start();
       }
@@ -389,17 +416,17 @@ function updateScreen(nextImg, text) {
     case "wellThrowCoin":
       if (coins >= 1) {
         TW.typeString(wellThrowCoinLines[0])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(wellThrowCoinLines[1])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(wellThrowCoinLines[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(wellThrowCoinLines[3])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(wellThrowCoinLines[4])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(wellThrowCoinLines[5])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(wellThrowCoinLines[6])
           .start();
         goggles = true;
@@ -407,11 +434,11 @@ function updateScreen(nextImg, text) {
         updateInventory();
       } else {
         TW.typeString(wellThrowCoinWOCoinLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(wellThrowCoinWOCoinLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(wellThrowCoinWOCoinLines[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(wellThrowCoinWOCoinLines[3])
           .start();
       }
@@ -419,13 +446,13 @@ function updateScreen(nextImg, text) {
 
     case "wellLookInside":
       TW.typeString(wellLookInsideLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(wellLookInsideLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(wellLookInsideLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(wellLookInsideLines[3])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(wellLookInsideLines[4])
         .start();
       break;
@@ -433,14 +460,14 @@ function updateScreen(nextImg, text) {
     case "forest":
       if (BearScared) {
         TW.typeString(forestBearScaredLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(forestBearScaredLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(forestBearScaredLines[2])
           .start();
       } else {
         TW.typeString(forestLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(WWYD)
           .typeString(forestLines[1])
           .typeString(forestLines[2])
@@ -460,11 +487,11 @@ function updateScreen(nextImg, text) {
         //sem graveto
         Stick = true;
         TW.typeString(enterForestLinesWOStick[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(enterForestLinesWOStick[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(enterForestLinesWOStick[2])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
 
           .typeString(WWYD)
           .typeString(enterForestLinesWOStick[3])
@@ -476,23 +503,23 @@ function updateScreen(nextImg, text) {
     case "forestBear":
       if (broadsword == true || islandSword == true) {
         TW.typeString(ForestBearWSwordLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(ForestBearWSwordLines[1])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(ForestBearWSwordLines[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(ForestBearWSwordLines[3])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(ForestBearWSwordLines[4])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(ForestBearWSwordLines[5])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(ForestBearWSwordLines[6])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(ForestBearWSwordLines[7])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(ForestBearWSwordLines[8])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(ForestBearWSwordLines[9])
           .start();
         BearScared = true;
@@ -500,17 +527,17 @@ function updateScreen(nextImg, text) {
         document.getElementsByClassName("pier")[0].classList.remove("disabled");
       } else {
         TW.typeString(ForestBearWOSwordLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(ForestBearWOSwordLines[1])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(ForestBearWOSwordLines[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(ForestBearWOSwordLines[3])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(ForestBearWOSwordLines[4])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(ForestBearWOSwordLines[5])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(ForestBearWOSwordLines[6])
           .typeString(ForestBearWOSwordLines[7])
           .start();
@@ -519,7 +546,7 @@ function updateScreen(nextImg, text) {
 
     case "pier":
       TW.typeString(pierLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(WWYD)
         .typeString(pierLines[1])
         .typeString(pierLines[2])
@@ -528,17 +555,17 @@ function updateScreen(nextImg, text) {
 
     case "pierStareSea":
       TW.typeString(pierStareSeaLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(pierStareSeaLines[1])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(pierStareSeaLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(pierStareSeaLines[3])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(pierStareSeaLines[4])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(pierStareSeaLines[5])
-        .pauseFor(1500)
+        .pauseFor(hugeDel)
         .typeString(pierStareSeaLines[6])
         .start();
       break;
@@ -546,7 +573,7 @@ function updateScreen(nextImg, text) {
     case "island":
       if (islandEntered == true) {
         TW.typeString(islandLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(WWYD)
           .typeString(islandLines[1])
           .typeString(islandLines[2])
@@ -556,27 +583,27 @@ function updateScreen(nextImg, text) {
         UpdateColors();
       } else {
         TW.typeString(islandFirstLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(islandFirstLines[1])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(islandFirstLines[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(islandFirstLines[3])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(islandFirstLines[4])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(islandFirstLines[5])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(islandFirstLines[6])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(islandFirstLines[7])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(islandFirstLines[8])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(islandFirstLines[9])
-          .pauseFor(1500)
+          .pauseFor(hugeDel)
           .typeString(islandFirstLines[10])
-          .pauseFor(1500)
+          .pauseFor(hugeDel)
           .typeString(islandFirstLines[11])
           .start();
         islandEntered = true;
@@ -600,24 +627,24 @@ function updateScreen(nextImg, text) {
 
     case "islandRowHorizonPart1":
       TW.typeString(islandRowHorizonPart1Lines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(islandRowHorizonPart1Lines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(islandRowHorizonPart1Lines[2])
         .start();
       break;
 
     case "islandRowHorizonPart2":
       TW.typeString(islandRowHorizonPart2Lines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(islandRowHorizonPart2Lines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(islandRowHorizonPart2Lines[2])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(islandRowHorizonPart2Lines[3])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(islandRowHorizonPart2Lines[4])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(WWYD)
         .typeString(islandRowHorizonPart2Lines[5])
         .typeString(islandRowHorizonPart2Lines[6])
@@ -628,25 +655,25 @@ function updateScreen(nextImg, text) {
 
     case "islandAppreciateLandscape":
       TW.typeString(islandAppreciateLandscapeLines[0])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(islandAppreciateLandscapeLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(islandAppreciateLandscapeLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(islandAppreciateLandscapeLines[3])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(islandAppreciateLandscapeLines[4])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(islandAppreciateLandscapeLines[5])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(islandAppreciateLandscapeLines[6])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(islandAppreciateLandscapeLines[7])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(islandAppreciateLandscapeLines[8])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(islandAppreciateLandscapeLines[9])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(islandAppreciateLandscapeLines[10])
         .start();
       break;
@@ -654,9 +681,9 @@ function updateScreen(nextImg, text) {
     case "altar":
       if (kingQuest == true && angelVisited == true) {
         TW.typeString(altarLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(altarLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(WWYS)
           .typeString(altarLines[2])
           .typeString(altarLines[3])
@@ -666,23 +693,23 @@ function updateScreen(nextImg, text) {
           .start();
       } else if (kingQuest == true) {
         TW.typeString(altarFirstLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(altarFirstLines[1])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(altarFirstLines[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(altarFirstLines[3])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(altarFirstLines[4])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(altarFirstLines[5])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(altarFirstLines[6])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(altarFirstLines[7])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(altarFirstLines[8])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(WWYS)
           .typeString(altarFirstLines[9])
           .typeString(altarFirstLines[10])
@@ -693,11 +720,11 @@ function updateScreen(nextImg, text) {
         angelVisited = true;
       } else {
         TW.typeString(altarAbandonedLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(altarAbandonedLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(altarAbandonedLines[2])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(altarAbandonedLines[3])
           .start();
       }
@@ -706,11 +733,11 @@ function updateScreen(nextImg, text) {
     case "angelAskAboutQuest":
       if (sword2 == false) {
         TW.typeString(angelParts2Lines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(angelParts2Lines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(angelParts2Lines[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(WWYS)
           .typeString(angelPartsGeneralLines[0])
           .typeString(angelPartsGeneralLines[1])
@@ -719,9 +746,9 @@ function updateScreen(nextImg, text) {
           .start();
       } else if (sword3 == false) {
         TW.typeString(angelParts3Lines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(angelParts3Lines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(WWYS)
           .typeString(angelPartsGeneralLines[0])
           .typeString(angelPartsGeneralLines[1])
@@ -730,13 +757,13 @@ function updateScreen(nextImg, text) {
           .start();
       } else if (sword1 == false) {
         TW.typeString(angelParts1Lines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(angelParts1Lines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(angelParts1Lines[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(angelParts1Lines[3])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(WWYS)
           .typeString(angelPartsGeneralLines[0])
           .typeString(angelPartsGeneralLines[1])
@@ -745,28 +772,28 @@ function updateScreen(nextImg, text) {
           .start();
       } else if (islandSword == false) {
         TW.typeString(angelFuseSwordPart1Lines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(angelFuseSwordPart1Lines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(angelFuseSwordPart1Lines[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(angelFuseSwordPart1Lines[3])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(angelFuseSwordPart1Lines[4])
           .start();
       } else {
         TW.typeString(angelPartsBadFeelingLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(angelPartsBadFeelingLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(angelPartsBadFeelingLines[2])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(angelPartsBadFeelingLines[3])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(angelPartsBadFeelingLines[4])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(angelPartsBadFeelingLines[5])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(WWYS)
           .typeString(angelPartsGeneralLines[0])
           .typeString(angelPartsGeneralLines[1])
@@ -778,30 +805,30 @@ function updateScreen(nextImg, text) {
 
     case "altarFuseSword":
       TW.typeString(angelFuseSwordPart2Lines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(angelFuseSwordPart2Lines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(angelFuseSwordPart2Lines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(angelFuseSwordPart2Lines[3])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(angelFuseSwordPart2Lines[4])
         .start();
       break;
 
     case "altarFuseSwordAftermath":
       TW.typeString(angelFuseSwordPart3Lines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(angelFuseSwordPart3Lines[1])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(angelFuseSwordPart3Lines[2])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(angelFuseSwordPart3Lines[3])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(angelFuseSwordPart3Lines[4])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(angelFuseSwordPart3Lines[5])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(WWYS)
         .typeString(angelPartsGeneralLines[0])
         .typeString(angelPartsGeneralLines[1])
@@ -814,11 +841,11 @@ function updateScreen(nextImg, text) {
 
     case "angelWhoAreYou":
       TW.typeString(angelWhoAreYouLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(angelWhoAreYouLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(angelWhoAreYouLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(WWYS)
         .typeString(angelWhoAreYouLines[3])
         .typeString(angelWhoAreYouLines[4])
@@ -829,13 +856,13 @@ function updateScreen(nextImg, text) {
 
     case "angelHowSwordDisappear":
       TW.typeString(angelHowSwordDisappearLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(angelHowSwordDisappearLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(angelHowSwordDisappearLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(angelHowSwordDisappearLines[3])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(WWYS)
         .typeString(angelHowSwordDisappearLines[4])
         .typeString(angelHowSwordDisappearLines[5])
@@ -846,11 +873,11 @@ function updateScreen(nextImg, text) {
 
     case "angelSearchSwordYourself":
       TW.typeString(angelSearchSwordYourselfLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(angelSearchSwordYourselfLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(angelSearchSwordYourselfLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(WWYS)
         .typeString(angelSearchSwordYourselfLines[3])
         .typeString(angelSearchSwordYourselfLines[4])
@@ -861,7 +888,7 @@ function updateScreen(nextImg, text) {
 
     case "angelBye":
       TW.typeString(angelByeLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(angelByeLines[1])
         .start();
       break;
@@ -869,23 +896,23 @@ function updateScreen(nextImg, text) {
     case "castle":
       if (castleEntered == false) {
         TW.typeString(castleLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(castleLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(castleLines[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(castleLines[3])
           .start();
         castleEntered = true;
       } else {
         TW.typeString(enterCastleLines[0])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(enterCastleLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(enterCastleLines[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(enterCastleLines[3])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(enterCastleLines[4])
           .typeString(enterCastleLines[5])
           .typeString(enterCastleLines[6])
@@ -896,9 +923,9 @@ function updateScreen(nextImg, text) {
     case "palaceEnter":
       if (palaceEntered == false) {
         TW.typeString(palaceEnterFirstLines[0])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(palaceEnterFirstLines[1])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(WWYS)
           .typeString(palaceEnterFirstLines[2])
           .typeString(palaceEnterFirstLines[3])
@@ -908,30 +935,30 @@ function updateScreen(nextImg, text) {
         palaceEntered = true;
       } else if (sword1 == false && sword2 == true && sword3 == true) {
         TW.typeString(kingGivePommelLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(kingGivePommelLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(kingGivePommelLines[2])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(kingGivePommelLines[3])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(kingGivePommelLines[4])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(kingGivePommelLines[5])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(kingGivePommelLines[6])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(kingGivePommelLines[7])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(kingGivePommelLines[8])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(kingGivePommelLines[9])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(kingGivePommelLines[10])
           .start();
       } else {
         TW.typeString(palaceEnterLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(WWYS)
           .typeString(palaceEnterLines[1])
           .typeString(palaceEnterLines[2])
@@ -943,13 +970,13 @@ function updateScreen(nextImg, text) {
 
     case "kingPommelPart2":
       TW.typeString(kingPommelPart2Lines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingPommelPart2Lines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingPommelPart2Lines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingPommelPart2Lines[3])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingPommelPart2Lines[4])
         .start();
       sword1 = true;
@@ -958,11 +985,11 @@ function updateScreen(nextImg, text) {
 
     case "kingWhoAreYou":
       TW.typeString(kingWhoAreYouLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingWhoAreYouLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingWhoAreYouLines[2])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(WWYS)
         .typeString(kingWhoAreYouLines[3])
         .typeString(kingWhoAreYouLines[4])
@@ -973,15 +1000,15 @@ function updateScreen(nextImg, text) {
 
     case "kingMeetSameFate":
       TW.typeString(kingMeetSameFateLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingMeetSameFateLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingMeetSameFateLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingMeetSameFateLines[3])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingMeetSameFateLines[4])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(WWYS)
         .typeString(kingMeetSameFateLines[5])
         .typeString(kingMeetSameFateLines[6])
@@ -991,38 +1018,38 @@ function updateScreen(nextImg, text) {
 
     case "kingGoHome":
       TW.typeString(kingGoHomeLines[0])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(kingGoHomeLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingGoHomeLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingGoHomeLines[3])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingGoHomeLines[4])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingGoHomeLines[5])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingGoHomeLines[6])
-        .pauseFor(1500)
+        .pauseFor(hugeDel)
         .typeString(kingGoHomeLines[7])
         .start();
       break;
 
     case `kingHowDoThis`:
       TW.typeString(kingHowDoThisLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingHowDoThisLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingHowDoThisLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingHowDoThisLines[3])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(kingHowDoThisLines[4])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(kingHowDoThisLines[5])
-        .pauseFor(1500)
+        .pauseFor(hugeDel)
         .typeString(kingHowDoThisLines[6])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingHowDoThisLines[7])
         .start();
       kingQuest = true;
@@ -1030,7 +1057,7 @@ function updateScreen(nextImg, text) {
 
     case "kingBye":
       TW.typeString(kingByeLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(kingByeLines[1])
         .typeString(kingByeLines[2])
         .start();
@@ -1039,7 +1066,7 @@ function updateScreen(nextImg, text) {
     case "shop":
       if (shopEntered == true) {
         TW.typeString(shopLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(shopLines[1])
           .typeString(shopLines[2])
           .typeString(shopLines[3])
@@ -1047,11 +1074,11 @@ function updateScreen(nextImg, text) {
           .start();
       } else {
         TW.typeString(shopFirstLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(shopFirstLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(shopFirstLines[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(shopFirstLines[3])
           .typeString(shopFirstLines[4])
           .typeString(shopFirstLines[5])
@@ -1063,9 +1090,9 @@ function updateScreen(nextImg, text) {
 
     case "shopBroadsword":
       TW.typeString(shopBroadswordLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(shopBroadswordLines[1])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(shopBroadswordLines[2])
         .typeString(shopBroadswordLines[3])
         .typeString(shopBroadswordLines[4])
@@ -1074,11 +1101,11 @@ function updateScreen(nextImg, text) {
 
     case "shopSticker":
       TW.typeString(shopStickerLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(shopStickerLines[1])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(shopStickerLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(shopStickerLines[3])
         .typeString(shopStickerLines[4])
         .typeString(shopStickerLines[5])
@@ -1088,11 +1115,11 @@ function updateScreen(nextImg, text) {
     case "shopBroadswordYes":
       if (coins >= 20) {
         TW.typeString(shopBroadswordYesLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(shopBroadswordYesLines[1])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(shopBroadswordYesLines[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(shopBroadswordYesLines[3])
           .start();
         broadsword = true;
@@ -1105,11 +1132,11 @@ function updateScreen(nextImg, text) {
     case "shopStickerYes":
       if (coins >= 10) {
         TW.typeString(shopStickerYesLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(shopStickerYesLines[1])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(shopStickerYesLines[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(shopStickerYesLines[3])
           .start();
         sticker = true;
@@ -1121,18 +1148,18 @@ function updateScreen(nextImg, text) {
       break;
     case "shopTooPoor":
       TW.typeString(shopTooPoorLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(shopTooPoorLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(shopTooPoorLines[2])
         .start();
       break;
 
     case "shopOnlyOnePerPerson":
       TW.typeString(shopOnlyOnePerPersonLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(shopOnlyOnePerPersonLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(shopOnlyOnePerPersonLines[2])
         .start();
       break;
@@ -1140,29 +1167,29 @@ function updateScreen(nextImg, text) {
     case "shopPass":
       if (kingQuest == false) {
         TW.typeString(shopPassWOKingQuest[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(shopPassWOKingQuest[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(shopPassWOKingQuest[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(shopPassWOKingQuest[3])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(shopPassWOKingQuest[4])
           .typeString(shopPassWOKingQuest[5])
           .start();
       } else {
         TW.typeString(shopPassWKingQuest[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(shopPassWKingQuest[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(shopPassWKingQuest[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(shopPassWKingQuest[3])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(shopPassWKingQuest[4])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(shopPassWKingQuest[5])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(shopPassWKingQuest[6])
           .typeString(shopPassWKingQuest[7])
           .start();
@@ -1174,18 +1201,18 @@ function updateScreen(nextImg, text) {
     case "weirdRocks":
       if (sword3 == false) {
         TW.typeString(weirdRocksLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(weirdRocksLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(WWYS)
           .typeString(weirdRocksLines[2])
           .typeString(weirdRocksLines[3])
           .start();
       } else {
         TW.typeString(weirdRocksAngryRox[0])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(weirdRocksAngryRox[1])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(weirdRocksAngryRox[2])
           .start();
       }
@@ -1193,7 +1220,7 @@ function updateScreen(nextImg, text) {
 
     case "weirdRocksWhoAreYou":
       TW.typeString(weirdRocksWhoAreYouLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(WWYS)
         .typeString(weirdRocksWhoAreYouLines[1])
         .typeString(weirdRocksWhoAreYouLines[2])
@@ -1202,7 +1229,7 @@ function updateScreen(nextImg, text) {
 
     case "weirdRocksCabin":
       TW.typeString(weirdRocksCabinLines[0])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(weirdRocksCabinLines[1])
         .pauseFor(2000)
         .typeString(weirdRocksCabinLines[2])
@@ -1211,9 +1238,9 @@ function updateScreen(nextImg, text) {
 
     case "weirdRocksEye":
       TW.typeString(weirdRocksEyeLines[0])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(weirdRocksEyeLines[1])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(WWYS)
         .typeString(weirdRocksEyeLines[2])
         .typeString(weirdRocksEyeLines[3])
@@ -1222,7 +1249,7 @@ function updateScreen(nextImg, text) {
 
     case "weirdRocksNice":
       TW.typeString(weirdRocksNiceLines[0])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(WWYD)
         .typeString(weirdRocksNiceLines[1])
         .typeString(weirdRocksNiceLines[2])
@@ -1231,15 +1258,15 @@ function updateScreen(nextImg, text) {
 
     case "weirdRocksNotStealEye":
       TW.typeString(weirdRocksNotStealEyeLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(weirdRocksNotStealEyeLines[1])
         .start();
       break;
     case "weirdRocksStealEye":
       TW.typeString(weirdRocksStealEye[0])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(weirdRocksStealEye[1])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(weirdRocksStealEye[2])
         .start();
 
@@ -1251,9 +1278,9 @@ function updateScreen(nextImg, text) {
     case "farm":
       if (sword2 == false) {
         TW.typeString(farmLines[0])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(farmLines[1])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(WWYS)
           .typeString(farmLines[2])
           .typeString(farmLines[3])
@@ -1261,7 +1288,7 @@ function updateScreen(nextImg, text) {
           .start();
       } else {
         TW.typeString(farmLinesHilt[0])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(farmLinesHilt[1])
           .start();
       }
@@ -1270,7 +1297,7 @@ function updateScreen(nextImg, text) {
     case "farmSeeCrops":
       if (sticker == false) {
         TW.typeString(farmLinesWOSticker[0])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(farmLinesWOSticker[1])
           .pauseFor(2000)
           .typeString(WWYS)
@@ -1279,15 +1306,15 @@ function updateScreen(nextImg, text) {
           .start();
       } else {
         TW.typeString(farmLinesWSticker[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(farmLinesWSticker[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(farmLinesWSticker[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(farmLinesWSticker[3])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(farmLinesWSticker[4])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(farmLinesWSticker[5])
           .start();
       }
@@ -1297,7 +1324,7 @@ function updateScreen(nextImg, text) {
       TW.typeString(farmLinesMetal[0])
         .pauseFor(2000)
         .typeString(farmLinesMetal[1])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(WWYS)
         .typeString(farmLinesMetal[2])
         .typeString(farmLinesMetal[3])
@@ -1306,18 +1333,18 @@ function updateScreen(nextImg, text) {
 
     case "farmBye":
       TW.typeString(farmLinesBye[0])
-        .pauseFor(1500)
+        .pauseFor(hugeDel)
         .typeString(farmLinesBye[1])
         .start();
       break;
 
     case "farmApproach":
       TW.typeString(farmLinesApproach[0])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(farmLinesApproach[1])
-        .pauseFor(1500)
+        .pauseFor(hugeDel)
         .typeString(farmLinesApproach[2])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(farmLinesApproach[3])
         .pauseFor(2000)
         .typeString(farmLinesApproach[4])
@@ -1330,9 +1357,9 @@ function updateScreen(nextImg, text) {
       if (pass == 0) {
         //Se não tem
         TW.typeString(wallLines[0])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(wallLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(WWYS)
           .typeString(wallLines[3])
           .typeString(wallLines[4])
@@ -1341,9 +1368,9 @@ function updateScreen(nextImg, text) {
       } else if (pass == 1) {
         //Se tem, mas não usou
         TW.typeString(wallLines[0])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(wallLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(WWYS)
           .typeString(wallLines[2])
           .typeString(wallLines[3])
@@ -1353,9 +1380,9 @@ function updateScreen(nextImg, text) {
       } else {
         //Se tem E já usou
         TW.typeString(wallAlreadyUsedPassLines[0])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(wallAlreadyUsedPassLines[1])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(wallAlreadyUsedPassLines[2])
           .start();
       }
@@ -1363,11 +1390,11 @@ function updateScreen(nextImg, text) {
 
     case "wallUsePass":
       TW.typeString(wallUsePassLines[0])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(wallUsePassLines[1])
-        .pauseFor(1500)
+        .pauseFor(hugeDel)
         .typeString(wallUsePassLines[2])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(wallUsePassLines[3])
         .start();
       pass = 2;
@@ -1378,7 +1405,7 @@ function updateScreen(nextImg, text) {
 
     case "wallWhatPass":
       TW.typeString(wallWhatPassLines[0])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(WWYS)
         .typeString(wallWhatPassLines[1])
         .typeString(wallWhatPassLines[2])
@@ -1387,7 +1414,7 @@ function updateScreen(nextImg, text) {
 
     case "wallBeyondWall":
       TW.typeString(wallBeyondWallLines[0])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(WWYS)
         .typeString(wallBeyondWallLines[1])
         .typeString(wallBeyondWallLines[2])
@@ -1396,16 +1423,16 @@ function updateScreen(nextImg, text) {
 
     case "wallBye":
       TW.typeString(wallByeLines[0])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(wallByeLines[1])
         .start();
       break;
 
     case "cave":
       TW.typeString(caveLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(caveLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(caveLines[2])
         .start();
       break;
@@ -1414,15 +1441,15 @@ function updateScreen(nextImg, text) {
       if (goblinGotMoney == false) {
         if (goblinVisited == false) {
           TW.typeString(goblinFirstLines[0])
-            .pauseFor(500)
+            .pauseFor(smallDel)
             .typeString(goblinFirstLines[1])
-            .pauseFor(500)
+            .pauseFor(smallDel)
             .typeString(goblinFirstLines[2])
-            .pauseFor(500)
+            .pauseFor(smallDel)
             .typeString(goblinFirstLines[3])
-            .pauseFor(500)
+            .pauseFor(smallDel)
             .typeString(goblinFirstLines[4])
-            .pauseFor(500)
+            .pauseFor(smallDel)
             .typeString(WWYS)
             .typeString(goblinFirstLines[5])
             .typeString(goblinFirstLines[6])
@@ -1431,9 +1458,9 @@ function updateScreen(nextImg, text) {
           goblinVisited = true;
         } else {
           TW.typeString(goblinLines[0])
-            .pauseFor(500)
+            .pauseFor(smallDel)
             .typeString(goblinLines[1])
-            .pauseFor(500)
+            .pauseFor(smallDel)
             .typeString(WWYS)
             .typeString(goblinLines[2])
             .typeString(goblinLines[3])
@@ -1442,13 +1469,13 @@ function updateScreen(nextImg, text) {
         }
       } else {
         TW.typeString(goblinAfterGotMoneyLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(goblinAfterGotMoneyLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(goblinAfterGotMoneyLines[2])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(goblinAfterGotMoneyLines[3])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(goblinAfterGotMoneyLines[4])
           .start();
       }
@@ -1466,9 +1493,9 @@ function updateScreen(nextImg, text) {
         .pauseFor(750)
         .typeString(goblinWhoAreYouLines[4])
         .typeString(goblinWhoAreYouLines[5])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinWhoAreYouLines[6])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(WWYS)
         .typeString(goblinWhoAreYouLines[7])
         .typeString(goblinWhoAreYouLines[8])
@@ -1477,28 +1504,28 @@ function updateScreen(nextImg, text) {
 
     case "goblinWhatGold":
       TW.typeString(goblinWhatGoldLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinWhatGoldLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinWhatGoldLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinWhatGoldLines[3])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinWhatGoldLines[4])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinWhatGoldLines[5])
         .start();
       break;
 
     case "goblinNotMuch":
       TW.typeString(goblinNotMuchLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinNotMuchLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinNotMuchLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinNotMuchLines[3])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(WWYS)
         .typeString(goblinNotMuchLines[4])
         .typeString(goblinNotMuchLines[5])
@@ -1507,82 +1534,82 @@ function updateScreen(nextImg, text) {
 
     case "goblinTruth":
       TW.typeString(goblinTruthLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinTruthLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinTruthLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinTruthLines[3])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinTruthLines[4])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinTruthLines[5])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinTruthLines[6])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinTruthLines[7])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinTruthLines[8])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinTruthLines[9])
         .start();
       break;
 
     case "goblinBluff":
       TW.typeString(goblinBluffLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinBluffLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinBluffLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinBluffLines[3])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinBluffLines[4])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinBluffLines[5])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinBluffLines[6])
         .start();
       break;
 
     case "goblinComeOn":
       TW.typeString(goblinComeOnLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinComeOnLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinComeOnLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinComeOnLines[3])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinComeOnLines[4])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinComeOnLines[5])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinComeOnLines[6])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinComeOnLines[7])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinComeOnLines[8])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinComeOnLines[9])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinComeOnLines[10])
         .start();
       break;
 
     case "goblinMoney":
       TW.typeString(goblinMoneyLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinMoneyLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinMoneyLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinMoneyLines[3])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(goblinMoneyLines[4])
-        .pauseFor(1500)
+        .pauseFor(hugeDel)
         .typeString(goblinMoneyLines[5])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinMoneyLines[6])
         .start();
 
@@ -1593,18 +1620,18 @@ function updateScreen(nextImg, text) {
 
     case "goblinBye":
       TW.typeString(goblinByeLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinByeLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(goblinByeLines[2])
         .start();
       break;
 
     case "cabin":
       TW.typeString(cabinLines[0])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(cabinLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(WWYD)
         .typeString(cabinLines[2])
         .typeString(cabinLines[3])
@@ -1614,26 +1641,26 @@ function updateScreen(nextImg, text) {
     case "cabinTree":
       if (goggles) {
         TW.typeString(cabinLinesWGoggles[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(cabinLinesWGoggles[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(cabinLinesWGoggles[2])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(cabinLinesWGoggles[3])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(cabinLinesWGoggles[4])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(cabinLinesWGoggles[5])
           .start();
       } else {
         TW.typeString(cabinLinesWOGoggles[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(cabinLinesWOGoggles[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(cabinLinesWOGoggles[2])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(cabinLinesWOGoggles[3])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(cabinLinesWOGoggles[4])
           .start();
       }
@@ -1642,111 +1669,111 @@ function updateScreen(nextImg, text) {
       disableKeyFeatures();
 
       TW.typeString(CabinEnterLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(CabinEnterLines[1])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(CabinEnterLines[2])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(CabinEnterLines[3])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(CabinEnterLines[4])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(CabinEnterLines[5])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(CabinEnterLines[6])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(CabinEnterLines[7])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(CabinEnterLines[8])
         .start();
       break;
     case "cabinFate":
       if (kingQuest == false) {
         TW.typeString(leshyLostSoulLines[0])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyLostSoulLines[1])
-          .pauseFor(1500)
+          .pauseFor(hugeDel)
           .typeString(leshyLostSoulLines[2])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyLostSoulLines[3])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyLostSoulLines[4])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyLostSoulLines[5])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyLostSoulLines[6])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyLostSoulLines[7])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyLostSoulLines[8])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyLostSoulLines[9])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyLostSoulLines[10])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(YAEH)
           .start();
       } else {
         if (goggles == false) {
           TW.typeString(leshyWOGogglesLines[0])
-            .pauseFor(500)
+            .pauseFor(smallDel)
             .typeString(leshyWOGogglesLines[1])
-            .pauseFor(1500)
+            .pauseFor(hugeDel)
             .typeString(leshyWOGogglesLines[2])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWOGogglesLines[3])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWOGogglesLines[4])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWOGogglesLines[5])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWOGogglesLines[6])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWOGogglesLines[7])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWOGogglesLines[8])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWOGogglesLines[9])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWOGogglesLines[10])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWOGogglesLines[11])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWOGogglesLines[12])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(YAEH)
             .start();
         } else {
           TW.typeString(leshyWGogglesLines[0])
-            .pauseFor(500)
+            .pauseFor(smallDel)
             .typeString(leshyWGogglesLines[1])
-            .pauseFor(1500)
+            .pauseFor(hugeDel)
             .typeString(leshyWGogglesLines[2])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWGogglesLines[3])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWGogglesLines[4])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWGogglesLines[5])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWGogglesLines[6])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWGogglesLines[7])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWGogglesLines[8])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWGogglesLines[9])
             .pauseFor(3000)
             .typeString(leshyWGogglesLines[10])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWGogglesLines[11])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWGogglesLines[12])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWGogglesLines[13])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWGogglesLines[14])
-            .pauseFor(1000)
+            .pauseFor(bigDel)
             .typeString(leshyWGogglesLines[15])
             .start();
         }
@@ -1755,13 +1782,13 @@ function updateScreen(nextImg, text) {
 
     case "leshyPassTest1":
       TW.typeString(leshySkullLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(leshySkullLines[1])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshySkullLines[2])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshySkullLines[3])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshySkullLines[4])
         .start();
       break;
@@ -1769,44 +1796,44 @@ function updateScreen(nextImg, text) {
     case "leshyBurn":
       if (tunic == false) {
         TW.typeString(leshyWODarkTunicLines[0])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyWODarkTunicLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyWODarkTunicLines[2])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyWODarkTunicLines[3])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyWODarkTunicLines[4])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyWODarkTunicLines[5])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyWODarkTunicLines[6])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyWODarkTunicLines[7])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyWODarkTunicLines[8])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(YAEH)
           .start();
       } else {
         TW.typeString(leshyWDarkTunicLines[0])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyWDarkTunicLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyWDarkTunicLines[2])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyWDarkTunicLines[3])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyWDarkTunicLines[4])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyWDarkTunicLines[5])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyWDarkTunicLines[6])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyWDarkTunicLines[7])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyWDarkTunicLines[8])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyWDarkTunicLines[9])
           .start();
       }
@@ -1814,64 +1841,64 @@ function updateScreen(nextImg, text) {
 
     case "leshyTransform":
       TW.typeString(leshyTransformation[0])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyTransformation[1])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyTransformation[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(leshyTransformation[3])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyTransformation[4])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyTransformation[5])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyTransformation[6])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyTransformation[7])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyTransformation[8])
         .start();
       break;
 
     case "leshyFinalForm":
       TW.typeString(leshyFinalFormLines[0])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[1])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[2])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[3])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[4])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[5])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[6])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(leshyFinalFormLines[7])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[8])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[9])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[10])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(leshyFinalFormLines[11])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[12])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[13])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[14])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[15])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[16])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[17])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[18])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyFinalFormLines[19])
         .start();
       break;
@@ -1879,82 +1906,82 @@ function updateScreen(nextImg, text) {
     case "leshyFinalTest":
       if (islandSword == false) {
         TW.typeString(leshyFinalDefeatLines[0])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyFinalDefeatLines[2])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[3])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[4])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[5])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[6])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyFinalDefeatLines[7])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[8])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyFinalDefeatLines[9])
-          .pauseFor(1500)
+          .pauseFor(hugeDel)
           .typeString(leshyFinalDefeatLines[10])
-          .pauseFor(1500)
+          .pauseFor(hugeDel)
           .typeString(leshyFinalDefeatLines[11])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[12])
-          .pauseFor(1500)
+          .pauseFor(hugeDel)
           .typeString(leshyFinalDefeatLines[13])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[14])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[15])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[16])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[17])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[18])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[19])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[20])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[21])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[22])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[23])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalDefeatLines[24])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(YAEH)
           .start();
       } else {
         TW.typeString(leshyFinalVictoryLines[0])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalVictoryLines[1])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyFinalVictoryLines[2])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalVictoryLines[3])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalVictoryLines[4])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalVictoryLines[5])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalVictoryLines[6])
-          .pauseFor(1500)
+          .pauseFor(hugeDel)
           .typeString(leshyFinalVictoryLines[7])
-          .pauseFor(1500)
+          .pauseFor(hugeDel)
           .typeString(leshyFinalVictoryLines[8])
-          .pauseFor(500)
+          .pauseFor(smallDel)
           .typeString(leshyFinalVictoryLines[9])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalVictoryLines[10])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalVictoryLines[11])
-          .pauseFor(1000)
+          .pauseFor(bigDel)
           .typeString(leshyFinalVictoryLines[12])
           .start();
       }
@@ -1962,23 +1989,23 @@ function updateScreen(nextImg, text) {
 
     case "leshyAftermath":
       TW.typeString(leshyAftermathLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(leshyAftermathLines[1])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAftermathLines[2])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAftermathLines[3])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAftermathLines[4])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAftermathLines[5])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAftermathLines[6])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAftermathLines[7])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAftermathLines[8])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAftermathLines[9])
         .start();
       break;
@@ -1986,72 +2013,72 @@ function updateScreen(nextImg, text) {
     case "leshyAngel":
       setPalette("default");
       TW.typeString(leshyAngelLines[0])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAngelLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(leshyAngelLines[2])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(leshyAngelLines[3])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAngelLines[4])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAngelLines[5])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAngelLines[6])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(leshyAngelLines[7])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(leshyAngelLines[8])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAngelLines[9])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAngelLines[10])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAngelLines[11])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAngelLines[12])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(leshyAngelLines[13])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAngelLines[14])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAngelLines[15])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(leshyAngelLines[16])
-        .pauseFor(1500)
+        .pauseFor(hugeDel)
         .typeString(leshyAngelLines[17])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(leshyAngelLines[18])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(leshyAngelLines[19])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(leshyAngelLines[20])
         .start();
       break;
 
     case "ending":
       TW.typeString(endingLines[0])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(endingLines[1])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(endingLines[2])
-        .pauseFor(1000)
+        .pauseFor(bigDel)
         .typeString(endingLines[3])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(endingLines[4])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(endingLines[5])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(endingLines[6])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(endingLines[7])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(endingLines[8])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(endingLines[9])
-        .pauseFor(500)
+        .pauseFor(smallDel)
         .typeString(endingLines[10])
-        .pauseFor(1500)
+        .pauseFor(hugeDel)
         .typeString(endingLines[11])
         .start();
       break;

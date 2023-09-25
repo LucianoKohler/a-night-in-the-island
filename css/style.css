@@ -63,7 +63,6 @@ i {
     border: 1px solid var(--main);
     width: 100%;
     box-sizing: border-box;
-
 }
 
 #main {
@@ -170,18 +169,13 @@ i {
     grid-area: 4/8/7/11;
     display: none;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: start;
     height: 100%;
     width: 100%;
     text-align: center;
     overflow: auto;
 }
 
-@media (max-height: 800px) {
-    #settings {
-        justify-content: start;
-    }
-}
 
 
 #settings .option {
@@ -212,7 +206,7 @@ i {
     cursor: pointer;
 }
 
-#speedName {
+#speedName, #delayName {
     width: 50px;
     display: inline-block;
 }
@@ -246,7 +240,6 @@ i {
 
 #deathmessage {
     display: none;
-    /*mudado para flex no js*/
     flex-direction: column;
     width: 100%;
     height: 50%;

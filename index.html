@@ -1073,6 +1073,16 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
 
           <div class="option">
 
+            <h3>Delay between sentences</h3>
+            <p>Change how long the text sleeps after each sentence</p>
+            <span class="arrow" id="decrementSpeed" onclick="setDelayTime(-1)">&lt;</span>
+            <span id="delayName">Normal</span>
+            <span class="arrow" id="incrementSpeed" onclick="setDelayTime(1)">&gt;</span>
+
+          </div>
+
+          <div class="option">
+
             <h3>Color Palette</h3>
             <p>Choose the color of the game</p>
             <div id="palette">
@@ -1082,6 +1092,7 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
               <span class="arrow" id="paletteForward" onclick="setPalette(1)">&gt;</span>
             </div>
             <p id="paletteName">Default</p>
+
           </div>
 
           <div class="option">
