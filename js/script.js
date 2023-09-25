@@ -33,48 +33,58 @@ var goblinVisited = false;
 var startScreen = document.getElementById("start");
 var gameScreen = document.getElementById("gamescreen");
 var creditsScreen = document.getElementById("credits");
+var howToPlayScreen = document.getElementById("howtoplay");
 
 //Para abrir o jogo
 
-function start(){
-  if(!started){
-    startScreen.style.display = "none";
-    gameScreen.style.display = "grid";
-    started = true;
-  
-    var twStart = new Typewriter(chatDiv, {
-      delay: del,
-    });
-  
-    twStart
-    .pauseFor(500)
-      .typeString(startLines[0])
-      .pauseFor(500)
-      .typeString(startLines[1])
-      .pauseFor(500)
-      .typeString(startLines[2])
-      .pauseFor(500)
-      .typeString(startLines[3])
-      .pauseFor(500)
-      .typeString(startLines[4])
-      .pauseFor(500)
-      .typeString(startLines[5])
-      .pauseFor(500)
-      .typeString(WWYD)
-      .typeString(startLines[6])
-      .typeString(startLines[7])
-      .start();
-  }else{
+function updateStart(div) {
+  switch (div) {
+    case "start":
+      if (!started) {
+        startScreen.style.display = "none";
+        gameScreen.style.display = "grid";
+        started = true;
 
-    startScreen.style.display = "none";
-    gameScreen.style.display = "grid";
+        var twStart = new Typewriter(chatDiv, {
+          delay: del,
+        });
+
+        twStart
+          .pauseFor(500)
+          .typeString(startLines[0])
+          .pauseFor(500)
+          .typeString(startLines[1])
+          .pauseFor(500)
+          .typeString(startLines[2])
+          .pauseFor(500)
+          .typeString(startLines[3])
+          .pauseFor(500)
+          .typeString(startLines[4])
+          .pauseFor(500)
+          .typeString(startLines[5])
+          .pauseFor(500)
+          .typeString(WWYD)
+          .typeString(startLines[6])
+          .typeString(startLines[7])
+          .start();
+      } else {
+        startScreen.style.display = "none";
+        gameScreen.style.display = "grid";
+      }
+      break;
+    case "howtoplay":
+      startScreen.style.display = "none";
+      gameScreen.style.display = "none";
+      creditsScreen.style.display = "none";
+      howToPlayScreen.style.display = "block";
+      break;
+    case "credits":
+      startScreen.style.display = "none";
+      gameScreen.style.display = "none";
+      howToPlayScreen.style.display = "none";
+      creditsScreen.style.display = "block";
+      break;
   }
-};
-
-function credits(){
-  startScreen.style.display = 'none';
-  gameScreen.style.display = 'none';
-  creditsScreen.style.display = 'block';
 }
 
 var othersDiv = document.getElementById("others");
@@ -82,70 +92,74 @@ var mapDiv = document.getElementById("map");
 var settingsDiv = document.getElementById("settings");
 
 //Cicla as divs que ficam dentro da div pai "others", chamada no HTML
-function UpdateInfoDiv(div){
+function UpdateInfoDiv(div) {
   othersDiv.style.display = "none";
   settingsDiv.style.display = "none";
   mapDiv.style.display = "none";
 
-       if(div == 'map') mapDiv.style.display = "block";
-  else if (div == 'settings') settingsDiv.style.display = "flex"
+  if (div == "map") mapDiv.style.display = "block";
+  else if (div == "settings") settingsDiv.style.display = "flex";
   else othersDiv.style.display = "flex";
 }
 
-function toMainMenu(){
-  gameScreen.style.display = 'none';
-  creditsScreen.style.display = 'none';
-  startScreen.style.display = 'flex';
+function toMainMenu() {
+  gameScreen.style.display = "none";
+  creditsScreen.style.display = "none";
+  startScreen.style.display = "flex";
 }
 
 //Mudar velocidade do texto
 
 let speeds = [
-  ['25', 'Slow'],
-  ['20', 'Medium'],
-  ['10', 'Fast'],
-  ['0', 'FASTER!'],
-]
+  ["25", "Slow"],
+  ["20", "Medium"],
+  ["10", "Fast"],
+  ["0", "FASTER!"],
+];
 
 let currentSpeed = 1;
 
-function setTextSpeed(step){
-
+function setTextSpeed(step) {
   currentSpeed += step;
 
-  if(currentSpeed == 4) currentSpeed = 0;
-  if(currentSpeed == -1)currentSpeed = 3;
+  if (currentSpeed == 4) currentSpeed = 0;
+  if (currentSpeed == -1) currentSpeed = 3;
 
   del = speeds[currentSpeed][0];
-  document.getElementById('speedName').innerHTML = speeds[currentSpeed][1]
+  document.getElementById("speedName").innerHTML = speeds[currentSpeed][1];
 }
 
 //Mudar paleta de cor
 
 let palettes = [
-  ['#ffffff', '#000000', "Default"],
-  ['#cfab4a', '#292b30', 'Fall Forest'],
-  ['#13e600', '#172115', 'Vivid Grove'],
-  ['#fcd1d7', '#42202d', 'Sakuras Festival'],
-  ['#adc3e8', '#0d132a', 'Coast Mangrove'],
-  ['#000000', '#ffffff', 'Inverted'],
+  ["#ffffff", "#000000", "Default"],
+  ["#cfab4a", "#292b30", "Fall Forest"],
+  ["#13e600", "#172115", "Vivid Grove"],
+  ["#fcd1d7", "#42202d", "Sakuras Festival"],
+  ["#adc3e8", "#0d132a", "Coast Mangrove"],
+  ["#000000", "#ffffff", "Inverted"],
 ];
 
 let currentPalette = 0;
 
-function setPalette(step){
-  if(step == 'default'){
+function setPalette(step) {
+  if (step == "default") {
     currentPalette = 0;
-  }else{
-    currentPalette+= step
+  } else {
+    currentPalette += step;
   }
-  if(currentPalette == 6) currentPalette = 0
-  if(currentPalette == -1)currentPalette = 5;
-  
-  document.querySelector(':root').style.setProperty('--main', palettes[currentPalette][0])
-  document.querySelector(':root').style.setProperty('--bg', palettes[currentPalette][1])
-  document.getElementById("paletteName").innerHTML = palettes[currentPalette][2]
-};
+  if (currentPalette == 6) currentPalette = 0;
+  if (currentPalette == -1) currentPalette = 5;
+
+  document
+    .querySelector(":root")
+    .style.setProperty("--main", palettes[currentPalette][0]);
+  document
+    .querySelector(":root")
+    .style.setProperty("--bg", palettes[currentPalette][1]);
+  document.getElementById("paletteName").innerHTML =
+    palettes[currentPalette][2];
+}
 
 //Fazendo com que a localização atual fique amarela no mapa
 
@@ -205,10 +219,9 @@ function dyingAnimation() {
   document.getElementById("deathmessage").style.display = "flex";
 }
 
-document.addEventListener('keydown', (e) => {
-  if(e.key == "D")
-  dyingAnimation();
-})
+document.addEventListener("keydown", (e) => {
+  if (e.key == "D") dyingAnimation();
+});
 
 function updateInventory() {
   document.getElementById("Coins").innerHTML = "Coins: " + coins;
@@ -285,14 +298,16 @@ document.addEventListener("keydown", (e) => {
 
 var chatDiv = document.getElementById("text");
 
-function disableKeyFeatures(){//Usado na hora da luta contra Leshy
-  for (let i = 0; i < allPlaces.length; i++) {//Andar pelo mapa
+function disableKeyFeatures() {
+  //Usado na hora da luta contra Leshy
+  for (let i = 0; i < allPlaces.length; i++) {
+    //Andar pelo mapa
     allPlaces[i].classList.add("disabled");
   }
 
-  setPalette('default')
-  document.getElementById('paletteForward').onclick = "";//Mudar paleta
-  document.getElementById('paletteBack').onclick = "";
+  setPalette("default");
+  document.getElementById("paletteForward").onclick = ""; //Mudar paleta
+  document.getElementById("paletteBack").onclick = "";
 }
 
 function updateScreen(nextImg, text) {
@@ -345,7 +360,10 @@ function updateScreen(nextImg, text) {
 
   switch (text) {
     case "chooselocation":
-      TW.typeString(chooseLines[0]).pauseFor(500).typeString(chooseLines[1]).start();
+      TW.typeString(chooseLines[0])
+        .pauseFor(500)
+        .typeString(chooseLines[1])
+        .start();
       break;
 
     case "well":
@@ -1621,7 +1639,6 @@ function updateScreen(nextImg, text) {
       }
       break;
     case "cabinEnter":
-
       disableKeyFeatures();
 
       TW.typeString(CabinEnterLines[0])
@@ -1967,53 +1984,53 @@ function updateScreen(nextImg, text) {
       break;
 
     case "leshyAngel":
-      setPalette('default');
+      setPalette("default");
       TW.typeString(leshyAngelLines[0])
-      .pauseFor(1000)
-      .typeString(leshyAngelLines[1])
-      .pauseFor(500)
-      .typeString(leshyAngelLines[2])
-      .pauseFor(500)
-      .typeString(leshyAngelLines[3])
-      .pauseFor(1000)
-      .typeString(leshyAngelLines[4])
-      .pauseFor(1000)
-      .typeString(leshyAngelLines[5])
-      .pauseFor(1000)
-      .typeString(leshyAngelLines[6])
-      .pauseFor(500)
-      .typeString(leshyAngelLines[7])
-      .pauseFor(500)
-      .typeString(leshyAngelLines[8])
-      .pauseFor(1000)
-      .typeString(leshyAngelLines[9])
-      .pauseFor(1000)
-      .typeString(leshyAngelLines[10])
-      .pauseFor(1000)
-      .typeString(leshyAngelLines[11])
-      .pauseFor(1000)
-      .typeString(leshyAngelLines[12])
-      .pauseFor(500)
-      .typeString(leshyAngelLines[13])
-      .pauseFor(1000)
-      .typeString(leshyAngelLines[14])
-      .pauseFor(1000)
-      .typeString(leshyAngelLines[15])
-      .pauseFor(1000)
-      .typeString(leshyAngelLines[16])
-      .pauseFor(1500)
-      .typeString(leshyAngelLines[17])
-      .pauseFor(500)
-      .typeString(leshyAngelLines[18])
-      .pauseFor(500)
-      .typeString(leshyAngelLines[19])
-      .pauseFor(500)
-      .typeString(leshyAngelLines[20])
-      .start();
+        .pauseFor(1000)
+        .typeString(leshyAngelLines[1])
+        .pauseFor(500)
+        .typeString(leshyAngelLines[2])
+        .pauseFor(500)
+        .typeString(leshyAngelLines[3])
+        .pauseFor(1000)
+        .typeString(leshyAngelLines[4])
+        .pauseFor(1000)
+        .typeString(leshyAngelLines[5])
+        .pauseFor(1000)
+        .typeString(leshyAngelLines[6])
+        .pauseFor(500)
+        .typeString(leshyAngelLines[7])
+        .pauseFor(500)
+        .typeString(leshyAngelLines[8])
+        .pauseFor(1000)
+        .typeString(leshyAngelLines[9])
+        .pauseFor(1000)
+        .typeString(leshyAngelLines[10])
+        .pauseFor(1000)
+        .typeString(leshyAngelLines[11])
+        .pauseFor(1000)
+        .typeString(leshyAngelLines[12])
+        .pauseFor(500)
+        .typeString(leshyAngelLines[13])
+        .pauseFor(1000)
+        .typeString(leshyAngelLines[14])
+        .pauseFor(1000)
+        .typeString(leshyAngelLines[15])
+        .pauseFor(1000)
+        .typeString(leshyAngelLines[16])
+        .pauseFor(1500)
+        .typeString(leshyAngelLines[17])
+        .pauseFor(500)
+        .typeString(leshyAngelLines[18])
+        .pauseFor(500)
+        .typeString(leshyAngelLines[19])
+        .pauseFor(500)
+        .typeString(leshyAngelLines[20])
+        .start();
       break;
 
-      case "ending":
-        TW.typeString(endingLines[0])
+    case "ending":
+      TW.typeString(endingLines[0])
         .pauseFor(500)
         .typeString(endingLines[1])
         .pauseFor(500)
@@ -2044,18 +2061,16 @@ function updateScreen(nextImg, text) {
   }
 }
 
-function winGame(){
-  let endingText = document.getElementById('endingText')
-  gameScreen.style.display = 'none';
-  winScreen.style.display = 'flex';
+function winGame() {
+  let endingText = document.getElementById("endingText");
+  gameScreen.style.display = "none";
+  winScreen.style.display = "flex";
 
   let TWEnding = new Typewriter(endingText, {
     delay: 75,
   });
 
-  TWEnding.pauseFor(250)
-  .typeString('<b>You exited the cabin.</b>')
-  .start()
+  TWEnding.pauseFor(250).typeString("<b>You exited the cabin.</b>").start();
 }
 
 UpdateColors();
@@ -2134,7 +2149,7 @@ var ForestBearWOSwordLines = {
   4: `The bear takes its first step towards you, and your legs start thinking better than you,`,
   5: ` before even realizing, you start to run away from the creature, getting back to the starting point,`,
   6: ` maybe you're not ready to fight such a big thing?<br><br>`,
-  7: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">What to do now?</a>`
+  7: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">What to do now?</a>`,
 };
 
 var pierLines = {
