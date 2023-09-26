@@ -149,7 +149,8 @@ let currentPalette = 0;
 
 function setPalette(step) {
 
-    currentPalette += step;
+  if(step == "default") currentPalette = 0; //Veja disableKeyFeatures();
+  else currentPalette += step;
   
   if (currentPalette == 6) currentPalette = 0;
   if (currentPalette == -1) currentPalette = 5;
