@@ -390,3 +390,31 @@ button:active {
     width: 80%;
     text-align: center;
 }
+
+#wrongResolution{
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+    background-color: black;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
+
+#wrongResolution pre{
+    font-size: 1.5em;
+}
+
+#wrongResolution p{
+    text-align: center;
+    padding: 0 10%;
+}
+
+@media (orientation: portrait) {
+    #wrongResolution{display: flex;}
+}
+@media (orientation: landscape) {
+    #wrongResolution{display: none;}
+}
