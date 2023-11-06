@@ -19,7 +19,7 @@ var goggles = false;
 let del = 20;
 let smallDel = 500; //Delays usados para dar uma pausa entre frases
 let bigDel = 1000;
-let HugeDel = 1500;
+let hugeDel = 1500;
 
 var BearScared = false;
 var castleEntered = false;
