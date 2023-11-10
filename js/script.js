@@ -110,6 +110,7 @@ function UpdateInfoDiv(div) {
 function toMainMenu() {
   gameScreen.style.display = "none";
   creditsScreen.style.display = "none";
+  howToPlayScreen.style.display = "none";
   startScreen.style.display = "flex";
 }
 
