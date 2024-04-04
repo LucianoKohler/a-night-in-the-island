@@ -47,7 +47,20 @@
     background-color: white; 
 }
 
-#credits, #howtoplay {
+#bottomBar{
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    bottom: 0px;
+    width: 100%;
+    z-index: 2;
+}
+
+#bottomBar *{
+    padding: 15px;
+}
+
+#credits, #howtoplay, #patchNotes {
     display: none;
     border: 1px solid var(--main);
     width: 50%;

@@ -37,6 +37,7 @@ var startScreen = document.getElementById("start");
 var gameScreen = document.getElementById("gamescreen");
 var creditsScreen = document.getElementById("credits");
 var howToPlayScreen = document.getElementById("howtoplay");
+var patchNotesScreen = document.getElementById("patchNotes");
 
 //Para abrir o jogo
 
@@ -75,6 +76,7 @@ function updateStart(div) {
         gameScreen.style.display = "none";
         creditsScreen.style.display = "none";
         gameScreen.style.display = "grid";
+        patchNotesScreen.style.display = "none";
       }
       break;
     case "howtoplay":
@@ -82,13 +84,21 @@ function updateStart(div) {
       gameScreen.style.display = "none";
       creditsScreen.style.display = "none";
       howToPlayScreen.style.display = "block";
+      patchNotesScreen.style.display = "none";
       break;
     case "credits":
       startScreen.style.display = "none";
       gameScreen.style.display = "none";
       howToPlayScreen.style.display = "none";
       creditsScreen.style.display = "block";
+      patchNotesScreen.style.display = "none";
       break;
+    case 'patchNotes':
+      startScreen.style.display = "none";
+      gameScreen.style.display = "none";
+      howToPlayScreen.style.display = "none";
+      creditsScreen.style.display = "none";
+      patchNotesScreen.style.display = "block";
   }
 }
 

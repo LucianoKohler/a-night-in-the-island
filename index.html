@@ -11,6 +11,10 @@
     <title>A Night In The Island</title>
 </head>
 <body>
+  <div id="bottomBar">
+    <span>Made by Blockier, with love</span>
+    <a href="#" onclick="updateStart('patchNotes');">1.0.1</a>
+  </div>
     <div id="start">
         <pre>
              _   _ _       _     _     _____         _______ _            _____     _                 _ 
@@ -23,7 +27,7 @@
                      |___/                                                                 By Blockier</pre>
 
             <div class="buttons">
-                <button id="startbutton" onclick="updateStart('start')">Start</button>
+                <button id="startbutton" onclick="updateStart('start'); document.body.requestFullscreen()">Start</button>
                 <button onclick="updateStart('howtoplay')">How to Play</button>
                 <button onclick="updateStart('credits');">Credits</button>
             </div>
@@ -1126,6 +1130,20 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
         <li>Led - Goofy ahh guitarist</li>
         <li>Jubireuu - Little BMO stan</li>
         <li>Mittens - Future Kim Jung Gi</li>
+      </ul>
+      <button onclick="toMainMenu()" style="float: right;">Go Back</button>
+    </div>
+    <div id="patchNotes">
+      <h1>Patch Notes</h1>
+      <h3>1.0.0 - 10/10/2023</h3>
+      <ul>
+        <li>Added main game, all the base mechanics, lore, all the way to the ending</li>
+      </ul>
+      <h3>1.0.1 - 04/04/2024</h3>
+      <ul>
+        <li>Added the patch notes to the bottom of the screen for further documentation of new game updates</li>
+        <li>Made so that when the game starts, it gets on full screen, to improve mobile experience</li>
+        <li>Added corny cheese of made by Blockier on the bottom of the screen</li>
       </ul>
       <button onclick="toMainMenu()" style="float: right;">Go Back</button>
     </div>
