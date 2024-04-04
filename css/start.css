@@ -58,6 +58,7 @@
 
 #bottomBar *{
     padding: 15px;
+    font-size: 1.6vh;
 }
 
 #credits, #howtoplay, #patchNotes {
@@ -67,6 +68,12 @@
     height: fit-content;
     text-align: justify;
     padding: 20px 30px 20px 30px;
+    margin: 5%;
+    overflow: auto;
+}
+
+#patchNotes{
+    height: 70%;
 }
 
 #credits, #howtoplay h1{
@@ -81,9 +88,8 @@
         height: 75px;
     }
 
-    #credits, #howtoplay{
+    #credits, #howtoplay, #patchNotes{
         width: 80%;
-        height: 80%;
-        overflow: auto;
+        height: 70%;
     }
 }
