@@ -2123,7 +2123,7 @@ var YAEH = `<a href="#" onclick="dyingAnimation()">Your adventure ends here.</a>
 
 var chooseLines = {
   0: `You can use the map anytime you want to leave the place you currently are,`,
-  0: `use it if you feel stuck!`,
+  1: `use it if you feel stuck!`,
 };
 
 var startLines = {
@@ -2135,14 +2135,14 @@ var startLines = {
   5: ` and the only thing that you can do now is to search for help.<br><br>`,
   //WWYD
   6: `<a href="#" onclick="updateScreen('forest', 'enterForest')"> Enter the forest </a> <br>`,
-  7: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`,
+  7: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest</a>`,
 };
 
 var forestLines = {
   0: `Back to forest you get.<br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('forest', 'enterForest')"> Enter the forest </a><br>`,
-  2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest`,
+  2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest</a>`,
 };
 
 var forestBearScaredLines = {
