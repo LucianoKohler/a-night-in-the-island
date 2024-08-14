@@ -235,656 +235,656 @@ var weirdRocksAngryRox = {
 };
 
 var farmLines = {
-  0: `This lonely farm is far from the rest of the civilization, the farmer, quickly realizing you, approaches: <br><br>`,
-  1: `- Oh my! Visitor!!! Welcome to ma farm, I plant carrots, potatoes, carrots, carrots, metal'n'carrots! How can I help'ya? <br><br>`,
+  0: `Essa fazenda solitária está isolada do resto da civilização, o fazendeiro, rapidamente reconhecendo a visita, diz:<br><br>`,
+  1: `- Aoba, uma visita!!! Bem vindu ao meu brejo, aqui eu planto cenora, batata, cenora, cenora, metal e cenora!<br><br>`,
   //WWYS
-  2: `<a href="#" onclick="updateScreen('farm', 'farmSeeCrops')">Can I see your crops?</a> <br>`,
-  3: `<a href="#" onclick="updateScreen('farm', 'farmMetal')">You plant metal?</a> <br>`,
-  4: `<a href="#" onclick="updateScreen('farm','farmBye')">Bye!</a> `,
+  2: `<a href="#" onclick="updateScreen('farm', 'farmSeeCrops')">Posso ver a sua plantação?</a> <br>`,
+  3: `<a href="#" onclick="updateScreen('farm', 'farmMetal')">Você planta metal?</a> <br>`,
+  4: `<a href="#" onclick="updateScreen('farm','farmBye')">Tchau!</a> `,
 };
 
 var farmLinesWOSticker = {
-  0: `- Of course not! The carrots are my precious ons and I'ould never let anyone touch'em! <br><br>`,
-  1: `He seems really serious when talking this, plus he has a rake, better listen to him <br><br>`,
+  0: `- Claru que não! As cenora são minhas linda e eu nunca ia deixá alguém tocá elas! <br><br>`,
+  1: `Ele parece bem sério falando isso, além disso ele tem uma enxada, é melhor ouvir ele <br><br>`,
   //WWYS
-  2: `<a href="#" onclick="updateScreen('farm', 'farmMetal')">You plant metal?</a> <br>`,
-  3: `<a href="#" onclick="updateScreen('farm','farmBye')">Bye!</a> `,
+  2: `<a href="#" onclick="updateScreen('farm', 'farmMetal')">Você planta metal?</a> <br>`,
+  3: `<a href="#" onclick="updateScreen('farm','farmBye')">Tchau!</a> `,
 };
 
 var farmLinesWSticker = {
-  0: `- Of course no...`,
-  1: ` wait, `,
-  2: `is that a carrot sticker? `,
-  3: `I LOVE CARROTS!!! <br><br>`,
-  4: `- Boi y'can take a good look at'em, carrot brotha! <br><br>`,
-  5: `<a href="#" onclick="updateScreen('farmZoom','farmApproach')">Approach the plantation</a>`,
+  0: `- Claru que nã...`,
+  1: ` pera, `,
+  2: `isso é um adisivo de cenora? `,
+  3: `EU AMO CENORA!!! <br><br>`,
+  4: `- Garoto ocê pode dar uma bela vizoiada nelas, meu cenoumano! <br><br>`,
+  5: `<a href="#" onclick="updateScreen('farmZoom','farmApproach')">Se aproximar da plantação</a>`,
 };
 
 var farmLinesMetal = {
-  0: `- Yeah! If carrots grow carrots, expensive metal grows more metal, are ya dum?<br><br>`,
-  1: `You stay quiet, thinking that arguing about this would be like talking to a wall.<br><br>`,
+  0: `- Issaê! Se cenora faz mais cenora, metal faz mais metal, ocê é burro?<br><br>`,
+  1: `Você fica quieto, pensando que discutir sobre isso vai ser que nem falar com uma parede<br><br>`,
   //WWYS
-  2: `<a href="#" onclick="updateScreen('farm','farmSeeCrops')">Can I see your crops?</a><br>`,
-  3: `<a href="#" onclick="updateScreen('farm','farmBye')">Bye!</a>`,
+  2: `<a href="#" onclick="updateScreen('farm','farmSeeCrops')">Posso ver sua plantação?</a><br>`,
+  3: `<a href="#" onclick="updateScreen('farm','farmBye')">Tchau!</a>`,
 };
 
 var farmLinesBye = {
-  0: `- Bye visitor, may the carrots be with ya!<br><br>`,
-  1: `You really wanted to move away from that carrot crazy.`,
+  0: `- Inté mais visita, que as cenoras te guie!<br><br>`,
+  1: `Você realmente queria se afastar desse louco da cenoura.`,
 };
 
 var farmLinesApproach = {
-  0: `As you pass your eyes through the plantation, you find something weird, it looks like a shiny tube<br><br>`,
-  1: `You think the farmer won't mind if one carrot goes away, so you pull the tube.<br><br>`,
-  2: `It looked really stuck to the ground among other vegetables, but you win the fight against it and pull a beautiful hilt from the ground.<br><br>`,
-  3: `<b>You got the farmer's hilt!</b><br><br>`,
-  4: `You hope the farmer didn't notice it, you run trying to get out of his view.`,
+  0: `Ao passar o olho pela plantação, você encontra algo estranho, algo que parece um tubo brilhante enterrado.<br><br>`,
+  1: `Você acha que o fazendeiro não vai se importar se uma cenoura desapaparecer, então você puxa o tubo.<br><br>`,
+  2: `Ele estava bem enterrado entre os vegetais, mas depois de uma força, você ganha a luta contra o tubo, retirando uma bela guarda da terra.<br><br>`,
+  3: `<b>Você adquiriu a guarda do fazendeiro!</b><br><br>`,
+  4: `Você torce para o fazendeiro não ter percebido, você corre tentando sair da visão dele.`,
 };
 
 var farmLinesHilt = {
-  0: `You see the farmer going goblin mode trying to find the metal part with his rake...<br><br>`,
-  1: `Maybe it's better to not get near him.`,
+  0: `Você vê o fazendeiro totalmente biruta procurando o tubo com a sua enxada...<br><br>`,
+  1: `Talvez seja bom passar longe dele.`,
 };
 
 var wallLines = {
-  0: `A massive wall blocks the way beyond it, a small guy inside a toll whick doesn't look much friendly stares at you:<br><br>`,
-  1: `- Hi, where's the Pass?<br><br>`,
+  0: `Uma parede massiva bloqueia o caminho, e um carinha que não parece amigável dentro de um pedágio fica te encarando:<br><br>`,
+  1: `- Oi, cadê o passe?<br><br>`,
   //WWYS
-  2: `<a href="#" onclick="updateScreen('wall-open','wallUsePass')">Here, I have a Pass</a><br>`,
-  3: `<a href="#" onclick="updateScreen('wall','wallWhatPass')">Pass? What do you mean?</a><br>`,
-  4: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">What's beyond this wall?</a><br>`,
-  5: `<a href="#" onclick="updateScreen('wall','wallBye')">Bye!</a>`,
+  2: `<a href="#" onclick="updateScreen('wall-open','wallUsePass')">Aqui, eu tenho um passe</a><br>`,
+  3: `<a href="#" onclick="updateScreen('wall','wallWhatPass')">Passe? Como assim?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">O que tem atrás dessa parede?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
 };
 
 var wallWhatPassLines = {
-  0: `- You need a Pass to pass the toll, go get one at the castle, they're nice to me.<br><br>`,
+  0: `- Você precisa de um passe pra passar por aqui, pegue um no castelo, eles são legais comigo.<br><br>`,
   //WWYS
-  1: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">What's beyond this wall?</a><br>`,
-  2: `<a href="#" onclick="updateScreen('wall','wallBye')">Bye!</a>`,
+  1: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">O que tem atrás dessa parede?</a><br>`,
+  2: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
 };
 
 var wallBeyondWallLines = {
-  0: `- A beatiful cavern with a demigod, you need to see it, so please, get a Pass!<br><br>`,
+  0: `- Tem uma bela caverna com um semideus, você precisa vê-lo, então pegue um passe!<br><br>`,
   //WWYS
-  1: `<a href="#" onclick="updateScreen('wall','wallWhatPass')">Pass? What do you mean?</a><br>`,
-  2: `<a href="#" onclick="updateScreen('wall','wallBye')">Bye!</a>`,
+  1: `<a href="#" onclick="updateScreen('wall','wallWhatPass')">Passe? Como assim?</a><br>`,
+  2: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
 };
 
 var wallByeLines = {
-  0: `- Thank you for nothing, don't forget to buy a Pass! <br><br>`,
-  1: `Maybe you should take a look at what and where this Pass is.`,
+  0: `- Obrigado por nada, não se esqueça de comprar um passe!<br><br>`,
+  1: `Talvez você deveria dar uma olhada no que é esse passe e onde encontrar um.`,
 };
 
 var wallUsePassLines = {
-  0: `You give the Pass to the thing, it gets really happy! <br><br>`,
-  1: `- OOOOOHH, THE BOSS WILL LET ME HAVE A DAY OFF!!!<br>`,
-  2: `- Ok, you may pass and admire the cave.<br><br>`,
-  3: `The pole besides him lifts, <b>you now have access to the cave!</b>.`,
+  0: `Você dá o passe para a coisa, ela fica muito feliz! <br><br>`,
+  1: `- AAAAH, FINALMENTE, O CHEFE VAI ME DEIXAR TIRAR FOLGA!!!<br>`,
+  2: `- Ok, você pode passar e admirar a caverna.<br><br>`,
+  3: `A cancela ao lado dele abre <b>Agora, você pode acessar a caverna!</b>.`,
 };
 
 var wallAlreadyUsedPassLines = {
-  0: `You see the thing again, trying to hold his smile in front of you: <br><br>`,
-  1: `- So? Pass, you don't have anything interesting for me now.<br><br>`,
-  2: `You try to say something, but the creature just says blablabla while covering its ears, what a child!`,
+  0: `Você vê a coisa de novo, tentando se segurar pra não sorrir na sua frente.<br><br>`,
+  1: `- O que foi? Passa, você não tem mais nada de interessante para mim.<br><br>`,
+  2: `Você tenta falar algo, mas acriatura tampa os ouvidos e fica repetindo "blablabla", que crinaçinha!`,
 };
 
 var caveLines = {
-  0: `A big cave stands in front of you,`,
-  1: ` you can hear small growls coming from it.<br><br>`,
-  2: `<a href="#" onclick="updateScreen('goblin','goblin')">Enter it.</a>`,
+  0: `Há uma grande caverna à sua frente,`,
+  1: ` você consegue ouvir grunhidos vindo dela..<br><br>`,
+  2: `<a href="#" onclick="updateScreen('goblin','goblin')">Entrar nela.</a>`,
 };
 
 var goblinFirstLines = {
-  0: `The cave smells like mold and has the sound of dripping water from the dripstones along with the growls,`,
-  1: ` walking further shows you the so called demigod that the doorman spoke about:`,
-  2: ` A small goblin near a "treasure",`,
-  3: ` which is actually just a small pile of coins on the ground.<br><br>`,
-  4: `- Who dares to enter my domain?<br><br>`,
+  0: `A caverna tem cheiro de mofo e sons de água pingando, além dos ruídos`,
+  1: ` adentrar mais fundo na caverna mostra para você o tal semideus que o porteiro falou sobre::`,
+  2: ` Um pequeno goblin ao lado de um "tesouro",`,
+  3: ` que na verdade é só uma pilha de moedas no chão.<br><br>`,
+  4: `- Quem ousa adentrar em meus aposentos?<br><br>`,
   //WWYS
-  5: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Who are you?</a><br>`,
-  6: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">What's that gold?</a><br>`,
-  7: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
+  5: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Quem é você?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">O que é esse ouro?</a><br>`,
+  7: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Tchau!</a>`,
 };
 
 var goblinLines = {
-  0: `You get back to the inside of the cave,`,
-  1: ` the goblin is still there.<br><br>`,
+  0: `Você volta para o interior da caverna,`,
+  1: ` o goblin ainda está lá.<br><br>`,
   //WWYS
-  2: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Who are you?</a><br>`,
-  3: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">What's that gold?</a><br>`,
-  4: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
+  2: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Quem é você?</a><br>`,
+  3: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">O que é esse ouro?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Tchau!</a>`,
 };
 
 var goblinAfterGotMoneyLines = {
-  0: `You get back to the cave,`,
-  1: ` the goblin is still crying,`,
-  2: ` you're not good with cheering someone up,`,
-  3: ` plus you stole its money,`,
-  4: ` maaaaybe it's better to forget him by now.`,
+  0: `Você volta para a caverna,`,
+  1: ` o goblin ainda está chorando,`,
+  2: ` você não é o melhor em animar os outros,`,
+  3: ` além disso você roubou o dinheiro dele,`,
+  4: ` taaalveeez seja melhor esquecer dele por enquanto.`,
 };
 
 var goblinWhoAreYouLines = {
-  0: `- I'm Barretos, the demigod,`,
-  1: ` the keeper of the island's biggest treasure,`,
-  2: ` the inhabitant of the oldest cave on the island,`,
-  3: ` the most green being here,`,
-  4: ` the mightiest warrior of...<br><br>`,
-  5: `You yell at him that you already got it.<br><br>`,
-  6: `- Of course you got...<br><br>`,
+  0: `- Eu sou Barretos, o semideus,`,
+  1: ` o guardião do tesouro mais valioso desta ilha,`,
+  2: ` o habitante da caverna mais anciã da ilha,`,
+  3: ` o ser mais VERDE de todos,`,
+  4: ` o MAIOR GUERREIRO QUE JÁ...<br><br>`,
+  5: `Você grita para ele que você já entendeu.<br><br>`,
+  6: `- Claro que entendeu...<br><br>`,
   //WWYS
-  7: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">What's that gold?</a><br>`,
-  8: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
+  7: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">O que é esse ouro?</a><br>`,
+  8: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Tchau!</a>`,
 };
 
 var goblinWhatGoldLines = {
-  0: `- It's my treasure,`,
-  1: ` MY treasure,`,
-  2: ` envy me, I'm the richest man in the island!`,
-  3: ` If you cry enough, I may give you a penny...`,
+  0: `- Este é o meu tesouro,`,
+  1: ` MEU tesouro,`,
+  2: ` pode babar, eu sou o ser mais rico da ilha!`,
+  3: ` Se você chorar o suficiente, posso pensar em te passar um tostão...`,
   4: ` HAHA!<br><br>`,
-  5: `<a href="#" onclick="updateScreen('goblin','goblinNotMuch')">That's not much to be honest...</a>`,
+  5: `<a href="#" onclick="updateScreen('goblin','goblinNotMuch')">"Isso não é muito pra falar a verdade..."</a>`,
 };
 
 var goblinNotMuchLines = {
-  0: `What do you mean?`,
-  1: ` It's a lot! The shopkeeper said that to me!`,
-  2: ` The money that he gets from the pass is passed to ME,`,
-  3: ` and I get RICH!<br><br>`,
+  0: `O que você disse?`,
+  1: ` Isso é muito! O vendedor disse pra mim!`,
+  2: ` O dinheiro que ele ganha dos passes é passado pra mim,`,
+  3: ` e assim eu fico cada dia MAIS RICO!<br><br>`,
   //WWYS
-  4: `<a href="#" onclick="updateScreen('goblin','goblinTruth')">(Say the truth) Yeah but I got the pass for free...</a><br>`,
-  5: `<a href="#" onclick="updateScreen('goblin','goblinBluff')">(Bluff) I have much more money than you, haha.</a>`,
+  4: `<a href="#" onclick="updateScreen('goblin','goblinTruth')">(Dizer a verdade) Então, eu consegui esse passe de graça...</a><br>`,
+  5: `<a href="#" onclick="updateScreen('goblin','goblinBluff')">(Mentir) Uma pena que eu tenho mais dinheiro que você, haha.</a>`,
 };
 
 var goblinBluffLines = {
-  0: `- No,`,
-  1: ` that's impossible,`,
-  2: ` there can only be one richest man in the island,`,
-  3: ` THAT'S IT.`,
-  4: ` LET'S FIGHT, THE WINNER KEEPS ALL THE MONEY!<br><br>`,
-  5: `The goblin's moss green skin color starts to turn into a boiling red color.<br><br>`,
-  6: `<a href="#" onclick="updateScreen('goblin','goblinComeOn')">Come on!</a>`,
+  0: `- Não,`,
+  1: ` isso é impossível,`,
+  2: ` só pode haver um ser mais rico na ilha,`,
+  3: ` SIM, É ISSO.`,
+  4: ` VAMOS LUTAR, O VENCEDOR LEVA TODO O DINHEIRO!<br><br>`,
+  5: `A pele verde vômito do goblin começa a ficar vermelha como uma cereja.<br><br>`,
+  6: `<a href="#" onclick="updateScreen('goblin','goblinComeOn')">Cai dentro!</a>`,
 };
 
 var goblinTruthLines = {
-  0: `- You're telling me that you entered MY cave WITHOUT GIVING ME MONEY?`,
-  1: ` No, this can't happen,`,
-  2: ` since you got here for free,`,
-  3: ` YOU'LL HAVE TO TURN INTO MY MINION, FOREVER!`,
-  4: ` GIVE UP, I AM UNBEATABLE!<br><br>`,
-  5: `You defy the goblin, saying that if you defeat him, you can get to keep the treasure for yourself.<br><br>`,
-  6: `- I DON'T CARE,`,
-  7: ` PREPARE TO FEEL THE WRATH OF BARRETOS!!!<br><br>`,
-  8: `The goblin's moss green skin color starts to turn into a boiling red color.<br><br>`,
-  9: `<a href="#" onclick="updateScreen('goblin','goblinComeOn')">Come on!</a>`,
+  0: `- Você tá me dizendo que entrou na MINHA caverna SEM ME DAR DINHEIRO?`,
+  1: ` Não, isso não pode acontecer,`,
+  2: ` já que você entrou aqui de graça,`,
+  3: ` VOCÊ TERÁ QUE SER MEU SERVO, PARA SEMPRE!`,
+  4: ` DESISTA JÁ, AFINAL EU SOU IMBATÍVEL!<br><br>`,
+  5: `Você desafia o goblin, dizendo que se você vencer, você vai pegar o tesouro para si.<br><br>`,
+  6: `- EU NÃO LIGO,`,
+  7: ` PREPARE-SE PARA SENTIR A FÚRIA DE BARRETOS!!!<br><br>`,
+  8: `A pele verde vômito do goblin começa a ficar vermelha como uma cereja.<br><br>`,
+  9: `<a href="#" onclick="updateScreen('goblin','goblinComeOn')">Cai dentro!</a>`,
 };
 
 var goblinComeOnLines = {
-  0: `The goblin starts to come at your direction,`,
-  1: ` its small legs make this process a little long,`,
-  2: ` long enough to give time to pick up a rock from the ground.`,
-  3: ` You throw it:<br><br>`,
-  4: `Bullseye! The rock hits the goblin's face!`,
-  5: ` It falls on the ground and starts crying...<br><br>`,
-  6: `- Uff...`,
-  7: ` Why did you do that?`,
-  8: ` That's foul play!`,
-  9: ` Go away!<br><br>`,
-  10: `<a href="#" onclick="updateScreen('goblinCry','goblinMoney')">Take the money</a>`,
+  0: `O goblin começa a ir em sua direção,`,
+  1: ` as suas perninhas pequenas fazem esse processo meio longo,`,
+  2: ` longo o suficiente para você pegar uma pedra do chão.`,
+  3: ` Você atira ela:<br><br>`,
+  4: `Na mosca, a pedra acerta o goblin bem na cara!`,
+  5: ` Ele cai no chão e começa a chorar...<br><br>`,
+  6: `- Auu...`,
+  7: ` Por que você fez isso?`,
+  8: ` Isso é jogo sujo!`,
+  9: ` Vai embora!<br><br>`,
+  10: `<a href="#" onclick="updateScreen('goblinCry','goblinMoney')">Pegar o dinheiro</a>`,
 };
 
 var goblinMoneyLines = {
-  0: `You are not dumb.`,
-  1: ` Money may help you with getting geared up,`,
-  2: ` and you won the fight!`,
-  3: ` you get the mediocre pile of money from the ground.<br><br>`,
-  4: `<b>You got exactly 31 coins!</b><br><br>`,
-  5: `You let the goblin crying at its cave,`,
-  6: ` that guy is too annoying.`,
+  0: `Você não é burro.`,
+  1: ` Dinheiro pode te ajudar a se equipar,`,
+  2: ` e você venceu a luta!`,
+  3: ` você pega a pilha medíocre de dinheiro do chão.<br><br>`,
+  4: `<b>Você adquiriu exatamente 31 moedas!</b><br><br>`,
+  5: `Você deixa o goblin chorando na caverna,`,
+  6: ` aquele cara é irritante demais.`,
 };
 
 var goblinByeLines = {
-  0: `- Bye, sucker,`,
-  1: ` bring me something to eat next time!<br><br>`,
-  2: `Who this guy think it is?`,
+  0: `- Valeu, otário,`,
+  1: ` tenta me trazer algo pra comer na próxima!<br><br>`,
+  2: `Quem esse cara pensa que é?`,
 };
 
 var castleLines = {
-  0: `A big castle can be seen at the distance from the entire island,`,
-  1: ` the main gate is open,`,
-  2: ` you may enter it.<br><br>`,
-  3: `<a href="#" onclick="updateScreen('bifurcation','castle')">Enter it</a>`,
+  0: `Um grande castelo pode ser visto de quase qualquer lugar da ilha,`,
+  1: ` o portão principal está aberto,`,
+  2: ` você pode entrar nele.<br><br>`,
+  3: `<a href="#" onclick="updateScreen('bifurcation','castle')">Entrar</a>`,
 };
 
 var enterCastleLines = {
-  0: `People walk by, ignoring you, the buildings appear boring, and nothing attracts your attention. <br><br>`,
-  1: `At the end of the main street, you find yourself at a bifurcation:<br><br>`,
-  2: `To the left, we have the king's palace<br>`,
-  3: `To the right, a local shop which appear to have lots of goods<br><br>`,
-  4: `Where do you want to go?<br><br>`,
-  5: `<a href="#" onclick="updateScreen('king','palaceEnter')">To the king's palace</a><br>`,
-  6: `<a href="#" onclick="updateScreen('shop','shop')">To the local store</a>`,
+  0: `Pessoas passam pelas ruas, te ignorando, as construções parecem chatas e nada chama a sua atenção. <br><br>`,
+  1: `No fim da rua principal, você se encontra em uma bifurcação:<br><br>`,
+  2: `Para a esquerda, temos o palácio do rei.<br>`,
+  3: `Para a direita, temos o mercadinho que aparenta ter umas coisas interessantes.<br><br>`,
+  4: `Para onde você quer ir?<br><br>`,
+  5: `<a href="#" onclick="updateScreen('king','palaceEnter')">Para o palácio do rei</a><br>`,
+  6: `<a href="#" onclick="updateScreen('shop','shop')">Para o mercadinho</a>`,
 };
 
 var palaceEnterFirstLines = {
-  0: `You enter the palace without any problems, looks like this place doesn't need much guards to be peaceful, at the end of the room, you see a king: <br><br>`,
-  1: `- Hello fellow citizen, or may I say... Stranger?<br><br>`,
+  0: `Você entra no palácio sem problemas, parece que este lugar não precisa de muitos guardas para ser seguro, no fim da sala, você encontra um rei:<br><br>`,
+  1: `- Saudações jovem cidadão, ou deveria eu dizer... Estranho?<br><br>`,
   //WWYS
-  2: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')">Who are you?</a><br>`,
-  3: `<a href="#" onclick="updateScreen('king','kingGoHome')">I need to go home</a><br>`,
-  4: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a><br><br>`,
-  5: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
+  2: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')"Quem é você?</a><br>`,
+  3: `<a href="#" onclick="updateScreen('king','kingGoHome')">Eu preciso ir para casa</a><br>`,
+  4: `<a href="#" onclick="updateScreen('king','kingBye')">Tchau!</a><br><br>`,
+  5: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
 };
 
 var palaceEnterLines = {
-  0: `Greetings again, stranger.<br><br>`,
+  0: `Saudações novamente, viajante.<br><br>`,
   //WWYS
-  1: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')">Who are you?</a><br>`,
-  2: `<a href="#" onclick="updateScreen('king','kingGoHome')">I need to go home</a><br>`,
-  3: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a><br><br>`,
-  4: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
+  1: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')"Quem é você?</a><br>`,
+  2: `<a href="#" onclick="updateScreen('king','kingGoHome')">Eu preciso ir para casa</a><br>`,
+  3: `<a href="#" onclick="updateScreen('king','kingBye')">Tchau!</a><br><br>`,
+  4: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
 };
 
 var kingWhoAreYouLines = {
-  0: `- I'm king Cyryenp, ruler of this kingdom, `,
-  1: `my people were brought here by <i>Leshy</i>, and now are away from their family, `,
-  2: `I serve as a guide for these poor souls who lost their home. <br><br>`,
+  0: `- Eu sou o rei Cyryenp, comandante deste reino, `,
+  1: `meu povo foi trazido para cá por <i>Leshy</i>, e agora todos estão longe de sua família, `,
+  2: `Eu sirvo de guia para estas pobres almas que perderam seus lares<br><br>`,
   //WWYS
-  3: `<a href="#" onclick="updateScreen('king','kingMeetSameFate')">Did you meet the same fate?</a><br>`,
-  4: `<a href="#" onclick="updateScreen('king','kingGoHome')">I need to go home</a><br>`,
-  5: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a><br><br>`,
-  6: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
+  3: `<a href="#" onclick="updateScreen('king','kingMeetSameFate')">Você sofreu o mesmo destino que elas?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('king','kingGoHome')">Eu preciso ir para casa</a><br>`,
+  5: `<a href="#" onclick="updateScreen('king','kingBye')">Tchau!</a><br><br>`,
+  6: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
 };
 
 var kingMeetSameFateLines = {
-  0: `- Indeed, `,
-  1: `I was the first one to get here, and got to spend my time alone for a long time, more people appeared here,`,
-  2: ` though,`,
-  3: ` and together,`,
-  4: ` we built this kingdom to have a place to live.<br><br>`,
+  0: `- Infelizmente sim, `,
+  1: `Eu fui o primeiro a aparecer aqui, e tive que passar um longo tempo sozinho,`,
+  2: ` mas mais pessoas apareceram,`,
+  3: ` e juntos,`,
+  4: ` construímos este reino para termos um lugar para chamar de lar.<br><br>`,
   //WWYS
-  5: `<a href="#" onclick="updateScreen('king','kingGoHome')">I need to go home</a><br>`,
-  6: `<a href="#" onclick="updateScreen('king','kingBye')">Bye!</a> <br><br>`,
-  7: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
+  5: `<a href="#" onclick="updateScreen('king','kingGoHome')">Eu preciso ir para casa</a><br>`,
+  6: `<a href="#" onclick="updateScreen('king','kingBye')">Tchau!</a> <br><br>`,
+  7: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
 };
 
 var kingGoHomeLines = {
-  0: `You told him about waking up here without your memories. <br><br>`,
-  1: `- Well,`,
-  2: ` actually, I have an idea that may help you:`,
+  0: `Você conta a ele sobre aparecer nesse lugar sem suas memórias. <br><br>`,
+  1: `- Bem,`,
+  2: ` na verdade, tenho uma ideia que pode te ajudar:`,
   3: ` <i>Leshy</i>,`,
-  4: ` <i>the forest spirit</i> might have done this to you, <i>it</i> has brought so many others here,`,
-  5: ` which are now residents of this unescapable island, but maybe,`,
-  6: ` if you're brave enough, `,
-  6: ` you can get <i>its</i> sick mischiefs to an end! <br><br>`,
-  7: `<a href="#" onclick="updateScreen('king','kingHowDoThis')">How do I do this?</a>`,
+  4: ` <i>o espírito da floresta</i> pode ter feito isso à você, <i>ele</i> trouxe toos os outros para cá,`,
+  5: ` estes que agora são cidadãos desta ilha inescapável, mas talvez`,
+  6: ` se você for valente o suficiente, `,
+  6: ` você pode acabar com <i>ele</i> e com suas maldições vis! <br><br>`,
+  7: `<a href="#" onclick="updateScreen('king','kingHowDoThis')">E como eu faço isso?</a>`,
 };
 
 var kingHowDoThisLines = {
-  0: `- Regular weapons won't work against him,`,
-  1: ` go to the shrine at southeast, you'll find an angel able to guide you better than me,`,
-  2: ` my suggestion for now is to go to the shop near here and see if there's anything useful there,`,
-  3: ` tell the shopkeeper I sent you there and he'll give you some help. <br><br>`,
-  4: ` - Good luck,`,
-  5: ` stranger. <br><br>`,
+  0: `- Armas comuns não funcionam contra <i>ele</i>,`,
+  1: ` vá para o santuário a sudeste daqui, você encontrará um anjo que te guiará melhor que eu,`,
+  2: ` minha sugestão por agora é de ir para o mercadinho próximo daqui e ver se encontra algo útil lá,`,
+  3: ` diga ao vendedor que eu te enviei lá e ele pode te dar uma ajuda. <br><br>`,
+  4: ` - Boa sorte,`,
+  5: ` viajante. <br><br>`,
   6: ` The king just gave you a quest, you think there's nothing more to do other than trying.<br><br>`,
-  7: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
+  7: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
 };
 
 var kingByeLines = {
-  0: `- So long, stranger. <br><br>`,
-  1: `You exit the castle, inspired by seeing so many people like you living normally.<br><br>`,
-  2: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
+  0: `- Até breve, viajante. <br><br>`,
+  1: `Você sai do castelo, inspirado por ver tantas pessoas como você vivendo normalmente aqui.<br><br>`,
+  2: `<a href="#" onclick="updateScreen('shop','shop')">Para o mercadinho</a>`,
 };
 
 var kingGivePommelLines = {
-  0: `- Hello again, stranger,`,
-  1: ` how's your quest going?<br><br>`,
-  2: `You tell him that you only need the pommel to finish the sword.<br><br>`,
-  3: `- Speak no more.<br><br>`,
-  4: `The king removes an ornament from his throne, and gives it to you:<br><br>`,
-  5: `<b>You got the King's Pommel!</b><br><br>`,
-  6: `<a href="#" onclick="updateScreen('kingPommelless','kingPommelPart2')">Finally!</a>`,
+  0: `- Olá de novo, viajante,`,
+  1: ` como vai a sua missão?<br><br>`,
+  2: `Você diz para ele que só precisa do pomo para terminar a espada.<br><br>`,
+  3: `- Não diga mais nada.<br><br>`,
+  4: `O rei remove um ornamento de seu trono, e o entrega para você:<br><br>`,
+  5: `<b>Você adquiriu o pomo do rei!</b><br><br>`,
+  6: `<a href="#" onclick="updateScreen('kingPommelless','kingPommelPart2')">Finalmente!</a>`,
 };
 
 var kingPommelPart2Lines = {
-  0: `- This pommel was the only part of the sword that we found,`,
-  1: ` to keep it safe,`,
-  2: ` I guarded it within my throne, but now`,
-  3: ` it has a better use, the angel knows what to do now.<br><br>`,
-  4: `You should go to the angel and finish this sword hunting.`,
+  0: `- Este pomo foi a única parte da lâmina que encontramos,`,
+  1: ` para mantê-lo seguro,`,
+  2: ` eu o guardei junto ao meu trono, mas agora,`,
+  3: ` ele tem um uso melhor, o anjo saberá o que fazer agora.<br><br>`,
+  4: `Vá para o santuário e termine de vez essa caça à lâmina.`,
 };
 
 var shopFirstLines = {
-  0: `You enter the building and are greeted with a friendly shopkeeper: <br><br>`,
-  1: `- Helllooooww, I'm Joobireu, the little wizard apprentice AND shopkeeper!`,
-  2: ` I got a lot of stuff here, take a look!<br><br>`,
-  3: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Broadsword (20 coins)</a><br>`,
-  4: `<a href="#" onclick="updateScreen('shop','shopSticker')">Sticker (10 coins)</a><br>`,
-  5: `<a href="#" onclick="updateScreen('shop','shopPass')">Wall Pass (FREE!)</a><br><br>`,
-  6: `<a href="#" onclick="updateScreen('king','palaceEnter')">Go to the palace</a>`,
+  0: `Você entra no local e é atendido por um vendedor gente boa: <br><br>`,
+  1: `- Oooulá! Eu sou o Joobireu, o aprediz de feiticeiro e vendedor honorário!`,
+  2: ` Tenho muita tralha valiosa, dá uma olhadinha!<br><br>`,
+  3: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Espada larga (20 moedas)</a><br>`,
+  4: `<a href="#" onclick="updateScreen('shop','shopSticker')">Adesivo (10 moedas)</a><br>`,
+  5: `<a href="#" onclick="updateScreen('shop','shopPass')">Passe da parede (GRÁTIS!)</a><br><br>`,
+  6: `<a href="#" onclick="updateScreen('king','palaceEnter')">Ir para o palácio</a>`,
 };
 
 var shopLines = {
-  0: `- Hey! Take a look at my stuff!<br><br>`,
-  1: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Broadsword (20 coins)</a><br>`,
-  2: `<a href="#" onclick="updateScreen('shop','shopSticker')">Sticker (10 coins)</a><br>`,
-  3: `<a href="#" onclick="updateScreen('shop','shopPass')">Wall Pass (FREE!)</a><br><br>`,
-  4: `<a href="#" onclick="updateScreen('king','palaceEnter')">Go to the palace</a>`,
+  0: `- E aí! Dá uma olhada nas minhas tralhas!<br><br>`,
+  1: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Espada larga (20 moedas)</a><br>`,
+  2: `<a href="#" onclick="updateScreen('shop','shopSticker')">Adesivo (10 moedas)</a><br>`,
+  3: `<a href="#" onclick="updateScreen('shop','shopPass')">Passe da parede (GRÁTIS!)</a><br><br>`,
+  4: `<a href="#" onclick="updateScreen('king','palaceEnter')">Ir para o palácio</a>`,
 };
 
 var shopBroadswordLines = {
-  0: `- A steel broadsword, forged by the kingdom's best swordsmith:`,
+  0: `- Uma espada larga de aço, forjada pelo melhor ferreiro do reino:`,
   1: ` Kyle Kompos!<br><br>`,
-  2: `Wanna buy it?<br><br>`,
-  3: `<a href="#" onclick="updateScreen('shop','shopBroadswordYes')">Yes</a><br>`,
-  4: `<a href="#" onclick="updateScreen('shop','shop')">No</a>`,
+  2: `Vai comprar?<br><br>`,
+  3: `<a href="#" onclick="updateScreen('shop','shopBroadswordYes')">Sim</a><br>`,
+  4: `<a href="#" onclick="updateScreen('shop','shop')">Não</a>`,
 };
 
 var shopBroadswordYesLines = {
-  0: `- Katching! - Says the little wizard:<br><br>`,
-  1: `<b>You got the Steel Broadsword!</b><br><br>`,
-  2: `The sword is REALLY heavy, you know that you'll have problems with using it<br><br>`,
-  3: `<a href="#" onclick="updateScreen('shop','shop')">Better than nothing!</a>`,
+  0: `- Katching! - Diz o pequeno feiticeiro:<br><br>`,
+  1: `<b>Você adquiriu a espada de aço!</b><br><br>`,
+  2: `Esta espada é BEM pesada, você sabe que vai ter uns problemas em usar ela<br><br>`,
+  3: `<a href="#" onclick="updateScreen('shop','shop')">Melhor que nada!</a>`,
 };
 
 var shopStickerLines = {
-  0: `- A silly carrot sticker, dunno what would you do with it,`,
-  1: ` it's funny, though!<br><br>`,
-  2: `At the back of the card, you discover that someone named "Mittens" drew it.<br><br>`,
-  3: `Wanna buy it?<br><br>`,
-  4: `<a href="#" onclick="updateScreen('shop','shopStickerYes')">Yes</a><br>`,
-  5: `<a href="#" onclick="updateScreen('shop','shop')">No</a>`,
+  0: `- Um adesivo de cenoura bobinho, sei lá se alguém compraria isso,`,
+  1: ` mas é engraçado, de qualquer forma!<br><br>`,
+  2: `Atrás do adesivo, você descobre que uma tal de "Mittens" desenhou isso.<br><br>`,
+  3: `Vai comprar?<br><br>`,
+  4: `<a href="#" onclick="updateScreen('shop','shopStickerYes')">Sim</a><br>`,
+  5: `<a href="#" onclick="updateScreen('shop','shop')">Não</a>`,
 };
 
 var shopStickerYesLines = {
-  0: `- Katching! - Says the little wizard:<br><br>`,
-  1: `<b>You got the Carrot Sticker!</b><br><br>`,
-  2: `Without a place to glue it, you glue it to your clothing.<br><br>`,
-  3: `<a href="#" onclick="updateScreen('shop','shop')">Feeling stylish!</a>`,
+  0: `- Katching! - Diz o pequeno feiticeiro:<br><br>`,
+  1: `<b>Você adquiriu o adesivo de cenoura!</b><br><br>`,
+  2: `Sem um lugar para colar ele, você só gruda ele nas suas roupas<br><br>`,
+  3: `<a href="#" onclick="updateScreen('shop','shop')">Se sentindo maneiro!</a>`,
 };
 
 var shopPassWOKingQuest = {
-  0: `- A pass to the caves,`,
-  1: ` it's free cuz' there isn't anything interesting there, we only sell them so the wall doorman gets to feel important with its work,`,
-  2: ` he doesn't even know that we sell them for free!`,
-  3: ` poor lone guy...<br><br>`,
-  4: `Sadly, the place is dangerous for citizens, and I can only give one to you with permission...<br><br>`,
-  5: `<a href="#" onclick="updateScreen('shop','shop')">Go back</a>`,
+  0: `- Um passe para as cavernas,`,
+  1: ` ele é grátis pois não tem nada lá, só vendemos eles para que o porteiro da caverna se sinta importante com o seu trabalho,`,
+  2: ` ele nem sabe que vendemos eles de graça!`,
+  3: ` ele é meio solitário...<br><br>`,
+  4: `Infelizmente, o local é perigoso para cidadãos, e só posso dar um desses pra você com uma permissão...<br><br>`,
+  5: `<a href="#" onclick="updateScreen('shop','shop')">Voltar</a>`,
 };
 
 var shopPassWKingQuest = {
-  0: `- A pass to the caves,`,
-  1: ` it's free cuz' there isn't anything interesting there, we only sell them so the wall doorman gets to feel important with its work,`,
-  2: ` he doesn't even know that we sell them for free!`,
-  3: ` Poor lone guy...<br><br>`,
-  4: `- Oh, I get it,`,
-  5: ` the king trusts you, then so do I, take it:<br><br>`,
-  6: `<b>You got the Wall Pass!</b><br><br>`,
-  7: `<a href="#" onclick="updateScreen('shop','shop')">Go back</a>`,
+  0: `- Um passe para as cavernas,`,
+  1: ` ele é grátis pois não tem nada lá, só vendemos eles para que o porteiro da caverna se sinta importante com o seu trabalho,`,
+  2: ` ele nem sabe que vendemos eles de graça!`,
+  3: ` ele é meio solitário...<br><br>`,
+  4: `- Ah, entendo,`,
+  5: ` o rei confia em você, no caso, eu também! Então toma:<br><br>`,
+  6: `<b>Você adquiriu o passe da caverna!</b><br><br>`,
+  7: `<a href="#" onclick="updateScreen('shop','shop')">Voltar</a>`,
 };
 
 var shopTooPoorLines = {
-  0: `- You don't have enough money to buy that!<br><br>`,
-  1: `- Sorry, I can't give credit...<br><br>`,
-  2: `<a href="#" onclick="updateScreen('shop','shop')">Go back</a>`,
+  0: `- Você não tem dinheiro para comprar isso!<br><br>`,
+  1: `- Foi mal, não faço fiado...<br><br>`,
+  2: `<a href="#" onclick="updateScreen('shop','shop')">Voltar</a>`,
 };
 
 var shopOnlyOnePerPersonLines = {
-  0: `- Only one type of product per person!<br><br>`,
-  1: `- Sorry, store rules...<br><br>`,
-  2: `<a href="#" onclick="updateScreen('shop','shop')">Go back</a>`,
+  0: `- Só um produto de cada tipo por cliente!<br><br>`,
+  1: `- Foi mal, regras da loja...<br><br>`,
+  2: `<a href="#" onclick="updateScreen('shop','shop')">Voltar</a>`,
 };
 
 var altarAbandonedLines = {
-  0: `Your way takes you to an abandoned altar without anything apparent,`,
-  1: ` upon getting closer, you find three empty notches, `,
-  2: `maybe you need to place someting there?<br><br>`,
-  3: `There's nothing more to investigate here.`,
+  0: `Seu caminho te leva para um altar abandonado com nada de especial,`,
+  1: ` ao se aproximar, você vê três espaços vazios, `,
+  2: `talvez você deva colocar algo neles?<br><br>`,
+  3: `Não há mais nada para investigar aqui.`,
 };
 
 var altarLines = {
-  0: `- Welcome again,`,
-  1: ` my child.<br><br>`,
+  0: `- Bem-vindo de novo,`,
+  1: ` minha criança.<br><br>`,
   //WWYS
-  2: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
-  3: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
-  4: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">How did the sword disappear?</a><br>`,
-  5: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Why didn't you search the sword by yourself?</a><br>`,
-  6: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
+  2: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
+  3: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Quem é você?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Como que a lâmina sumiu?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 };
 
 var altarFirstLines = {
-  0: `- Hello little child,`,
-  1: ` I see that the king has called me to help you with your quest of defeating the evil spirit <i>Leshy</i>.<br><br>`,
-  2: `- As the king said, regular weapons won't work against <i>its</i> body,`,
-  3: ` we will need to use fire against fire,`,
-  4: ` a sword soaked with magic:`,
-  5: ` <b>The Island Sword.</b><br><br>`,
-  6: `- This altar once was a place to keep it safe, but time passed, and <i>Leshy</i> thought fast and got rid of it.`,
-  7: ` But hope is not lost! The sword can't leave the island, so it must be here, and if not, its parts are.`,
-  8: ` We just need to find them and take them here.<br><br>`,
+  0: `- Olá pequena criança,`,
+  1: ` Percebi que o rei me chamou para te ajudar na missão de derrotar <i>Leshy</i>, o espírito maligno.<br><br>`,
+  2: `- Como o rei havia dito, armas comuns não vão funcionar em <i>seu</i> body,`,
+  3: ` teremos que usar fogo contra fogo,`,
+  4: ` uma espada embuída em magia:`,
+  5: ` <b>A Lâmina da Ilha.</b><br><br>`,
+  6: `- Este altar uma vez já foi um local para mantê-la segura, mas o tempo passou, e <i>Leshy</i> pensou rápido e sumiu com ela.`,
+  7: ` Mas a esperança é a úlima que morre! A espada não pode sair da ilha, então ela deve estar por aqui, e se não estiver, suas partes estão.`,
+  8: ` Nós só precisamos achar as partes e trazê-las para cá.<br><br>`,
   //WWYS
-  9: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
-  10: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
-  11: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">How did the sword disappear?</a><br>`,
-  12: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Why didn't you search the sword by yourself?</a><br>`,
-  13: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
+  9: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
+  10: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Quem é você?</a><br>`,
+  11: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Como que a lâmina sumiu?</a><br>`,
+  12: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
+  13: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 };
 
 var angelParts2Lines = {
-  0: `- I once heard the farmer talking about "planting metal",`,
-  1: ` I don't know if that's useful,`,
-  2: ` but it is surely worth a shot.<br><br>`,
+  0: `- Uma vez, já ouvi o fazendeiro falar algo sobre "plantar metal",`,
+  1: ` Eu não sei se isso é útil,`,
+  2: ` mas vale a pena dar uma procurada.<br><br>`,
   //WWYS
   //GeneralLines
 };
 
 var angelParts3Lines = {
-  0: `- I felt a little bit of magic coming the west of the island,`,
-  1: ` maybe someone powerful is keeping a part for itself!<br><br>`,
+  0: `- Eu senti uma força mágica vinda do oeste da ilha,`,
+  1: ` talvez algo poderoso esteja guardando uma parte da lâmina para si!<br><br>`,
   //WWYS
   //GeneralLines
 };
 
 var angelParts1Lines = {
-  0: `- Now that we have two parts,`,
-  1: ` we only need the pommel, the main part of the sword's superpowers,`,
-  2: ` go talk to the king,`,
-  3: ` he knows where it is.<br><br>`,
+  0: `- Agora que temos duas partes,`,
+  1: ` nós só precisamos do pomo, a fonte principal dos poderes da lâmina,`,
+  2: ` vá falar com o rei,`,
+  3: ` ele saberá onde o pomo está.<br><br>`,
   //WWYS
   //GeneralLines
 };
 
 var angelPartsBadFeelingLines = {
-  0: `- We got the mightiest weapon of this island.`,
-  1: ` But something feels...`,
-  2: ` Off,`,
-  3: ` what if just it is not enough to defeat <i>him</i>?`,
-  4: ` I have a bad feeling about this,`,
-  5: `  <i>Leshy</i> is dirty, and will do anything to kill anyone who bothers him.<br><br>`,
+  0: `- Nós temos a arma mais poderosa desta ilha.`,
+  1: ` Mas tem algo...`,
+  2: ` De errado,`,
+  3: ` e se só isso não for suficiente para derrotar <i>ele</i>?`,
+  4: ` Estou com um mal pressentimento,`,
+  5: `  <i>Leshy</i> joga sujo, e fará qualquer coisa para acabar com qualquer um que <i>o</i> perturbe<br><br>`,
   //WWYS
   //GeneralLines
 };
 
 var angelPartsGeneralLines = {
   //Falas usadas nas três perguntas de onde estão as partes de espada
-  0: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
-  1: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">How did the sword disappear?</a><br>`,
-  2: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Why didn't you search the sword by yourself?</a><br>`,
-  3: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
+  0: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Quem é você?</a><br>`,
+  1: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Como que a lâmina sumiu?</a><br>`,
+  2: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
+  3: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 };
 
 var angelFuseSwordPart1Lines = {
-  0: `- We did it,`,
-  1: ` my child!`,
-  2: ` We got all the necessary pieces to refuse the Sword!<br><br>`,
-  3: `- Now, place the parts at their notches and take a step back.<br><br>`,
-  4: `<a href="#" onclick="updateScreen('altarlightbeam','altarFuseSword')">Do what they asked</a>`,
+  0: `- Nós conseguimos,`,
+  1: ` minha criança!`,
+  2: ` Temos todas as peças necessárias para recriar a lâmina!<br><br>`,
+  3: `- Agora, coloque as suas partes nos encaixes do altar e se afaste.<br><br>`,
+  4: `<a href="#" onclick="updateScreen('altarlightbeam','altarFuseSword')">Colocar e se afastar</a>`,
 };
 
 var angelFuseSwordPart2Lines = {
-  0: `The angel retreats from the altar,`,
-  1: `and after 5 steps of backing off,`,
-  2: ` a giant light beam strucks the`,
-  3: ` altar, making a deafening noise of a lightning, together with a blinding light...<br><br>`,
-  4: `<a href="#" onclick="updateScreen('angel','altarFuseSwordAftermath')">And?</a>`,
+  0: `O anjo recua do altar,`,
+  1: `após alguns passos para trás,`,
+  2: ` um feixe de luz enorme acerta o altar,`,
+  3: ` soltando um som ensurdecedor de trovão, junto com uma luz cegante...<br><br>`,
+  4: `<a href="#" onclick="updateScreen('angel','altarFuseSwordAftermath')">E?</a>`,
 };
 
 var angelFuseSwordPart3Lines = {
-  0: `The light beam disappears into thin air,`,
-  1: ` and you're left with the so called blade capable of slaying anything.<br><br>`,
-  2: `<b>You got The Island Sword!</b><br><br>`,
-  3: `- There it is! In all of its glory!`,
-  4: ` I'm grateful for your help, my child,`,
-  5: ` you deserve it, keep it and use it to end this island's suffering.<br><br>`,
+  0: `O feixe de luz desaparece de repente,`,
+  1: ` e ao fim da luz, tudo que resta é a tal lâmina capaz de matar qualquer coisa.<br><br>`,
+  2: `<b>Você adquiriu a Lâmina da Ilha!</b><br><br>`,
+  3: `- Aí está ela! Em toda a sua glória!`,
+  4: ` sou grato pela sua ajuda, minha criança,`,
+  5: ` você merece, segure-a firmemente e acabe com o sofrimento desta ilha.<br><br>`,
   //WWYS
 };
 
 var angelWhoAreYouLines = {
-  0: `- I'm Maldio,`,
-  1: ` Maldio the angel,`,
-  2: ` I work here as a swordkeeper, but I failed my job... Now I stay here, waiting for someone to come and help with the swordfinding.<br><br>`,
+  0: `- Eu sou Maldio,`,
+  1: ` Maldio o anjo,`,
+  2: ` trabalho como guardiã da lâmina, mas falhei em minha missão... Agora fico aqui, esperando alguém para me ajudar com a caça à espada.<br><br>`,
   //WWYS
-  3: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
-  4: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">How did the sword disappear?</a><br>`,
-  5: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Why didn't you search the sword by yourself?</a><br>`,
-  6: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
+  3: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
+  4: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Como que a lâmina sumiu?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 };
 
 var angelHowSwordDisappearLines = {
-  0: `- I was playing RPG with my angel friends at the castle's tavern and,`,
-  1: ` unfortunately,`,
-  2: ` <i>Leshy</i> took the cue and stole the sword while I was away, and now it is gone,`,
-  3: ` and no one helped me with finding it...<br><br>`,
+  0: `- Eu estava jogando RPG com meus amigos anjos na taverna do castelo e,`,
+  1: ` infelizmente,`,
+  2: ` <i>Leshy</i> percebeu minha ausência e roubou a lâmina, agora ela está desaparecida,`,
+  3: ` e ninguém me ajudou a encontrá-la...<br><br>`,
   //WWYS
-  4: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
-  5: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
-  6: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Why didn't you search the sword by yourself?</a><br>`,
-  7: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
+  4: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
+  5: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Como que a lâmina sumiu?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
+  7: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 };
 
 var angelSearchSwordYourselfLines = {
-  0: `- I don't have a fisic body! <br><br>`,
-  1: `You think that this makes sense<br><br>`,
-  2: `- But that's not the main problem, I am also a little shy...<br><br>`,
+  0: `- Meu corpo é intangível! <br><br>`,
+  1: `Você acha que isso faz sentido<br><br>`,
+  2: `- Mas esse não é o problema, eu também sou meio tímido...<br><br>`,
   //WWYS
-  3: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
-  4: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
-  5: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">How did the sword disappear?</a><br>`,
-  6: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
+  3: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
+  4: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Como que a lâmina sumiu?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Por que você não procurou a espada por si mesma?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 };
 
 var angelByeLines = {
-  0: `- Bye my child,`,
-  1: ` good luck with the sword finding.`,
+  0: `- Até, minha criança,`,
+  1: ` boa sorte com a caça à espada.`,
 };
 
 var cabinLines = {
-  0: `You spot a small and miserable cabin at the edge of the island, the cabin has a skull hanged by the top of its only entrance.<br><br>`,
-  1: `By the side, you notice a dead tree with a small script carved on its trunk.<br><br>`,
+  0: `Você localiza uma pequena e miserável cabana próxima à orla da ilha, ela tem um crânio pendurado no topo de sua única entrada.<br><br>`,
+  1: `Ao lado, você percebe uma árvore morta com algo entalhado em seu tronco.<br><br>`,
   //WWYD
-  2: `<a href="#" onclick="updateScreen('empty','cabinEnter')">Enter the cabin</a><br>`,
-  3: `<a href="#" onclick="updateScreen('cabin','cabinTree')">Investigate the tree</a>`,
+  2: `<a href="#" onclick="updateScreen('empty','cabinEnter')">Entrar na cabana</a><br>`,
+  3: `<a href="#" onclick="updateScreen('cabin','cabinTree')">Investigar a árvore</a>`,
 };
 
 var cabinLinesWOGoggles = {
-  0: `Upon coming closer to the tree,`,
-  1: ` the carving becomes clear,`,
-  2: ` it's a text written:<br><br>`,
-  3: `<b>You can't slay him.</b><br><br>`,
-  4: `<a href="#" onclick="updateScreen('cabin','cabin')">Go back</a>`,
+  0: `Ao se aproximar da árvore,`,
+  1: ` os entalhamentos se tornam claros,`,
+  2: ` é um texto que diz:<br><br>`,
+  3: `<b>Você não consegue matá-<i>lo</i> .</b><br><br>`,
+  4: `<a href="#" onclick="updateScreen('cabin','cabin')">Voltar</a>`,
 };
 
 var cabinLinesWGoggles = {
-  0: `Upon coming closer to the tree,`,
-  1: ` the headache from using the goggles gets REALLY strong,`,
-  2: ` but you can still see what's carved,`,
-  3: ` it's a text:<br><br>`,
-  4: `<b>You can slay him.</b><br><br>`,
-  5: `<a href="#" onclick="updateScreen('cabin','cabin')">Go back</a>`,
+  0: `Ao se aproximar da árvore,`,
+  1: ` a dor de cabeça vinda de usar o óculos de festa bate BEM forte,`,
+  2: ` mas você ainda consegue decifrar o que está escrito no tronco,`,
+  3: ` é um texto que diz:<br><br>`,
+  4: `<b>Você consegue matá-<i>lo</i> .</b><br><br>`,
+  5: `<a href="#" onclick="updateScreen('cabin','cabin')">Voltar</a>`,
 };
 
 var CabinEnterLines = {
-  0: `You decided to enter the dark cabin,`,
-  1: ` what really resides inside of it is still unknown.<br><br>`,
-  2: `Inside of it, everything is pitch black,`,
-  3: ` the ground is sticky,`,
-  4: ` nothing moves,`,
-  5: ` there isn't... Anything.`,
-  6: ` Moments before going back outside,`,
-  7: ` the door shuts, and you hear a voice from the darkness:<br><br>`,
-  8: `<a href="#" onclick="updateScreen('leshy','cabinFate')">Listen to it</a>`,
+  0: `Você decide entrar na cabana obscura,`,
+  1: ` o que reside em seu interior ainda é um mistério.<br><br>`,
+  2: `Ao entrar, tudo está um breu total,`,
+  3: ` o chão está grudento,`,
+  4: ` nada se move,`,
+  5: ` não tem... Nada.`,
+  6: ` Momentos antes de se virar e ir embora,`,
+  7: ` a porta de saída bate com força, e você começa a ouvir uma voz da escuridão:<br><br>`,
+  8: `<a href="#" onclick="updateScreen('leshy','cabinFate')">Escutá-la</a>`,
 };
 
 var leshyLostSoulLines = {
-  0: `<i>- What do we have here...`,
-  1: `<b><i> A lost soul.</b><br><br>`,
-  2: `The entity pulls off a pendulum made out of sticks and starts to swing it.`,
-  3: ` You can't look away from it,`,
-  4: ` its movement,`,
-  5: ` its form,`,
-  6: ` its swiftness,`,
-  7: ` it calms you down...<br><br>`,
-  8: ` <b>You are not in control of yourself...</b><br><br>`,
-  9: `<i>- I will end this quickly,`,
-  10: `<i> I don't see any bad intentions coming from you...<br><br>`,
+  0: `<i>- O que temos aqui...`,
+  1: `<b><i> Uma alma perdida</b><br><br>`,
+  2: `A entidade retira um pêndulo feito de gravetos do breu da cabana e começa a balança-lo lentamente.`,
+  3: ` Você não consegue parar de olhar para ele,`,
+  4: ` o seu movimento,`,
+  5: ` a sua forma,`,
+  6: ` seus movimentos suaves,`,
+  7: ` eles te acalmam...<br><br>`,
+  8: ` <b>Você perdeu o controle de si mesmo...</b><br><br>`,
+  9: `<i>- Terminarei com isso de forma rápida,`,
+  10: `<i> Você não emana atitudes nem intenções negativas...<br><br>`,
   //YAEH
 };
 
 var leshyWOGogglesLines = {
-  0: `<i>- What do we have here...`,
-  1: `<b><i> A brave warrior?</b><br><br>`,
-  2: `The entity pulls off a pendulum made out of sticks and starts to swing it.`,
-  3: ` You can't look away from it,`,
-  4: ` its movement,`,
-  5: ` its form,`,
-  6: ` its swiftness,`,
-  7: ` it calms you down...<br><br>`,
-  8: ` <b>You are not in control of yourself...</b><br><br>`,
-  9: `<i>- You thought that only your will was enough to end me?<br><br>`,
-  10: `<i>Leshy</i> throws a dagger to your feet,`,
-  11: ` you are forced take it, `,
-  12: ` you start to point the dagger to your heart.<br><br>`,
+  0: `<i>- O que temos aqui...`,
+  1: `<b><i> Um corajoso guerreiro</b><br><br>`,
+  2: `A entidade retira um pêndulo feito de gravetos do breu da cabana e começa a balança-lo lentamente.`,
+  3: ` Você não consegue parar de olhar para ele,`,
+  4: ` o seu movimento,`,
+  5: ` a sua forma,`,
+  6: ` seus movimentos suaves,`,
+  7: ` eles te acalmam...<br><br>`,
+  8: ` <b>Você perdeu o controle de si mesmo...</b><br><br>`,
+  9: `<i>- Você achou que só a sua força de vontade era o suficiente para acabar comigo?<br><br>`,
+  10: `<i>Leshy</i> joga uma adaga em seus pés,`,
+  11: ` você forçadamente pega ela do chão, `,
+  12: ` logo em seguida, você aponta ela para seu próprio coração.<br><br>`,
   //YAEH
 };
 
 var leshyWGogglesLines = {
-  0: `<i>- What do we have here...`,
-  1: `<b><i> A brave warrior.</b><br><br>`,
-  2: `The entity pulls off a pendulum made out of sticks and starts to swing it.`,
-  3: ` You can't look away from it,`,
-  4: ` its movement,`,
-  5: ` its form,`,
-  6: ` its swiftness,`,
-  7: ` it calms you down...<br><br>`,
-  8: ` <b>You are not in control of yourself...</b><br><br>`,
-  9: `<i>- You thought that only your will was enough to end me?<br><br>`,
-  10: `Your legs crumble,`,
-  11: ` and you fall,`,
-  12: ` straight into the ground,`,
-  13: ` the goggles made you dizzy again,`,
-  14: ` and the impact made you snap out of the control!<br><br>`,
-  15: `<a href="#" onclick="updateScreen('leshySkull','leshyPassTest1')">Pull yourself together</a>`,
+  0: `<i>- O que temos aqui...`,
+  1: `<b><i> Um corajoso guerreiro</b><br><br>`,
+  2: `A entidade retira um pêndulo feito de gravetos do breu da cabana e começa a balança-lo lentamente.`,
+  3: ` Você não consegue parar de olhar para ele,`,
+  4: ` o seu movimento,`,
+  5: ` a sua forma,`,
+  6: ` seus movimentos suaves,`,
+  7: ` eles te acalmam...<br><br>`,
+  8: ` <b>Você perdeu o controle de si mesmo...</b><br><br>`,
+  9: `<i>- Você achou que só a sua força de vontade era o suficiente para acabar comigo?<br><br>`,
+  10: `Suas pernas estremecem,`,
+  11: ` e você cai,`,
+  12: ` de cabeça no chão,`,
+  13: ` esses óculos te deram tontura de novo...`,
+  14: ` Mas o impacto da queda fez com que você saísse do controle de <i>Leshy</i>!<br><br>`,
+  15: `<a href="#" onclick="updateScreen('leshySkull','leshyPassTest1')">Se recompor</a>`,
 };
 
 var leshySkullLines = {
-  0: `<i>- I see, that you have something special,`,
-  1: `<i> sadly, I have more than one trick.<br><br>`,
-  2: `A skull with a candle across it appears, held by a gruesome hand.<br><br>`,
-  3: `<i>- Burn.<br><br>`,
-  4: `<a href="#" onclick="updateScreen('leshyBurn','leshyBurn')">Continue</a>`,
+  0: `<i>- Entendo, você não é um tolo comum,`,
+  1: `<i> infelizmente, eu não tenho somente um truque na manga.<br><br>`,
+  2: `Uma vela enfiada em um crânio aparece, segurada por uma mão cadavérica.<br><br>`,
+  3: `<i>- Queime.<br><br>`,
+  4: `<a href="#" onclick="updateScreen('leshyBurn','leshyBurn')">Continuar</a>`,
 };
 
 var leshyWODarkTunicLines = {
-  0: `<i>Leshy</i> throws the skull at your feet,`,
-  1: ` the sticky floor begins to burn,`,
-  2: ` quickly spreading into your upper body.<br><br>`,
-  3: `The heat is to much,`,
-  4: ` you run to the door hoping that you can flee,`,
-  5: ` but it won't budge,`,
-  6: ` you just accept that you'll burn with this cabin,`,
-  7: ` and luckily,`,
-  8: ` with <i>Leshy</i> as well.<br><br>`,
+  0: `<i>Leshy</i> joga a caveira em seus pés,`,
+  1: ` o chão grudento começa a inflamar,`,
+  2: ` rapidamente subindo as chamas ao seu corpo.<br><br>`,
+  3: `O calor é demais,`,
+  4: ` você corre desesperadamente para a porta como última esperança,`,
+  5: ` mas ela não se move,`,
+  6: ` após mais tentativas de abrir a porta, você aceita que seu destino irá queimar junto com esta cabana,`,
+  7: ` e se a sorte quiser,`,
+  8: ` com <i>Leshy</i> também.<br><br>`,
 };
 
 var leshyWDarkTunicLines = {

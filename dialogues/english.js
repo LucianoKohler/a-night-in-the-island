@@ -274,7 +274,7 @@ var farmLinesBye = {
 };
 
 var farmLinesApproach = {
-  0: `As you pass your eyes through the plantation, you find something weird, it looks like a shiny tube<br><br>`,
+  0: `As you pass your eyes through the plantation, you find something weird, it looks like a shiny tube.<br><br>`,
   1: `You think the farmer won't mind if one carrot goes away, so you pull the tube.<br><br>`,
   2: `It looked really stuck to the ground among other vegetables, but you win the fight against it and pull a beautiful hilt from the ground.<br><br>`,
   3: `<b>You got the farmer's hilt!</b><br><br>`,
@@ -325,7 +325,7 @@ var wallUsePassLines = {
 var wallAlreadyUsedPassLines = {
   0: `You see the thing again, trying to hold his smile in front of you: <br><br>`,
   1: `- So? Pass, you don't have anything interesting for me now.<br><br>`,
-  2: `You try to say something, but the creature just says blablabla while covering its ears, what a child!`,
+  2: `You try to say something, but the creature just says "blablabla" while covering its ears, what a child!`,
 };
 
 var caveLines = {
@@ -367,8 +367,8 @@ var goblinWhoAreYouLines = {
   0: `- I'm Barretos, the demigod,`,
   1: ` the keeper of the island's biggest treasure,`,
   2: ` the inhabitant of the oldest cave on the island,`,
-  3: ` the most green being here,`,
-  4: ` the mightiest warrior of...<br><br>`,
+  3: ` the most GREEN being here,`,
+  4: ` the MIGHTIEST WARRIOR OF...<br><br>`,
   5: `You yell at him that you already got it.<br><br>`,
   6: `- Of course you got...<br><br>`,
   //WWYS
@@ -379,10 +379,10 @@ var goblinWhoAreYouLines = {
 var goblinWhatGoldLines = {
   0: `- It's my treasure,`,
   1: ` MY treasure,`,
-  2: ` envy me, I'm the richest man in the island!`,
+  2: ` envy me, I'm the richest being in the island!`,
   3: ` If you cry enough, I may give you a penny...`,
   4: ` HAHA!<br><br>`,
-  5: `<a href="#" onclick="updateScreen('goblin','goblinNotMuch')">That's not much to be honest...</a>`,
+  5: `<a href="#" onclick="updateScreen('goblin','goblinNotMuch')">"That's not much to be honest..."</a>`,
 };
 
 var goblinNotMuchLines = {
@@ -398,7 +398,7 @@ var goblinNotMuchLines = {
 var goblinBluffLines = {
   0: `- No,`,
   1: ` that's impossible,`,
-  2: ` there can only be one richest man in the island,`,
+  2: ` there can only be one richest being in the island,`,
   3: ` THAT'S IT.`,
   4: ` LET'S FIGHT, THE WINNER KEEPS ALL THE MONEY!<br><br>`,
   5: `The goblin's moss green skin color starts to turn into a boiling red color.<br><br>`,
@@ -458,8 +458,8 @@ var castleLines = {
 var enterCastleLines = {
   0: `People walk by, ignoring you, the buildings appear boring, and nothing attracts your attention. <br><br>`,
   1: `At the end of the main street, you find yourself at a bifurcation:<br><br>`,
-  2: `To the left, we have the king's palace<br>`,
-  3: `To the right, a local shop which appear to have lots of goods<br><br>`,
+  2: `To the left, we have the king's palace.<br>`,
+  3: `To the right, a local shop which appear to have lots of goods.<br><br>`,
   4: `Where do you want to go?<br><br>`,
   5: `<a href="#" onclick="updateScreen('king','palaceEnter')">To the king's palace</a><br>`,
   6: `<a href="#" onclick="updateScreen('shop','shop')">To the local store</a>`,
@@ -520,7 +520,7 @@ var kingGoHomeLines = {
 };
 
 var kingHowDoThisLines = {
-  0: `- Regular weapons won't work against him,`,
+  0: `- Regular weapons won't work against <i>it</i>,`,
   1: ` go to the shrine at southeast, you'll find an angel able to guide you better than me,`,
   2: ` my suggestion for now is to go to the shop near here and see if there's anything useful there,`,
   3: ` tell the shopkeeper I sent you there and he'll give you some help. <br><br>`,
@@ -549,7 +549,7 @@ var kingGivePommelLines = {
 var kingPommelPart2Lines = {
   0: `- This pommel was the only part of the sword that we found,`,
   1: ` to keep it safe,`,
-  2: ` I guarded it within my throne, but now`,
+  2: ` I guarded it within my throne, but now,`,
   3: ` it has a better use, the angel knows what to do now.<br><br>`,
   4: `You should go to the angel and finish this sword hunting.`,
 };
@@ -630,7 +630,7 @@ var shopTooPoorLines = {
 };
 
 var shopOnlyOnePerPersonLines = {
-  0: `- Only one type of product per person!<br><br>`,
+  0: `- Only one product of each type per person!<br><br>`,
   1: `- Sorry, store rules...<br><br>`,
   2: `<a href="#" onclick="updateScreen('shop','shop')">Go back</a>`,
 };
@@ -701,7 +701,7 @@ var angelPartsBadFeelingLines = {
   2: ` Off,`,
   3: ` what if just it is not enough to defeat <i>him</i>?`,
   4: ` I have a bad feeling about this,`,
-  5: `  <i>Leshy</i> is dirty, and will do anything to kill anyone who bothers him.<br><br>`,
+  5: `  <i>Leshy</i> is dirty, and will do anything to kill anyone who bothers <i>him</i>.<br><br>`,
   //WWYS
   //GeneralLines
 };
@@ -725,8 +725,8 @@ var angelFuseSwordPart1Lines = {
 var angelFuseSwordPart2Lines = {
   0: `The angel retreats from the altar,`,
   1: `and after 5 steps of backing off,`,
-  2: ` a giant light beam strucks the`,
-  3: ` altar, making a deafening noise of a lightning, together with a blinding light...<br><br>`,
+  2: ` a giant light beam strucks the altar,`,
+  3: ` making a deafening noise of a lightning, together with a blinding light...<br><br>`,
   4: `<a href="#" onclick="updateScreen('angel','altarFuseSwordAftermath')">And?</a>`,
 };
 
@@ -764,7 +764,7 @@ var angelHowSwordDisappearLines = {
 };
 
 var angelSearchSwordYourselfLines = {
-  0: `- I don't have a fisic body! <br><br>`,
+  0: `- I don't have a physical body! <br><br>`,
   1: `You think that this makes sense<br><br>`,
   2: `- But that's not the main problem, I am also a little shy...<br><br>`,
   //WWYS
@@ -791,7 +791,7 @@ var cabinLinesWOGoggles = {
   0: `Upon coming closer to the tree,`,
   1: ` the carving becomes clear,`,
   2: ` it's a text written:<br><br>`,
-  3: `<b>You can't slay him.</b><br><br>`,
+  3: `<b>You can't slay <i>him</i>.</b><br><br>`,
   4: `<a href="#" onclick="updateScreen('cabin','cabin')">Go back</a>`,
 };
 
