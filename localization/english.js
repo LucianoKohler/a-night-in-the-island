@@ -996,7 +996,7 @@ var leshyAftermathLines = {
 var leshyAngelLines = {
   0: ` Maldio the angel phases through the cabin's walls after this conversation with yourself:<br><br>`,
   1: `- I can't believe it,`,
-  2: ` you managed to defeat the evil spirit!`,
+  2: ` you managed to defeat the <i>evil spirit</i>!`,
   3: ` You know what that means?<br><br>`,
   4: `You remain quiet,`,
   5: ` waiting for the answer...<br><br>`,
