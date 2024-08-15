@@ -1,5 +1,89 @@
 var brazilian = {
 
+// LINHAS DO MENU PRINCIPAL
+
+  start: {
+    buttons: {
+      start: "INICIAR",
+      howtoplay: "COMO JOGAR",
+      credits: "CRÉDITOS",
+    },
+
+    howtoplay: {
+      title: "Como Jogar",
+      0: "Faça suas escolhas lendo e clicando nos links na caixa de texto.",
+      1: "Navegue pelo mapa abrindo-o no botão do canto inferior direito, lembre-se: Você pode sair da sua localização a qualquer momento.",
+      2: "Mantenha-se informado sobre seus intens com seu inventário no canto superior direito.",
+      3: "O jogo tem vários finais, se você conseguiu um ruim, talvez tenha esquecido de olhar em algum lugar.",
+      4: "Não se esqueça de checar as configurações e escolher as melhores opções para o seu estilo de jogo.",
+      5: "Divirta-se!"
+    },
+
+    credits: {
+      title: "Créditos",
+      0: "Todo o jogo foi feito por Luciano Kohler da Silva, ou Blockier, mas também tive uma mãozinha com algumas artes de Cyrenp (mais precisamente, as artes do rei e da caverna).",
+      1: "Alguns softwares de terceiros também foram usados para construir o jogo: Typewriter.js para o efeito de máquina de escrever usado em todo o jogo e o gerador de texto ascii de Patorjk para criar os títulos ascii, meu agradecimento a esses desenvolvedores por me economizarem tanto tempo!",
+      specialTnahks: "Agradecimentos Especiais",
+      2: "Esse projeto não seria possível se eu não tivesse meus amigos para me motivar, afinal, eu precisava de alguém para jogar meu jogo, e eu sabia que podia contar com meus amigos para saber que meu jogo seria apreciado por alguém, e isso me faz feliz demais!",
+      3: "Aqui está uma lista dos meus manos, se você não estiver aqui, saiba que você ainda está no meu coração :D",
+      4: `Cyrenp - Valhallan`,
+      5: `Maiddo - Mestra de RPG`,
+      6: `Lyn - Meu clone exato`,
+      7: `Led - Guitarrista patetão`,
+      8: `Jubireuu - Pequeno fã do BMO`,
+      9: `Mittens - Futura Kim Jung Gi`,
+      10: `Toda a cambada da UDESC - Minhas novas adições ao meu coração!`,
+    },
+
+    madeWith: "Feito por Blockier, com amor",
+  },
+
+// LINHAS PARA O INVENTÁRIO
+inventory: {
+  pass: "Passe: ",
+  passYes: "Sim",
+  passUsed: "Usado",
+  coins: "Dinheiro: ",
+
+  sword: {
+    title: "Espada Larga de Aço",
+    swordQM: "?????? ????? ?? ????",
+    swordDesc0: "Mesmo que afiada,",
+    swordDesc1: "ela é pesada demais!",
+    swordDesc2: "como você vai usar ela?",
+  },
+
+  tunic: {
+    title: "Malha Negra",
+    tunicQM: "????? ?????",
+    tunicDesc0: "O seu material escuro parece",
+    tunicDesc1: "ser resistente a altas temperaturas",
+  },
+
+  goggles: {
+    title: "Óculos Espirais",
+    gogglesQM: "?????? ????????",
+    gogglesDesc0: "Você se sente muito tonto",
+    gogglesDesc1: "só por usar eles por alguns segundos",
+  },
+
+  islandSword: {
+    title: "Lâmina de Ilha",
+    islandSwordQM: "?????? ?? ????",
+    islandSwordDesc: "Forte o suficiente para matar qualquer coisa aqui",
+    islandSwordDescQM: "????? ? ?????????? ???? ????? ???????? ????? ????",
+  },
+},
+
+// MINI MENUS (others)
+others: {
+  map: "Mapa",
+  settings: "Configurações",
+  sair: "Sair",
+},
+
+// LINHAS PARA O JOGO
+
 WWYD: "O que você fará? <br><br>",
 WWYS: "O que você dirá? <br><br>",
 YAEH: `<a href="#" onclick="dyingAnimation()">Sua aventura acaba aqui.</a>`,
@@ -472,7 +556,7 @@ palaceEnterFirstLines: {
   0: `Você entra no palácio sem problemas, parece que este lugar não precisa de muitos guardas para ser seguro, no fim da sala, você encontra um rei:<br><br>`,
   1: `- Saudações jovem cidadão, ou deveria eu dizer... Estranho?<br><br>`,
   //WWYS
-  2: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')"Quem é você?</a><br>`,
+  2: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')">Quem é você?</a><br>`,
   3: `<a href="#" onclick="updateScreen('king','kingGoHome')">Eu preciso ir para casa</a><br>`,
   4: `<a href="#" onclick="updateScreen('king','kingBye')">Tchau!</a><br><br>`,
   5: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
@@ -481,7 +565,7 @@ palaceEnterFirstLines: {
 palaceEnterLines: {
   0: `Saudações novamente, viajante.<br><br>`,
   //WWYS
-  1: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')"Quem é você?</a><br>`,
+  1: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')">Quem é você?</a><br>`,
   2: `<a href="#" onclick="updateScreen('king','kingGoHome')">Eu preciso ir para casa</a><br>`,
   3: `<a href="#" onclick="updateScreen('king','kingBye')">Tchau!</a><br><br>`,
   4: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,

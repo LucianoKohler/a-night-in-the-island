@@ -283,13 +283,13 @@ function updateInventory() {
 
   switch (pass) {
     case 0:
-      document.getElementById("Pass").innerHTML = "Pass: No";
+      document.getElementById("passStatus").innerHTML = "No";
       break;
     case 1:
-      document.getElementById("Pass").innerHTML = "Pass: Yes";
+      document.getElementById("passStatus").innerHTML = "Yes";
       break;
     case 2:
-      document.getElementById("Pass").innerHTML = "Pass: Used";
+      document.getElementById("passStatus").innerHTML = "Used";
       break;
   }
 
