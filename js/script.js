@@ -7,14 +7,14 @@ var pass = 0;
 //1 = Tem mas não usou
 //2 = Tem E já usou
 
-var sword1 = false; //Pommel
-var sword2 = false; //Hilt
-var sword3 = false; //Blade
-var islandSword = false;
+var sword1 = true; //Pommel
+var sword2 = true; //Hilt
+var sword3 = true; //Blade
+var islandSword = true;
 
-var broadsword = false;
-var tunic = false;
-var goggles = false;
+var broadsword = true;
+var tunic = true;
+var goggles = true;
 
 let del = 20;
 let smallDel = 500; //Delays usados para dar uma pausa entre frases
@@ -264,6 +264,14 @@ document.addEventListener("keydown", (e) => {
   if (e.key == "D") dyingAnimation();
 });
 
+document.addEventListener("keydown", (e) => {
+  if (e.key == "U") updateInventory();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key == "F") FuseSword();
+});
+
 function updateInventory() {
   document.getElementById("Coins").innerHTML = "Coins: " + coins;
   document.getElementById("Coins").innerHTML = "Coins: " + coins;
@@ -283,13 +291,13 @@ function updateInventory() {
 
   switch (pass) {
     case 0:
-      document.getElementById("passStatus").innerHTML = "No";
+      document.getElementById("passStatus").innerHTML = window[language].inventory.passNo;
       break;
     case 1:
-      document.getElementById("passStatus").innerHTML = "Yes";
+      document.getElementById("passStatus").innerHTML = window[language].inventory.passYes;
       break;
     case 2:
-      document.getElementById("passStatus").innerHTML = "Used";
+      document.getElementById("passStatus").innerHTML = window[language].inventory.passUsed;
       break;
   }
 
@@ -324,16 +332,12 @@ function FuseSword() {
     swordUnfused[i].innerHTML = "";
   }
 
-  document.getElementById("sword-title").innerHTML = "The Island Sword";
-  document.getElementById("sword-desc").innerHTML =
+  document.getElementById("sword-title").innerHTML = window[language].inventory.islandSword.title;
+  document.getElementById("sword-desc").innerHTML = window[language].inventory.islandSword.islandSwordDesc;
     "Powerful enough to kill anything in this place";
 
   islandSword = true;
 }
-
-document.addEventListener("keydown", (e) => {
-  if (e.key == "h" || e.key == "H") FuseSword();
-});
 
 //Início do chat, para colocar os textos na div "chat"
 

@@ -925,8 +925,8 @@ _  __/  \ _______ ____________    ____________   ___________________     _______
                                          |___/ 
 -----------------------------------------------</pre>
             </div>
-            <p id="Pass">Pass: <span id="passStatus">No</span></p>
-            <p id="Coins">Coins: <span id="coinCount">0</span></p>
+            <p><span id="Pass">Pass: </span><span id="passStatus">No</span></p>
+            <p><span id="Coins">Coins: </span><span id="coinCount">0</span></p>
  <pre id="sword">
  /-------------\
  |             |
@@ -999,8 +999,8 @@ e o text-align não quebrar o frame da espada.-->
         <div id="others">
             <ul>
                 <li><button id="tomap" onclick="UpdateInfoDiv('map')" href="#">Map</button></li>
-                <li><button id=""href="#" onclick="UpdateInfoDiv('settings')">Settings</button></li>
-                <li><button id="backtomainmenu" onclick="toMainMenu()" href="#">Exit</button></li>
+                <li><button id="tosettings" href="#" onclick="UpdateInfoDiv('settings')">Settings</button></li>
+                <li><button id="tomainmenu" onclick="toMainMenu()" href="#">Exit</button></li>
             </ul>
         </div>
         <div id="map"><pre>
@@ -1113,13 +1113,13 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
         <li>Don't forget to check out the settings and choose the best options for your playstyle.</li>
         <li>Have fun!</li>
       </ul>
-      <button onclick="toMainMenu()" style="float: right;">Go Back</button>
+      <button id="howtoplaybackbutton" onclick="toMainMenu()" style="float: right;">Go Back</button>
     </div>
     <div id="credits">
-      <h1>Credits</h1>
+      <h1 id="creditstitle">Credits</h1>
       <p>The entirety of the game was made by Luciano Kohler da Silva, AKA Blockier, but I also got a helping hand with some arts from Cyrenp (more precisely, the king and cave arts).</p>
       <p>Some third party softwares were also used to build the game: <a href="https://safi.me.uk/typewriterjs/" target="_blank">Typewriter.js</a> for the widely used typewriter effect throughout the game and <a href="https://patorjk.com/software/taag/" target="_blank">Patorjk's ascii text generator</a> to create the ascii titles, my thanks to these devs for saving me a ton of time!</p>
-      <h1>Special Thanks</h1>
+      <h1 id="creditsthanks">Special Thanks</h1>
       <p>This project wouldn't be possible if I didn't have my friends to motivate me, I needed some people to play my game, after all, and I knew that I could count on my friends to know that my game would be appreciated by someone, and that makes my day!</p>
       <p>Here's a list of my pals, if you're not in here, know that you're still in my heart :D</p>
       <ul>
@@ -1131,7 +1131,7 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
         <li>Mittens - Future Kim Jung Gi</li>
         <li>All of the UDESC gang - New aditions to my heart</li>
       </ul>
-      <button onclick="toMainMenu()" style="float: right;">Go Back</button>
+      <button id="creditsbackbutton" onclick="toMainMenu()" style="float: right;">Go Back</button>
     </div>
     <div id="patchNotes">
       <h1>Patch Notes</h1>

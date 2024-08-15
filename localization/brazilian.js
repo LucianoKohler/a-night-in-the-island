@@ -4,26 +4,28 @@ var brazilian = {
 
   start: {
     buttons: {
-      start: "INICIAR",
+      play: "INICIAR",
       howtoplay: "COMO JOGAR",
       credits: "CRÉDITOS",
     },
 
     howtoplay: {
       title: "Como Jogar",
+      backButton: "Voltar",
       0: "Faça suas escolhas lendo e clicando nos links na caixa de texto.",
       1: "Navegue pelo mapa abrindo-o no botão do canto inferior direito, lembre-se: Você pode sair da sua localização a qualquer momento.",
       2: "Mantenha-se informado sobre seus intens com seu inventário no canto superior direito.",
       3: "O jogo tem vários finais, se você conseguiu um ruim, talvez tenha esquecido de olhar em algum lugar.",
       4: "Não se esqueça de checar as configurações e escolher as melhores opções para o seu estilo de jogo.",
-      5: "Divirta-se!"
+      5: "Divirta-se!",
     },
 
     credits: {
       title: "Créditos",
+      backButton: "Voltar",
+      specialThanks: "Agradecimentos Especiais",
       0: "Todo o jogo foi feito por Luciano Kohler da Silva, ou Blockier, mas também tive uma mãozinha com algumas artes de Cyrenp (mais precisamente, as artes do rei e da caverna).",
       1: "Alguns softwares de terceiros também foram usados para construir o jogo: Typewriter.js para o efeito de máquina de escrever usado em todo o jogo e o gerador de texto ascii de Patorjk para criar os títulos ascii, meu agradecimento a esses desenvolvedores por me economizarem tanto tempo!",
-      specialTnahks: "Agradecimentos Especiais",
       2: "Esse projeto não seria possível se eu não tivesse meus amigos para me motivar, afinal, eu precisava de alguém para jogar meu jogo, e eu sabia que podia contar com meus amigos para saber que meu jogo seria apreciado por alguém, e isso me faz feliz demais!",
       3: "Aqui está uma lista dos meus manos, se você não estiver aqui, saiba que você ainda está no meu coração :D",
       4: `Cyrenp - Valhallan`,
@@ -41,6 +43,7 @@ var brazilian = {
 // LINHAS PARA O INVENTÁRIO
 inventory: {
   pass: "Passe: ",
+  passNo: "Não",
   passYes: "Sim",
   passUsed: "Usado",
   coins: "Dinheiro: ",
@@ -68,8 +71,8 @@ inventory: {
   },
 
   islandSword: {
-    title: "Lâmina de Ilha",
-    islandSwordQM: "?????? ?? ????",
+    title: "A Lâmina da Ilha",
+    islandSwordQM: "? ?????? ?? ????",
     islandSwordDesc: "Forte o suficiente para matar qualquer coisa aqui",
     islandSwordDescQM: "????? ? ?????????? ???? ????? ???????? ????? ????",
   },
@@ -79,7 +82,7 @@ inventory: {
 others: {
   map: "Mapa",
   settings: "Configurações",
-  sair: "Sair",
+  exit: "Sair",
 },
 
 // LINHAS PARA O JOGO
