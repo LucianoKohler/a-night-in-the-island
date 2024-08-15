@@ -20,6 +20,7 @@ let del = 20;
 let smallDel = 500; //Delays usados para dar uma pausa entre frases
 let bigDel = 1000;
 let hugeDel = 1500;
+let language = 'brazilian' // Para a nova implementação de linguagem
 
 var BearScared = false;
 var castleEntered = false;
@@ -42,6 +43,7 @@ var patchNotesScreen = document.getElementById("patchNotes");
 //Para abrir o jogo
 
 function updateStart(div) {
+  var selectedLanguage = window[language]
   switch (div) {
     case "start":
       if (!started) {
@@ -55,21 +57,21 @@ function updateStart(div) {
 
         twStart
           .pauseFor(smallDel)
-          .typeString(startLines[0])
+          .typeString(selectedLanguage.startLines[0])
           .pauseFor(smallDel)
-          .typeString(startLines[1])
+          .typeString(selectedLanguage.startLines[1])
           .pauseFor(smallDel)
-          .typeString(startLines[2])
+          .typeString(selectedLanguage.startLines[2])
           .pauseFor(smallDel)
-          .typeString(startLines[3])
+          .typeString(selectedLanguage.startLines[3])
           .pauseFor(smallDel)
-          .typeString(startLines[4])
+          .typeString(selectedLanguage.startLines[4])
           .pauseFor(smallDel)
-          .typeString(startLines[5])
+          .typeString(selectedLanguage.startLines[5])
           .pauseFor(smallDel)
-          .typeString(WWYD)
-          .typeString(startLines[6])
-          .typeString(startLines[7])
+          .typeString(selectedLanguage.WWYD)
+          .typeString(selectedLanguage.startLines[6])
+          .typeString(selectedLanguage.startLines[7])
           .start();
       } else {
         startScreen.style.display = "none";
@@ -350,6 +352,7 @@ function disableKeyFeatures() {
 }
 
 function updateScreen(nextImg, text) {
+  var selectedLanguage = window[language];
   let ImgQuery;
 
   //Esses IFs abaixo são usados caso o player entre no local após certo acontecimento.
@@ -399,90 +402,90 @@ function updateScreen(nextImg, text) {
 
   switch (text) {
     case "chooselocation":
-      TW.typeString(chooseLines[0])
+      TW.typeString(selectedLanguage.chooseLines[0])
         .pauseFor(smallDel)
-        .typeString(chooseLines[1])
+        .typeString(selectedLanguage.chooseLines[1])
         .start();
       break;
 
     case "well":
       if (goggles == false) {
-        TW.typeString(wellLines[0])
+        TW.typeString(selectedLanguage.wellLines[0])
           .pauseFor(smallDel)
-          .typeString(WWYD)
-          .typeString(wellLines[1])
-          .typeString(wellLines[2])
+          .typeString(selectedLanguage.WWYD)
+          .typeString(selectedLanguage.wellLines[1])
+          .typeString(selectedLanguage.wellLines[2])
           .start();
       } else {
-        TW.typeString(wellLinesAfterGoggles[0])
+        TW.typeString(selectedLanguage.wellLinesAfterGoggles[0])
           .pauseFor(smallDel)
-          .typeString(wellLinesAfterGoggles[1])
+          .typeString(selectedLanguage.wellLinesAfterGoggles[1])
           .pauseFor(smallDel)
-          .typeString(wellLinesAfterGoggles[2])
+          .typeString(selectedLanguage.wellLinesAfterGoggles[2])
           .pauseFor(smallDel)
-          .typeString(wellLinesAfterGoggles[3])
+          .typeString(selectedLanguage.wellLinesAfterGoggles[3])
           .start();
       }
       break;
 
     case "wellThrowCoin":
       if (coins >= 1) {
-        TW.typeString(wellThrowCoinLines[0])
+        TW.typeString(selectedLanguage.wellThrowCoinLines[0])
           .pauseFor(bigDel)
-          .typeString(wellThrowCoinLines[1])
+          .typeString(selectedLanguage.wellThrowCoinLines[1])
           .pauseFor(bigDel)
-          .typeString(wellThrowCoinLines[2])
+          .typeString(selectedLanguage.wellThrowCoinLines[2])
           .pauseFor(smallDel)
-          .typeString(wellThrowCoinLines[3])
+          .typeString(selectedLanguage.wellThrowCoinLines[3])
           .pauseFor(bigDel)
-          .typeString(wellThrowCoinLines[4])
+          .typeString(selectedLanguage.wellThrowCoinLines[4])
           .pauseFor(smallDel)
-          .typeString(wellThrowCoinLines[5])
+          .typeString(selectedLanguage.wellThrowCoinLines[5])
           .pauseFor(bigDel)
-          .typeString(wellThrowCoinLines[6])
+          .typeString(selectedLanguage.wellThrowCoinLines[6])
           .start();
         goggles = true;
         coins -= 1;
         updateInventory();
       } else {
-        TW.typeString(wellThrowCoinWOCoinLines[0])
+        TW.typeString(selectedLanguage.wellThrowCoinWOCoinLines[0])
           .pauseFor(smallDel)
-          .typeString(wellThrowCoinWOCoinLines[1])
+          .typeString(selectedLanguage.wellThrowCoinWOCoinLines[1])
           .pauseFor(smallDel)
-          .typeString(wellThrowCoinWOCoinLines[2])
+          .typeString(selectedLanguage.wellThrowCoinWOCoinLines[2])
           .pauseFor(smallDel)
-          .typeString(wellThrowCoinWOCoinLines[3])
+          .typeString(selectedLanguage.wellThrowCoinWOCoinLines[3])
           .start();
       }
       break;
 
     case "wellLookInside":
-      TW.typeString(wellLookInsideLines[0])
+      TW.typeString(selectedLanguage.wellLookInsideLines[0])
         .pauseFor(smallDel)
-        .typeString(wellLookInsideLines[1])
+        .typeString(selectedLanguage.wellLookInsideLines[1])
         .pauseFor(smallDel)
-        .typeString(wellLookInsideLines[2])
+        .typeString(selectedLanguage.wellLookInsideLines[2])
         .pauseFor(smallDel)
-        .typeString(wellLookInsideLines[3])
+        .typeString(selectedLanguage.wellLookInsideLines[3])
         .pauseFor(bigDel)
-        .typeString(wellLookInsideLines[4])
+        .typeString(selectedLanguage.wellLookInsideLines[4])
         .start();
       break;
 
     case "forest":
       if (BearScared) {
-        TW.typeString(forestBearScaredLines[0])
+        TW.typeString(selectedLanguage.forestBearScaredLines[0])
           .pauseFor(smallDel)
-          .typeString(forestBearScaredLines[1])
+          .typeString(selectedLanguage.forestBearScaredLines[1])
           .pauseFor(smallDel)
-          .typeString(forestBearScaredLines[2])
+          .typeString(selectedLanguage.forestBearScaredLines[2])
           .start();
       } else {
-        TW.typeString(forestLines[0])
+        TW.typeString(selectedLanguage.forestLines[0])
           .pauseFor(smallDel)
-          .typeString(WWYD)
-          .typeString(forestLines[1])
-          .typeString(forestLines[2])
+          .typeString(selectedLanguage.WWYD)
+          .typeString(selectedLanguage.forestLines[1])
+          .typeString(selectedLanguage.forestLines[2])
           .start();
       }
       break;
@@ -490,133 +493,133 @@ function updateScreen(nextImg, text) {
     case "enterForest":
       if (Stick) {
         //com graveto
-        TW.typeString(enterForestLinesWithStick[0])
-          .typeString(WWYD)
-          .typeString(enterForestLinesWithStick[1])
-          .typeString(enterForestLinesWithStick[2])
+        TW.typeString(selectedLanguage.enterForestLinesWithStick[0])
+          .typeString(selectedLanguage.WWYD)
+          .typeString(selectedLanguage.enterForestLinesWithStick[1])
+          .typeString(selectedLanguage.enterForestLinesWithStick[2])
           .start();
       } else {
         //sem graveto
         Stick = true;
-        TW.typeString(enterForestLinesWOStick[0])
+        TW.typeString(selectedLanguage.enterForestLinesWOStick[0])
           .pauseFor(smallDel)
-          .typeString(enterForestLinesWOStick[1])
+          .typeString(selectedLanguage.enterForestLinesWOStick[1])
           .pauseFor(smallDel)
-          .typeString(enterForestLinesWOStick[2])
+          .typeString(selectedLanguage.enterForestLinesWOStick[2])
           .pauseFor(bigDel)
 
-          .typeString(WWYD)
-          .typeString(enterForestLinesWOStick[3])
-          .typeString(enterForestLinesWOStick[4])
+          .typeString(selectedLanguage.WWYD)
+          .typeString(selectedLanguage.enterForestLinesWOStick[3])
+          .typeString(selectedLanguage.enterForestLinesWOStick[4])
           .start();
       }
       break;
 
     case "forestBear":
       if (broadsword == true || islandSword == true) {
-        TW.typeString(ForestBearWSwordLines[0])
+        TW.typeString(selectedLanguage.ForestBearWSwordLines[0])
           .pauseFor(smallDel)
-          .typeString(ForestBearWSwordLines[1])
+          .typeString(selectedLanguage.ForestBearWSwordLines[1])
           .pauseFor(bigDel)
-          .typeString(ForestBearWSwordLines[2])
+          .typeString(selectedLanguage.ForestBearWSwordLines[2])
           .pauseFor(smallDel)
-          .typeString(ForestBearWSwordLines[3])
+          .typeString(selectedLanguage.ForestBearWSwordLines[3])
           .pauseFor(smallDel)
-          .typeString(ForestBearWSwordLines[4])
+          .typeString(selectedLanguage.ForestBearWSwordLines[4])
           .pauseFor(bigDel)
-          .typeString(ForestBearWSwordLines[5])
+          .typeString(selectedLanguage.ForestBearWSwordLines[5])
           .pauseFor(smallDel)
-          .typeString(ForestBearWSwordLines[6])
+          .typeString(selectedLanguage.ForestBearWSwordLines[6])
           .pauseFor(bigDel)
-          .typeString(ForestBearWSwordLines[7])
+          .typeString(selectedLanguage.ForestBearWSwordLines[7])
           .pauseFor(smallDel)
-          .typeString(ForestBearWSwordLines[8])
+          .typeString(selectedLanguage.ForestBearWSwordLines[8])
           .pauseFor(smallDel)
-          .typeString(ForestBearWSwordLines[9])
+          .typeString(selectedLanguage.ForestBearWSwordLines[9])
           .start();
         BearScared = true;
 
         document.getElementsByClassName("pier")[0].classList.remove("disabled");
       } else {
-        TW.typeString(ForestBearWOSwordLines[0])
+        TW.typeString(selectedLanguage.ForestBearWOSwordLines[0])
           .pauseFor(smallDel)
-          .typeString(ForestBearWOSwordLines[1])
+          .typeString(selectedLanguage.ForestBearWOSwordLines[1])
           .pauseFor(bigDel)
-          .typeString(ForestBearWOSwordLines[2])
+          .typeString(selectedLanguage.ForestBearWOSwordLines[2])
           .pauseFor(smallDel)
-          .typeString(ForestBearWOSwordLines[3])
+          .typeString(selectedLanguage.ForestBearWOSwordLines[3])
           .pauseFor(smallDel)
-          .typeString(ForestBearWOSwordLines[4])
+          .typeString(selectedLanguage.ForestBearWOSwordLines[4])
           .pauseFor(smallDel)
-          .typeString(ForestBearWOSwordLines[5])
+          .typeString(selectedLanguage.ForestBearWOSwordLines[5])
           .pauseFor(smallDel)
-          .typeString(ForestBearWOSwordLines[6])
-          .typeString(ForestBearWOSwordLines[7])
+          .typeString(selectedLanguage.ForestBearWOSwordLines[6])
+          .typeString(selectedLanguage.ForestBearWOSwordLines[7])
           .start();
       }
       break;
 
     case "pier":
-      TW.typeString(pierLines[0])
+      TW.typeString(selectedLanguage.pierLines[0])
         .pauseFor(smallDel)
-        .typeString(WWYD)
-        .typeString(pierLines[1])
-        .typeString(pierLines[2])
+        .typeString(selectedLanguage.WWYD)
+        .typeString(selectedLanguage.pierLines[1])
+        .typeString(selectedLanguage.pierLines[2])
         .start();
       break;
 
     case "pierStareSea":
-      TW.typeString(pierStareSeaLines[0])
+      TW.typeString(selectedLanguage.pierStareSeaLines[0])
         .pauseFor(smallDel)
-        .typeString(pierStareSeaLines[1])
+        .typeString(selectedLanguage.pierStareSeaLines[1])
         .pauseFor(bigDel)
-        .typeString(pierStareSeaLines[2])
+        .typeString(selectedLanguage.pierStareSeaLines[2])
         .pauseFor(smallDel)
-        .typeString(pierStareSeaLines[3])
+        .typeString(selectedLanguage.pierStareSeaLines[3])
         .pauseFor(bigDel)
-        .typeString(pierStareSeaLines[4])
+        .typeString(selectedLanguage.pierStareSeaLines[4])
         .pauseFor(bigDel)
-        .typeString(pierStareSeaLines[5])
+        .typeString(selectedLanguage.pierStareSeaLines[5])
         .pauseFor(hugeDel)
-        .typeString(pierStareSeaLines[6])
+        .typeString(selectedLanguage.pierStareSeaLines[6])
         .start();
       break;
 
     case "island":
       if (islandEntered == true) {
-        TW.typeString(islandLines[0])
+        TW.typeString(selectedLanguage.islandLines[0])
           .pauseFor(smallDel)
-          .typeString(WWYD)
-          .typeString(islandLines[1])
-          .typeString(islandLines[2])
+          .typeString(selectedLanguage.WWYD)
+          .typeString(selectedLanguage.islandLines[1])
+          .typeString(selectedLanguage.islandLines[2])
           .start();
 
         place = "island";
         UpdateColors();
       } else {
-        TW.typeString(islandFirstLines[0])
+        TW.typeString(selectedLanguage.islandFirstLines[0])
           .pauseFor(smallDel)
-          .typeString(islandFirstLines[1])
+          .typeString(selectedLanguage.islandFirstLines[1])
           .pauseFor(bigDel)
-          .typeString(islandFirstLines[2])
+          .typeString(selectedLanguage.islandFirstLines[2])
           .pauseFor(smallDel)
-          .typeString(islandFirstLines[3])
+          .typeString(selectedLanguage.islandFirstLines[3])
           .pauseFor(bigDel)
-          .typeString(islandFirstLines[4])
+          .typeString(selectedLanguage.islandFirstLines[4])
           .pauseFor(smallDel)
-          .typeString(islandFirstLines[5])
+          .typeString(selectedLanguage.islandFirstLines[5])
           .pauseFor(smallDel)
-          .typeString(islandFirstLines[6])
+          .typeString(selectedLanguage.islandFirstLines[6])
           .pauseFor(smallDel)
-          .typeString(islandFirstLines[7])
+          .typeString(selectedLanguage.islandFirstLines[7])
           .pauseFor(smallDel)
-          .typeString(islandFirstLines[8])
+          .typeString(selectedLanguage.islandFirstLines[8])
           .pauseFor(bigDel)
-          .typeString(islandFirstLines[9])
+          .typeString(selectedLanguage.islandFirstLines[9])
           .pauseFor(hugeDel)
-          .typeString(islandFirstLines[10])
+          .typeString(selectedLanguage.islandFirstLines[10])
           .pauseFor(hugeDel)
-          .typeString(islandFirstLines[11])
+          .typeString(selectedLanguage.islandFirstLines[11])
           .start();
         islandEntered = true;
         tunic = true;
@@ -638,501 +641,501 @@ function updateScreen(nextImg, text) {
       break;
 
     case "islandRowHorizonPart1":
-      TW.typeString(islandRowHorizonPart1Lines[0])
+      TW.typeString(selectedLanguage.islandRowHorizonPart1Lines[0])
         .pauseFor(smallDel)
-        .typeString(islandRowHorizonPart1Lines[1])
+        .typeString(selectedLanguage.islandRowHorizonPart1Lines[1])
         .pauseFor(smallDel)
-        .typeString(islandRowHorizonPart1Lines[2])
+        .typeString(selectedLanguage.islandRowHorizonPart1Lines[2])
         .start();
       break;
 
     case "islandRowHorizonPart2":
-      TW.typeString(islandRowHorizonPart2Lines[0])
+      TW.typeString(selectedLanguage.islandRowHorizonPart2Lines[0])
         .pauseFor(smallDel)
-        .typeString(islandRowHorizonPart2Lines[1])
+        .typeString(selectedLanguage.islandRowHorizonPart2Lines[1])
         .pauseFor(smallDel)
-        .typeString(islandRowHorizonPart2Lines[2])
+        .typeString(selectedLanguage.islandRowHorizonPart2Lines[2])
         .pauseFor(bigDel)
-        .typeString(islandRowHorizonPart2Lines[3])
+        .typeString(selectedLanguage.islandRowHorizonPart2Lines[3])
         .pauseFor(smallDel)
-        .typeString(islandRowHorizonPart2Lines[4])
+        .typeString(selectedLanguage.islandRowHorizonPart2Lines[4])
         .pauseFor(bigDel)
-        .typeString(WWYD)
-        .typeString(islandRowHorizonPart2Lines[5])
-        .typeString(islandRowHorizonPart2Lines[6])
+        .typeString(selectedLanguage.WWYD)
+        .typeString(selectedLanguage.islandRowHorizonPart2Lines[5])
+        .typeString(selectedLanguage.islandRowHorizonPart2Lines[6])
         .start();
       place = "pier";
       UpdateColors();
       break;
 
     case "islandAppreciateLandscape":
-      TW.typeString(islandAppreciateLandscapeLines[0])
+      TW.typeString(selectedLanguage.islandAppreciateLandscapeLines[0])
         .pauseFor(bigDel)
-        .typeString(islandAppreciateLandscapeLines[1])
+        .typeString(selectedLanguage.islandAppreciateLandscapeLines[1])
         .pauseFor(smallDel)
-        .typeString(islandAppreciateLandscapeLines[2])
+        .typeString(selectedLanguage.islandAppreciateLandscapeLines[2])
         .pauseFor(smallDel)
-        .typeString(islandAppreciateLandscapeLines[3])
+        .typeString(selectedLanguage.islandAppreciateLandscapeLines[3])
         .pauseFor(smallDel)
-        .typeString(islandAppreciateLandscapeLines[4])
+        .typeString(selectedLanguage.islandAppreciateLandscapeLines[4])
         .pauseFor(smallDel)
-        .typeString(islandAppreciateLandscapeLines[5])
+        .typeString(selectedLanguage.islandAppreciateLandscapeLines[5])
         .pauseFor(smallDel)
-        .typeString(islandAppreciateLandscapeLines[6])
+        .typeString(selectedLanguage.islandAppreciateLandscapeLines[6])
         .pauseFor(smallDel)
-        .typeString(islandAppreciateLandscapeLines[7])
+        .typeString(selectedLanguage.islandAppreciateLandscapeLines[7])
         .pauseFor(bigDel)
-        .typeString(islandAppreciateLandscapeLines[8])
+        .typeString(selectedLanguage.islandAppreciateLandscapeLines[8])
         .pauseFor(smallDel)
-        .typeString(islandAppreciateLandscapeLines[9])
+        .typeString(selectedLanguage.islandAppreciateLandscapeLines[9])
         .pauseFor(smallDel)
-        .typeString(islandAppreciateLandscapeLines[10])
+        .typeString(selectedLanguage.islandAppreciateLandscapeLines[10])
         .start();
       break;
 
     case "altar":
       if (kingQuest == true && angelVisited == true) {
-        TW.typeString(altarLines[0])
+        TW.typeString(selectedLanguage.altarLines[0])
           .pauseFor(smallDel)
-          .typeString(altarLines[1])
+          .typeString(selectedLanguage.altarLines[1])
           .pauseFor(smallDel)
-          .typeString(WWYS)
-          .typeString(altarLines[2])
-          .typeString(altarLines[3])
-          .typeString(altarLines[4])
-          .typeString(altarLines[5])
-          .typeString(altarLines[6])
+          .typeString(selectedLanguage.WWYS)
+          .typeString(selectedLanguage.altarLines[2])
+          .typeString(selectedLanguage.altarLines[3])
+          .typeString(selectedLanguage.altarLines[4])
+          .typeString(selectedLanguage.altarLines[5])
+          .typeString(selectedLanguage.altarLines[6])
           .start();
       } else if (kingQuest == true) {
-        TW.typeString(altarFirstLines[0])
+        TW.typeString(selectedLanguage.altarFirstLines[0])
           .pauseFor(smallDel)
-          .typeString(altarFirstLines[1])
+          .typeString(selectedLanguage.altarFirstLines[1])
           .pauseFor(bigDel)
-          .typeString(altarFirstLines[2])
+          .typeString(selectedLanguage.altarFirstLines[2])
           .pauseFor(smallDel)
-          .typeString(altarFirstLines[3])
+          .typeString(selectedLanguage.altarFirstLines[3])
           .pauseFor(smallDel)
-          .typeString(altarFirstLines[4])
+          .typeString(selectedLanguage.altarFirstLines[4])
           .pauseFor(smallDel)
-          .typeString(altarFirstLines[5])
+          .typeString(selectedLanguage.altarFirstLines[5])
           .pauseFor(bigDel)
-          .typeString(altarFirstLines[6])
+          .typeString(selectedLanguage.altarFirstLines[6])
           .pauseFor(smallDel)
-          .typeString(altarFirstLines[7])
+          .typeString(selectedLanguage.altarFirstLines[7])
           .pauseFor(smallDel)
-          .typeString(altarFirstLines[8])
+          .typeString(selectedLanguage.altarFirstLines[8])
           .pauseFor(bigDel)
-          .typeString(WWYS)
-          .typeString(altarFirstLines[9])
-          .typeString(altarFirstLines[10])
-          .typeString(altarFirstLines[11])
-          .typeString(altarFirstLines[12])
-          .typeString(altarFirstLines[13])
+          .typeString(selectedLanguage.WWYS)
+          .typeString(selectedLanguage.altarFirstLines[9])
+          .typeString(selectedLanguage.altarFirstLines[10])
+          .typeString(selectedLanguage.altarFirstLines[11])
+          .typeString(selectedLanguage.altarFirstLines[12])
+          .typeString(selectedLanguage.altarFirstLines[13])
           .start();
         angelVisited = true;
       } else {
-        TW.typeString(altarAbandonedLines[0])
+        TW.typeString(selectedLanguage.altarAbandonedLines[0])
           .pauseFor(smallDel)
-          .typeString(altarAbandonedLines[1])
+          .typeString(selectedLanguage.altarAbandonedLines[1])
           .pauseFor(smallDel)
-          .typeString(altarAbandonedLines[2])
+          .typeString(selectedLanguage.altarAbandonedLines[2])
           .pauseFor(bigDel)
-          .typeString(altarAbandonedLines[3])
+          .typeString(selectedLanguage.altarAbandonedLines[3])
           .start();
       }
       break;
 
     case "angelAskAboutQuest":
       if (sword2 == false) {
-        TW.typeString(angelParts2Lines[0])
+        TW.typeString(selectedLanguage.angelParts2Lines[0])
           .pauseFor(smallDel)
-          .typeString(angelParts2Lines[1])
+          .typeString(selectedLanguage.angelParts2Lines[1])
           .pauseFor(smallDel)
-          .typeString(angelParts2Lines[2])
+          .typeString(selectedLanguage.angelParts2Lines[2])
           .pauseFor(smallDel)
-          .typeString(WWYS)
-          .typeString(angelPartsGeneralLines[0])
-          .typeString(angelPartsGeneralLines[1])
-          .typeString(angelPartsGeneralLines[2])
-          .typeString(angelPartsGeneralLines[3])
+          .typeString(selectedLanguage.WWYS)
+          .typeString(selectedLanguage.angelPartsGeneralLines[0])
+          .typeString(selectedLanguage.angelPartsGeneralLines[1])
+          .typeString(selectedLanguage.angelPartsGeneralLines[2])
+          .typeString(selectedLanguage.angelPartsGeneralLines[3])
           .start();
       } else if (sword3 == false) {
-        TW.typeString(angelParts3Lines[0])
+        TW.typeString(selectedLanguage.angelParts3Lines[0])
           .pauseFor(smallDel)
-          .typeString(angelParts3Lines[1])
+          .typeString(selectedLanguage.angelParts3Lines[1])
           .pauseFor(smallDel)
-          .typeString(WWYS)
-          .typeString(angelPartsGeneralLines[0])
-          .typeString(angelPartsGeneralLines[1])
-          .typeString(angelPartsGeneralLines[2])
-          .typeString(angelPartsGeneralLines[3])
+          .typeString(selectedLanguage.WWYS)
+          .typeString(selectedLanguage.angelPartsGeneralLines[0])
+          .typeString(selectedLanguage.angelPartsGeneralLines[1])
+          .typeString(selectedLanguage.angelPartsGeneralLines[2])
+          .typeString(selectedLanguage.angelPartsGeneralLines[3])
           .start();
       } else if (sword1 == false) {
-        TW.typeString(angelParts1Lines[0])
+        TW.typeString(selectedLanguage.angelParts1Lines[0])
           .pauseFor(smallDel)
-          .typeString(angelParts1Lines[1])
+          .typeString(selectedLanguage.angelParts1Lines[1])
           .pauseFor(smallDel)
-          .typeString(angelParts1Lines[2])
+          .typeString(selectedLanguage.angelParts1Lines[2])
           .pauseFor(smallDel)
-          .typeString(angelParts1Lines[3])
+          .typeString(selectedLanguage.angelParts1Lines[3])
           .pauseFor(smallDel)
-          .typeString(WWYS)
-          .typeString(angelPartsGeneralLines[0])
-          .typeString(angelPartsGeneralLines[1])
-          .typeString(angelPartsGeneralLines[2])
-          .typeString(angelPartsGeneralLines[3])
+          .typeString(selectedLanguage.WWYS)
+          .typeString(selectedLanguage.angelPartsGeneralLines[0])
+          .typeString(selectedLanguage.angelPartsGeneralLines[1])
+          .typeString(selectedLanguage.angelPartsGeneralLines[2])
+          .typeString(selectedLanguage.angelPartsGeneralLines[3])
           .start();
       } else if (islandSword == false) {
-        TW.typeString(angelFuseSwordPart1Lines[0])
+        TW.typeString(selectedLanguage.angelFuseSwordPart1Lines[0])
           .pauseFor(smallDel)
-          .typeString(angelFuseSwordPart1Lines[1])
+          .typeString(selectedLanguage.angelFuseSwordPart1Lines[1])
           .pauseFor(smallDel)
-          .typeString(angelFuseSwordPart1Lines[2])
+          .typeString(selectedLanguage.angelFuseSwordPart1Lines[2])
           .pauseFor(smallDel)
-          .typeString(angelFuseSwordPart1Lines[3])
+          .typeString(selectedLanguage.angelFuseSwordPart1Lines[3])
           .pauseFor(smallDel)
-          .typeString(angelFuseSwordPart1Lines[4])
+          .typeString(selectedLanguage.angelFuseSwordPart1Lines[4])
           .start();
       } else {
-        TW.typeString(angelPartsBadFeelingLines[0])
+        TW.typeString(selectedLanguage.angelPartsBadFeelingLines[0])
           .pauseFor(smallDel)
-          .typeString(angelPartsBadFeelingLines[1])
+          .typeString(selectedLanguage.angelPartsBadFeelingLines[1])
           .pauseFor(smallDel)
-          .typeString(angelPartsBadFeelingLines[2])
+          .typeString(selectedLanguage.angelPartsBadFeelingLines[2])
           .pauseFor(bigDel)
-          .typeString(angelPartsBadFeelingLines[3])
+          .typeString(selectedLanguage.angelPartsBadFeelingLines[3])
           .pauseFor(smallDel)
-          .typeString(angelPartsBadFeelingLines[4])
+          .typeString(selectedLanguage.angelPartsBadFeelingLines[4])
           .pauseFor(smallDel)
-          .typeString(angelPartsBadFeelingLines[5])
+          .typeString(selectedLanguage.angelPartsBadFeelingLines[5])
           .pauseFor(smallDel)
-          .typeString(WWYS)
-          .typeString(angelPartsGeneralLines[0])
-          .typeString(angelPartsGeneralLines[1])
-          .typeString(angelPartsGeneralLines[2])
-          .typeString(angelPartsGeneralLines[3])
+          .typeString(selectedLanguage.WWYS)
+          .typeString(selectedLanguage.angelPartsGeneralLines[0])
+          .typeString(selectedLanguage.angelPartsGeneralLines[1])
+          .typeString(selectedLanguage.angelPartsGeneralLines[2])
+          .typeString(selectedLanguage.angelPartsGeneralLines[3])
           .start();
       }
       break;
 
     case "altarFuseSword":
-      TW.typeString(angelFuseSwordPart2Lines[0])
+      TW.typeString(selectedLanguage.angelFuseSwordPart2Lines[0])
         .pauseFor(smallDel)
-        .typeString(angelFuseSwordPart2Lines[1])
+        .typeString(selectedLanguage.angelFuseSwordPart2Lines[1])
         .pauseFor(smallDel)
-        .typeString(angelFuseSwordPart2Lines[2])
+        .typeString(selectedLanguage.angelFuseSwordPart2Lines[2])
         .pauseFor(smallDel)
-        .typeString(angelFuseSwordPart2Lines[3])
+        .typeString(selectedLanguage.angelFuseSwordPart2Lines[3])
         .pauseFor(bigDel)
-        .typeString(angelFuseSwordPart2Lines[4])
+        .typeString(selectedLanguage.angelFuseSwordPart2Lines[4])
         .start();
       break;
 
     case "altarFuseSwordAftermath":
-      TW.typeString(angelFuseSwordPart3Lines[0])
+      TW.typeString(selectedLanguage.angelFuseSwordPart3Lines[0])
         .pauseFor(smallDel)
-        .typeString(angelFuseSwordPart3Lines[1])
+        .typeString(selectedLanguage.angelFuseSwordPart3Lines[1])
         .pauseFor(bigDel)
-        .typeString(angelFuseSwordPart3Lines[2])
+        .typeString(selectedLanguage.angelFuseSwordPart3Lines[2])
         .pauseFor(bigDel)
-        .typeString(angelFuseSwordPart3Lines[3])
+        .typeString(selectedLanguage.angelFuseSwordPart3Lines[3])
         .pauseFor(smallDel)
-        .typeString(angelFuseSwordPart3Lines[4])
+        .typeString(selectedLanguage.angelFuseSwordPart3Lines[4])
         .pauseFor(smallDel)
-        .typeString(angelFuseSwordPart3Lines[5])
+        .typeString(selectedLanguage.angelFuseSwordPart3Lines[5])
         .pauseFor(smallDel)
-        .typeString(WWYS)
-        .typeString(angelPartsGeneralLines[0])
-        .typeString(angelPartsGeneralLines[1])
-        .typeString(angelPartsGeneralLines[2])
-        .typeString(angelPartsGeneralLines[3])
+        .typeString(selectedLanguage.WWYS)
+        .typeString(selectedLanguage.angelPartsGeneralLines[0])
+        .typeString(selectedLanguage.angelPartsGeneralLines[1])
+        .typeString(selectedLanguage.angelPartsGeneralLines[2])
+        .typeString(selectedLanguage.angelPartsGeneralLines[3])
         .start();
 
       FuseSword();
       break;
 
     case "angelWhoAreYou":
-      TW.typeString(angelWhoAreYouLines[0])
+      TW.typeString(selectedLanguage.angelWhoAreYouLines[0])
         .pauseFor(smallDel)
-        .typeString(angelWhoAreYouLines[1])
+        .typeString(selectedLanguage.angelWhoAreYouLines[1])
         .pauseFor(smallDel)
-        .typeString(angelWhoAreYouLines[2])
+        .typeString(selectedLanguage.angelWhoAreYouLines[2])
         .pauseFor(smallDel)
-        .typeString(WWYS)
-        .typeString(angelWhoAreYouLines[3])
-        .typeString(angelWhoAreYouLines[4])
-        .typeString(angelWhoAreYouLines[5])
-        .typeString(angelWhoAreYouLines[6])
+        .typeString(selectedLanguage.WWYS)
+        .typeString(selectedLanguage.angelWhoAreYouLines[3])
+        .typeString(selectedLanguage.angelWhoAreYouLines[4])
+        .typeString(selectedLanguage.angelWhoAreYouLines[5])
+        .typeString(selectedLanguage.angelWhoAreYouLines[6])
         .start();
       break;
 
     case "angelHowSwordDisappear":
-      TW.typeString(angelHowSwordDisappearLines[0])
+      TW.typeString(selectedLanguage.angelHowSwordDisappearLines[0])
         .pauseFor(smallDel)
-        .typeString(angelHowSwordDisappearLines[1])
+        .typeString(selectedLanguage.angelHowSwordDisappearLines[1])
         .pauseFor(smallDel)
-        .typeString(angelHowSwordDisappearLines[2])
+        .typeString(selectedLanguage.angelHowSwordDisappearLines[2])
         .pauseFor(smallDel)
-        .typeString(angelHowSwordDisappearLines[3])
+        .typeString(selectedLanguage.angelHowSwordDisappearLines[3])
         .pauseFor(smallDel)
-        .typeString(WWYS)
-        .typeString(angelHowSwordDisappearLines[4])
-        .typeString(angelHowSwordDisappearLines[5])
-        .typeString(angelHowSwordDisappearLines[6])
-        .typeString(angelHowSwordDisappearLines[7])
+        .typeString(selectedLanguage.WWYS)
+        .typeString(selectedLanguage.angelHowSwordDisappearLines[4])
+        .typeString(selectedLanguage.angelHowSwordDisappearLines[5])
+        .typeString(selectedLanguage.angelHowSwordDisappearLines[6])
+        .typeString(selectedLanguage.angelHowSwordDisappearLines[7])
         .start();
       break;
 
     case "angelSearchSwordYourself":
-      TW.typeString(angelSearchSwordYourselfLines[0])
+      TW.typeString(selectedLanguage.angelSearchSwordYourselfLines[0])
         .pauseFor(smallDel)
-        .typeString(angelSearchSwordYourselfLines[1])
+        .typeString(selectedLanguage.angelSearchSwordYourselfLines[1])
         .pauseFor(smallDel)
-        .typeString(angelSearchSwordYourselfLines[2])
+        .typeString(selectedLanguage.angelSearchSwordYourselfLines[2])
         .pauseFor(smallDel)
-        .typeString(WWYS)
-        .typeString(angelSearchSwordYourselfLines[3])
-        .typeString(angelSearchSwordYourselfLines[4])
-        .typeString(angelSearchSwordYourselfLines[5])
-        .typeString(angelSearchSwordYourselfLines[6])
+        .typeString(selectedLanguage.WWYS)
+        .typeString(selectedLanguage.angelSearchSwordYourselfLines[3])
+        .typeString(selectedLanguage.angelSearchSwordYourselfLines[4])
+        .typeString(selectedLanguage.angelSearchSwordYourselfLines[5])
+        .typeString(selectedLanguage.angelSearchSwordYourselfLines[6])
         .start();
       break;
 
     case "angelBye":
-      TW.typeString(angelByeLines[0])
+      TW.typeString(selectedLanguage.angelByeLines[0])
         .pauseFor(smallDel)
-        .typeString(angelByeLines[1])
+        .typeString(selectedLanguage.angelByeLines[1])
         .start();
       break;
 
     case "castle":
       if (castleEntered == false) {
-        TW.typeString(castleLines[0])
+        TW.typeString(selectedLanguage.castleLines[0])
           .pauseFor(smallDel)
-          .typeString(castleLines[1])
+          .typeString(selectedLanguage.castleLines[1])
           .pauseFor(smallDel)
-          .typeString(castleLines[2])
+          .typeString(selectedLanguage.castleLines[2])
           .pauseFor(smallDel)
-          .typeString(castleLines[3])
+          .typeString(selectedLanguage.castleLines[3])
           .start();
         castleEntered = true;
       } else {
-        TW.typeString(enterCastleLines[0])
+        TW.typeString(selectedLanguage.enterCastleLines[0])
           .pauseFor(bigDel)
-          .typeString(enterCastleLines[1])
+          .typeString(selectedLanguage.enterCastleLines[1])
           .pauseFor(smallDel)
-          .typeString(enterCastleLines[2])
+          .typeString(selectedLanguage.enterCastleLines[2])
           .pauseFor(smallDel)
-          .typeString(enterCastleLines[3])
+          .typeString(selectedLanguage.enterCastleLines[3])
           .pauseFor(smallDel)
-          .typeString(enterCastleLines[4])
-          .typeString(enterCastleLines[5])
-          .typeString(enterCastleLines[6])
+          .typeString(selectedLanguage.enterCastleLines[4])
+          .typeString(selectedLanguage.enterCastleLines[5])
+          .typeString(selectedLanguage.enterCastleLines[6])
           .start();
       }
       break;
 
     case "palaceEnter":
       if (palaceEntered == false) {
-        TW.typeString(palaceEnterFirstLines[0])
+        TW.typeString(selectedLanguage.palaceEnterFirstLines[0])
           .pauseFor(bigDel)
-          .typeString(palaceEnterFirstLines[1])
+          .typeString(selectedLanguage.palaceEnterFirstLines[1])
           .pauseFor(bigDel)
-          .typeString(WWYS)
-          .typeString(palaceEnterFirstLines[2])
-          .typeString(palaceEnterFirstLines[3])
-          .typeString(palaceEnterFirstLines[4])
-          .typeString(palaceEnterFirstLines[5])
+          .typeString(selectedLanguage.WWYS)
+          .typeString(selectedLanguage.palaceEnterFirstLines[2])
+          .typeString(selectedLanguage.palaceEnterFirstLines[3])
+          .typeString(selectedLanguage.palaceEnterFirstLines[4])
+          .typeString(selectedLanguage.palaceEnterFirstLines[5])
           .start();
         palaceEntered = true;
       } else if (sword1 == false && sword2 == true && sword3 == true) {
-        TW.typeString(kingGivePommelLines[0])
+        TW.typeString(selectedLanguage.kingGivePommelLines[0])
           .pauseFor(smallDel)
-          .typeString(kingGivePommelLines[1])
+          .typeString(selectedLanguage.kingGivePommelLines[1])
           .pauseFor(smallDel)
-          .typeString(kingGivePommelLines[2])
+          .typeString(selectedLanguage.kingGivePommelLines[2])
           .pauseFor(bigDel)
-          .typeString(kingGivePommelLines[3])
+          .typeString(selectedLanguage.kingGivePommelLines[3])
           .pauseFor(smallDel)
-          .typeString(kingGivePommelLines[4])
+          .typeString(selectedLanguage.kingGivePommelLines[4])
           .pauseFor(smallDel)
-          .typeString(kingGivePommelLines[5])
+          .typeString(selectedLanguage.kingGivePommelLines[5])
           .pauseFor(bigDel)
-          .typeString(kingGivePommelLines[6])
+          .typeString(selectedLanguage.kingGivePommelLines[6])
           .pauseFor(smallDel)
-          .typeString(kingGivePommelLines[7])
+          .typeString(selectedLanguage.kingGivePommelLines[7])
           .pauseFor(smallDel)
-          .typeString(kingGivePommelLines[8])
+          .typeString(selectedLanguage.kingGivePommelLines[8])
           .pauseFor(smallDel)
-          .typeString(kingGivePommelLines[9])
+          .typeString(selectedLanguage.kingGivePommelLines[9])
           .pauseFor(bigDel)
-          .typeString(kingGivePommelLines[10])
+          .typeString(selectedLanguage.kingGivePommelLines[10])
           .start();
       } else {
-        TW.typeString(palaceEnterLines[0])
+        TW.typeString(selectedLanguage.palaceEnterLines[0])
           .pauseFor(smallDel)
-          .typeString(WWYS)
-          .typeString(palaceEnterLines[1])
-          .typeString(palaceEnterLines[2])
-          .typeString(palaceEnterLines[3])
-          .typeString(palaceEnterLines[4])
+          .typeString(selectedLanguage.WWYS)
+          .typeString(selectedLanguage.palaceEnterLines[1])
+          .typeString(selectedLanguage.palaceEnterLines[2])
+          .typeString(selectedLanguage.palaceEnterLines[3])
+          .typeString(selectedLanguage.palaceEnterLines[4])
           .start();
       }
       break;
 
     case "kingPommelPart2":
-      TW.typeString(kingPommelPart2Lines[0])
+      TW.typeString(selectedLanguage.kingPommelPart2Lines[0])
         .pauseFor(smallDel)
-        .typeString(kingPommelPart2Lines[1])
+        .typeString(selectedLanguage.kingPommelPart2Lines[1])
         .pauseFor(smallDel)
-        .typeString(kingPommelPart2Lines[2])
+        .typeString(selectedLanguage.kingPommelPart2Lines[2])
         .pauseFor(smallDel)
-        .typeString(kingPommelPart2Lines[3])
+        .typeString(selectedLanguage.kingPommelPart2Lines[3])
         .pauseFor(smallDel)
-        .typeString(kingPommelPart2Lines[4])
+        .typeString(selectedLanguage.kingPommelPart2Lines[4])
         .start();
       sword1 = true;
       updateInventory();
       break;
 
     case "kingWhoAreYou":
-      TW.typeString(kingWhoAreYouLines[0])
+      TW.typeString(selectedLanguage.kingWhoAreYouLines[0])
         .pauseFor(smallDel)
-        .typeString(kingWhoAreYouLines[1])
+        .typeString(selectedLanguage.kingWhoAreYouLines[1])
         .pauseFor(smallDel)
-        .typeString(kingWhoAreYouLines[2])
+        .typeString(selectedLanguage.kingWhoAreYouLines[2])
         .pauseFor(bigDel)
-        .typeString(WWYS)
-        .typeString(kingWhoAreYouLines[3])
-        .typeString(kingWhoAreYouLines[4])
-        .typeString(kingWhoAreYouLines[5])
-        .typeString(kingWhoAreYouLines[6])
+        .typeString(selectedLanguage.WWYS)
+        .typeString(selectedLanguage.kingWhoAreYouLines[3])
+        .typeString(selectedLanguage.kingWhoAreYouLines[4])
+        .typeString(selectedLanguage.kingWhoAreYouLines[5])
+        .typeString(selectedLanguage.kingWhoAreYouLines[6])
         .start();
       break;
 
     case "kingMeetSameFate":
-      TW.typeString(kingMeetSameFateLines[0])
+      TW.typeString(selectedLanguage.kingMeetSameFateLines[0])
         .pauseFor(smallDel)
-        .typeString(kingMeetSameFateLines[1])
+        .typeString(selectedLanguage.kingMeetSameFateLines[1])
         .pauseFor(smallDel)
-        .typeString(kingMeetSameFateLines[2])
+        .typeString(selectedLanguage.kingMeetSameFateLines[2])
         .pauseFor(smallDel)
-        .typeString(kingMeetSameFateLines[3])
+        .typeString(selectedLanguage.kingMeetSameFateLines[3])
         .pauseFor(smallDel)
-        .typeString(kingMeetSameFateLines[4])
+        .typeString(selectedLanguage.kingMeetSameFateLines[4])
         .pauseFor(bigDel)
-        .typeString(WWYS)
-        .typeString(kingMeetSameFateLines[5])
-        .typeString(kingMeetSameFateLines[6])
-        .typeString(kingMeetSameFateLines[7])
+        .typeString(selectedLanguage.WWYS)
+        .typeString(selectedLanguage.kingMeetSameFateLines[5])
+        .typeString(selectedLanguage.kingMeetSameFateLines[6])
+        .typeString(selectedLanguage.kingMeetSameFateLines[7])
         .start();
       break;
 
     case "kingGoHome":
-      TW.typeString(kingGoHomeLines[0])
+      TW.typeString(selectedLanguage.kingGoHomeLines[0])
         .pauseFor(bigDel)
-        .typeString(kingGoHomeLines[1])
+        .typeString(selectedLanguage.kingGoHomeLines[1])
         .pauseFor(smallDel)
-        .typeString(kingGoHomeLines[2])
+        .typeString(selectedLanguage.kingGoHomeLines[2])
         .pauseFor(smallDel)
-        .typeString(kingGoHomeLines[3])
+        .typeString(selectedLanguage.kingGoHomeLines[3])
         .pauseFor(smallDel)
-        .typeString(kingGoHomeLines[4])
+        .typeString(selectedLanguage.kingGoHomeLines[4])
         .pauseFor(smallDel)
-        .typeString(kingGoHomeLines[5])
+        .typeString(selectedLanguage.kingGoHomeLines[5])
         .pauseFor(smallDel)
-        .typeString(kingGoHomeLines[6])
+        .typeString(selectedLanguage.kingGoHomeLines[6])
         .pauseFor(hugeDel)
-        .typeString(kingGoHomeLines[7])
+        .typeString(selectedLanguage.kingGoHomeLines[7])
         .start();
       break;
 
     case `kingHowDoThis`:
-      TW.typeString(kingHowDoThisLines[0])
+      TW.typeString(selectedLanguage.kingHowDoThisLines[0])
         .pauseFor(smallDel)
-        .typeString(kingHowDoThisLines[1])
+        .typeString(selectedLanguage.kingHowDoThisLines[1])
         .pauseFor(smallDel)
-        .typeString(kingHowDoThisLines[2])
+        .typeString(selectedLanguage.kingHowDoThisLines[2])
         .pauseFor(smallDel)
-        .typeString(kingHowDoThisLines[3])
+        .typeString(selectedLanguage.kingHowDoThisLines[3])
         .pauseFor(bigDel)
-        .typeString(kingHowDoThisLines[4])
+        .typeString(selectedLanguage.kingHowDoThisLines[4])
         .pauseFor(bigDel)
-        .typeString(kingHowDoThisLines[5])
+        .typeString(selectedLanguage.kingHowDoThisLines[5])
         .pauseFor(hugeDel)
-        .typeString(kingHowDoThisLines[6])
+        .typeString(selectedLanguage.kingHowDoThisLines[6])
         .pauseFor(smallDel)
-        .typeString(kingHowDoThisLines[7])
+        .typeString(selectedLanguage.kingHowDoThisLines[7])
         .start();
       kingQuest = true;
       break;
 
     case "kingBye":
-      TW.typeString(kingByeLines[0])
+      TW.typeString(selectedLanguage.kingByeLines[0])
         .pauseFor(smallDel)
-        .typeString(kingByeLines[1])
-        .typeString(kingByeLines[2])
+        .typeString(selectedLanguage.kingByeLines[1])
+        .typeString(selectedLanguage.kingByeLines[2])
         .start();
       break;
 
     case "shop":
       if (shopEntered == true) {
-        TW.typeString(shopLines[0])
+        TW.typeString(selectedLanguage.shopLines[0])
           .pauseFor(smallDel)
-          .typeString(shopLines[1])
-          .typeString(shopLines[2])
-          .typeString(shopLines[3])
-          .typeString(shopLines[4])
+          .typeString(selectedLanguage.shopLines[1])
+          .typeString(selectedLanguage.shopLines[2])
+          .typeString(selectedLanguage.shopLines[3])
+          .typeString(selectedLanguage.shopLines[4])
           .start();
       } else {
-        TW.typeString(shopFirstLines[0])
+        TW.typeString(selectedLanguage.shopFirstLines[0])
           .pauseFor(smallDel)
-          .typeString(shopFirstLines[1])
+          .typeString(selectedLanguage.shopFirstLines[1])
           .pauseFor(smallDel)
-          .typeString(shopFirstLines[2])
+          .typeString(selectedLanguage.shopFirstLines[2])
           .pauseFor(smallDel)
-          .typeString(shopFirstLines[3])
-          .typeString(shopFirstLines[4])
-          .typeString(shopFirstLines[5])
-          .typeString(shopFirstLines[6])
+          .typeString(selectedLanguage.shopFirstLines[3])
+          .typeString(selectedLanguage.shopFirstLines[4])
+          .typeString(selectedLanguage.shopFirstLines[5])
+          .typeString(selectedLanguage.shopFirstLines[6])
           .start();
         shopEntered = true;
       }
       break;
 
     case "shopBroadsword":
-      TW.typeString(shopBroadswordLines[0])
+      TW.typeString(selectedLanguage.shopBroadswordLines[0])
         .pauseFor(smallDel)
-        .typeString(shopBroadswordLines[1])
+        .typeString(selectedLanguage.shopBroadswordLines[1])
         .pauseFor(bigDel)
-        .typeString(shopBroadswordLines[2])
-        .typeString(shopBroadswordLines[3])
-        .typeString(shopBroadswordLines[4])
+        .typeString(selectedLanguage.shopBroadswordLines[2])
+        .typeString(selectedLanguage.shopBroadswordLines[3])
+        .typeString(selectedLanguage.shopBroadswordLines[4])
         .start();
       break;
 
     case "shopSticker":
-      TW.typeString(shopStickerLines[0])
+      TW.typeString(selectedLanguage.shopStickerLines[0])
         .pauseFor(smallDel)
-        .typeString(shopStickerLines[1])
+        .typeString(selectedLanguage.shopStickerLines[1])
         .pauseFor(bigDel)
-        .typeString(shopStickerLines[2])
+        .typeString(selectedLanguage.shopStickerLines[2])
         .pauseFor(smallDel)
-        .typeString(shopStickerLines[3])
-        .typeString(shopStickerLines[4])
-        .typeString(shopStickerLines[5])
+        .typeString(selectedLanguage.shopStickerLines[3])
+        .typeString(selectedLanguage.shopStickerLines[4])
+        .typeString(selectedLanguage.shopStickerLines[5])
         .start();
       break;
 
     case "shopBroadswordYes":
       if (coins >= 20) {
-        TW.typeString(shopBroadswordYesLines[0])
+        TW.typeString(selectedLanguage.shopBroadswordYesLines[0])
           .pauseFor(smallDel)
-          .typeString(shopBroadswordYesLines[1])
+          .typeString(selectedLanguage.shopBroadswordYesLines[1])
           .pauseFor(bigDel)
-          .typeString(shopBroadswordYesLines[2])
+          .typeString(selectedLanguage.shopBroadswordYesLines[2])
           .pauseFor(smallDel)
-          .typeString(shopBroadswordYesLines[3])
+          .typeString(selectedLanguage.shopBroadswordYesLines[3])
           .start();
         broadsword = true;
         coins -= 20;
@@ -1143,13 +1146,13 @@ function updateScreen(nextImg, text) {
       break;
     case "shopStickerYes":
       if (coins >= 10) {
-        TW.typeString(shopStickerYesLines[0])
+        TW.typeString(selectedLanguage.shopStickerYesLines[0])
           .pauseFor(smallDel)
-          .typeString(shopStickerYesLines[1])
+          .typeString(selectedLanguage.shopStickerYesLines[1])
           .pauseFor(bigDel)
-          .typeString(shopStickerYesLines[2])
+          .typeString(selectedLanguage.shopStickerYesLines[2])
           .pauseFor(smallDel)
-          .typeString(shopStickerYesLines[3])
+          .typeString(selectedLanguage.shopStickerYesLines[3])
           .start();
         sticker = true;
         coins -= 10;
@@ -1159,51 +1162,51 @@ function updateScreen(nextImg, text) {
       }
       break;
     case "shopTooPoor":
-      TW.typeString(shopTooPoorLines[0])
+      TW.typeString(selectedLanguage.shopTooPoorLines[0])
         .pauseFor(smallDel)
-        .typeString(shopTooPoorLines[1])
+        .typeString(selectedLanguage.shopTooPoorLines[1])
         .pauseFor(smallDel)
-        .typeString(shopTooPoorLines[2])
+        .typeString(selectedLanguage.shopTooPoorLines[2])
         .start();
       break;
 
     case "shopOnlyOnePerPerson":
-      TW.typeString(shopOnlyOnePerPersonLines[0])
+      TW.typeString(selectedLanguage.shopOnlyOnePerPersonLines[0])
         .pauseFor(smallDel)
-        .typeString(shopOnlyOnePerPersonLines[1])
+        .typeString(selectedLanguage.shopOnlyOnePerPersonLines[1])
         .pauseFor(smallDel)
-        .typeString(shopOnlyOnePerPersonLines[2])
+        .typeString(selectedLanguage.shopOnlyOnePerPersonLines[2])
         .start();
       break;
 
     case "shopPass":
       if (kingQuest == false) {
-        TW.typeString(shopPassWOKingQuest[0])
+        TW.typeString(selectedLanguage.shopPassWOKingQuest[0])
           .pauseFor(smallDel)
-          .typeString(shopPassWOKingQuest[1])
+          .typeString(selectedLanguage.shopPassWOKingQuest[1])
           .pauseFor(smallDel)
-          .typeString(shopPassWOKingQuest[2])
+          .typeString(selectedLanguage.shopPassWOKingQuest[2])
           .pauseFor(smallDel)
-          .typeString(shopPassWOKingQuest[3])
+          .typeString(selectedLanguage.shopPassWOKingQuest[3])
           .pauseFor(bigDel)
-          .typeString(shopPassWOKingQuest[4])
-          .typeString(shopPassWOKingQuest[5])
+          .typeString(selectedLanguage.shopPassWOKingQuest[4])
+          .typeString(selectedLanguage.shopPassWOKingQuest[5])
           .start();
       } else {
-        TW.typeString(shopPassWKingQuest[0])
+        TW.typeString(selectedLanguage.shopPassWKingQuest[0])
           .pauseFor(smallDel)
-          .typeString(shopPassWKingQuest[1])
+          .typeString(selectedLanguage.shopPassWKingQuest[1])
           .pauseFor(smallDel)
-          .typeString(shopPassWKingQuest[2])
+          .typeString(selectedLanguage.shopPassWKingQuest[2])
           .pauseFor(smallDel)
-          .typeString(shopPassWKingQuest[3])
+          .typeString(selectedLanguage.shopPassWKingQuest[3])
           .pauseFor(bigDel)
-          .typeString(shopPassWKingQuest[4])
+          .typeString(selectedLanguage.shopPassWKingQuest[4])
           .pauseFor(smallDel)
-          .typeString(shopPassWKingQuest[5])
+          .typeString(selectedLanguage.shopPassWKingQuest[5])
           .pauseFor(bigDel)
-          .typeString(shopPassWKingQuest[6])
-          .typeString(shopPassWKingQuest[7])
+          .typeString(selectedLanguage.shopPassWKingQuest[6])
+          .typeString(selectedLanguage.shopPassWKingQuest[7])
           .start();
         pass = 1;
         updateInventory();
@@ -1212,74 +1215,74 @@ function updateScreen(nextImg, text) {
 
     case "weirdRocks":
       if (sword3 == false) {
-        TW.typeString(weirdRocksLines[0])
+        TW.typeString(selectedLanguage.weirdRocksLines[0])
           .pauseFor(smallDel)
-          .typeString(weirdRocksLines[1])
+          .typeString(selectedLanguage.weirdRocksLines[1])
           .pauseFor(smallDel)
-          .typeString(WWYS)
-          .typeString(weirdRocksLines[2])
-          .typeString(weirdRocksLines[3])
+          .typeString(selectedLanguage.WWYS)
+          .typeString(selectedLanguage.weirdRocksLines[2])
+          .typeString(selectedLanguage.weirdRocksLines[3])
           .start();
       } else {
-        TW.typeString(weirdRocksAngryRox[0])
+        TW.typeString(selectedLanguage.weirdRocksAngryRox[0])
           .pauseFor(bigDel)
-          .typeString(weirdRocksAngryRox[1])
+          .typeString(selectedLanguage.weirdRocksAngryRox[1])
           .pauseFor(bigDel)
-          .typeString(weirdRocksAngryRox[2])
+          .typeString(selectedLanguage.weirdRocksAngryRox[2])
           .start();
       }
       break;
 
     case "weirdRocksWhoAreYou":
-      TW.typeString(weirdRocksWhoAreYouLines[0])
+      TW.typeString(selectedLanguage.weirdRocksWhoAreYouLines[0])
         .pauseFor(smallDel)
-        .typeString(WWYS)
-        .typeString(weirdRocksWhoAreYouLines[1])
-        .typeString(weirdRocksWhoAreYouLines[2])
+        .typeString(selectedLanguage.WWYS)
+        .typeString(selectedLanguage.weirdRocksWhoAreYouLines[1])
+        .typeString(selectedLanguage.weirdRocksWhoAreYouLines[2])
         .start();
       break;
 
     case "weirdRocksCabin":
-      TW.typeString(weirdRocksCabinLines[0])
+      TW.typeString(selectedLanguage.weirdRocksCabinLines[0])
         .pauseFor(bigDel)
-        .typeString(weirdRocksCabinLines[1])
+        .typeString(selectedLanguage.weirdRocksCabinLines[1])
         .pauseFor(2000)
-        .typeString(weirdRocksCabinLines[2])
+        .typeString(selectedLanguage.weirdRocksCabinLines[2])
         .start();
       break;
 
     case "weirdRocksEye":
-      TW.typeString(weirdRocksEyeLines[0])
+      TW.typeString(selectedLanguage.weirdRocksEyeLines[0])
         .pauseFor(bigDel)
-        .typeString(weirdRocksEyeLines[1])
+        .typeString(selectedLanguage.weirdRocksEyeLines[1])
         .pauseFor(bigDel)
-        .typeString(WWYS)
-        .typeString(weirdRocksEyeLines[2])
-        .typeString(weirdRocksEyeLines[3])
+        .typeString(selectedLanguage.WWYS)
+        .typeString(selectedLanguage.weirdRocksEyeLines[2])
+        .typeString(selectedLanguage.weirdRocksEyeLines[3])
         .start();
       break;
 
     case "weirdRocksNice":
-      TW.typeString(weirdRocksNiceLines[0])
+      TW.typeString(selectedLanguage.weirdRocksNiceLines[0])
         .pauseFor(bigDel)
-        .typeString(WWYD)
-        .typeString(weirdRocksNiceLines[1])
-        .typeString(weirdRocksNiceLines[2])
+        .typeString(selectedLanguage.WWYD)
+        .typeString(selectedLanguage.weirdRocksNiceLines[1])
+        .typeString(selectedLanguage.weirdRocksNiceLines[2])
         .start();
       break;
 
     case "weirdRocksNotStealEye":
-      TW.typeString(weirdRocksNotStealEyeLines[0])
+      TW.typeString(selectedLanguage.weirdRocksNotStealEyeLines[0])
         .pauseFor(smallDel)
-        .typeString(weirdRocksNotStealEyeLines[1])
+        .typeString(selectedLanguage.weirdRocksNotStealEyeLines[1])
         .start();
       break;
     case "weirdRocksStealEye":
-      TW.typeString(weirdRocksStealEye[0])
+      TW.typeString(selectedLanguage.weirdRocksStealEye[0])
         .pauseFor(bigDel)
-        .typeString(weirdRocksStealEye[1])
+        .typeString(selectedLanguage.weirdRocksStealEye[1])
         .pauseFor(bigDel)
-        .typeString(weirdRocksStealEye[2])
+        .typeString(selectedLanguage.weirdRocksStealEye[2])
         .start();
 
       sword3 = true;
@@ -1289,77 +1292,77 @@ function updateScreen(nextImg, text) {
 
     case "farm":
       if (sword2 == false) {
-        TW.typeString(farmLines[0])
+        TW.typeString(selectedLanguage.farmLines[0])
           .pauseFor(bigDel)
-          .typeString(farmLines[1])
+          .typeString(selectedLanguage.farmLines[1])
           .pauseFor(bigDel)
-          .typeString(WWYS)
-          .typeString(farmLines[2])
-          .typeString(farmLines[3])
-          .typeString(farmLines[4])
+          .typeString(selectedLanguage.WWYS)
+          .typeString(selectedLanguage.farmLines[2])
+          .typeString(selectedLanguage.farmLines[3])
+          .typeString(selectedLanguage.farmLines[4])
           .start();
       } else {
-        TW.typeString(farmLinesHilt[0])
+        TW.typeString(selectedLanguage.farmLinesHilt[0])
           .pauseFor(bigDel)
-          .typeString(farmLinesHilt[1])
+          .typeString(selectedLanguage.farmLinesHilt[1])
           .start();
       }
       break;
 
     case "farmSeeCrops":
       if (sticker == false) {
-        TW.typeString(farmLinesWOSticker[0])
+        TW.typeString(selectedLanguage.farmLinesWOSticker[0])
           .pauseFor(bigDel)
-          .typeString(farmLinesWOSticker[1])
+          .typeString(selectedLanguage.farmLinesWOSticker[1])
           .pauseFor(2000)
-          .typeString(WWYS)
-          .typeString(farmLinesWOSticker[2])
-          .typeString(farmLinesWOSticker[3])
+          .typeString(selectedLanguage.WWYS)
+          .typeString(selectedLanguage.farmLinesWOSticker[2])
+          .typeString(selectedLanguage.farmLinesWOSticker[3])
           .start();
       } else {
-        TW.typeString(farmLinesWSticker[0])
+        TW.typeString(selectedLanguage.farmLinesWSticker[0])
           .pauseFor(smallDel)
-          .typeString(farmLinesWSticker[1])
+          .typeString(selectedLanguage.farmLinesWSticker[1])
           .pauseFor(smallDel)
-          .typeString(farmLinesWSticker[2])
+          .typeString(selectedLanguage.farmLinesWSticker[2])
           .pauseFor(smallDel)
-          .typeString(farmLinesWSticker[3])
+          .typeString(selectedLanguage.farmLinesWSticker[3])
           .pauseFor(bigDel)
-          .typeString(farmLinesWSticker[4])
+          .typeString(selectedLanguage.farmLinesWSticker[4])
           .pauseFor(bigDel)
-          .typeString(farmLinesWSticker[5])
+          .typeString(selectedLanguage.farmLinesWSticker[5])
           .start();
       }
       break;
 
     case "farmMetal":
-      TW.typeString(farmLinesMetal[0])
+      TW.typeString(selectedLanguage.farmLinesMetal[0])
         .pauseFor(2000)
-        .typeString(farmLinesMetal[1])
+        .typeString(selectedLanguage.farmLinesMetal[1])
         .pauseFor(bigDel)
-        .typeString(WWYS)
-        .typeString(farmLinesMetal[2])
-        .typeString(farmLinesMetal[3])
+        .typeString(selectedLanguage.WWYS)
+        .typeString(selectedLanguage.farmLinesMetal[2])
+        .typeString(selectedLanguage.farmLinesMetal[3])
         .start();
       break;
 
     case "farmBye":
-      TW.typeString(farmLinesBye[0])
+      TW.typeString(selectedLanguage.farmLinesBye[0])
         .pauseFor(hugeDel)
-        .typeString(farmLinesBye[1])
+        .typeString(selectedLanguage.farmLinesBye[1])
         .start();
       break;
 
     case "farmApproach":
-      TW.typeString(farmLinesApproach[0])
+      TW.typeString(selectedLanguage.farmLinesApproach[0])
         .pauseFor(bigDel)
-        .typeString(farmLinesApproach[1])
+        .typeString(selectedLanguage.farmLinesApproach[1])
         .pauseFor(hugeDel)
-        .typeString(farmLinesApproach[2])
+        .typeString(selectedLanguage.farmLinesApproach[2])
         .pauseFor(bigDel)
-        .typeString(farmLinesApproach[3])
+        .typeString(selectedLanguage.farmLinesApproach[3])
         .pauseFor(2000)
-        .typeString(farmLinesApproach[4])
+        .typeString(selectedLanguage.farmLinesApproach[4])
         .start();
       sword2 = true;
       updateInventory();
@@ -1368,46 +1371,46 @@ function updateScreen(nextImg, text) {
     case "wall":
       if (pass == 0) {
         //Se não tem
-        TW.typeString(wallLines[0])
+        TW.typeString(selectedLanguage.wallLines[0])
           .pauseFor(bigDel)
-          .typeString(wallLines[1])
+          .typeString(selectedLanguage.wallLines[1])
           .pauseFor(smallDel)
-          .typeString(WWYS)
-          .typeString(wallLines[3])
-          .typeString(wallLines[4])
-          .typeString(wallLines[5])
+          .typeString(selectedLanguage.WWYS)
+          .typeString(selectedLanguage.wallLines[3])
+          .typeString(selectedLanguage.wallLines[4])
+          .typeString(selectedLanguage.wallLines[5])
           .start();
       } else if (pass == 1) {
         //Se tem, mas não usou
-        TW.typeString(wallLines[0])
+        TW.typeString(selectedLanguage.wallLines[0])
           .pauseFor(bigDel)
-          .typeString(wallLines[1])
+          .typeString(selectedLanguage.wallLines[1])
           .pauseFor(smallDel)
-          .typeString(WWYS)
-          .typeString(wallLines[2])
-          .typeString(wallLines[3])
-          .typeString(wallLines[4])
-          .typeString(wallLines[5])
+          .typeString(selectedLanguage.WWYS)
+          .typeString(selectedLanguage.wallLines[2])
+          .typeString(selectedLanguage.wallLines[3])
+          .typeString(selectedLanguage.wallLines[4])
+          .typeString(selectedLanguage.wallLines[5])
           .start();
       } else {
         //Se tem E já usou
-        TW.typeString(wallAlreadyUsedPassLines[0])
+        TW.typeString(selectedLanguage.wallAlreadyUsedPassLines[0])
           .pauseFor(bigDel)
-          .typeString(wallAlreadyUsedPassLines[1])
+          .typeString(selectedLanguage.wallAlreadyUsedPassLines[1])
           .pauseFor(bigDel)
-          .typeString(wallAlreadyUsedPassLines[2])
+          .typeString(selectedLanguage.wallAlreadyUsedPassLines[2])
           .start();
       }
       break;
 
     case "wallUsePass":
-      TW.typeString(wallUsePassLines[0])
+      TW.typeString(selectedLanguage.wallUsePassLines[0])
         .pauseFor(bigDel)
-        .typeString(wallUsePassLines[1])
+        .typeString(selectedLanguage.wallUsePassLines[1])
         .pauseFor(hugeDel)
-        .typeString(wallUsePassLines[2])
+        .typeString(selectedLanguage.wallUsePassLines[2])
         .pauseFor(bigDel)
-        .typeString(wallUsePassLines[3])
+        .typeString(selectedLanguage.wallUsePassLines[3])
         .start();
       pass = 2;
       updateInventory();
@@ -1416,213 +1419,213 @@ function updateScreen(nextImg, text) {
       break;
 
     case "wallWhatPass":
-      TW.typeString(wallWhatPassLines[0])
+      TW.typeString(selectedLanguage.wallWhatPassLines[0])
         .pauseFor(bigDel)
-        .typeString(WWYS)
-        .typeString(wallWhatPassLines[1])
-        .typeString(wallWhatPassLines[2])
+        .typeString(selectedLanguage.WWYS)
+        .typeString(selectedLanguage.wallWhatPassLines[1])
+        .typeString(selectedLanguage.wallWhatPassLines[2])
         .start();
       break;
 
     case "wallBeyondWall":
-      TW.typeString(wallBeyondWallLines[0])
+      TW.typeString(selectedLanguage.wallBeyondWallLines[0])
         .pauseFor(bigDel)
-        .typeString(WWYS)
-        .typeString(wallBeyondWallLines[1])
-        .typeString(wallBeyondWallLines[2])
+        .typeString(selectedLanguage.WWYS)
+        .typeString(selectedLanguage.wallBeyondWallLines[1])
+        .typeString(selectedLanguage.wallBeyondWallLines[2])
         .start();
       break;
 
     case "wallBye":
-      TW.typeString(wallByeLines[0])
+      TW.typeString(selectedLanguage.wallByeLines[0])
         .pauseFor(bigDel)
-        .typeString(wallByeLines[1])
+        .typeString(selectedLanguage.wallByeLines[1])
         .start();
       break;
 
     case "cave":
-      TW.typeString(caveLines[0])
+      TW.typeString(selectedLanguage.caveLines[0])
         .pauseFor(smallDel)
-        .typeString(caveLines[1])
+        .typeString(selectedLanguage.caveLines[1])
         .pauseFor(smallDel)
-        .typeString(caveLines[2])
+        .typeString(selectedLanguage.caveLines[2])
         .start();
       break;
 
     case "goblin":
       if (goblinGotMoney == false) {
         if (goblinVisited == false) {
-          TW.typeString(goblinFirstLines[0])
+          TW.typeString(selectedLanguage.goblinFirstLines[0])
             .pauseFor(smallDel)
-            .typeString(goblinFirstLines[1])
+            .typeString(selectedLanguage.goblinFirstLines[1])
             .pauseFor(smallDel)
-            .typeString(goblinFirstLines[2])
+            .typeString(selectedLanguage.goblinFirstLines[2])
             .pauseFor(smallDel)
-            .typeString(goblinFirstLines[3])
+            .typeString(selectedLanguage.goblinFirstLines[3])
             .pauseFor(smallDel)
-            .typeString(goblinFirstLines[4])
+            .typeString(selectedLanguage.goblinFirstLines[4])
             .pauseFor(smallDel)
-            .typeString(WWYS)
-            .typeString(goblinFirstLines[5])
-            .typeString(goblinFirstLines[6])
-            .typeString(goblinFirstLines[7])
+            .typeString(selectedLanguage.WWYS)
+            .typeString(selectedLanguage.goblinFirstLines[5])
+            .typeString(selectedLanguage.goblinFirstLines[6])
+            .typeString(selectedLanguage.goblinFirstLines[7])
             .start();
           goblinVisited = true;
         } else {
-          TW.typeString(goblinLines[0])
+          TW.typeString(selectedLanguage.goblinLines[0])
             .pauseFor(smallDel)
-            .typeString(goblinLines[1])
+            .typeString(selectedLanguage.goblinLines[1])
             .pauseFor(smallDel)
-            .typeString(WWYS)
-            .typeString(goblinLines[2])
-            .typeString(goblinLines[3])
-            .typeString(goblinLines[4])
+            .typeString(selectedLanguage.WWYS)
+            .typeString(selectedLanguage.goblinLines[2])
+            .typeString(selectedLanguage.goblinLines[3])
+            .typeString(selectedLanguage.goblinLines[4])
             .start();
         }
       } else {
-        TW.typeString(goblinAfterGotMoneyLines[0])
+        TW.typeString(selectedLanguage.goblinAfterGotMoneyLines[0])
           .pauseFor(smallDel)
-          .typeString(goblinAfterGotMoneyLines[1])
+          .typeString(selectedLanguage.goblinAfterGotMoneyLines[1])
           .pauseFor(smallDel)
-          .typeString(goblinAfterGotMoneyLines[2])
+          .typeString(selectedLanguage.goblinAfterGotMoneyLines[2])
           .pauseFor(bigDel)
-          .typeString(goblinAfterGotMoneyLines[3])
+          .typeString(selectedLanguage.goblinAfterGotMoneyLines[3])
           .pauseFor(smallDel)
-          .typeString(goblinAfterGotMoneyLines[4])
+          .typeString(selectedLanguage.goblinAfterGotMoneyLines[4])
           .start();
       }
 
       break;
 
     case "goblinWhoAreYou":
-      TW.typeString(goblinWhoAreYouLines[0])
+      TW.typeString(selectedLanguage.goblinWhoAreYouLines[0])
         .pauseFor(750)
-        .typeString(goblinWhoAreYouLines[1])
+        .typeString(selectedLanguage.goblinWhoAreYouLines[1])
         .pauseFor(750)
-        .typeString(goblinWhoAreYouLines[2])
+        .typeString(selectedLanguage.goblinWhoAreYouLines[2])
         .pauseFor(750)
-        .typeString(goblinWhoAreYouLines[3])
+        .typeString(selectedLanguage.goblinWhoAreYouLines[3])
         .pauseFor(750)
-        .typeString(goblinWhoAreYouLines[4])
-        .typeString(goblinWhoAreYouLines[5])
+        .typeString(selectedLanguage.goblinWhoAreYouLines[4])
+        .typeString(selectedLanguage.goblinWhoAreYouLines[5])
         .pauseFor(smallDel)
-        .typeString(goblinWhoAreYouLines[6])
+        .typeString(selectedLanguage.goblinWhoAreYouLines[6])
         .pauseFor(smallDel)
-        .typeString(WWYS)
-        .typeString(goblinWhoAreYouLines[7])
-        .typeString(goblinWhoAreYouLines[8])
+        .typeString(selectedLanguage.WWYS)
+        .typeString(selectedLanguage.goblinWhoAreYouLines[7])
+        .typeString(selectedLanguage.goblinWhoAreYouLines[8])
         .start();
       break;
 
     case "goblinWhatGold":
-      TW.typeString(goblinWhatGoldLines[0])
+      TW.typeString(selectedLanguage.goblinWhatGoldLines[0])
         .pauseFor(smallDel)
-        .typeString(goblinWhatGoldLines[1])
+        .typeString(selectedLanguage.goblinWhatGoldLines[1])
         .pauseFor(smallDel)
-        .typeString(goblinWhatGoldLines[2])
+        .typeString(selectedLanguage.goblinWhatGoldLines[2])
         .pauseFor(smallDel)
-        .typeString(goblinWhatGoldLines[3])
+        .typeString(selectedLanguage.goblinWhatGoldLines[3])
         .pauseFor(smallDel)
-        .typeString(goblinWhatGoldLines[4])
+        .typeString(selectedLanguage.goblinWhatGoldLines[4])
         .pauseFor(smallDel)
-        .typeString(goblinWhatGoldLines[5])
+        .typeString(selectedLanguage.goblinWhatGoldLines[5])
         .start();
       break;
 
     case "goblinNotMuch":
-      TW.typeString(goblinNotMuchLines[0])
+      TW.typeString(selectedLanguage.goblinNotMuchLines[0])
         .pauseFor(smallDel)
-        .typeString(goblinNotMuchLines[1])
+        .typeString(selectedLanguage.goblinNotMuchLines[1])
         .pauseFor(smallDel)
-        .typeString(goblinNotMuchLines[2])
+        .typeString(selectedLanguage.goblinNotMuchLines[2])
         .pauseFor(smallDel)
-        .typeString(goblinNotMuchLines[3])
+        .typeString(selectedLanguage.goblinNotMuchLines[3])
         .pauseFor(smallDel)
-        .typeString(WWYS)
-        .typeString(goblinNotMuchLines[4])
-        .typeString(goblinNotMuchLines[5])
+        .typeString(selectedLanguage.WWYS)
+        .typeString(selectedLanguage.goblinNotMuchLines[4])
+        .typeString(selectedLanguage.goblinNotMuchLines[5])
         .start();
       break;
 
     case "goblinTruth":
-      TW.typeString(goblinTruthLines[0])
+      TW.typeString(selectedLanguage.goblinTruthLines[0])
         .pauseFor(smallDel)
-        .typeString(goblinTruthLines[1])
+        .typeString(selectedLanguage.goblinTruthLines[1])
         .pauseFor(smallDel)
-        .typeString(goblinTruthLines[2])
+        .typeString(selectedLanguage.goblinTruthLines[2])
         .pauseFor(smallDel)
-        .typeString(goblinTruthLines[3])
+        .typeString(selectedLanguage.goblinTruthLines[3])
         .pauseFor(smallDel)
-        .typeString(goblinTruthLines[4])
+        .typeString(selectedLanguage.goblinTruthLines[4])
         .pauseFor(smallDel)
-        .typeString(goblinTruthLines[5])
+        .typeString(selectedLanguage.goblinTruthLines[5])
         .pauseFor(smallDel)
-        .typeString(goblinTruthLines[6])
+        .typeString(selectedLanguage.goblinTruthLines[6])
         .pauseFor(smallDel)
-        .typeString(goblinTruthLines[7])
+        .typeString(selectedLanguage.goblinTruthLines[7])
         .pauseFor(smallDel)
-        .typeString(goblinTruthLines[8])
+        .typeString(selectedLanguage.goblinTruthLines[8])
         .pauseFor(smallDel)
-        .typeString(goblinTruthLines[9])
+        .typeString(selectedLanguage.goblinTruthLines[9])
         .start();
       break;
 
     case "goblinBluff":
-      TW.typeString(goblinBluffLines[0])
+      TW.typeString(selectedLanguage.goblinBluffLines[0])
         .pauseFor(smallDel)
-        .typeString(goblinBluffLines[1])
+        .typeString(selectedLanguage.goblinBluffLines[1])
         .pauseFor(smallDel)
-        .typeString(goblinBluffLines[2])
+        .typeString(selectedLanguage.goblinBluffLines[2])
         .pauseFor(smallDel)
-        .typeString(goblinBluffLines[3])
+        .typeString(selectedLanguage.goblinBluffLines[3])
         .pauseFor(smallDel)
-        .typeString(goblinBluffLines[4])
+        .typeString(selectedLanguage.goblinBluffLines[4])
         .pauseFor(smallDel)
-        .typeString(goblinBluffLines[5])
+        .typeString(selectedLanguage.goblinBluffLines[5])
         .pauseFor(smallDel)
-        .typeString(goblinBluffLines[6])
+        .typeString(selectedLanguage.goblinBluffLines[6])
         .start();
       break;
 
     case "goblinComeOn":
-      TW.typeString(goblinComeOnLines[0])
+      TW.typeString(selectedLanguage.goblinComeOnLines[0])
         .pauseFor(smallDel)
-        .typeString(goblinComeOnLines[1])
+        .typeString(selectedLanguage.goblinComeOnLines[1])
         .pauseFor(smallDel)
-        .typeString(goblinComeOnLines[2])
+        .typeString(selectedLanguage.goblinComeOnLines[2])
         .pauseFor(smallDel)
-        .typeString(goblinComeOnLines[3])
+        .typeString(selectedLanguage.goblinComeOnLines[3])
         .pauseFor(smallDel)
-        .typeString(goblinComeOnLines[4])
+        .typeString(selectedLanguage.goblinComeOnLines[4])
         .pauseFor(smallDel)
-        .typeString(goblinComeOnLines[5])
+        .typeString(selectedLanguage.goblinComeOnLines[5])
         .pauseFor(smallDel)
-        .typeString(goblinComeOnLines[6])
+        .typeString(selectedLanguage.goblinComeOnLines[6])
         .pauseFor(smallDel)
-        .typeString(goblinComeOnLines[7])
+        .typeString(selectedLanguage.goblinComeOnLines[7])
         .pauseFor(smallDel)
-        .typeString(goblinComeOnLines[8])
+        .typeString(selectedLanguage.goblinComeOnLines[8])
         .pauseFor(smallDel)
-        .typeString(goblinComeOnLines[9])
+        .typeString(selectedLanguage.goblinComeOnLines[9])
         .pauseFor(smallDel)
-        .typeString(goblinComeOnLines[10])
+        .typeString(selectedLanguage.goblinComeOnLines[10])
         .start();
       break;
 
     case "goblinMoney":
-      TW.typeString(goblinMoneyLines[0])
+      TW.typeString(selectedLanguage.goblinMoneyLines[0])
         .pauseFor(smallDel)
-        .typeString(goblinMoneyLines[1])
+        .typeString(selectedLanguage.goblinMoneyLines[1])
         .pauseFor(smallDel)
-        .typeString(goblinMoneyLines[2])
+        .typeString(selectedLanguage.goblinMoneyLines[2])
         .pauseFor(smallDel)
-        .typeString(goblinMoneyLines[3])
+        .typeString(selectedLanguage.goblinMoneyLines[3])
         .pauseFor(bigDel)
-        .typeString(goblinMoneyLines[4])
+        .typeString(selectedLanguage.goblinMoneyLines[4])
         .pauseFor(hugeDel)
-        .typeString(goblinMoneyLines[5])
+        .typeString(selectedLanguage.goblinMoneyLines[5])
         .pauseFor(smallDel)
-        .typeString(goblinMoneyLines[6])
+        .typeString(selectedLanguage.goblinMoneyLines[6])
         .start();
 
       goblinGotMoney = true;
@@ -1631,467 +1634,467 @@ function updateScreen(nextImg, text) {
       break;
 
     case "goblinBye":
-      TW.typeString(goblinByeLines[0])
+      TW.typeString(selectedLanguage.goblinByeLines[0])
         .pauseFor(smallDel)
-        .typeString(goblinByeLines[1])
+        .typeString(selectedLanguage.goblinByeLines[1])
         .pauseFor(smallDel)
-        .typeString(goblinByeLines[2])
+        .typeString(selectedLanguage.goblinByeLines[2])
         .start();
       break;
 
     case "cabin":
-      TW.typeString(cabinLines[0])
+      TW.typeString(selectedLanguage.cabinLines[0])
         .pauseFor(bigDel)
-        .typeString(cabinLines[1])
+        .typeString(selectedLanguage.cabinLines[1])
         .pauseFor(smallDel)
-        .typeString(WWYD)
-        .typeString(cabinLines[2])
-        .typeString(cabinLines[3])
+        .typeString(selectedLanguage.WWYD)
+        .typeString(selectedLanguage.cabinLines[2])
+        .typeString(selectedLanguage.cabinLines[3])
         .start();
       break;
 
     case "cabinTree":
       if (goggles) {
-        TW.typeString(cabinLinesWGoggles[0])
+        TW.typeString(selectedLanguage.cabinLinesWGoggles[0])
           .pauseFor(smallDel)
-          .typeString(cabinLinesWGoggles[1])
+          .typeString(selectedLanguage.cabinLinesWGoggles[1])
           .pauseFor(smallDel)
-          .typeString(cabinLinesWGoggles[2])
+          .typeString(selectedLanguage.cabinLinesWGoggles[2])
           .pauseFor(smallDel)
-          .typeString(cabinLinesWGoggles[3])
+          .typeString(selectedLanguage.cabinLinesWGoggles[3])
           .pauseFor(bigDel)
-          .typeString(cabinLinesWGoggles[4])
+          .typeString(selectedLanguage.cabinLinesWGoggles[4])
           .pauseFor(bigDel)
-          .typeString(cabinLinesWGoggles[5])
+          .typeString(selectedLanguage.cabinLinesWGoggles[5])
           .start();
       } else {
-        TW.typeString(cabinLinesWOGoggles[0])
+        TW.typeString(selectedLanguage.cabinLinesWOGoggles[0])
           .pauseFor(smallDel)
-          .typeString(cabinLinesWOGoggles[1])
+          .typeString(selectedLanguage.cabinLinesWOGoggles[1])
           .pauseFor(smallDel)
-          .typeString(cabinLinesWOGoggles[2])
+          .typeString(selectedLanguage.cabinLinesWOGoggles[2])
           .pauseFor(bigDel)
-          .typeString(cabinLinesWOGoggles[3])
+          .typeString(selectedLanguage.cabinLinesWOGoggles[3])
           .pauseFor(bigDel)
-          .typeString(cabinLinesWOGoggles[4])
+          .typeString(selectedLanguage.cabinLinesWOGoggles[4])
           .start();
       }
       break;
     case "cabinEnter":
       disableKeyFeatures();
 
-      TW.typeString(CabinEnterLines[0])
+      TW.typeString(selectedLanguage.CabinEnterLines[0])
         .pauseFor(smallDel)
-        .typeString(CabinEnterLines[1])
+        .typeString(selectedLanguage.CabinEnterLines[1])
         .pauseFor(bigDel)
-        .typeString(CabinEnterLines[2])
+        .typeString(selectedLanguage.CabinEnterLines[2])
         .pauseFor(bigDel)
-        .typeString(CabinEnterLines[3])
+        .typeString(selectedLanguage.CabinEnterLines[3])
         .pauseFor(bigDel)
-        .typeString(CabinEnterLines[4])
+        .typeString(selectedLanguage.CabinEnterLines[4])
         .pauseFor(bigDel)
-        .typeString(CabinEnterLines[5])
+        .typeString(selectedLanguage.CabinEnterLines[5])
         .pauseFor(smallDel)
-        .typeString(CabinEnterLines[6])
+        .typeString(selectedLanguage.CabinEnterLines[6])
         .pauseFor(smallDel)
-        .typeString(CabinEnterLines[7])
+        .typeString(selectedLanguage.CabinEnterLines[7])
         .pauseFor(smallDel)
-        .typeString(CabinEnterLines[8])
+        .typeString(selectedLanguage.CabinEnterLines[8])
         .start();
       break;
     case "cabinFate":
       if (kingQuest == false) {
-        TW.typeString(leshyLostSoulLines[0])
+        TW.typeString(selectedLanguage.leshyLostSoulLines[0])
           .pauseFor(smallDel)
-          .typeString(leshyLostSoulLines[1])
+          .typeString(selectedLanguage.leshyLostSoulLines[1])
           .pauseFor(hugeDel)
-          .typeString(leshyLostSoulLines[2])
+          .typeString(selectedLanguage.leshyLostSoulLines[2])
           .pauseFor(bigDel)
-          .typeString(leshyLostSoulLines[3])
+          .typeString(selectedLanguage.leshyLostSoulLines[3])
           .pauseFor(bigDel)
-          .typeString(leshyLostSoulLines[4])
+          .typeString(selectedLanguage.leshyLostSoulLines[4])
           .pauseFor(bigDel)
-          .typeString(leshyLostSoulLines[5])
+          .typeString(selectedLanguage.leshyLostSoulLines[5])
           .pauseFor(smallDel)
-          .typeString(leshyLostSoulLines[6])
+          .typeString(selectedLanguage.leshyLostSoulLines[6])
           .pauseFor(smallDel)
-          .typeString(leshyLostSoulLines[7])
+          .typeString(selectedLanguage.leshyLostSoulLines[7])
           .pauseFor(smallDel)
-          .typeString(leshyLostSoulLines[8])
+          .typeString(selectedLanguage.leshyLostSoulLines[8])
           .pauseFor(bigDel)
-          .typeString(leshyLostSoulLines[9])
+          .typeString(selectedLanguage.leshyLostSoulLines[9])
           .pauseFor(smallDel)
-          .typeString(leshyLostSoulLines[10])
+          .typeString(selectedLanguage.leshyLostSoulLines[10])
           .pauseFor(bigDel)
-          .typeString(YAEH)
+          .typeString(selectedLanguage.YAEH)
           .start();
       } else {
         if (goggles == false) {
-          TW.typeString(leshyWOGogglesLines[0])
+          TW.typeString(selectedLanguage.leshyWOGogglesLines[0])
             .pauseFor(smallDel)
-            .typeString(leshyWOGogglesLines[1])
+            .typeString(selectedLanguage.leshyWOGogglesLines[1])
             .pauseFor(hugeDel)
-            .typeString(leshyWOGogglesLines[2])
+            .typeString(selectedLanguage.leshyWOGogglesLines[2])
             .pauseFor(bigDel)
-            .typeString(leshyWOGogglesLines[3])
+            .typeString(selectedLanguage.leshyWOGogglesLines[3])
             .pauseFor(bigDel)
-            .typeString(leshyWOGogglesLines[4])
+            .typeString(selectedLanguage.leshyWOGogglesLines[4])
             .pauseFor(bigDel)
-            .typeString(leshyWOGogglesLines[5])
+            .typeString(selectedLanguage.leshyWOGogglesLines[5])
             .pauseFor(bigDel)
-            .typeString(leshyWOGogglesLines[6])
+            .typeString(selectedLanguage.leshyWOGogglesLines[6])
             .pauseFor(bigDel)
-            .typeString(leshyWOGogglesLines[7])
+            .typeString(selectedLanguage.leshyWOGogglesLines[7])
             .pauseFor(bigDel)
-            .typeString(leshyWOGogglesLines[8])
+            .typeString(selectedLanguage.leshyWOGogglesLines[8])
             .pauseFor(bigDel)
-            .typeString(leshyWOGogglesLines[9])
+            .typeString(selectedLanguage.leshyWOGogglesLines[9])
             .pauseFor(bigDel)
-            .typeString(leshyWOGogglesLines[10])
+            .typeString(selectedLanguage.leshyWOGogglesLines[10])
             .pauseFor(bigDel)
-            .typeString(leshyWOGogglesLines[11])
+            .typeString(selectedLanguage.leshyWOGogglesLines[11])
             .pauseFor(bigDel)
-            .typeString(leshyWOGogglesLines[12])
+            .typeString(selectedLanguage.leshyWOGogglesLines[12])
             .pauseFor(bigDel)
-            .typeString(YAEH)
+            .typeString(selectedLanguage.YAEH)
             .start();
         } else {
-          TW.typeString(leshyWGogglesLines[0])
+          TW.typeString(selectedLanguage.leshyWGogglesLines[0])
             .pauseFor(smallDel)
-            .typeString(leshyWGogglesLines[1])
+            .typeString(selectedLanguage.leshyWGogglesLines[1])
             .pauseFor(hugeDel)
-            .typeString(leshyWGogglesLines[2])
+            .typeString(selectedLanguage.leshyWGogglesLines[2])
             .pauseFor(bigDel)
-            .typeString(leshyWGogglesLines[3])
+            .typeString(selectedLanguage.leshyWGogglesLines[3])
             .pauseFor(bigDel)
-            .typeString(leshyWGogglesLines[4])
+            .typeString(selectedLanguage.leshyWGogglesLines[4])
             .pauseFor(bigDel)
-            .typeString(leshyWGogglesLines[5])
+            .typeString(selectedLanguage.leshyWGogglesLines[5])
             .pauseFor(bigDel)
-            .typeString(leshyWGogglesLines[6])
+            .typeString(selectedLanguage.leshyWGogglesLines[6])
             .pauseFor(bigDel)
-            .typeString(leshyWGogglesLines[7])
+            .typeString(selectedLanguage.leshyWGogglesLines[7])
             .pauseFor(bigDel)
-            .typeString(leshyWGogglesLines[8])
+            .typeString(selectedLanguage.leshyWGogglesLines[8])
             .pauseFor(bigDel)
-            .typeString(leshyWGogglesLines[9])
+            .typeString(selectedLanguage.leshyWGogglesLines[9])
             .pauseFor(3000)
-            .typeString(leshyWGogglesLines[10])
+            .typeString(selectedLanguage.leshyWGogglesLines[10])
             .pauseFor(bigDel)
-            .typeString(leshyWGogglesLines[11])
+            .typeString(selectedLanguage.leshyWGogglesLines[11])
             .pauseFor(bigDel)
-            .typeString(leshyWGogglesLines[12])
+            .typeString(selectedLanguage.leshyWGogglesLines[12])
             .pauseFor(bigDel)
-            .typeString(leshyWGogglesLines[13])
+            .typeString(selectedLanguage.leshyWGogglesLines[13])
             .pauseFor(bigDel)
-            .typeString(leshyWGogglesLines[14])
+            .typeString(selectedLanguage.leshyWGogglesLines[14])
             .pauseFor(bigDel)
-            .typeString(leshyWGogglesLines[15])
+            .typeString(selectedLanguage.leshyWGogglesLines[15])
             .start();
         }
       }
       break;
 
     case "leshyPassTest1":
-      TW.typeString(leshySkullLines[0])
+      TW.typeString(selectedLanguage.leshySkullLines[0])
         .pauseFor(smallDel)
-        .typeString(leshySkullLines[1])
+        .typeString(selectedLanguage.leshySkullLines[1])
         .pauseFor(bigDel)
-        .typeString(leshySkullLines[2])
+        .typeString(selectedLanguage.leshySkullLines[2])
         .pauseFor(bigDel)
-        .typeString(leshySkullLines[3])
+        .typeString(selectedLanguage.leshySkullLines[3])
         .pauseFor(bigDel)
-        .typeString(leshySkullLines[4])
+        .typeString(selectedLanguage.leshySkullLines[4])
         .start();
       break;
 
     case "leshyBurn":
       if (tunic == false) {
-        TW.typeString(leshyWODarkTunicLines[0])
+        TW.typeString(selectedLanguage.leshyWODarkTunicLines[0])
           .pauseFor(bigDel)
-          .typeString(leshyWODarkTunicLines[1])
+          .typeString(selectedLanguage.leshyWODarkTunicLines[1])
           .pauseFor(smallDel)
-          .typeString(leshyWODarkTunicLines[2])
+          .typeString(selectedLanguage.leshyWODarkTunicLines[2])
           .pauseFor(bigDel)
-          .typeString(leshyWODarkTunicLines[3])
+          .typeString(selectedLanguage.leshyWODarkTunicLines[3])
           .pauseFor(smallDel)
-          .typeString(leshyWODarkTunicLines[4])
+          .typeString(selectedLanguage.leshyWODarkTunicLines[4])
           .pauseFor(bigDel)
-          .typeString(leshyWODarkTunicLines[5])
+          .typeString(selectedLanguage.leshyWODarkTunicLines[5])
           .pauseFor(bigDel)
-          .typeString(leshyWODarkTunicLines[6])
+          .typeString(selectedLanguage.leshyWODarkTunicLines[6])
           .pauseFor(smallDel)
-          .typeString(leshyWODarkTunicLines[7])
+          .typeString(selectedLanguage.leshyWODarkTunicLines[7])
           .pauseFor(bigDel)
-          .typeString(leshyWODarkTunicLines[8])
+          .typeString(selectedLanguage.leshyWODarkTunicLines[8])
           .pauseFor(bigDel)
-          .typeString(YAEH)
+          .typeString(selectedLanguage.YAEH)
           .start();
       } else {
-        TW.typeString(leshyWDarkTunicLines[0])
+        TW.typeString(selectedLanguage.leshyWDarkTunicLines[0])
           .pauseFor(bigDel)
-          .typeString(leshyWDarkTunicLines[1])
+          .typeString(selectedLanguage.leshyWDarkTunicLines[1])
           .pauseFor(smallDel)
-          .typeString(leshyWDarkTunicLines[2])
+          .typeString(selectedLanguage.leshyWDarkTunicLines[2])
           .pauseFor(bigDel)
-          .typeString(leshyWDarkTunicLines[3])
+          .typeString(selectedLanguage.leshyWDarkTunicLines[3])
           .pauseFor(bigDel)
-          .typeString(leshyWDarkTunicLines[4])
+          .typeString(selectedLanguage.leshyWDarkTunicLines[4])
           .pauseFor(smallDel)
-          .typeString(leshyWDarkTunicLines[5])
+          .typeString(selectedLanguage.leshyWDarkTunicLines[5])
           .pauseFor(bigDel)
-          .typeString(leshyWDarkTunicLines[6])
+          .typeString(selectedLanguage.leshyWDarkTunicLines[6])
           .pauseFor(smallDel)
-          .typeString(leshyWDarkTunicLines[7])
+          .typeString(selectedLanguage.leshyWDarkTunicLines[7])
           .pauseFor(smallDel)
-          .typeString(leshyWDarkTunicLines[8])
+          .typeString(selectedLanguage.leshyWDarkTunicLines[8])
           .pauseFor(bigDel)
-          .typeString(leshyWDarkTunicLines[9])
+          .typeString(selectedLanguage.leshyWDarkTunicLines[9])
           .start();
       }
       break;
 
     case "leshyTransform":
-      TW.typeString(leshyTransformation[0])
+      TW.typeString(selectedLanguage.leshyTransformation[0])
         .pauseFor(bigDel)
-        .typeString(leshyTransformation[1])
+        .typeString(selectedLanguage.leshyTransformation[1])
         .pauseFor(bigDel)
-        .typeString(leshyTransformation[2])
+        .typeString(selectedLanguage.leshyTransformation[2])
         .pauseFor(smallDel)
-        .typeString(leshyTransformation[3])
+        .typeString(selectedLanguage.leshyTransformation[3])
         .pauseFor(bigDel)
-        .typeString(leshyTransformation[4])
+        .typeString(selectedLanguage.leshyTransformation[4])
         .pauseFor(bigDel)
-        .typeString(leshyTransformation[5])
+        .typeString(selectedLanguage.leshyTransformation[5])
         .pauseFor(bigDel)
-        .typeString(leshyTransformation[6])
+        .typeString(selectedLanguage.leshyTransformation[6])
         .pauseFor(bigDel)
-        .typeString(leshyTransformation[7])
+        .typeString(selectedLanguage.leshyTransformation[7])
         .pauseFor(bigDel)
-        .typeString(leshyTransformation[8])
+        .typeString(selectedLanguage.leshyTransformation[8])
         .start();
       break;
 
     case "leshyFinalForm":
-      TW.typeString(leshyFinalFormLines[0])
+      TW.typeString(selectedLanguage.leshyFinalFormLines[0])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[1])
+        .typeString(selectedLanguage.leshyFinalFormLines[1])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[2])
+        .typeString(selectedLanguage.leshyFinalFormLines[2])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[3])
+        .typeString(selectedLanguage.leshyFinalFormLines[3])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[4])
+        .typeString(selectedLanguage.leshyFinalFormLines[4])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[5])
+        .typeString(selectedLanguage.leshyFinalFormLines[5])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[6])
+        .typeString(selectedLanguage.leshyFinalFormLines[6])
         .pauseFor(smallDel)
-        .typeString(leshyFinalFormLines[7])
+        .typeString(selectedLanguage.leshyFinalFormLines[7])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[8])
+        .typeString(selectedLanguage.leshyFinalFormLines[8])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[9])
+        .typeString(selectedLanguage.leshyFinalFormLines[9])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[10])
+        .typeString(selectedLanguage.leshyFinalFormLines[10])
         .pauseFor(smallDel)
-        .typeString(leshyFinalFormLines[11])
+        .typeString(selectedLanguage.leshyFinalFormLines[11])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[12])
+        .typeString(selectedLanguage.leshyFinalFormLines[12])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[13])
+        .typeString(selectedLanguage.leshyFinalFormLines[13])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[14])
+        .typeString(selectedLanguage.leshyFinalFormLines[14])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[15])
+        .typeString(selectedLanguage.leshyFinalFormLines[15])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[16])
+        .typeString(selectedLanguage.leshyFinalFormLines[16])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[17])
+        .typeString(selectedLanguage.leshyFinalFormLines[17])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[18])
+        .typeString(selectedLanguage.leshyFinalFormLines[18])
         .pauseFor(bigDel)
-        .typeString(leshyFinalFormLines[19])
+        .typeString(selectedLanguage.leshyFinalFormLines[19])
         .start();
       break;
 
     case "leshyFinalTest":
       if (islandSword == false) {
-        TW.typeString(leshyFinalDefeatLines[0])
+        TW.typeString(selectedLanguage.leshyFinalDefeatLines[0])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[1])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[1])
           .pauseFor(smallDel)
-          .typeString(leshyFinalDefeatLines[2])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[2])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[3])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[3])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[4])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[4])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[5])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[5])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[6])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[6])
           .pauseFor(smallDel)
-          .typeString(leshyFinalDefeatLines[7])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[7])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[8])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[8])
           .pauseFor(smallDel)
-          .typeString(leshyFinalDefeatLines[9])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[9])
           .pauseFor(hugeDel)
-          .typeString(leshyFinalDefeatLines[10])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[10])
           .pauseFor(hugeDel)
-          .typeString(leshyFinalDefeatLines[11])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[11])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[12])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[12])
           .pauseFor(hugeDel)
-          .typeString(leshyFinalDefeatLines[13])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[13])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[14])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[14])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[15])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[15])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[16])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[16])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[17])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[17])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[18])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[18])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[19])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[19])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[20])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[20])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[21])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[21])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[22])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[22])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[23])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[23])
           .pauseFor(bigDel)
-          .typeString(leshyFinalDefeatLines[24])
+          .typeString(selectedLanguage.leshyFinalDefeatLines[24])
           .pauseFor(bigDel)
-          .typeString(YAEH)
+          .typeString(selectedLanguage.YAEH)
           .start();
       } else {
-        TW.typeString(leshyFinalVictoryLines[0])
+        TW.typeString(selectedLanguage.leshyFinalVictoryLines[0])
           .pauseFor(bigDel)
-          .typeString(leshyFinalVictoryLines[1])
+          .typeString(selectedLanguage.leshyFinalVictoryLines[1])
           .pauseFor(smallDel)
-          .typeString(leshyFinalVictoryLines[2])
+          .typeString(selectedLanguage.leshyFinalVictoryLines[2])
           .pauseFor(bigDel)
-          .typeString(leshyFinalVictoryLines[3])
+          .typeString(selectedLanguage.leshyFinalVictoryLines[3])
           .pauseFor(bigDel)
-          .typeString(leshyFinalVictoryLines[4])
+          .typeString(selectedLanguage.leshyFinalVictoryLines[4])
           .pauseFor(bigDel)
-          .typeString(leshyFinalVictoryLines[5])
+          .typeString(selectedLanguage.leshyFinalVictoryLines[5])
           .pauseFor(bigDel)
-          .typeString(leshyFinalVictoryLines[6])
+          .typeString(selectedLanguage.leshyFinalVictoryLines[6])
           .pauseFor(hugeDel)
-          .typeString(leshyFinalVictoryLines[7])
+          .typeString(selectedLanguage.leshyFinalVictoryLines[7])
           .pauseFor(hugeDel)
-          .typeString(leshyFinalVictoryLines[8])
+          .typeString(selectedLanguage.leshyFinalVictoryLines[8])
           .pauseFor(smallDel)
-          .typeString(leshyFinalVictoryLines[9])
+          .typeString(selectedLanguage.leshyFinalVictoryLines[9])
           .pauseFor(bigDel)
-          .typeString(leshyFinalVictoryLines[10])
+          .typeString(selectedLanguage.leshyFinalVictoryLines[10])
           .pauseFor(bigDel)
-          .typeString(leshyFinalVictoryLines[11])
+          .typeString(selectedLanguage.leshyFinalVictoryLines[11])
           .pauseFor(bigDel)
-          .typeString(leshyFinalVictoryLines[12])
+          .typeString(selectedLanguage.leshyFinalVictoryLines[12])
           .start();
       }
       break;
 
     case "leshyAftermath":
-      TW.typeString(leshyAftermathLines[0])
+      TW.typeString(selectedLanguage.leshyAftermathLines[0])
         .pauseFor(smallDel)
-        .typeString(leshyAftermathLines[1])
+        .typeString(selectedLanguage.leshyAftermathLines[1])
         .pauseFor(bigDel)
-        .typeString(leshyAftermathLines[2])
+        .typeString(selectedLanguage.leshyAftermathLines[2])
         .pauseFor(bigDel)
-        .typeString(leshyAftermathLines[3])
+        .typeString(selectedLanguage.leshyAftermathLines[3])
         .pauseFor(bigDel)
-        .typeString(leshyAftermathLines[4])
+        .typeString(selectedLanguage.leshyAftermathLines[4])
         .pauseFor(bigDel)
-        .typeString(leshyAftermathLines[5])
+        .typeString(selectedLanguage.leshyAftermathLines[5])
         .pauseFor(bigDel)
-        .typeString(leshyAftermathLines[6])
+        .typeString(selectedLanguage.leshyAftermathLines[6])
         .pauseFor(bigDel)
-        .typeString(leshyAftermathLines[7])
+        .typeString(selectedLanguage.leshyAftermathLines[7])
         .pauseFor(bigDel)
-        .typeString(leshyAftermathLines[8])
+        .typeString(selectedLanguage.leshyAftermathLines[8])
         .pauseFor(bigDel)
-        .typeString(leshyAftermathLines[9])
+        .typeString(selectedLanguage.leshyAftermathLines[9])
         .start();
       break;
 
     case "leshyAngel":
       setPalette("default");
-      TW.typeString(leshyAngelLines[0])
+      TW.typeString(selectedLanguage.leshyAngelLines[0])
         .pauseFor(bigDel)
-        .typeString(leshyAngelLines[1])
+        .typeString(selectedLanguage.leshyAngelLines[1])
         .pauseFor(smallDel)
-        .typeString(leshyAngelLines[2])
+        .typeString(selectedLanguage.leshyAngelLines[2])
         .pauseFor(smallDel)
-        .typeString(leshyAngelLines[3])
+        .typeString(selectedLanguage.leshyAngelLines[3])
         .pauseFor(bigDel)
-        .typeString(leshyAngelLines[4])
+        .typeString(selectedLanguage.leshyAngelLines[4])
         .pauseFor(bigDel)
-        .typeString(leshyAngelLines[5])
+        .typeString(selectedLanguage.leshyAngelLines[5])
         .pauseFor(bigDel)
-        .typeString(leshyAngelLines[6])
+        .typeString(selectedLanguage.leshyAngelLines[6])
         .pauseFor(smallDel)
-        .typeString(leshyAngelLines[7])
+        .typeString(selectedLanguage.leshyAngelLines[7])
         .pauseFor(smallDel)
-        .typeString(leshyAngelLines[8])
+        .typeString(selectedLanguage.leshyAngelLines[8])
         .pauseFor(bigDel)
-        .typeString(leshyAngelLines[9])
+        .typeString(selectedLanguage.leshyAngelLines[9])
         .pauseFor(bigDel)
-        .typeString(leshyAngelLines[10])
+        .typeString(selectedLanguage.leshyAngelLines[10])
         .pauseFor(bigDel)
-        .typeString(leshyAngelLines[11])
+        .typeString(selectedLanguage.leshyAngelLines[11])
         .pauseFor(bigDel)
-        .typeString(leshyAngelLines[12])
+        .typeString(selectedLanguage.leshyAngelLines[12])
         .pauseFor(smallDel)
-        .typeString(leshyAngelLines[13])
+        .typeString(selectedLanguage.leshyAngelLines[13])
         .pauseFor(bigDel)
-        .typeString(leshyAngelLines[14])
+        .typeString(selectedLanguage.leshyAngelLines[14])
         .pauseFor(bigDel)
-        .typeString(leshyAngelLines[15])
+        .typeString(selectedLanguage.leshyAngelLines[15])
         .pauseFor(bigDel)
-        .typeString(leshyAngelLines[16])
+        .typeString(selectedLanguage.leshyAngelLines[16])
         .pauseFor(hugeDel)
-        .typeString(leshyAngelLines[17])
+        .typeString(selectedLanguage.leshyAngelLines[17])
         .pauseFor(smallDel)
-        .typeString(leshyAngelLines[18])
+        .typeString(selectedLanguage.leshyAngelLines[18])
         .pauseFor(smallDel)
-        .typeString(leshyAngelLines[19])
+        .typeString(selectedLanguage.leshyAngelLines[19])
         .pauseFor(smallDel)
-        .typeString(leshyAngelLines[20])
+        .typeString(selectedLanguage.leshyAngelLines[20])
         .start();
       break;
 
     case "ending":
-      TW.typeString(endingLines[0])
+      TW.typeString(selectedLanguage.endingLines[0])
         .pauseFor(smallDel)
-        .typeString(endingLines[1])
+        .typeString(selectedLanguage.endingLines[1])
         .pauseFor(smallDel)
-        .typeString(endingLines[2])
+        .typeString(selectedLanguage.endingLines[2])
         .pauseFor(bigDel)
-        .typeString(endingLines[3])
+        .typeString(selectedLanguage.endingLines[3])
         .pauseFor(smallDel)
-        .typeString(endingLines[4])
+        .typeString(selectedLanguage.endingLines[4])
         .pauseFor(smallDel)
-        .typeString(endingLines[5])
+        .typeString(selectedLanguage.endingLines[5])
         .pauseFor(smallDel)
-        .typeString(endingLines[6])
+        .typeString(selectedLanguage.endingLines[6])
         .pauseFor(smallDel)
-        .typeString(endingLines[7])
+        .typeString(selectedLanguage.endingLines[7])
         .pauseFor(smallDel)
-        .typeString(endingLines[8])
+        .typeString(selectedLanguage.endingLines[8])
         .pauseFor(smallDel)
-        .typeString(endingLines[9])
+        .typeString(selectedLanguage.endingLines[9])
         .pauseFor(smallDel)
-        .typeString(endingLines[10])
+        .typeString(selectedLanguage.endingLines[10])
         .pauseFor(hugeDel)
-        .typeString(endingLines[11])
+        .typeString(selectedLanguage.endingLines[11])
         .start();
       break;
     default:
@@ -2109,7 +2112,7 @@ function winGame() {
     delay: 75,
   });
 
-  TWEnding.pauseFor(250).typeString("<b>You exited the cabin.</b>").start();
+  TWEnding.pauseFor(250).typeString(selectedLanguage.exitCabin).start();
 }
 
 UpdateColors();
