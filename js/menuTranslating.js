@@ -71,6 +71,20 @@ function translateMenu() {
 
   document.getElementById('sword-title').innerHTML = translatedText.inventory.islandSword.islandSwordQM;
   document.getElementById('sword-desc').innerHTML = translatedText.inventory.islandSword.islandSwordDescQM;
+
+  // Configurações
+
+  document.getElementById('textSpeedTitle').innerHTML = translatedText.settings.textSpeed.title;
+  document.getElementById('textSpeedDesc').innerHTML = translatedText.settings.textSpeed.desc;
+
+  document.getElementById('delayBetweenTitle').innerHTML = translatedText.settings.delayBetween.title;
+  document.getElementById('delayBetweenDesc').innerHTML = translatedText.settings.delayBetween.desc;
+
+  document.getElementById('colorPaletteTitle').innerHTML = translatedText.settings.colorPalette.title;
+  document.getElementById('colorPaletteDesc').innerHTML = translatedText.settings.colorPalette.desc;
+  
+  document.getElementById('settingsBackButton').innerHTML = translatedText.settings.backButton;
+
 }
 
 window.onload = translateMenu;

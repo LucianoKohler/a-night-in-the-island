@@ -85,6 +85,39 @@ others: {
   exit: "Sair",
 },
 
+// CONFIGURAÇÕES
+
+settings: {
+  backButton: "Voltar",
+  
+  textSpeed: {
+    title: "Velocidade do texto",
+    desc: "Muda o quão rápido o texto é escrito na tela",
+    0: "Lento",
+    1: "Normal",
+    2: "Rápido",
+    3: "MAIS RÁPIDO!",
+  },
+  delayBetween: {
+    title: "Atraso entre frases",
+    desc: "Muda a duração do tempo de espera entre uma frase e outra",
+    0: "Normal",
+    1: "Rápido",
+    2: "Nenhum",
+  },
+
+  colorPalette: {
+    title: "Paleta de Cores",
+    desc: "Mude as cores do seu jogo!",
+    0: "Padrão",
+    1: "Floresta de Outono",
+    2: "Bosque Vívido",
+    3: "Festival de Sakuras",
+    4: "Mangues da Costa",
+  }
+  
+},
+
 // LINHAS PARA O JOGO
 
 WWYD: "O que você fará? <br><br>",
@@ -426,7 +459,7 @@ caveLines: {
 
 goblinFirstLines: {
   0: `A caverna tem cheiro de mofo e sons de água pingando, além dos ruídos`,
-  1: ` adentrar mais fundo na caverna mostra para você o tal semideus que o porteiro falou sobre::`,
+  1: ` adentrar mais fundo na caverna mostra para você o tal semideus que o porteiro falou sobre:`,
   2: ` Um pequeno goblin ao lado de um "tesouro",`,
   3: ` que na verdade é só uma pilha de moedas no chão.<br><br>`,
   4: `- Quem ousa adentrar em meus aposentos?<br><br>`,
@@ -1021,7 +1054,7 @@ leshyFinalFormLines: {
   15: ` você não consegue pensar em mais nada além de ter certeza de que é você ali, preso pelas más intenções de <i>Leshy</i>.<br><br>`,
   16: `você encontrou uma forma de sair da ilha,`,
   17: ` mas uma única missão resta antes de que você possa sair deste lugar:<br><br>`,
-  18: `<b>VOCÊ PRECISA SALVOCÊ!</b><br><br>`,
+  18: `<b>VOCÊ PRECISA SALVAR VOCÊ!</b><br><br>`,
   19: `<a href="#" onclick="updateScreen('empty','leshyFinalTest')">Acabar com isso</a>`,
 },
 

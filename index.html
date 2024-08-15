@@ -1066,8 +1066,8 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
         <div id="settings">
           <div class="option">
 
-            <h3>Text speed</h3>
-            <p>Change how fast the text is shown on the chat</p>
+            <h3 id="textSpeedTitle">Text speed</h3>
+            <p id="textSpeedDesc">Change how fast the text is shown on the chat</p>
             <span class="arrow" id="decrementSpeed" onclick="setTextSpeed(-1)">&lt;</span>
             <span id="speedName">Medium</span>
             <span class="arrow" id="incrementSpeed" onclick="setTextSpeed(1)">&gt;</span>
@@ -1076,8 +1076,8 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
 
           <div class="option">
 
-            <h3>Delay between sentences</h3>
-            <p>Change how long the text sleeps after each sentence</p>
+            <h3 id="delayBetweenTitle">Delay between sentences</h3>
+            <p id="delayBetweenDesc">Change how long the text sleeps after each sentence</p>
             <span class="arrow" id="decrementSpeed" onclick="setDelayTime(-1)">&lt;</span>
             <span id="delayName">Normal</span>
             <span class="arrow" id="incrementSpeed" onclick="setDelayTime(1)">&gt;</span>
@@ -1086,8 +1086,8 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
 
           <div class="option">
 
-            <h3>Color Palette</h3>
-            <p>Choose the color of the game</p>
+            <h3 id="colorPaletteTitle">Color Palette</h3>
+            <p id="colorPaletteDesc">Choose the color of the game</p>
             <div id="palette">
               <span class="arrow" id="paletteBack" onclick="setPalette(-1)">&lt;</span>
               <span class="mainColor"></span>
@@ -1099,7 +1099,7 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
           </div>
 
           <div class="option">
-            <button onclick="UpdateInfoDiv()">Go Back</button>
+            <button id="settingsBackButton" onclick="UpdateInfoDiv()">Go Back</button>
           </div>
         </div>
     </div>
