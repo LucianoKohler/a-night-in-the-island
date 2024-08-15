@@ -1,9 +1,129 @@
 var english = {
 
-WWYD: "What will you do? <br><br>",
-WWYS: "What will you say? <br><br>",
+// LINHAS DO MENU PRINCIPAL
+
+start: {
+  buttons: {
+    play: `START`,
+    howtoplay: `HOW TO PLAY`,
+    credits: `CREDITS`,
+  },
+
+  howtoplay: {
+    title: `How To Play`,
+    backButton: `Go Back`,
+    0: `Make your choices by reading and clicking the links on the chatbox.`,
+    1: `Navigate through the map by opening it on the bottom right box, you can leave your location at anytime you want.`,
+    2: `Keep track of what you have on you with your inventory, the upper right box.`,
+    3: `The game has multiple endings, if you got a bad one, maybe you forgot to look somewhere.`,
+    4: `Don't forget to check out the settings and choose the best options for your playstyle.`,
+    5: `Have fun!`,
+  },
+
+  credits: {
+    title: `Credits`,
+    backButton: `Go Back`,
+    specialThanks: `Special Thanks Especiais`,
+    0: `The entirety of the game was made by Luciano Kohler da Silva, AKA Blockier, but I also got a helping hand with some arts from Cyrenp (more precisely, the king and cave arts).`,
+    1: `Some third party softwares were also used to build the game: <a href="https://safi.me.uk/typewriterjs/" target="_blank">Typewriter.js</a> for the widely used typewriter effect throughout the game and <a href="https://patorjk.com/software/taag/" target="_blank">Patorjk's ascii text generator</a> to create the ascii titles, my thanks to these devs for saving me a ton of time!`,
+    2: `This project wouldn't be possible if I didn't have my friends to motivate me, I needed some people to play my game, after all, and I knew that I could count on my friends to know that my game would be appreciated by someone, and that makes my day!`,
+    3: `Here's a list of my pals, if you're not in here, know that you're still in my heart :D`,
+    4: `Cyrenp - Valhallan`,
+    5: `Maiddo - RPG Master`,
+    6: `Lyn - My exact clone`,
+    7: `Led - Goofy ahh guitarist`,
+    8: `Jubireuu - Little BMO stan`,
+    9: `Mittens - Future Kim Jung Gi`,
+    10: `All of the UDESC gang - New aditions to my heart!`,
+  },
+
+  madeWith: `Made by Blockier, with love`,
+},
+
+// LINHAS PARA O INVENTÁRIO
+inventory: {
+pass: `Pass: `,
+passNo: `No`,
+passYes: `Yes`,
+passUsed: `Used`,
+coins: `Coins: `,
+
+sword: {
+  title: `Steel Broadsword`,
+  swordQM: `????? ??????????`,
+  swordDesc0: `Even though it looks sharp,`,
+  swordDesc1: `it's too heavy! How are you`,
+  swordDesc2: `using this?`,
+},
+
+tunic: {
+  title: `Dark Tunic`,
+  tunicQM: `???? ?????`,
+  tunicDesc0: `Its black material seems`,
+  tunicDesc1: `resistant to high temperatures`,
+},
+
+goggles: {
+  title: `Spiral Goggles`,
+  gogglesQM: `?????? ???????`,
+  gogglesDesc0: `You feel really dizzy`,
+  gogglesDesc1: `just by wearing those`,
+},
+
+islandSword: {
+  title: `The Island Sword`,
+  islandSwordQM: `??? ?????? ?????`,
+  islandSwordDesc: `Powerful enough to kill anything in this place`,
+  islandSwordDescQM: `???????? ?????? ?? ???? ???????? ?? ???? ?????`,
+},
+},
+
+// MINI MENUS (others)
+others: {
+map: `Map`,
+settings: `Settings`,
+exit: `Exit`,
+},
+
+// CONFIGURAÇÕES
+
+settings: {
+backButton: `Go Back`,
+
+textSpeed: {
+  title: `Text Speed`,
+  desc: `Change how fast the text is shown on the chat`,
+  0: `Slow`,
+  1: `Normal`,
+  2: `Fast`,
+  3: `FASTER!`,
+},
+delayBetween: {
+  title: `Delay between sentences`,
+  desc: `Change how long the text sleeps after each sentence`,
+  0: `Normal`,
+  1: `Halved`,
+  2: `None`,
+},
+
+colorPalette: {
+  title: `Color Palette`,
+  desc: `Choose the color of the game`,
+  0: `Default`,
+  1: `Fall Forest`,
+  2: `Vivid Grove`,
+  3: `Sakuras' Festival`,
+  4: `Coast Mangrove`,
+}
+
+},
+
+// LINHAS PARA O JOGO
+
+WWYD: `What will you do? <br><br>`,
+WWYS: `What will you say? <br><br>`,
 YAEH: `<a href="#" onclick="dyingAnimation()">Your adventure ends here.</a>`,
-exitCabin: "<b>You exited the cabin.</b>",
+exitCabin: `<b>You exited the cabin.</b>`,
 
 chooseLines: {
   0: `You can use the map anytime you want to leave the place you currently are,`,

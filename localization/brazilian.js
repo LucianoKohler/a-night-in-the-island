@@ -4,30 +4,30 @@ var brazilian = {
 
   start: {
     buttons: {
-      play: "INICIAR",
-      howtoplay: "COMO JOGAR",
-      credits: "CRÉDITOS",
+      play: `INICIAR`,
+      howtoplay: `COMO JOGAR`,
+      credits: `CRÉDITOS`,
     },
 
     howtoplay: {
-      title: "Como Jogar",
-      backButton: "Voltar",
-      0: "Faça suas escolhas lendo e clicando nos links na caixa de texto.",
-      1: "Navegue pelo mapa abrindo-o no botão do canto inferior direito, lembre-se: Você pode sair da sua localização a qualquer momento.",
-      2: "Mantenha-se informado sobre seus intens com seu inventário no canto superior direito.",
-      3: "O jogo tem vários finais, se você conseguiu um ruim, talvez tenha esquecido de olhar em algum lugar.",
-      4: "Não se esqueça de checar as configurações e escolher as melhores opções para o seu estilo de jogo.",
-      5: "Divirta-se!",
+      title: `Como Jogar`,
+      backButton: `Voltar`,
+      0: `Faça suas escolhas lendo e clicando nos links na caixa de texto.`,
+      1: `Navegue pelo mapa abrindo-o no botão do canto inferior direito, lembre-se: Você pode sair da sua localização a qualquer momento.`,
+      2: `Mantenha-se informado sobre seus intens com seu inventário no canto superior direito.`,
+      3: `O jogo tem vários finais, se você conseguiu um ruim, talvez tenha esquecido de olhar em algum lugar.`,
+      4: `Não se esqueça de checar as configurações e escolher as melhores opções para o seu estilo de jogo.`,
+      5: `Divirta-se!`,
     },
 
     credits: {
-      title: "Créditos",
-      backButton: "Voltar",
-      specialThanks: "Agradecimentos Especiais",
-      0: "Todo o jogo foi feito por Luciano Kohler da Silva, ou Blockier, mas também tive uma mãozinha com algumas artes de Cyrenp (mais precisamente, as artes do rei e da caverna).",
-      1: "Alguns softwares de terceiros também foram usados para construir o jogo: Typewriter.js para o efeito de máquina de escrever usado em todo o jogo e o gerador de texto ascii de Patorjk para criar os títulos ascii, meu agradecimento a esses desenvolvedores por me economizarem tanto tempo!",
-      2: "Esse projeto não seria possível se eu não tivesse meus amigos para me motivar, afinal, eu precisava de alguém para jogar meu jogo, e eu sabia que podia contar com meus amigos para saber que meu jogo seria apreciado por alguém, e isso me faz feliz demais!",
-      3: "Aqui está uma lista dos meus manos, se você não estiver aqui, saiba que você ainda está no meu coração :D",
+      title: `Créditos`,
+      backButton: `Voltar`,
+      specialThanks: `Agradecimentos Especiais`,
+      0: `Todo o jogo foi feito por Luciano Kohler da Silva, ou Blockier, mas também tive uma mãozinha com algumas artes de Cyrenp (mais precisamente, as artes do rei e da caverna).`,
+      1: `Alguns softwares de terceiros também foram usados para construir o jogo: <a href="https://safi.me.uk/typewriterjs/" target="_blank">Typewriter.js</a> para o efeito de máquina de escrever usado em todo o jogo e o  <a href="https://patorjk.com/software/taag/" target="_blank">gerador de texto ascii de Patorjk</a> para criar os títulos ascii, meu agradecimento a esses desenvolvedores por me economizarem tanto tempo!`,
+      2: `Esse projeto não seria possível se eu não tivesse meus amigos para me motivar, afinal, eu precisava de alguém para jogar meu jogo, e eu sabia que podia contar com meus amigos para saber que meu jogo seria apreciado por alguém, e isso me faz feliz demais!`,
+      3: `Aqui está uma lista dos meus manos, se você não estiver aqui, saiba que você ainda está no meu coração :D`,
       4: `Cyrenp - Valhallan`,
       5: `Maiddo - Mestra de RPG`,
       6: `Lyn - Meu clone exato`,
@@ -37,93 +37,93 @@ var brazilian = {
       10: `Toda a cambada da UDESC - Minhas novas adições ao meu coração!`,
     },
 
-    madeWith: "Feito por Blockier, com amor",
+    madeWith: `Feito por Blockier, com amor`,
   },
 
 // LINHAS PARA O INVENTÁRIO
 inventory: {
-  pass: "Passe: ",
-  passNo: "Não",
-  passYes: "Sim",
-  passUsed: "Usado",
-  coins: "Dinheiro: ",
+  pass: `Passe: `,
+  passNo: `Não`,
+  passYes: `Sim`,
+  passUsed: `Usado`,
+  coins: `Dinheiro: `,
 
   sword: {
-    title: "Espada Larga de Aço",
-    swordQM: "?????? ????? ?? ????",
-    swordDesc0: "Mesmo que afiada,",
-    swordDesc1: "ela é pesada demais!",
-    swordDesc2: "como você vai usar ela?",
+    title: `Espada Larga de Aço`,
+    swordQM: `?????? ????? ?? ????`,
+    swordDesc0: `Mesmo que afiada,`,
+    swordDesc1: `ela é pesada demais!`,
+    swordDesc2: `como você vai usar ela?`,
   },
 
   tunic: {
-    title: "Malha Negra",
-    tunicQM: "????? ?????",
-    tunicDesc0: "O seu material escuro parece",
-    tunicDesc1: "ser resistente a altas temperaturas",
+    title: `Malha Negra`,
+    tunicQM: `????? ?????`,
+    tunicDesc0: `O seu material escuro parece`,
+    tunicDesc1: `ser resistente a altas temperaturas`,
   },
 
   goggles: {
-    title: "Óculos Espirais",
-    gogglesQM: "?????? ????????",
-    gogglesDesc0: "Você se sente muito tonto",
-    gogglesDesc1: "só por usar eles por alguns segundos",
+    title: `Óculos Espirais`,
+    gogglesQM: `?????? ????????`,
+    gogglesDesc0: `Você se sente muito tonto`,
+    gogglesDesc1: `só por usar eles por alguns segundos`,
   },
 
   islandSword: {
-    title: "A Lâmina da Ilha",
-    islandSwordQM: "? ?????? ?? ????",
-    islandSwordDesc: "Forte o suficiente para matar qualquer coisa aqui",
-    islandSwordDescQM: "????? ? ?????????? ???? ????? ???????? ????? ????",
+    title: `A Lâmina da Ilha`,
+    islandSwordQM: `? ?????? ?? ????`,
+    islandSwordDesc: `Forte o suficiente para matar qualquer coisa aqui`,
+    islandSwordDescQM: `????? ? ?????????? ???? ????? ???????? ????? ????`,
   },
 },
 
 // MINI MENUS (others)
 others: {
-  map: "Mapa",
-  settings: "Configurações",
-  exit: "Sair",
+  map: `Mapa`,
+  settings: `Configurações`,
+  exit: `Sair`,
 },
 
 // CONFIGURAÇÕES
 
 settings: {
-  backButton: "Voltar",
+  backButton: `Voltar`,
   
   textSpeed: {
-    title: "Velocidade do texto",
-    desc: "Muda o quão rápido o texto é escrito na tela",
-    0: "Lento",
-    1: "Normal",
-    2: "Rápido",
-    3: "MAIS RÁPIDO!",
+    title: `Velocidade do texto`,
+    desc: `Muda o quão rápido o texto é escrito na tela`,
+    0: `Lento`,
+    1: `Normal`,
+    2: `Rápido`,
+    3: `MAIS RÁPIDO!`,
   },
   delayBetween: {
-    title: "Atraso entre frases",
-    desc: "Muda a duração do tempo de espera entre uma frase e outra",
-    0: "Normal",
-    1: "Rápido",
-    2: "Nenhum",
+    title: `Atraso entre frases`,
+    desc: `Muda a duração do tempo de espera entre uma frase e outra`,
+    0: `Normal`,
+    1: `Rápido`,
+    2: `Nenhum`,
   },
 
   colorPalette: {
-    title: "Paleta de Cores",
-    desc: "Mude as cores do seu jogo!",
-    0: "Padrão",
-    1: "Floresta de Outono",
-    2: "Bosque Vívido",
-    3: "Festival de Sakuras",
-    4: "Mangues da Costa",
+    title: `Paleta de Cores`,
+    desc: `Mude as cores do seu jogo!`,
+    0: `Padrão`,
+    1: `Floresta de Outono`,
+    2: `Bosque Vívido`,
+    3: `Festival de Sakuras`,
+    4: `Mangues da Costa`,
   }
   
 },
 
 // LINHAS PARA O JOGO
 
-WWYD: "O que você fará? <br><br>",
-WWYS: "O que você dirá? <br><br>",
+WWYD: `O que você fará? <br><br>`,
+WWYS: `O que você dirá? <br><br>`,
 YAEH: `<a href="#" onclick="dyingAnimation()">Sua aventura acaba aqui.</a>`,
-exitCabin: `"<b>Você sai da cabana.</b>"`,
+exitCabin: `<b>Você sai da cabana.</b>`,
 
 chooseLines: {
   0: `Você pode usar o mapa a qualquer hora para sair da sua localização atual,`,
