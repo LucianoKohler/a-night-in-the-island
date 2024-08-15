@@ -2118,7 +2118,7 @@ function winGame() {
     delay: 75,
   });
 
-  TWEnding.pauseFor(250).typeString(selectedLanguage.exitCabin).start();
+  TWEnding.pauseFor(250).typeString(window[language].exitCabin).start();
 }
 
 UpdateColors();

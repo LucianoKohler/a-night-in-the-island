@@ -42,40 +42,40 @@ start: {
 
 // LINHAS PARA O INVENTÁRIO
 inventory: {
-pass: `Pass: `,
-passNo: `No`,
-passYes: `Yes`,
-passUsed: `Used`,
-coins: `Coins: `,
+  pass: `Pass: `,
+  passNo: `No`,
+  passYes: `Yes`,
+  passUsed: `Used`,
+  coins: `Coins: `,
 
-sword: {
-  title: `Steel Broadsword`,
-  swordQM: `????? ??????????`,
-  swordDesc0: `Even though it looks sharp,`,
-  swordDesc1: `it's too heavy! How are you`,
-  swordDesc2: `using this?`,
-},
+  sword: {
+    title: `Steel Broadsword`,
+    swordQM: `????? ??????????`,
+    swordDesc0: `Even though it looks sharp,`,
+    swordDesc1: `it's too heavy! How are you`,
+    swordDesc2: `using this?`,
+  },
 
-tunic: {
-  title: `Dark Tunic`,
-  tunicQM: `???? ?????`,
-  tunicDesc0: `Its black material seems`,
-  tunicDesc1: `resistant to high temperatures`,
-},
+  tunic: {
+    title: `Dark Tunic`,
+    tunicQM: `???? ?????`,
+    tunicDesc0: `Its black material seems`,
+    tunicDesc1: `resistant to high temperatures`,
+  },
 
-goggles: {
-  title: `Spiral Goggles`,
-  gogglesQM: `?????? ???????`,
-  gogglesDesc0: `You feel really dizzy`,
-  gogglesDesc1: `just by wearing those`,
-},
+  goggles: {
+    title: `Spiral Goggles`,
+    gogglesQM: `?????? ???????`,
+    gogglesDesc0: `You feel really dizzy`,
+    gogglesDesc1: `just by wearing those`,
+  },
 
-islandSword: {
-  title: `The Island Sword`,
-  islandSwordQM: `??? ?????? ?????`,
-  islandSwordDesc: `Powerful enough to kill anything in this place`,
-  islandSwordDescQM: `???????? ?????? ?? ???? ???????? ?? ???? ?????`,
-},
+  islandSword: {
+    title: `The Island Sword`,
+    islandSwordQM: `??? ?????? ?????`,
+    islandSwordDesc: `Powerful enough to kill anything in this place`,
+    islandSwordDescQM: `???????? ?????? ?? ???? ???????? ?? ???? ?????`,
+  },
 },
 
 // MINI MENUS (others)
