@@ -2,7 +2,6 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/start.css">
     <link rel="icon" type="image/x-icon" href="icon.png">
@@ -12,9 +11,9 @@
 </head>
 <body>
   <div id="bottomBar">
-    <span>Made by Blockier, with love</span>
-    <a href="#" onclick="updateStart('patchNotes');">1.0.1</a>
-  </div>
+    <span id="madeWithLove">Made by Blockier, with love</span>
+    <span><a id="changeLang" href="?l=pt-br" style="color:lightgreen">Mudar linguagem para Português</a> &bull; <a href="#" onclick="updateStart('patchNotes');">1.0.2</a></span>
+  </div>  
     <div id="start">
         <pre>
              _   _ _       _     _     _____         _______ _            _____     _                 _ 
@@ -28,8 +27,8 @@
 
             <div class="buttons">
                 <button id="startbutton" onclick="updateStart('start'); document.body.requestFullscreen()">Start</button>
-                <button onclick="updateStart('howtoplay')">How to Play</button>
-                <button onclick="updateStart('credits');">Credits</button>
+                <button id="howtoplaybutton" onclick="updateStart('howtoplay')">How to Play</button>
+                <button id="creditsbutton" onclick="updateStart('credits');">Credits</button>
             </div>
     </div>
     <div id="gamescreen">
@@ -926,54 +925,54 @@ _  __/  \ _______ ____________    ____________   ___________________     _______
                                          |___/ 
 -----------------------------------------------</pre>
             </div>
-            <p id="Pass">Pass: No</p>
-            <p id="Coins">Coins: 0</p>
+            <p><span id="Pass">Pass: </span><span id="passStatus">No</span></p>
+            <p><span id="Coins">Coins: </span><span id="coinCount">0</span></p>
  <pre id="sword">
  /-------------\
  |             |
  |             |  
- |             |  <h3>????? ??????????</h3>
+ |             |  <h3 id="swordQM">????? ??????????</h3>
  |             |  
  |             |
  \-------------/</pre>
  <pre id="swordunlocked">
  /-------------\
- |   __        |  <h3>Steel Broadsword</h3>
+ |   __        |  <h3 id="swordName">Steel Broadsword</h3>
  |   ||________|
- ||==||--------|  Even though it looks sharp,
- |   ||‾‾‾‾‾‾‾‾|  it's too heavy! How are you
- |   ‾‾        |  using this?
+ ||==||--------|  <span id="swordDesc0">Even though it looks sharp,</span>
+ |   ||‾‾‾‾‾‾‾‾|  <span id="swordDesc1">it's too heavy! How are you</span>
+ |   ‾‾        |  <span id="swordDesc2">using this?</span>
  \-------------/</pre>
  <pre id="tunic">
  /--+---+---+--\
  |             |  
  +             +
- |             |  <h3>???? ?????</h3>
+ |             |  <h3 id="tunicQM">???? ?????</h3>
  +             +
  |             |
  \--+---+---+--/</pre>
  <pre id="tunicunlocked">
  /--+---+---+--\
- |       o'\   |  <h3>Dark Tunic</h3>
+ |       o'\   |  <h3 id="tunicName">Dark Tunic</h3>
  +         /\  +
- |  _   _ &lt;__&gt; |  Its black material seems 
- + /|'-'|\     +  resistant to high temperatures
+ |  _   _ &lt;__&gt; |  <span id="tunicDesc0">Its black material seems</span> 
+ + /|'-'|\     +  <span id="tunicDesc1">resistant to high temperatures</span>
  | ||___||     |
  \--+---+---+--/</pre>
 <pre id="goggles">
  /-_-‾-_-‾-_-‾-\
  |             |  
 |               |
- |             |  <h3>?????? ???????</h3>
+ |             |  <h3 id="gogglesQM">?????? ???????</h3>
 |               |
  |             |
  \-_-‾-_-‾-_-‾-/</pre>
  <pre id="gogglesunlocked">
  /-_-‾-_-‾-_-‾-\
- |             |  <h3>Spiral Goggles</h3>
+ |             |  <h3 id="gogglesName">Spiral Goggles</h3>
 |  |         |  |
- | |.-.   .-.| |  You feel really dizzy 
-|  | @ |-| @ |  | just by wearing those
+ | |.-.   .-.| |  <span id="gogglesDesc0">You feel really dizzy</span> 
+|  | @ |-| @ |  | <span id="gogglesDesc1">just by wearing those</span>
  |  '-'   '-'  |
  \-_-‾-_-‾-_-‾-/
  </pre>
@@ -1000,8 +999,8 @@ e o text-align não quebrar o frame da espada.-->
         <div id="others">
             <ul>
                 <li><button id="tomap" onclick="UpdateInfoDiv('map')" href="#">Map</button></li>
-                <li><button id=""href="#" onclick="UpdateInfoDiv('settings')">Settings</button></li>
-                <li><button id="backtomainmenu" onclick="toMainMenu()" href="#">Exit</button></li>
+                <li><button id="tosettings" href="#" onclick="UpdateInfoDiv('settings')">Settings</button></li>
+                <li><button id="tomainmenu" onclick="toMainMenu()" href="#">Exit</button></li>
             </ul>
         </div>
         <div id="map"><pre>
@@ -1067,8 +1066,8 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
         <div id="settings">
           <div class="option">
 
-            <h3>Text speed</h3>
-            <p>Change how fast the text is shown on the chat</p>
+            <h3 id="textSpeedTitle">Text speed</h3>
+            <p id="textSpeedDesc">Change how fast the text is shown on the chat</p>
             <span class="arrow" id="decrementSpeed" onclick="setTextSpeed(-1)">&lt;</span>
             <span id="speedName">Medium</span>
             <span class="arrow" id="incrementSpeed" onclick="setTextSpeed(1)">&gt;</span>
@@ -1077,8 +1076,8 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
 
           <div class="option">
 
-            <h3>Delay between sentences</h3>
-            <p>Change how long the text sleeps after each sentence</p>
+            <h3 id="delayBetweenTitle">Delay between sentences</h3>
+            <p id="delayBetweenDesc">Change how long the text sleeps after each sentence</p>
             <span class="arrow" id="decrementSpeed" onclick="setDelayTime(-1)">&lt;</span>
             <span id="delayName">Normal</span>
             <span class="arrow" id="incrementSpeed" onclick="setDelayTime(1)">&gt;</span>
@@ -1087,8 +1086,8 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
 
           <div class="option">
 
-            <h3>Color Palette</h3>
-            <p>Choose the color of the game</p>
+            <h3 id="colorPaletteTitle">Color Palette</h3>
+            <p id="colorPaletteDesc">Choose the color of the game</p>
             <div id="palette">
               <span class="arrow" id="paletteBack" onclick="setPalette(-1)">&lt;</span>
               <span class="mainColor"></span>
@@ -1100,12 +1099,12 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
           </div>
 
           <div class="option">
-            <button onclick="UpdateInfoDiv()">Go Back</button>
+            <button id="settingsBackButton" onclick="UpdateInfoDiv()">Go Back</button>
           </div>
         </div>
     </div>
     <div id="howtoplay">
-      <h1>How to Play</h1>
+      <h1 id="howtoplaytitle">How to Play</h1>
       <ul>
         <li>Make your choices by reading and clicking the links on the chatbox.</li>
         <li>Navigate through the map by opening it on the bottom right box, you can leave your location at anytime you want.</li>
@@ -1114,13 +1113,13 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
         <li>Don't forget to check out the settings and choose the best options for your playstyle.</li>
         <li>Have fun!</li>
       </ul>
-      <button onclick="toMainMenu()" style="float: right;">Go Back</button>
+      <button id="howtoplaybackbutton" onclick="toMainMenu()" style="float: right;">Go Back</button>
     </div>
     <div id="credits">
-      <h1>Credits</h1>
+      <h1 id="creditstitle">Credits</h1>
       <p>The entirety of the game was made by Luciano Kohler da Silva, AKA Blockier, but I also got a helping hand with some arts from Cyrenp (more precisely, the king and cave arts).</p>
       <p>Some third party softwares were also used to build the game: <a href="https://safi.me.uk/typewriterjs/" target="_blank">Typewriter.js</a> for the widely used typewriter effect throughout the game and <a href="https://patorjk.com/software/taag/" target="_blank">Patorjk's ascii text generator</a> to create the ascii titles, my thanks to these devs for saving me a ton of time!</p>
-      <h1>Special Thanks</h1>
+      <h1 id="creditsthanks">Special Thanks</h1>
       <p>This project wouldn't be possible if I didn't have my friends to motivate me, I needed some people to play my game, after all, and I knew that I could count on my friends to know that my game would be appreciated by someone, and that makes my day!</p>
       <p>Here's a list of my pals, if you're not in here, know that you're still in my heart :D</p>
       <ul>
@@ -1130,8 +1129,9 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
         <li>Led - Goofy ahh guitarist</li>
         <li>Jubireuu - Little BMO stan</li>
         <li>Mittens - Future Kim Jung Gi</li>
+        <li>All of the UDESC gang - New aditions to my hear!t</li>
       </ul>
-      <button onclick="toMainMenu()" style="float: right;">Go Back</button>
+      <button id="creditsbackbutton" onclick="toMainMenu()" style="float: right;">Go Back</button>
     </div>
     <div id="patchNotes">
       <h1>Patch Notes</h1>
@@ -1144,6 +1144,12 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
         <li>Added the patch notes to the bottom of the screen for further documentation of new game updates</li>
         <li>Made so that when the game starts, it gets on full screen, to improve mobile experience</li>
         <li>Added corny cheese of made by Blockier on the bottom of the screen</li>
+      </ul>
+      <h3>1.0.2 - 15/08/2024</h3>
+      <ul>
+        <li>Game now Fully translated to Brazilian Portuguese</li>
+        <li>Game texts are now separated in different files for each language to allow further localization</li>
+        <li>Removed inverted color palette after browsers added autodark mode that bugs the inverted colors</li>
       </ul>
       <button onclick="toMainMenu()" style="float: right;">Go Back</button>
     </div>
@@ -1186,5 +1192,8 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <!--Script de terceiros para fazer o efeito typewriter-->
     <script src="js/script.js"></script>
+    <script src="js/menuTranslating.js"></script>
+    <script src="localization/english.js"></script>
+    <script src="localization/brazilian.js"></script>
 </body>
 </html>
