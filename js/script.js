@@ -339,7 +339,7 @@ function disableKeyFeatures() {
     allPlaces[i].classList.add("disabled");
   }
 
-  setPalette("default");
+  setPalette(0);
   document.getElementById("paletteForward").onclick = ""; //Mudar paleta
   document.getElementById("paletteBack").onclick = "";
 }
