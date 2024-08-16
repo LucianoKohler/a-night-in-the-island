@@ -21,16 +21,13 @@ function translateMenu() {
   document.getElementById('madeWithLove').innerHTML = translatedText.start.madeWith;
 
   // Como Jogar
-
   document.getElementById('howtoplaytitle').innerHTML = translatedText.start.howtoplay.title;
   document.getElementById('howtoplaybackbutton').innerHTML = translatedText.start.howtoplay.backButton;
-
   
   let howToPlayItems = document.getElementById('howtoplay').querySelector('ul').querySelectorAll('li');
   for (let i = 0; i < howToPlayItems.length; i++) { howToPlayItems[i].innerHTML = translatedText.start.howtoplay[i]; }
 
   // Créditos
-
   document.getElementById('creditstitle').innerHTML = translatedText.start.credits.title;
   document.getElementById('creditsthanks').innerHTML = translatedText.start.credits.specialThanks;
   document.getElementById('creditsbackbutton').innerHTML = translatedText.start.howtoplay.backButton;
@@ -42,13 +39,11 @@ function translateMenu() {
   for (let i = 0; i < creditsItems.length; i++) { creditsItems[i].innerHTML = translatedText.start.credits[i+4]; }
 
   // Div Others
-
   document.getElementById('tomap').innerHTML = translatedText.others.map;
   document.getElementById('tosettings').innerHTML = translatedText.others.settings;
   document.getElementById('tomainmenu').innerHTML = translatedText.others.exit;
 
   // Inventário
-
   document.getElementById('Pass').innerHTML = translatedText.inventory.pass;
   document.getElementById('passStatus').innerHTML = translatedText.inventory.passNo;
   document.getElementById('Coins').innerHTML = translatedText.inventory.coins;
@@ -73,15 +68,17 @@ function translateMenu() {
   document.getElementById('sword-desc').innerHTML = translatedText.inventory.islandSword.islandSwordDescQM;
 
   // Configurações
-
   document.getElementById('textSpeedTitle').innerHTML = translatedText.settings.textSpeed.title;
   document.getElementById('textSpeedDesc').innerHTML = translatedText.settings.textSpeed.desc;
+  document.getElementById('speedName').innerHTML = translatedText.settings.textSpeed[1];
 
   document.getElementById('delayBetweenTitle').innerHTML = translatedText.settings.delayBetween.title;
   document.getElementById('delayBetweenDesc').innerHTML = translatedText.settings.delayBetween.desc;
+  document.getElementById('delayName').innerHTML = translatedText.settings.delayBetween[0];
 
   document.getElementById('colorPaletteTitle').innerHTML = translatedText.settings.colorPalette.title;
   document.getElementById('colorPaletteDesc').innerHTML = translatedText.settings.colorPalette.desc;
+  document.getElementById('paletteName').innerHTML = translatedText.settings.colorPalette[0];
   
   document.getElementById('settingsBackButton').innerHTML = translatedText.settings.backButton;
 

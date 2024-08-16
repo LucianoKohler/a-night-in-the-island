@@ -115,13 +115,13 @@ settings: {
     0: `Lento`,
     1: `Normal`,
     2: `Rápido`,
-    3: `MAIS RÁPIDO!`,
+    3: `RÁPIDO!`,
   },
   delayBetween: {
     title: `Atraso entre frases`,
     desc: `Muda a duração do tempo de espera entre uma frase e outra`,
     0: `Normal`,
-    1: `Rápido`,
+    1: `Curto`,
     2: `Nenhum`,
   },
 
@@ -134,7 +134,6 @@ settings: {
     3: `Festival de Sakuras`,
     4: `Mangues da Costa`,
   }
-  
 },
 
 // LINHAS PARA O JOGO
@@ -243,7 +242,7 @@ islandFirstLines: {
   8: ` você encontra uma malha negra, aparentemente resistente, e acima de tudo:`,
   9: ` Estilosa!<br><br>`,
   10: `<b>Você adquiriu a malha negra!<b><br><br>`,
-  11: `<a href="#" onclick="updateScreen('islandhole', 'island')">Ihaaa!</a>`,
+  11: `<a href="#" onclick="updateScreen('islandhole', 'island')">É isso aí!</a>`,
 },
 
 islandLines: {
@@ -880,6 +879,7 @@ angelFuseSwordPart3Lines: {
   4: ` sou grato pela sua ajuda, minha criança,`,
   5: ` você merece, segure-a firmemente e acabe com o sofrimento desta ilha.<br><br>`,
   //WWYS
+  6: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
 },
 
 angelWhoAreYouLines: {
@@ -900,7 +900,7 @@ angelHowSwordDisappearLines: {
   3: ` e ninguém me ajudou a encontrá-la...<br><br>`,
   //WWYS
   4: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
-  5: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Como que a lâmina sumiu?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Quem é você?</a><br>`,
   6: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
   7: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 },

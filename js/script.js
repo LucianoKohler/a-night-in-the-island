@@ -132,10 +132,10 @@ function toMainMenu() {
 //Mudar velocidade do texto
 
 let speeds = [
-  ["25", "Slow"],
-  ["20", "Medium"],
-  ["10", "Fast"],
-  ["0", "FASTER!"],
+  ["25", 0],
+  ["20", 1],
+  ["10", 2],
+  ["0",  3],
 ];
 
 let currentSpeed = 1;
@@ -147,24 +147,24 @@ function setTextSpeed(step) {
   if (currentSpeed == -1) currentSpeed = 3;
 
   del = speeds[currentSpeed][0];
-  document.getElementById("speedName").innerHTML = speeds[currentSpeed][1];
+  document.getElementById("speedName").innerHTML = window[language].settings.textSpeed[speeds[currentSpeed][1]];
 }
 
 //Mudar paleta de cor
 
 var palettes = [
-  ["#ffffff", "#000000", "Default"],
-  ["#cfab4a", "#292b30", "Fall Forest"],
-  ["#13e600", "#172115", "Vivid Grove"],
-  ["#fcd1d7", "#42202d", "Sakuras' Festival"],
-  ["#adc3e8", "#0d132a", "Coast Mangrove"],
+  ["#ffffff", "#000000", 0],
+  ["#cfab4a", "#292b30", 1],
+  ["#13e600", "#172115", 2],
+  ["#fcd1d7", "#42202d", 3],
+  ["#adc3e8", "#0d132a", 4],
 ];
 
 let currentPalette = 0;
 
 function setPalette(step) {
 
-  if(step == 'a') currentPalette = 0; //Veja disableKeyFeatures();
+  if(step == 0) currentPalette = 0;
   else currentPalette += step;
   
   if (currentPalette == 5) currentPalette = 0;
@@ -176,16 +176,15 @@ function setPalette(step) {
   document
     .querySelector(":root")
     .style.setProperty("--bg", palettes[currentPalette][1]);
-  document.getElementById("paletteName").innerHTML =
-    palettes[currentPalette][2];
+  document.getElementById("paletteName").innerHTML = window[language].settings.colorPalette[currentPalette];
 }
 
 //Mudar delay entre frases
 
 let betweenDelays = [
-  [500, 1000, 1500, "Normal"],
-  [250, 500, 750, "Halved"],
-  [0, 0, 0, "None"],
+  [500, 1000, 1500, 0],
+  [250, 500, 750, 1],
+  [0, 0, 0, 2],
 ];
 
 let currentDelay = 0;
@@ -201,7 +200,7 @@ function setDelayTime(step){
   bigDel = betweenDelays[currentDelay][1];
   HugeDel = betweenDelays[currentDelay][2];
 
-  document.getElementById("delayName").innerHTML = betweenDelays[currentDelay][3];
+  document.getElementById("delayName").innerHTML = window[language].settings.delayBetween[betweenDelays[currentDelay][3]];
 }
 
 //Fazendo com que a localização atual fique amarela no mapa
@@ -261,14 +260,6 @@ function dyingAnimation() {
 
 document.addEventListener("keydown", (e) => {
   if (e.key == "D") dyingAnimation();
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.key == "U") updateInventory();
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.key == "F") FuseSword();
 });
 
 function updateInventory() {
@@ -847,6 +838,7 @@ function updateScreen(nextImg, text) {
         .typeString(selectedLanguage.angelFuseSwordPart3Lines[5])
         .pauseFor(smallDel)
         .typeString(selectedLanguage.WWYS)
+        .typeString(selectedLanguage.angelFuseSwordPart3Lines[6])
         .typeString(selectedLanguage.angelPartsGeneralLines[0])
         .typeString(selectedLanguage.angelPartsGeneralLines[1])
         .typeString(selectedLanguage.angelPartsGeneralLines[2])

@@ -107,34 +107,33 @@ exit: `Exit`,
 // CONFIGURAÇÕES
 
 settings: {
-backButton: `Go Back`,
+  backButton: `Go Back`,
 
-textSpeed: {
-  title: `Text Speed`,
-  desc: `Change how fast the text is shown on the chat`,
-  0: `Slow`,
-  1: `Normal`,
-  2: `Fast`,
-  3: `FASTER!`,
-},
-delayBetween: {
-  title: `Delay between sentences`,
-  desc: `Change how long the text sleeps after each sentence`,
-  0: `Normal`,
-  1: `Halved`,
-  2: `None`,
-},
+  textSpeed: {
+    title: `Text Speed`,
+    desc: `Change how fast the text is shown on the chat`,
+    0: `Slow`,
+    1: `Normal`,
+    2: `Fast`,
+    3: `FASTER!`,
+  },
+  delayBetween: {
+    title: `Delay between sentences`,
+    desc: `Change how long the text sleeps after each sentence`,
+    0: `Normal`,
+    1: `Halved`,
+    2: `None`,
+  },
 
-colorPalette: {
-  title: `Color Palette`,
-  desc: `Choose the color of the game`,
-  0: `Default`,
-  1: `Fall Forest`,
-  2: `Vivid Grove`,
-  3: `Sakuras' Festival`,
-  4: `Coast Mangrove`,
-}
-
+  colorPalette: {
+    title: `Color Palette`,
+    desc: `Choose the color of the game`,
+    0: `Default`,
+    1: `Fall Forest`,
+    2: `Vivid Grove`,
+    3: `Sakuras' Festival`,
+    4: `Coast Mangrove`,
+  }
 },
 
 // LINHAS PARA O JOGO
@@ -880,6 +879,7 @@ angelFuseSwordPart3Lines: {
   4: ` I'm grateful for your help, my child,`,
   5: ` you deserve it, keep it and use it to end this island's suffering.<br><br>`,
   //WWYS
+  6: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
 },
 
 angelWhoAreYouLines: {
