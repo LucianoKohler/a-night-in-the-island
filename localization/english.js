@@ -41,6 +41,7 @@ start: {
 },
 
 // LINHAS PARA O INVENTÁRIO
+
 inventory: {
   pass: `Pass: `,
   passNo: `No`,
@@ -78,7 +79,25 @@ inventory: {
   },
 },
 
+// MAPA
+
+map: {
+  goback: `Go Back`,
+  castle: `Castle`,
+  well: `Well`,
+  cabin: `Cabin`,
+  weirdRocks: `Weird Rocks`,
+  farm: `Farm`,
+  altar: `Altar`,
+  wall: `Wall`,
+  forest: `Forest`,
+  cave: `Cave`,
+  pier: `Pier`,
+  island: `Island`,
+},
+
 // MINI MENUS (others)
+
 others: {
 map: `Map`,
 settings: `Settings`,

@@ -41,6 +41,7 @@ var brazilian = {
   },
 
 // LINHAS PARA O INVENTÁRIO
+
 inventory: {
   pass: `Passe: `,
   passNo: `Não`,
@@ -78,7 +79,25 @@ inventory: {
   },
 },
 
+// MAPA
+
+map: {
+  goback: `Voltar`,
+  castle: `Castelo`,
+  well: `Poço`,
+  cabin: `Cabana`,
+  weirdRocks: `Pedras Estranhas`,
+  farm: `Fazenda`,
+  altar: `Altar`,
+  wall: `Muralha`,
+  forest: `Floresta`,
+  cave: `Caverna`,
+  pier: `Píer`,
+  island: `Ilha`,
+},
+
 // MINI MENUS (others)
+
 others: {
   map: `Mapa`,
   settings: `Configurações`,

@@ -230,15 +230,12 @@ for (let i = 0; i <= allPlaces.length - 1; i++) {
 
   allPlaces[i].addEventListener("mousemove", (e) => {
     tooltip.style.display = "inline";
+    console.log(allPlaces[i].className);
 
     if (allPlaces[i].classList[1]) {
       tooltip.innerHTML = "???";
     } else {
-      tooltip.innerHTML =
-        allPlaces[i].className.charAt(0).toUpperCase() + //Para capitalizar o primeiro caractere;
-        allPlaces[i].className
-          .slice(1) //Para mostrar o resto da frase;
-          .replace("_", " "); //Para retirar os _ e colocar espaços (deixar bonito;)
+      tooltip.innerHTML = window[language].map[allPlaces[i].className];
     }
 
     tooltip.style.top = e.clientY - 20 + "px";
@@ -336,7 +333,6 @@ function FuseSword() {
 
   document.getElementById("sword-title").innerHTML = window[language].inventory.islandSword.title;
   document.getElementById("sword-desc").innerHTML = window[language].inventory.islandSword.islandSwordDesc;
-    "Powerful enough to kill anything in this place";
 
   islandSword = true;
 }
