@@ -49,6 +49,9 @@ function updateStart(div) {
   var selectedLanguage = window[language]
   switch (div) {
     case "start":
+      
+    document.body.requestFullscreen();
+
       if (!started) {
         startScreen.style.display = "none";
         gameScreen.style.display = "grid";
