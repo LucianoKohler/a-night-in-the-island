@@ -49,6 +49,9 @@ function updateStart(div) {
   var selectedLanguage = window[language]
   switch (div) {
     case "start":
+      
+    document.body.requestFullscreen();
+
       if (!started) {
         startScreen.style.display = "none";
         gameScreen.style.display = "grid";
@@ -339,7 +342,7 @@ function disableKeyFeatures() {
     allPlaces[i].classList.add("disabled");
   }
 
-  setPalette(0);
+  setPalette(2);
   document.getElementById("paletteForward").onclick = ""; //Mudar paleta
   document.getElementById("paletteBack").onclick = "";
 }
@@ -2020,7 +2023,7 @@ function updateScreen(nextImg, text) {
       break;
 
     case "leshyAngel":
-      setPalette("default");
+      setPalette(0);
       TW.typeString(selectedLanguage.leshyAngelLines[0])
         .pauseFor(bigDel)
         .typeString(selectedLanguage.leshyAngelLines[1])
