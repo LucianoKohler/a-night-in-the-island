@@ -879,7 +879,7 @@ angelFuseSwordPart3Lines: {
   4: ` I'm grateful for your help, my child,`,
   5: ` you deserve it, keep it and use it to end this island's suffering.<br><br>`,
   //WWYS
-  6: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
 },
 
 angelWhoAreYouLines: {
