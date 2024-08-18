@@ -1171,6 +1171,6 @@ endingLines: {
   8: ` você vê a sua casa do outro lado,`,
   9: ` você olha para trás e dá um último adeus para Maldio,`,
   10: ` nada disso seria possível sem a sua ajuda.<br><br>`,
-  11: `<a href="#" onclick="winGame(),">Passar pela porta</a>`,
+  11: `<a href="#" onclick="winGame()">Passar pela porta</a>`,
 }
 };

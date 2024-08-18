@@ -1,20 +1,20 @@
 var started = false;
-var sticker = false;
-var stick = false;
+var sticker = true;
+var stick = true;
 var coins = 0;
-var pass = 0;
+var pass = 2;
 //0 = Não tem o pass
 //1 = Tem mas não usou
 //2 = Tem E já usou
 
-var sword1 = false; //Pommel
-var sword2 = false; //Hilt
-var sword3 = false; //Blade
-var islandSword = false;
+var sword1 = true; //Pommel
+var sword2 = true; //Hilt
+var sword3 = true; //Blade
+var islandSword = true;
 
-var broadsword = false;
-var tunic = false;
-var goggles = false;
+var broadsword = true;
+var tunic = true;
+var goggles = true;
 
 let del = 20;
 let smallDel = 500; //Delays usados para dar uma pausa entre frases
@@ -25,15 +25,15 @@ const targetLang = new URLSearchParams(window.location.search).get('l');
 var language = targetLang == 'pt-br' ? 'brazilian' : 'english';
 var langLines = window[language];
 
-var bearScared = false;
-var castleEntered = false;
-var palaceEntered = false;
-var shopEntered = false;
-var islandEntered = false;
-var kingQuest = false;
-var angelVisited = false;
-var goblinGotMoney = false;
-var goblinVisited = false;
+var bearScared = true;
+var castleEntered = true;
+var palaceEntered = true;
+var shopEntered = true;
+var islandEntered = true;
+var kingQuest = true;
+var angelVisited = true;
+var goblinGotMoney = true;
+var goblinVisited = true;
 
 //BOTÕES PARA A TELA DE INÍCIO
 
@@ -342,7 +342,7 @@ function disableKeyFeatures() {
     allPlaces[i].classList.add("disabled");
   }
 
-  setPalette(2);
+  setPalette(0);
   document.getElementById("paletteForward").onclick = ""; //Mudar paleta
   document.getElementById("paletteBack").onclick = "";
 }

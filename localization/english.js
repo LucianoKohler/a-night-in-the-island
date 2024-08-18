@@ -1171,6 +1171,6 @@ endingLines: {
   8: ` you see your home on the other side,`,
   9: ` you turn around to say the last goodbye to Maldio,`,
   10: ` this wouldn't be possible without their help.<br><br>`,
-  11: `<a href="#" onclick="winGame(),">Go through the door</a>`,
+  11: `<a href="#" onclick="winGame()">Go through the door</a>`,
 }
 }
