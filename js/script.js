@@ -129,6 +129,7 @@ function toMainMenu() {
   gameScreen.style.display = "none";
   creditsScreen.style.display = "none";
   howToPlayScreen.style.display = "none";
+  patchNotesScreen.style.display = "none";
   startScreen.style.display = "flex";
 }
 
