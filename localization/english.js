@@ -348,7 +348,7 @@ weirdRocksEyeLines: {
   1: `You can't lie, that eye is awesome. <br><br>`,
   //WWYS
   2: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksWhoAreYou')"> Who are you?<br>`,
-  3: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksNice')"> Nice! Can I have it?<br>`,
+  3: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksNice')"> Nice! Can I have it?`,
 },
 
 weirdRocksNiceLines: {
@@ -381,7 +381,7 @@ farmLines: {
   //WWYS
   2: `<a href="#" onclick="updateScreen('farm', 'farmSeeCrops')">Can I see your crops?</a> <br>`,
   3: `<a href="#" onclick="updateScreen('farm', 'farmMetal')">You plant metal?</a> <br>`,
-  4: `<a href="#" onclick="updateScreen('farm','farmBye')">Bye!</a> `,
+  4: `<a href="#" onclick="updateScreen('farm','farmBye')">Bye!</a>`,
 },
 
 farmLinesWOSticker: {
@@ -460,7 +460,7 @@ wallUsePassLines: {
   0: `You give the Pass to the thing, it gets really happy! <br><br>`,
   1: `- OOOOOHH, THE BOSS WILL LET ME HAVE A DAY OFF!!!<br>`,
   2: `- Ok, you may pass and admire the cave.<br><br>`,
-  3: `The pole besides him lifts, <b>you now have access to the cave!</b>.`,
+  3: `The pole besides him lifts. <b>You now have access to the cave!</b>.`,
 },
 
 wallAlreadyUsedPassLines: {

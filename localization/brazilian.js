@@ -51,7 +51,7 @@ inventory: {
 
   sword: {
     title: `Espada Larga de Aço`,
-    swordQM: `?????? ????? ?? ????`,
+    swordQM: `?????? ????? ?? ???`,
     swordDesc0: `Mesmo que afiada,`,
     swordDesc1: `ela é pesada demais!`,
     swordDesc2: `como você vai usar ela?`,
@@ -348,7 +348,7 @@ weirdRocksEyeLines: {
   1: `Sem piadas, esse olho é brilhante mesmo. <br><br>`,
   //WWYS
   2: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksWhoAreYou')"> Quem é você?<br>`,
-  3: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksNice')"> Legal! Posso pegar?<br>`,
+  3: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksNice')"> Legal! Posso pegar?`,
 },
 
 weirdRocksNiceLines: {
@@ -381,7 +381,7 @@ farmLines: {
   //WWYS
   2: `<a href="#" onclick="updateScreen('farm', 'farmSeeCrops')">Posso ver a sua plantação?</a> <br>`,
   3: `<a href="#" onclick="updateScreen('farm', 'farmMetal')">Você planta metal?</a> <br>`,
-  4: `<a href="#" onclick="updateScreen('farm','farmBye')">Tchau!</a> `,
+  4: `<a href="#" onclick="updateScreen('farm','farmBye')">Tchau!</a>`,
 },
 
 farmLinesWOSticker: {
@@ -416,7 +416,7 @@ farmLinesBye: {
 
 farmLinesApproach: {
   0: `Ao passar o olho pela plantação, você encontra algo estranho, algo que parece um tubo brilhante enterrado.<br><br>`,
-  1: `Você acha que o fazendeiro não vai se importar se uma cenoura desapaparecer, então você puxa o tubo.<br><br>`,
+  1: `Você acha que o fazendeiro não vai se importar se uma cenoura desaparecer, então você puxa o tubo.<br><br>`,
   2: `Ele estava bem enterrado entre os vegetais, mas depois de uma força, você ganha a luta contra o tubo, retirando uma bela guarda da terra.<br><br>`,
   3: `<b>Você adquiriu a guarda do fazendeiro!</b><br><br>`,
   4: `Você torce para o fazendeiro não ter percebido, você corre tentando sair da visão dele.`,
@@ -460,7 +460,7 @@ wallUsePassLines: {
   0: `Você dá o passe para a coisa, ela fica muito feliz! <br><br>`,
   1: `- AAAAH, FINALMENTE, O CHEFE VAI ME DEIXAR TIRAR FOLGA!!!<br>`,
   2: `- Ok, você pode passar e admirar a caverna.<br><br>`,
-  3: `A cancela ao lado dele abre <b>Agora, você pode acessar a caverna!</b>.`,
+  3: `A cancela ao lado dele abre. <b>Agora, você pode acessar a caverna!</b>.`,
 },
 
 wallAlreadyUsedPassLines: {
@@ -471,12 +471,12 @@ wallAlreadyUsedPassLines: {
 
 caveLines: {
   0: `Há uma grande caverna à sua frente,`,
-  1: ` você consegue ouvir grunhidos vindo dela..<br><br>`,
+  1: ` você consegue ouvir grunhidos vindo dela...<br><br>`,
   2: `<a href="#" onclick="updateScreen('goblin','goblin')">Entrar nela.</a>`,
 },
 
 goblinFirstLines: {
-  0: `A caverna tem cheiro de mofo e sons de água pingando, além dos ruídos`,
+  0: `A caverna tem cheiro de mofo e sons de água pingando, além dos ruídos bizarros,`,
   1: ` adentrar mais fundo na caverna mostra para você o tal semideus que o porteiro falou sobre:`,
   2: ` Um pequeno goblin ao lado de um "tesouro",`,
   3: ` que na verdade é só uma pilha de moedas no chão.<br><br>`,
@@ -1078,7 +1078,7 @@ leshyFinalFormLines: {
 },
 
 leshyFinalDefeatLines: {
-  0: `Você empunha sua espada larga com toda su força,`,
+  0: `Você empunha sua espada larga com toda sua força,`,
   1: ` por algum motivo,`,
   2: ` ela não parece tão pesada como antes,`,
   3: ` talvez seja a adrenalina percorrendo seu corpo,`,
