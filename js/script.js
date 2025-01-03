@@ -44,12 +44,14 @@ var howToPlayScreen = document.getElementById("howtoplay");
 var patchNotesScreen = document.getElementById("patchNotes");
 
 //Para abrir o jogo
-
+document.getElementById("continuebutton").disabled = true;
 function updateStart(div) {
   var selectedLanguage = window[language]
   switch (div) {
-    case "start":
-      
+    case "newgame":
+
+    // Para evitar que o jogador tenha itens ao reiniciar
+    localStorage.clear()
     document.body.requestFullscreen();
 
       if (!started) {
@@ -222,6 +224,7 @@ for (let i = 0; i <= allPlaces.length - 1; i++) {
     if (allPlaces[i].className != "goback") {
       place = allPlaces[i].className;
       currentLocation = document.querySelectorAll("." + place);
+      localStorage.setItem("currentPosition", place);
 
       if (!allPlaces[i].classList[1]) {
         //Se NÃO houver a classe disabled

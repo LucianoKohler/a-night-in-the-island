@@ -4,7 +4,8 @@ var brazilian = {
 
   start: {
     buttons: {
-      play: `INICIAR`,
+      newgame: `NOVO JOGO`,
+      continue: `CONTINUAR`,
       howtoplay: `COMO JOGAR`,
       credits: `CRÉDITOS`,
     },

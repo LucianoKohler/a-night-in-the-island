@@ -4,7 +4,8 @@ var english = {
 
 start: {
   buttons: {
-    play: `START`,
+    newgame: `NEW GAME`,
+    continue: `CONTINUE`,
     howtoplay: `HOW TO PLAY`,
     credits: `CREDITS`,
   },
