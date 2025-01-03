@@ -144,7 +144,7 @@ YAEH: `<a href="#" onclick="dyingAnimation()">Sua aventura acaba aqui.</a>`,
 exitCabin: `<b>Você sai da cabana.</b>`,
 
 chooseLines: {
-  0: `Você pode usar o mapa a qualquer hora para sair da sua localização atual,`,
+  0: `No menu ao lado, há um botão clicável que abre um mapa que indica sua localização atual em amarelo,`,
   1: `use-o se você se sentir perdido!`,
 },
 
