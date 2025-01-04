@@ -144,6 +144,10 @@ WWYS: `What will you say? <br><br>`,
 YAEH: `<a href="#" onclick="dyingAnimation()">Your adventure ends here.</a>`,
 exitCabin: `<b>You exited the cabin.</b>`,
 
+welcomeBack1: `Welcome back to the island,`,
+welcomeBack2: ` remember to use your map if you ever get stuck,`,
+welcomeBack3: ` good luck!`,
+
 chooseLines: {
   0: `On this right menu, there's, a clickable button that opens a map that indicates your current position in yellow`,
   1: `use it if you feel stuck!`,

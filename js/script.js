@@ -1,39 +1,17 @@
-var started = false;
-var sticker = false;
-var stick = false;
-var coins = 0;
-var pass = 0;
-//0 = Não tem o pass
-//1 = Tem mas não usou
-//2 = Tem E já usou
-
-var sword1 = false; //Pommel
-var sword2 = false; //Hilt
-var sword3 = false; //Blade
-var islandSword = false;
-
-var broadsword = false;
-var tunic = false;
-var goggles = false;
+// LEMBRA QUE O LOCALSTORAGE SÓ USA STRING POR FAVORRR
 
 let del = 20;
 let smallDel = 500; //Delays usados para dar uma pausa entre frases
 let bigDel = 1000;
 let hugeDel = 1500;
 
+if(localStorage.length == 0){
+  document.getElementById("continuebutton").disabled = true;
+}
+
 const targetLang = new URLSearchParams(window.location.search).get('l');
 var language = targetLang == 'pt-br' ? 'brazilian' : 'english';
 var langLines = window[language];
-
-var bearScared = false;
-var castleEntered = false;
-var palaceEntered = false;
-var shopEntered = false;
-var islandEntered = false;
-var kingQuest = false;
-var angelVisited = false;
-var goblinGotMoney = false;
-var goblinVisited = false;
 
 //BOTÕES PARA A TELA DE INÍCIO
 
@@ -44,52 +22,99 @@ var howToPlayScreen = document.getElementById("howtoplay");
 var patchNotesScreen = document.getElementById("patchNotes");
 
 //Para abrir o jogo
-document.getElementById("continuebutton").disabled = true;
 function updateStart(div) {
-  var selectedLanguage = window[language]
+  var selectedLanguage = window[language];
+
   switch (div) {
     case "newgame":
 
-    // Para evitar que o jogador tenha itens ao reiniciar
-    localStorage.clear()
-    document.body.requestFullscreen();
+      // Zerando o DB para evitar que o jogador tenha itens ao reiniciar
+      localStorage.setItem("Started", true);
+      localStorage.setItem("sticker", false);
+      localStorage.setItem("stick", false);
+      localStorage.setItem("coins", 0);
+      localStorage.setItem("pass", 0);
+      // 0 = Não tem o pass
+      // 1 = Tem mas não usou
+      // 2 = Tem E já usou
+      localStorage.setItem("sword1", false); // Pommel
+      localStorage.setItem("sword2", false); // Hilt
+      localStorage.setItem("sword3", false); // Blade
+      localStorage.setItem("islandSword", false);
+      localStorage.setItem("broadsword", false);
+      localStorage.setItem("tunic", false);
+      localStorage.setItem("goggles", false);
+      localStorage.setItem("bearScared", false);
+      localStorage.setItem("castleEntered", false);
+      localStorage.setItem("palaceEntered", false);
+      localStorage.setItem("shopEntered", false);
+      localStorage.setItem("islandEntered", false);
+      localStorage.setItem("kingQuest", false);
+      localStorage.setItem("angelVisited", false);
+      localStorage.setItem("goblinGotMoney", false);
+      localStorage.setItem("goblinVisited", false);
+      
+      document.body.requestFullscreen();
 
-      if (!started) {
-        startScreen.style.display = "none";
-        gameScreen.style.display = "grid";
-        started = true;
+      startScreen.style.display = "none";
+      gameScreen.style.display = "none";
+      creditsScreen.style.display = "none";
+      gameScreen.style.display = "grid";
+      patchNotesScreen.style.display = "none";
+    
+      var twStart = new Typewriter(chatDiv, {
+        delay: del,
+      });
+      
+      twStart
+        .pauseFor(smallDel)
+        .typeString(selectedLanguage.startLines[0])
+        .pauseFor(smallDel)
+        .typeString(selectedLanguage.startLines[1])
+        .pauseFor(smallDel)
+        .typeString(selectedLanguage.startLines[2])
+        .pauseFor(smallDel)
+        .typeString(selectedLanguage.startLines[3])
+        .pauseFor(smallDel)
+        .typeString(selectedLanguage.startLines[4])
+        .pauseFor(smallDel)
+        .typeString(selectedLanguage.startLines[5])
+        .pauseFor(smallDel)
+        .typeString(selectedLanguage.WWYD)
+        .typeString(selectedLanguage.startLines[6])
+        .typeString(selectedLanguage.startLines[7])
+        .start();
+    break;
 
-        var twStart = new Typewriter(chatDiv, {
-          delay: del,
-        });
+    case "continue":
+      startScreen.style.display = "none";
+      gameScreen.style.display = "none";
+      creditsScreen.style.display = "none";
+      gameScreen.style.display = "grid";
+      patchNotesScreen.style.display = "none";
 
-        twStart
-          .pauseFor(smallDel)
-          .typeString(selectedLanguage.startLines[0])
-          .pauseFor(smallDel)
-          .typeString(selectedLanguage.startLines[1])
-          .pauseFor(smallDel)
-          .typeString(selectedLanguage.startLines[2])
-          .pauseFor(smallDel)
-          .typeString(selectedLanguage.startLines[3])
-          .pauseFor(smallDel)
-          .typeString(selectedLanguage.startLines[4])
-          .pauseFor(smallDel)
-          .typeString(selectedLanguage.startLines[5])
-          .pauseFor(smallDel)
-          .typeString(selectedLanguage.WWYD)
-          .typeString(selectedLanguage.startLines[6])
-          .typeString(selectedLanguage.startLines[7])
-          .start();
-      } else {
-        startScreen.style.display = "none";
-        gameScreen.style.display = "none";
-        creditsScreen.style.display = "none";
-        gameScreen.style.display = "grid";
-        patchNotesScreen.style.display = "none";
+      // Liberando áreas que o jogador desbloqueou
+      if(localStorage.getItem("pass") == '2'){
+        document.getElementsByClassName("cave")[0].classList.remove("disabled");
+        document.getElementsByClassName("cave")[1].classList.remove("disabled");
       }
+
+      if(localStorage.getItem("bearScared") == 'true'){
+        document.getElementsByClassName("pier")[0].classList.remove("disabled");
+      }
+
+      if(localStorage.getItem("islandEntered") == 'true'){
+        document.getElementsByClassName("island")[0].classList.remove("disabled");
+        document.getElementsByClassName("island")[1].classList.remove("disabled");
+        document.getElementsByClassName("island")[2].classList.remove("disabled");
+      }
+
+      document.body.requestFullscreen();
+      updateInventory();
+      updateScreen("forest", "welcomeBack");
       break;
-    case "howtoplay":
+    
+      case "howtoplay":
       startScreen.style.display = "none";
       gameScreen.style.display = "none";
       creditsScreen.style.display = "none";
@@ -133,9 +158,14 @@ function toMainMenu() {
   howToPlayScreen.style.display = "none";
   patchNotesScreen.style.display = "none";
   startScreen.style.display = "flex";
+
+  // Ativar o botão de continuar caso o jogador tenha feito algo
+  if(localStorage.length > 0){
+    document.getElementById("continuebutton").disabled = false;
+  }
 }
 
-//Mudar velocidade do texto
+// Mudar velocidade do texto
 
 let speeds = [
   ["25", 0],
@@ -204,7 +234,7 @@ function setDelayTime(step){
 
   smallDel = betweenDelays[currentDelay][0];
   bigDel = betweenDelays[currentDelay][1];
-  HugeDel = betweenDelays[currentDelay][2];
+  hugeDel = betweenDelays[currentDelay][2];
 
   document.getElementById("delayName").innerHTML = window[language].settings.delayBetween[betweenDelays[currentDelay][3]];
 }
@@ -224,7 +254,6 @@ for (let i = 0; i <= allPlaces.length - 1; i++) {
     if (allPlaces[i].className != "goback") {
       place = allPlaces[i].className;
       currentLocation = document.querySelectorAll("." + place);
-      localStorage.setItem("currentPosition", place);
 
       if (!allPlaces[i].classList[1]) {
         //Se NÃO houver a classe disabled
@@ -271,29 +300,29 @@ document.addEventListener("keydown", (e) => {
 
 function updateInventory() {
   document.getElementById("Coins").innerHTML = window[language].inventory.coins;
-  document.getElementById("coinCount").innerHTML = coins;
+  document.getElementById("coinCount").innerHTML = localStorage.getItem("coins");
 
-  if (broadsword == true) {
+  if (localStorage.getItem("broadsword") == 'true') {
     document.getElementById("sword").style.display = "none";
     document.getElementById("swordunlocked").style.display = "block";
   }
-  if (tunic == true) {
+  if (localStorage.getItem("tunic") == 'true') {
     document.getElementById("tunic").style.display = "none";
     document.getElementById("tunicunlocked").style.display = "block";
   }
-  if (goggles == true) {
+  if (localStorage.getItem("goggles") == 'true') {
     document.getElementById("goggles").style.display = "none";
     document.getElementById("gogglesunlocked").style.display = "block";
   }
 
-  switch (pass) {
-    case 0:
+  switch (localStorage.getItem("pass")) {
+    case '0':
       document.getElementById("passStatus").innerHTML = window[language].inventory.passNo;
       break;
-    case 1:
+    case '1':
       document.getElementById("passStatus").innerHTML = window[language].inventory.passYes;
       break;
-    case 2:
+    case '2':
       document.getElementById("passStatus").innerHTML = window[language].inventory.passUsed;
       break;
   }
@@ -302,17 +331,17 @@ function updateInventory() {
   let sword2Sprite = document.getElementsByClassName("sword2Sprite");
   let sword3Sprite = document.getElementsByClassName("sword3Sprite");
 
-  if (sword1 == true) {
+  if (localStorage.getItem("sword1") == 'true') {
     for (let i = 0; i < sword1Sprite.length; i++) {
       sword1Sprite[i].style.color = "white";
     }
   }
-  if (sword2 == true) {
+  if (localStorage.getItem("sword2") == 'true') {
     for (let i = 0; i < sword2Sprite.length; i++) {
       sword2Sprite[i].style.color = "white";
     }
   }
-  if (sword3 == true) {
+  if (localStorage.getItem("sword3") == 'true') {
     for (let i = 0; i < sword3Sprite.length; i++) {
       sword3Sprite[i].style.color = "white";
     }
@@ -332,7 +361,7 @@ function FuseSword() {
   document.getElementById("sword-title").innerHTML = window[language].inventory.islandSword.title;
   document.getElementById("sword-desc").innerHTML = window[language].inventory.islandSword.islandSwordDesc;
 
-  islandSword = true;
+  localStorage.setItem("islandSword", true);
 }
 
 //Início do chat, para colocar os textos na div "chat"
@@ -352,6 +381,36 @@ function disableKeyFeatures() {
 }
 
 function updateScreen(nextImg, text) {
+
+  // IMPORTANTE: TODAS AS VARIÁVEIS DO LOCALSTORAGE PASSAM A SEREM VARIÁVEIS
+  // SIMPLES NESSA FUNÇÃO, SE FOR USAR UMA VARIÁVEL NOVA, DECLARE-A AQUI PRIMEIRO
+  var sticker = JSON.parse(localStorage.getItem("sticker"));
+  var stick = JSON.parse(localStorage.getItem("stick"));
+  var coins = JSON.parse(localStorage.getItem("coins"));
+  var pass = JSON.parse(localStorage.getItem("pass"));
+  //0 = Não tem o pass
+  //1 = Tem mas não usou
+  //2 = Tem E já usou
+
+  var sword1 = JSON.parse(localStorage.getItem("sword1")); //Pommel
+  var sword2 = JSON.parse(localStorage.getItem("sword2")); //Hilt
+  var sword3 = JSON.parse(localStorage.getItem("sword3")); //Blade
+  var islandSword = JSON.parse(localStorage.getItem("islandSword"));
+
+  var broadsword = JSON.parse(localStorage.getItem("broadsword"));
+  var tunic = JSON.parse(localStorage.getItem("tunic"));
+  var goggles = JSON.parse(localStorage.getItem("goggles"));
+
+  var bearScared = JSON.parse(localStorage.getItem("bearScared"));
+  var castleEntered = JSON.parse(localStorage.getItem("castleEntered"));
+  var palaceEntered = JSON.parse(localStorage.getItem("palaceEntered"));
+  var shopEntered = JSON.parse(localStorage.getItem("shopEntered"));
+  var islandEntered = JSON.parse(localStorage.getItem("islandEntered"));
+  var kingQuest = JSON.parse(localStorage.getItem("kingQuest"));
+  var angelVisited = JSON.parse(localStorage.getItem("angelVisited"));
+  var goblinGotMoney = JSON.parse(localStorage.getItem("goblinGotMoney"));
+  var goblinVisited = JSON.parse(localStorage.getItem("goblinVisited"))
+
   var selectedLanguage = window[language];
   let ImgQuery;
 
@@ -401,6 +460,16 @@ function updateScreen(nextImg, text) {
   TW.pauseFor(250); //Espera inicial quando se muda a ação/localização
 
   switch (text) {
+
+    case "welcomeBack":
+      TW.typeString(selectedLanguage.welcomeBack1)
+      .pauseFor(smallDel)
+      TW.typeString(selectedLanguage.welcomeBack2)
+      .pauseFor(smallDel)
+      TW.typeString(selectedLanguage.welcomeBack3)
+      .start();
+    break;
+    
     case "chooselocation":
       TW.typeString(selectedLanguage.chooseLines[0])
         .pauseFor(smallDel)
@@ -444,8 +513,9 @@ function updateScreen(nextImg, text) {
           .pauseFor(bigDel)
           .typeString(selectedLanguage.wellThrowCoinLines[6])
           .start();
-        goggles = true;
-        coins -= 1;
+        
+        localStorage.setItem("goggles", true);
+        localStorage.setItem("coins", coins - 1);
         updateInventory();
       } else {
         TW.typeString(selectedLanguage.wellThrowCoinWOCoinLines[0])
@@ -537,7 +607,7 @@ function updateScreen(nextImg, text) {
           .pauseFor(smallDel)
           .typeString(selectedLanguage.ForestBearWSwordLines[9])
           .start();
-        bearScared = true;
+        localStorage.setItem("bearScared", true);
 
         document.getElementsByClassName("pier")[0].classList.remove("disabled");
       } else {
@@ -621,19 +691,13 @@ function updateScreen(nextImg, text) {
           .pauseFor(hugeDel)
           .typeString(selectedLanguage.islandFirstLines[11])
           .start();
-        islandEntered = true;
-        tunic = true;
+        localStorage.setItem("islandEntered", true);
+        localStorage.setItem("tunic", true);
         updateInventory();
 
-        document
-          .getElementsByClassName("island")[0]
-          .classList.remove("disabled");
-        document
-          .getElementsByClassName("island")[1]
-          .classList.remove("disabled");
-        document
-          .getElementsByClassName("island")[2]
-          .classList.remove("disabled");
+        document.getElementsByClassName("island")[0].classList.remove("disabled");
+        document.getElementsByClassName("island")[1].classList.remove("disabled");
+        document.getElementsByClassName("island")[2].classList.remove("disabled");
 
         place = "island";
         UpdateColors();
@@ -919,8 +983,8 @@ function updateScreen(nextImg, text) {
           .pauseFor(smallDel)
           .typeString(selectedLanguage.castleLines[3])
           .start();
-        castleEntered = true;
-      } else {
+          localStorage.setItem("castleEntered", true);
+        } else {
         TW.typeString(selectedLanguage.enterCastleLines[0])
           .pauseFor(bigDel)
           .typeString(selectedLanguage.enterCastleLines[1])
@@ -948,7 +1012,7 @@ function updateScreen(nextImg, text) {
           .typeString(selectedLanguage.palaceEnterFirstLines[4])
           .typeString(selectedLanguage.palaceEnterFirstLines[5])
           .start();
-        palaceEntered = true;
+          localStorage.setItem("palaceEntered", true);
       } else if (sword1 == false && sword2 == true && sword3 == true) {
         TW.typeString(selectedLanguage.kingGivePommelLines[0])
           .pauseFor(smallDel)
@@ -995,8 +1059,8 @@ function updateScreen(nextImg, text) {
         .pauseFor(smallDel)
         .typeString(selectedLanguage.kingPommelPart2Lines[4])
         .start();
-      sword1 = true;
-      updateInventory();
+        localStorage.setItem("sword1", true);
+        updateInventory();
       break;
 
     case "kingWhoAreYou":
@@ -1068,7 +1132,7 @@ function updateScreen(nextImg, text) {
         .pauseFor(smallDel)
         .typeString(selectedLanguage.kingHowDoThisLines[7])
         .start();
-      kingQuest = true;
+      localStorage.setItem("kingQuest", true);
       break;
 
     case "kingBye":
@@ -1100,7 +1164,7 @@ function updateScreen(nextImg, text) {
           .typeString(selectedLanguage.shopFirstLines[5])
           .typeString(selectedLanguage.shopFirstLines[6])
           .start();
-        shopEntered = true;
+          localStorage.setItem("shopEntered", true);
       }
       break;
 
@@ -1138,8 +1202,8 @@ function updateScreen(nextImg, text) {
           .pauseFor(smallDel)
           .typeString(selectedLanguage.shopBroadswordYesLines[3])
           .start();
-        broadsword = true;
-        coins -= 20;
+        localStorage.setItem("broadsword", true);
+        localStorage.setItem("coins", coins-20);
         updateInventory();
       } else {
         updateScreen("shop", "shopTooPoor");
@@ -1155,8 +1219,9 @@ function updateScreen(nextImg, text) {
           .pauseFor(smallDel)
           .typeString(selectedLanguage.shopStickerYesLines[3])
           .start();
-        sticker = true;
-        coins -= 10;
+        localStorage.setItem("sticker", true);
+        localStorage.setItem("coins", coins-10);
+
         updateInventory();
       } else {
         updateScreen("shop", "shopTooPoor");
@@ -1209,7 +1274,7 @@ function updateScreen(nextImg, text) {
           .typeString(selectedLanguage.shopPassWKingQuest[6])
           .typeString(selectedLanguage.shopPassWKingQuest[7])
           .start();
-        pass = 1;
+          localStorage.setItem("pass", 1);
         updateInventory();
       }
       break;
@@ -1286,8 +1351,8 @@ function updateScreen(nextImg, text) {
         .typeString(selectedLanguage.weirdRocksStealEye[2])
         .start();
 
-      sword3 = true;
-      updateInventory();
+        localStorage.setItem("sword3", true);
+        updateInventory();
 
       break;
 
@@ -1365,8 +1430,8 @@ function updateScreen(nextImg, text) {
         .pauseFor(2000)
         .typeString(selectedLanguage.farmLinesApproach[4])
         .start();
-      sword2 = true;
-      updateInventory();
+        localStorage.setItem("sword2", true);
+        updateInventory();
       break;
 
     case "wall":
@@ -1413,8 +1478,8 @@ function updateScreen(nextImg, text) {
         .pauseFor(bigDel)
         .typeString(selectedLanguage.wallUsePassLines[3])
         .start();
-      pass = 2;
-      updateInventory();
+        localStorage.setItem("pass", 2);
+        updateInventory();
       document.getElementsByClassName("cave")[0].classList.remove("disabled");
       document.getElementsByClassName("cave")[1].classList.remove("disabled");
       break;
@@ -1471,7 +1536,7 @@ function updateScreen(nextImg, text) {
             .typeString(selectedLanguage.goblinFirstLines[6])
             .typeString(selectedLanguage.goblinFirstLines[7])
             .start();
-          goblinVisited = true;
+          localStorage.setItem("goblinVisited", true);
         } else {
           TW.typeString(selectedLanguage.goblinLines[0])
             .pauseFor(smallDel)
@@ -1629,9 +1694,9 @@ function updateScreen(nextImg, text) {
         .typeString(selectedLanguage.goblinMoneyLines[6])
         .start();
 
-      goblinGotMoney = true;
-      coins += 31;
-      updateInventory();
+        localStorage.setItem("goblinGotMoney", true);
+        localStorage.setItem("coins", 31);
+        updateInventory();
       break;
 
     case "goblinBye":
