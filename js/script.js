@@ -1,4 +1,4 @@
-// LEMBRA QUE O LOCALSTORAGE SÓ USA STRING POR FAVORRR
+if(localStorage.length == 0){ document.getElementById("continuebutton").disabled = true; }
 
 let del = 20;
 let smallDel = 500; //Delays usados para dar uma pausa entre frases
