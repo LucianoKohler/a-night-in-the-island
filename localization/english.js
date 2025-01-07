@@ -4,7 +4,8 @@ var english = {
 
 start: {
   buttons: {
-    play: `START`,
+    newgame: `NEW GAME`,
+    continue: `CONTINUE`,
     howtoplay: `HOW TO PLAY`,
     credits: `CREDITS`,
   },
@@ -143,8 +144,12 @@ WWYS: `What will you say? <br><br>`,
 YAEH: `<a href="#" onclick="dyingAnimation()">Your adventure ends here.</a>`,
 exitCabin: `<b>You exited the cabin.</b>`,
 
+welcomeBack1: `Welcome back to the island,`,
+welcomeBack2: ` remember to use your map if you ever get stuck,`,
+welcomeBack3: ` good luck!`,
+
 chooseLines: {
-  0: `You can use the map anytime you want to leave the place you currently are,`,
+  0: `On this right menu, there's, a clickable button that opens a map that indicates your current position in yellow`,
   1: `use it if you feel stuck!`,
 },
 
@@ -457,7 +462,7 @@ wallByeLines: {
 },
 
 wallUsePassLines: {
-  0: `You give the Pass to the thing, it gets really happy! <br><br>`,
+  0: `You give the Pass to the thing, and it gets really happy! <br><br>`,
   1: `- OOOOOHH, THE BOSS WILL LET ME HAVE A DAY OFF!!!<br>`,
   2: `- Ok, you may pass and admire the cave.<br><br>`,
   3: `The pole besides him lifts. <b>You now have access to the cave!</b>.`,

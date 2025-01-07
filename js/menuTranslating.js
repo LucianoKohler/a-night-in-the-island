@@ -15,7 +15,8 @@ function translateMenu() {
   }
 
   // Menu Principal
-  document.getElementById('startbutton').innerHTML = translatedText.start.buttons.play;
+  document.getElementById('newgamebutton').innerHTML = translatedText.start.buttons.newgame;
+  document.getElementById('continuebutton').innerHTML = translatedText.start.buttons.continue;
   document.getElementById('howtoplaybutton').innerHTML = translatedText.start.buttons.howtoplay;
   document.getElementById('creditsbutton').innerHTML = translatedText.start.buttons.credits;
   document.getElementById('madeWithLove').innerHTML = translatedText.start.madeWith;

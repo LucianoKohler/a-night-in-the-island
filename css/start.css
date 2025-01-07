@@ -47,6 +47,15 @@
     background-color: white; 
 }
 
+.buttons button:disabled{
+    filter: brightness(50%) !important;
+    cursor:default !important;
+}
+
+.buttons button:disabled:hover{
+    background-color: var(--bg);
+}
+
 #bottomBar{
     display: flex;
     position: absolute;
