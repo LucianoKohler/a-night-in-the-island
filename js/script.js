@@ -282,10 +282,6 @@ function dyingAnimation() {
   document.getElementById("deathmessage").style.display = "flex";
 }
 
-document.addEventListener("keydown", (e) => {
-  if (e.key == "D") dyingAnimation();
-});
-
 function updateInventory() {
   document.getElementById("Coins").innerHTML = window[language].inventory.coins;
   document.getElementById("coinCount").innerHTML = localStorage.getItem("coins");

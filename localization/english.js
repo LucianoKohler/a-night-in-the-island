@@ -462,7 +462,7 @@ wallByeLines: {
 },
 
 wallUsePassLines: {
-  0: `You give the Pass to the thing, it gets really happy! <br><br>`,
+  0: `You give the Pass to the thing, and it gets really happy! <br><br>`,
   1: `- OOOOOHH, THE BOSS WILL LET ME HAVE A DAY OFF!!!<br>`,
   2: `- Ok, you may pass and admire the cave.<br><br>`,
   3: `The pole besides him lifts. <b>You now have access to the cave!</b>.`,
