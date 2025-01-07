@@ -5,9 +5,7 @@ let smallDel = 500; //Delays usados para dar uma pausa entre frases
 let bigDel = 1000;
 let hugeDel = 1500;
 
-if(localStorage.length == 0){
-  document.getElementById("continuebutton").disabled = true;
-}
+
 
 const targetLang = new URLSearchParams(window.location.search).get('l');
 var language = targetLang == 'pt-br' ? 'brazilian' : 'english';
@@ -29,7 +27,7 @@ function updateStart(div) {
     case "newgame":
 
       // Zerando o DB para evitar que o jogador tenha itens ao reiniciar
-      localStorage.setItem("Started", true);
+      localStorage.setItem("Started", false);
       localStorage.setItem("sticker", false);
       localStorage.setItem("stick", false);
       localStorage.setItem("coins", 0);
@@ -53,6 +51,15 @@ function updateStart(div) {
       localStorage.setItem("angelVisited", false);
       localStorage.setItem("goblinGotMoney", false);
       localStorage.setItem("goblinVisited", false);
+
+      // Reiniciando as áreas desbloqueáveis
+      document.getElementsByClassName("cave")[0].classList.add("disabled");
+      document.getElementsByClassName("cave")[1].classList.add("disabled");
+      document.getElementsByClassName("pier")[0].classList.add("disabled");
+      document.getElementsByClassName("island")[0].classList.add("disabled");
+      document.getElementsByClassName("island")[1].classList.add("disabled");
+      document.getElementsByClassName("island")[2].classList.add("disabled");
+
       
       document.body.requestFullscreen();
 
@@ -62,28 +69,7 @@ function updateStart(div) {
       gameScreen.style.display = "grid";
       patchNotesScreen.style.display = "none";
     
-      var twStart = new Typewriter(chatDiv, {
-        delay: del,
-      });
-      
-      twStart
-        .pauseFor(smallDel)
-        .typeString(selectedLanguage.startLines[0])
-        .pauseFor(smallDel)
-        .typeString(selectedLanguage.startLines[1])
-        .pauseFor(smallDel)
-        .typeString(selectedLanguage.startLines[2])
-        .pauseFor(smallDel)
-        .typeString(selectedLanguage.startLines[3])
-        .pauseFor(smallDel)
-        .typeString(selectedLanguage.startLines[4])
-        .pauseFor(smallDel)
-        .typeString(selectedLanguage.startLines[5])
-        .pauseFor(smallDel)
-        .typeString(selectedLanguage.WWYD)
-        .typeString(selectedLanguage.startLines[6])
-        .typeString(selectedLanguage.startLines[7])
-        .start();
+      updateScreen("forest", "startLines");
     break;
 
     case "continue":
@@ -158,10 +144,12 @@ function toMainMenu() {
   howToPlayScreen.style.display = "none";
   patchNotesScreen.style.display = "none";
   startScreen.style.display = "flex";
-
-  // Ativar o botão de continuar caso o jogador tenha feito algo
-  if(localStorage.length > 0){
-    document.getElementById("continuebutton").disabled = false;
+  
+  // Ativar/desativar o botão de continuar caso o jogador tenha feito algo
+  if(localStorage.getItem("Started") == 'false'){
+    document.getElementById("continuebutton").disabled = true;
+  }else{
+    document.getElementById("continuebutton").disabled = false
   }
 }
 
@@ -254,6 +242,7 @@ for (let i = 0; i <= allPlaces.length - 1; i++) {
     if (allPlaces[i].className != "goback") {
       place = allPlaces[i].className;
       currentLocation = document.querySelectorAll("." + place);
+      localStorage.setItem("Started", true);
 
       if (!allPlaces[i].classList[1]) {
         //Se NÃO houver a classe disabled
@@ -265,7 +254,6 @@ for (let i = 0; i <= allPlaces.length - 1; i++) {
 
   allPlaces[i].addEventListener("mousemove", (e) => {
     tooltip.style.display = "inline";
-    console.log(allPlaces[i].className);
 
     if (allPlaces[i].classList[1]) {
       tooltip.innerHTML = "???";
@@ -460,6 +448,25 @@ function updateScreen(nextImg, text) {
   TW.pauseFor(250); //Espera inicial quando se muda a ação/localização
 
   switch (text) {
+
+    case "startLines":  
+      TW.typeString(selectedLanguage.startLines[0])
+      .pauseFor(smallDel)
+      TW.typeString(selectedLanguage.startLines[1])
+      .pauseFor(smallDel)
+      TW.typeString(selectedLanguage.startLines[2])
+      .pauseFor(smallDel)
+      TW.typeString(selectedLanguage.startLines[3])
+      .pauseFor(smallDel)
+      TW.typeString(selectedLanguage.startLines[4])
+      .pauseFor(smallDel)
+      TW.typeString(selectedLanguage.startLines[5])
+      .pauseFor(smallDel)
+      TW.typeString(selectedLanguage.WWYD)
+      TW.typeString(selectedLanguage.startLines[6])
+      TW.typeString(selectedLanguage.startLines[7])
+      .start();
+      break;
 
     case "welcomeBack":
       TW.typeString(selectedLanguage.welcomeBack1)

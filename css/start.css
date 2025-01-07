@@ -48,8 +48,8 @@
 }
 
 .buttons button:disabled{
-    filter: brightness(50%);
-    cursor:default;
+    filter: brightness(50%) !important;
+    cursor:default !important;
 }
 
 .buttons button:disabled:hover{
