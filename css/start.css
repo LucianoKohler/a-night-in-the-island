@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     z-index: 1;
-    gap: 150px;
+    gap: 10vh;
     margin-bottom: 9999px;
 }
 
@@ -90,10 +90,6 @@
 }
 
 @media (max-height: 500px){
-    #start{
-        gap: 20px;
-    }
-
     #credits, #howtoplay, #patchNotes{
         width: 80%;
         height: 70%;
