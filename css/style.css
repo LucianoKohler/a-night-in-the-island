@@ -257,13 +257,12 @@ i {
 
 button {
     text-transform: uppercase;
-    border-radius: 3px;
     border: none;
     background-color: var(--bg);
     outline: 2px solid var(--main);
     width: 30%;
     height: 50px;
-    font-size: 1.4em;
+    font-size: 3vh;
 }
 
 button:hover {
