@@ -80,6 +80,7 @@ function updateStart(div) {
       document.getElementsByClassName("island")[2].classList.add("disabled");
 
       place = "forest";
+      UpdateColors();
       document.body.requestFullscreen();
 
       startScreen.style.display = "none";
@@ -93,6 +94,7 @@ function updateStart(div) {
 
     case "continue":
       place = "forest";
+      UpdateColors();
       startScreen.style.display = "none";
       gameScreen.style.display = "none";
       creditsScreen.style.display = "none";
