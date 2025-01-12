@@ -31,10 +31,10 @@
     border-radius: 3px;
     border: none;
     background-color: var(--bg);
-    outline: 2px solid var(--main);
-    width: 150px;
-    height: 150px;
-    font-size: 1.4em;
+    outline: .2vh solid var(--main);
+    width: 10vw;
+    height: 15vh;
+    font-size: 2.3vh;
 }
 
 .buttons button:hover{
@@ -92,9 +92,6 @@
 @media (max-height: 500px){
     #start{
         gap: 20px;
-    }
-    .buttons button{
-        height: 75px;
     }
 
     #credits, #howtoplay, #patchNotes{
