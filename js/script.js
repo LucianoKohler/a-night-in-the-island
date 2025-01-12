@@ -18,6 +18,25 @@ var gameScreen = document.getElementById("gamescreen");
 var creditsScreen = document.getElementById("credits");
 var howToPlayScreen = document.getElementById("howtoplay");
 var patchNotesScreen = document.getElementById("patchNotes");
+var wrongResolutionScreen = document.getElementById("wrongResolution");
+
+var wrongResOn = false;
+window.addEventListener('resize', () => {
+  if(window.innerWidth < window.innerHeight){
+    wrongResolutionScreen.style.display = "flex";
+    startScreen.style.display = "none";
+    gameScreen.style.display = "none";
+    creditsScreen.style.display = "none";
+    howToPlayScreen.style.display = "none";
+    patchNotesScreen.style.display = "none";
+    wrongResOn = true;
+  }else{
+    if(wrongResOn){
+      wrongResolutionScreen.style.display = "none";
+      startScreen.style.display = "flex";
+      wrongResOn = false;
+    }
+  }});
 
 //Para abrir o jogo
 function updateStart(div) {
@@ -60,7 +79,7 @@ function updateStart(div) {
       document.getElementsByClassName("island")[1].classList.add("disabled");
       document.getElementsByClassName("island")[2].classList.add("disabled");
 
-      
+      place = "forest";
       document.body.requestFullscreen();
 
       startScreen.style.display = "none";
@@ -73,6 +92,7 @@ function updateStart(div) {
     break;
 
     case "continue":
+      place = "forest";
       startScreen.style.display = "none";
       gameScreen.style.display = "none";
       creditsScreen.style.display = "none";
