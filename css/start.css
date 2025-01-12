@@ -28,7 +28,7 @@
 
 .buttons button{
     text-transform: uppercase;
-    border-radius: 3px;
+    border-radius: 5px;
     border: none;
     background-color: var(--bg);
     outline: .2vh solid var(--main);
@@ -48,7 +48,7 @@
 }
 
 .buttons button:disabled{
-    filter: brightness(50%) !important;
+    filter: brightness(30%) !important;
     cursor:default !important;
 }
 

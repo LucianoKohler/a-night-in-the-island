@@ -46,7 +46,7 @@ i {
 }
 
 #gamescreen {
-    outline: 1px solid var(--main);
+    outline: .1vw solid var(--main);
     width: 80%;
     height: 80%;
     display: grid;
@@ -60,7 +60,7 @@ i {
 #others,
 #map,
 #settings {
-    border: 1px solid var(--main);
+    border: .1vw solid var(--main);
     width: 100%;
     box-sizing: border-box;
 }
@@ -94,6 +94,7 @@ i {
 #chat {
     grid-area: 5/1/8/8;
     overflow: auto;
+    padding: 1.2vw;
 }
 
 #inventory {
@@ -259,10 +260,10 @@ button {
     text-transform: uppercase;
     border: none;
     background-color: var(--bg);
-    outline: 2px solid var(--main);
+    outline: .2vw solid var(--main);
     width: 30%;
     height: 50px;
-    font-size: 3vh;
+    font-size: 1.2vw;
 }
 
 button:hover {
@@ -273,10 +274,6 @@ button:hover {
 
 button:active {
     background-color: var(--main);
-}
-
-#chat {
-    padding: 15px;
 }
 
 #chat,
@@ -292,7 +289,8 @@ button:active {
 }
 
 #inventory {
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 
@@ -311,7 +309,7 @@ button:active {
 }
 
 #inventory p {
-    margin-left: 15px;
+    margin-left: 2vw;
 }
 
 #inventory pre {
@@ -340,13 +338,13 @@ button:active {
 
 
     ::-webkit-scrollbar {
-        width: 10px;
+        width: 1vw;
     }
 
 
     ::-webkit-scrollbar-track {
         background-color: var(--bg);
-        border: 1px solid var(--main);
+        border: .1vw solid var(--main);
     }
 
     ::-webkit-scrollbar-thumb {
