@@ -1,11 +1,7 @@
-if(localStorage.length == 0){ document.getElementById("continuebutton").disabled = true; }
-
 let del = 20;
 let smallDel = 500; //Delays usados para dar uma pausa entre frases
 let bigDel = 1000;
 let hugeDel = 1500;
-
-
 
 const targetLang = new URLSearchParams(window.location.search).get('l');
 var language = targetLang == 'pt-br' ? 'brazilian' : 'english';
@@ -20,7 +16,9 @@ var howToPlayScreen = document.getElementById("howtoplay");
 var patchNotesScreen = document.getElementById("patchNotes");
 var wrongResolutionScreen = document.getElementById("wrongResolution");
 
+var isPlaying = false;
 var wrongResOn = false;
+
 window.addEventListener('resize', () => {
   if(window.innerWidth < window.innerHeight){
     wrongResolutionScreen.style.display = "flex";
@@ -32,55 +30,79 @@ window.addEventListener('resize', () => {
     wrongResOn = true;
   }else{
     if(wrongResOn){
-      wrongResolutionScreen.style.display = "none";
-      startScreen.style.display = "flex";
+      if(isPlaying){
+        wrongResolutionScreen.style.display = "none";
+        gameScreen.style.display = "grid";
+      }else{
+        wrongResolutionScreen.style.display = "none";
+        startScreen.style.display = "flex";
+      }
       wrongResOn = false;
     }
   }});
 
+function eraseSave(){
+  // Zerando o DB
+  localStorage.setItem("Started", false);
+  localStorage.setItem("sticker", false);
+  localStorage.setItem("stick", false);
+  localStorage.setItem("coins", 0);
+  localStorage.setItem("pass", 0);
+  // 0 = Não tem o pass
+  // 1 = Tem mas não usou
+  // 2 = Tem E já usou
+  localStorage.setItem("sword1", false); // Pommel
+  localStorage.setItem("sword2", false); // Hilt
+  localStorage.setItem("sword3", false); // Blade
+  localStorage.setItem("islandSword", false);
+  localStorage.setItem("broadsword", false);
+  localStorage.setItem("tunic", false);
+  localStorage.setItem("goggles", false);
+  localStorage.setItem("bearScared", false);
+  localStorage.setItem("castleEntered", false);
+  localStorage.setItem("palaceEntered", false);
+  localStorage.setItem("shopEntered", false);
+  localStorage.setItem("islandEntered", false);
+  localStorage.setItem("kingQuest", false);
+  localStorage.setItem("angelVisited", false);
+  localStorage.setItem("goblinGotMoney", false);
+  localStorage.setItem("goblinVisited", false);
+
+  localStorage.setItem("currentPalette", 0);
+  localStorage.setItem("currentSpeed", 1);
+  localStorage.setItem("currentDelay", 0);
+
+  // Reiniciando as áreas desbloqueáveis
+  document.getElementsByClassName("cave")[0].classList.add("disabled");
+  document.getElementsByClassName("cave")[1].classList.add("disabled");
+  document.getElementsByClassName("pier")[0].classList.add("disabled");
+  document.getElementsByClassName("island")[0].classList.add("disabled");
+  document.getElementsByClassName("island")[1].classList.add("disabled");
+  document.getElementsByClassName("island")[2].classList.add("disabled");
+
+  place = "forest";
+  UpdateColors();
+}
+
+function updateContinueButton(){
+  if(localStorage.length == 0){ document.getElementById("continuebutton").disabled = true; }
+  if(localStorage.getItem("Started") == 'false'){
+    document.getElementById("continuebutton").disabled = true;
+  }else{
+    document.getElementById("continuebutton").disabled = false
+  }
+}
+
 //Para abrir o jogo
 function updateStart(div) {
-  var selectedLanguage = window[language];
-
   switch (div) {
     case "newgame":
 
-      // Zerando o DB para evitar que o jogador tenha itens ao reiniciar
-      localStorage.setItem("Started", false);
-      localStorage.setItem("sticker", false);
-      localStorage.setItem("stick", false);
-      localStorage.setItem("coins", 0);
-      localStorage.setItem("pass", 0);
-      // 0 = Não tem o pass
-      // 1 = Tem mas não usou
-      // 2 = Tem E já usou
-      localStorage.setItem("sword1", false); // Pommel
-      localStorage.setItem("sword2", false); // Hilt
-      localStorage.setItem("sword3", false); // Blade
-      localStorage.setItem("islandSword", false);
-      localStorage.setItem("broadsword", false);
-      localStorage.setItem("tunic", false);
-      localStorage.setItem("goggles", false);
-      localStorage.setItem("bearScared", false);
-      localStorage.setItem("castleEntered", false);
-      localStorage.setItem("palaceEntered", false);
-      localStorage.setItem("shopEntered", false);
-      localStorage.setItem("islandEntered", false);
-      localStorage.setItem("kingQuest", false);
-      localStorage.setItem("angelVisited", false);
-      localStorage.setItem("goblinGotMoney", false);
-      localStorage.setItem("goblinVisited", false);
-
-      // Reiniciando as áreas desbloqueáveis
-      document.getElementsByClassName("cave")[0].classList.add("disabled");
-      document.getElementsByClassName("cave")[1].classList.add("disabled");
-      document.getElementsByClassName("pier")[0].classList.add("disabled");
-      document.getElementsByClassName("island")[0].classList.add("disabled");
-      document.getElementsByClassName("island")[1].classList.add("disabled");
-      document.getElementsByClassName("island")[2].classList.add("disabled");
-
-      place = "forest";
-      UpdateColors();
+      isPlaying = true;
+      eraseSave();
+      setPalette(0);
+      setTextSpeed(0);
+      setDelayTime(0);
       document.body.requestFullscreen();
 
       startScreen.style.display = "none";
@@ -93,7 +115,12 @@ function updateStart(div) {
     break;
 
     case "continue":
+
+      isPlaying = true;
       place = "forest";
+      setPalette("useSaved");
+      setTextSpeed("useSaved");
+      setDelayTime("useSaved");
       UpdateColors();
       startScreen.style.display = "none";
       gameScreen.style.display = "none";
@@ -161,6 +188,7 @@ function UpdateInfoDiv(div) {
 }
 
 function toMainMenu() {
+  isPlaying = false;
   gameScreen.style.display = "none";
   creditsScreen.style.display = "none";
   howToPlayScreen.style.display = "none";
@@ -168,11 +196,7 @@ function toMainMenu() {
   startScreen.style.display = "flex";
   
   // Ativar/desativar o botão de continuar caso o jogador tenha feito algo
-  if(localStorage.getItem("Started") == 'false'){
-    document.getElementById("continuebutton").disabled = true;
-  }else{
-    document.getElementById("continuebutton").disabled = false
-  }
+  updateContinueButton();
 }
 
 // Mudar velocidade do texto
@@ -184,34 +208,38 @@ let speeds = [
   ["0",  3],
 ];
 
-let currentSpeed = 1;
-
 function setTextSpeed(step) {
-  currentSpeed += step;
+  // step pode ser tanto um número (+1, 0, -1), como "useSaved"
+  let currentSpeed = JSON.parse(localStorage.getItem("currentSpeed"));
+  if (currentSpeed == null) currentSpeed = 1;
 
+  if(step == 0) currentSpeed = 1;
+  if (step != "useSaved") currentSpeed += step;
   if (currentSpeed == 4) currentSpeed = 0;
   if (currentSpeed == -1) currentSpeed = 3;
 
   del = speeds[currentSpeed][0];
   document.getElementById("speedName").innerHTML = window[language].settings.textSpeed[speeds[currentSpeed][1]];
+  localStorage.setItem("currentSpeed", currentSpeed);
 }
 
 //Mudar paleta de cor
 
 var palettes = [
   ["#ffffff", "#000000", 0],
-  ["#cfab4a", "#292b30", 1],
+  ["#cfab4a", "#1b1e24", 1],
   ["#13e600", "#172115", 2],
   ["#fcd1d7", "#42202d", 3],
   ["#adc3e8", "#0d132a", 4],
 ];
 
-let currentPalette = 0;
-
 function setPalette(step) {
+  // step pode tanto ser um número (+1, 0, -1), como "useSaved" para pegar a paleta do localStorage
+  let currentPalette = JSON.parse(localStorage.getItem("currentPalette"));
+  if (currentPalette == null) { currentPalette = 0; }
 
   if(step == 0) currentPalette = 0;
-  else currentPalette += step;
+  else if(step != "useSaved") currentPalette += step;
   
   if (currentPalette == 5) currentPalette = 0;
   if (currentPalette == -1) currentPalette = 4;
@@ -223,6 +251,8 @@ function setPalette(step) {
     .querySelector(":root")
     .style.setProperty("--bg", palettes[currentPalette][1]);
   document.getElementById("paletteName").innerHTML = window[language].settings.colorPalette[currentPalette];
+
+  localStorage.setItem("currentPalette", currentPalette);
 }
 
 //Mudar delay entre frases
@@ -233,12 +263,12 @@ let betweenDelays = [
   [0, 0, 0, 2],
 ];
 
-let currentDelay = 0;
-
 function setDelayTime(step){
-
-  currentDelay += step;
-
+  let currentDelay = JSON.parse(localStorage.getItem("currentDelay"));
+  if (currentDelay == null) currentDelay = 0;
+  if(step == 0) currentDelay = 0;
+  if(step != "useSaved") currentDelay += step;
+  
   if (currentDelay == 3) currentDelay = 0;
   if (currentDelay == -1) currentDelay = 2;
 
@@ -247,6 +277,8 @@ function setDelayTime(step){
   hugeDel = betweenDelays[currentDelay][2];
 
   document.getElementById("delayName").innerHTML = window[language].settings.delayBetween[betweenDelays[currentDelay][3]];
+
+  localStorage.setItem("currentDelay", currentDelay);
 }
 
 //Fazendo com que a localização atual fique amarela no mapa
@@ -352,6 +384,10 @@ function updateInventory() {
       sword3Sprite[i].style.color = "white";
     }
   }
+  // Refundir caso o jogador saia
+  if(localStorage.getItem("islandSword") == 'true'){
+    FuseSword();
+  }
 }
 
 function FuseSword() {
@@ -380,6 +416,9 @@ function disableKeyFeatures() {
     //Andar pelo mapa
     allPlaces[i].classList.add("disabled");
   }
+
+  document.getElementById("tomainmenu").onclick = "";
+  document.getElementById("tomainmenu").disabled = true;
 
   setPalette(0);
   document.getElementById("paletteForward").onclick = ""; //Mudar paleta
@@ -821,7 +860,7 @@ function updateScreen(nextImg, text) {
           .typeString(selectedLanguage.altarFirstLines[12])
           .typeString(selectedLanguage.altarFirstLines[13])
           .start();
-        angelVisited = true;
+        localStorage.setItem("angelVisited", true);
       } else {
         TW.typeString(selectedLanguage.altarAbandonedLines[0])
           .pauseFor(smallDel)
@@ -2204,6 +2243,15 @@ function winGame() {
   });
 
   TWEnding.pauseFor(250).typeString(window[language].exitCabin).start();
+
+  eraseSave();
 }
 
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'w' || e.key === 'W') {
+    winGame();
+  }
+});
+
 UpdateColors();
+updateContinueButton();

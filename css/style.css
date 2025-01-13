@@ -1,15 +1,17 @@
-html,
-body {
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-}
-
 :root {
     --main: #ffffff;
     --bg: #000000;
     --leshy: #008000;
 }
+
+html,
+body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-color: var(--bg);
+}
+
 
 * {
     font-family: monospace;
@@ -74,7 +76,7 @@ i {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     overflow: hidden;
 }
 
@@ -130,6 +132,16 @@ i {
 #others ul li button {
     width: 100%;
     height: 100%;
+}
+
+/* Estilo usado ao entrar na cabana para impossibilitar sair dela por medo */
+#tomainmenu:disabled {
+    filter: brightness(30%) !important;
+    cursor: default !important;
+}
+
+#tomainmenu:disabled:hover {
+    background-color: var(--bg);
 }
 
 #map {
