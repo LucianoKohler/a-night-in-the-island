@@ -49,7 +49,7 @@
 
 .buttons button:disabled{
     filter: brightness(30%) !important;
-    cursor:default !important;
+    cursor: default !important;
 }
 
 .buttons button:disabled:hover{
