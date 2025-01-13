@@ -1,11 +1,7 @@
-if(localStorage.length == 0){ document.getElementById("continuebutton").disabled = true; }
-
 let del = 20;
 let smallDel = 500; //Delays usados para dar uma pausa entre frases
 let bigDel = 1000;
 let hugeDel = 1500;
-
-
 
 const targetLang = new URLSearchParams(window.location.search).get('l');
 var language = targetLang == 'pt-br' ? 'brazilian' : 'english';
@@ -38,6 +34,54 @@ window.addEventListener('resize', () => {
     }
   }});
 
+function eraseSave(){
+  // Zerando o DB
+  localStorage.setItem("Started", false);
+  localStorage.setItem("sticker", false);
+  localStorage.setItem("stick", false);
+  localStorage.setItem("coins", 0);
+  localStorage.setItem("pass", 0);
+  // 0 = Não tem o pass
+  // 1 = Tem mas não usou
+  // 2 = Tem E já usou
+  localStorage.setItem("sword1", false); // Pommel
+  localStorage.setItem("sword2", false); // Hilt
+  localStorage.setItem("sword3", false); // Blade
+  localStorage.setItem("islandSword", false);
+  localStorage.setItem("broadsword", false);
+  localStorage.setItem("tunic", false);
+  localStorage.setItem("goggles", false);
+  localStorage.setItem("bearScared", false);
+  localStorage.setItem("castleEntered", false);
+  localStorage.setItem("palaceEntered", false);
+  localStorage.setItem("shopEntered", false);
+  localStorage.setItem("islandEntered", false);
+  localStorage.setItem("kingQuest", false);
+  localStorage.setItem("angelVisited", false);
+  localStorage.setItem("goblinGotMoney", false);
+  localStorage.setItem("goblinVisited", false);
+
+  // Reiniciando as áreas desbloqueáveis
+  document.getElementsByClassName("cave")[0].classList.add("disabled");
+  document.getElementsByClassName("cave")[1].classList.add("disabled");
+  document.getElementsByClassName("pier")[0].classList.add("disabled");
+  document.getElementsByClassName("island")[0].classList.add("disabled");
+  document.getElementsByClassName("island")[1].classList.add("disabled");
+  document.getElementsByClassName("island")[2].classList.add("disabled");
+
+  place = "forest";
+  UpdateColors();
+}
+
+function updateContinueButton(){
+  if(localStorage.length == 0){ document.getElementById("continuebutton").disabled = true; }
+  if(localStorage.getItem("Started") == 'false'){
+    document.getElementById("continuebutton").disabled = true;
+  }else{
+    document.getElementById("continuebutton").disabled = false
+  }
+}
+
 //Para abrir o jogo
 function updateStart(div) {
   var selectedLanguage = window[language];
@@ -45,42 +89,7 @@ function updateStart(div) {
   switch (div) {
     case "newgame":
 
-      // Zerando o DB para evitar que o jogador tenha itens ao reiniciar
-      localStorage.setItem("Started", false);
-      localStorage.setItem("sticker", false);
-      localStorage.setItem("stick", false);
-      localStorage.setItem("coins", 0);
-      localStorage.setItem("pass", 0);
-      // 0 = Não tem o pass
-      // 1 = Tem mas não usou
-      // 2 = Tem E já usou
-      localStorage.setItem("sword1", false); // Pommel
-      localStorage.setItem("sword2", false); // Hilt
-      localStorage.setItem("sword3", false); // Blade
-      localStorage.setItem("islandSword", false);
-      localStorage.setItem("broadsword", false);
-      localStorage.setItem("tunic", false);
-      localStorage.setItem("goggles", false);
-      localStorage.setItem("bearScared", false);
-      localStorage.setItem("castleEntered", false);
-      localStorage.setItem("palaceEntered", false);
-      localStorage.setItem("shopEntered", false);
-      localStorage.setItem("islandEntered", false);
-      localStorage.setItem("kingQuest", false);
-      localStorage.setItem("angelVisited", false);
-      localStorage.setItem("goblinGotMoney", false);
-      localStorage.setItem("goblinVisited", false);
-
-      // Reiniciando as áreas desbloqueáveis
-      document.getElementsByClassName("cave")[0].classList.add("disabled");
-      document.getElementsByClassName("cave")[1].classList.add("disabled");
-      document.getElementsByClassName("pier")[0].classList.add("disabled");
-      document.getElementsByClassName("island")[0].classList.add("disabled");
-      document.getElementsByClassName("island")[1].classList.add("disabled");
-      document.getElementsByClassName("island")[2].classList.add("disabled");
-
-      place = "forest";
-      UpdateColors();
+      eraseSave();
       document.body.requestFullscreen();
 
       startScreen.style.display = "none";
@@ -168,11 +177,7 @@ function toMainMenu() {
   startScreen.style.display = "flex";
   
   // Ativar/desativar o botão de continuar caso o jogador tenha feito algo
-  if(localStorage.getItem("Started") == 'false'){
-    document.getElementById("continuebutton").disabled = true;
-  }else{
-    document.getElementById("continuebutton").disabled = false
-  }
+  updateContinueButton();
 }
 
 // Mudar velocidade do texto
@@ -821,7 +826,7 @@ function updateScreen(nextImg, text) {
           .typeString(selectedLanguage.altarFirstLines[12])
           .typeString(selectedLanguage.altarFirstLines[13])
           .start();
-        angelVisited = true;
+        localStorage.setItem("angelVisited", true);
       } else {
         TW.typeString(selectedLanguage.altarAbandonedLines[0])
           .pauseFor(smallDel)
@@ -2204,6 +2209,15 @@ function winGame() {
   });
 
   TWEnding.pauseFor(250).typeString(window[language].exitCabin).start();
+
+  eraseSave();
 }
 
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'w' || e.key === 'W') {
+    winGame();
+  }
+});
+
 UpdateColors();
+updateContinueButton();
