@@ -149,8 +149,8 @@ welcomeBack2: ` lembre-se de usar o mapa se você se sentir preso,`,
 welcomeBack3: ` boa sorte!`,
 
 chooseLines: {
-  0: `No menu ao lado, há um botão clicável que abre um mapa que indica sua localização atual em amarelo,`,
-  1: `use-o se você se sentir perdido!`,
+  0: `No menu do canto inferior direito, há um botão clicável que abre um mapa que indica sua localização atual em amarelo,`,
+  1: ` clique nas diferentes localizações da ilha para ir até elas, lembre-se de que algumas áreas podem estar bloqueadas!`,
 },
 
 startLines: {
