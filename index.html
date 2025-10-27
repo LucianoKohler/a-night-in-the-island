@@ -27,7 +27,7 @@
 
             <div class="buttons">
                 <button id="newgamebutton" onclick="updateStart('newgame')">New Game</button>
-                <button id="continuebutton" onclick="updateStart('continue')">Continue</button>
+                <button id="continuebutton" onclick="updateStart('continue')" disabled>Continue</button>
                 <button id="howtoplaybutton" onclick="updateStart('howtoplay')">How to Play</button>
                 <button id="creditsbutton" onclick="updateStart('credits');">Credits</button>
             </div>
@@ -1164,6 +1164,12 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
         <li>Changed some numbers to improve playing on mobile devices mobiles and making the game more responsive overall</li>
         <li>Removed certain characters that wouldn't appear on mobile screens and swapped them with similar ones</li>
         <li>Remodeled the forest and castle arts to seem cleaner to look at</li>
+      </ul>
+      <ul>
+        <h3>1.5 - 29/10/2025</h3>
+        
+        <p>Fixed the continue button being clickable even if the player didn't make any progress on the game</p>
+      </ul>
       <button onclick="toMainMenu()" style="float: right;">Go Back</button>
     </div>
     <div id="deathmessage">

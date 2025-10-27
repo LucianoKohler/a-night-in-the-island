@@ -15,29 +15,29 @@ function translateMenu() {
   }
 
   // Menu Principal
-  document.getElementById('newgamebutton').innerHTML = translatedText.start.buttons.newgame;
-  document.getElementById('continuebutton').innerHTML = translatedText.start.buttons.continue;
-  document.getElementById('howtoplaybutton').innerHTML = translatedText.start.buttons.howtoplay;
-  document.getElementById('creditsbutton').innerHTML = translatedText.start.buttons.credits;
-  document.getElementById('madeWithLove').innerHTML = translatedText.start.madeWith;
+  document.getElementById('newgamebutton').innerHTML = translatedText.mainMenu.buttons.newgame;
+  document.getElementById('continuebutton').innerHTML = translatedText.mainMenu.buttons.continue;
+  document.getElementById('howtoplaybutton').innerHTML = translatedText.mainMenu.buttons.howtoplay;
+  document.getElementById('creditsbutton').innerHTML = translatedText.mainMenu.buttons.credits;
+  document.getElementById('madeWithLove').innerHTML = translatedText.mainMenu.madeWith;
 
   // Como Jogar
-  document.getElementById('howtoplaytitle').innerHTML = translatedText.start.howtoplay.title;
-  document.getElementById('howtoplaybackbutton').innerHTML = translatedText.start.howtoplay.backButton;
+  document.getElementById('howtoplaytitle').innerHTML = translatedText.mainMenu.howtoplay.title;
+  document.getElementById('howtoplaybackbutton').innerHTML = translatedText.mainMenu.howtoplay.backButton;
   
   let howToPlayItems = document.getElementById('howtoplay').querySelector('ul').querySelectorAll('li');
-  for (let i = 0; i < howToPlayItems.length; i++) { howToPlayItems[i].innerHTML = translatedText.start.howtoplay[i]; }
+  for (let i = 0; i < howToPlayItems.length; i++) { howToPlayItems[i].innerHTML = translatedText.mainMenu.howtoplay[i]; }
 
   // Créditos
-  document.getElementById('creditstitle').innerHTML = translatedText.start.credits.title;
-  document.getElementById('creditsthanks').innerHTML = translatedText.start.credits.specialThanks;
-  document.getElementById('creditsbackbutton').innerHTML = translatedText.start.howtoplay.backButton;
+  document.getElementById('creditstitle').innerHTML = translatedText.mainMenu.credits.title;
+  document.getElementById('creditsthanks').innerHTML = translatedText.mainMenu.credits.specialThanks;
+  document.getElementById('creditsbackbutton').innerHTML = translatedText.mainMenu.howtoplay.backButton;
 
   let creditsTexts = document.getElementById('credits').querySelectorAll('p');
-  for (let i = 0; i < creditsTexts.length; i++) { creditsTexts[i].innerHTML = translatedText.start.credits[i]; }
+  for (let i = 0; i < creditsTexts.length; i++) { creditsTexts[i].innerHTML = translatedText.mainMenu.credits[i]; }
 
   let creditsItems = document.getElementById('credits').querySelector('ul').querySelectorAll('li');
-  for (let i = 0; i < creditsItems.length; i++) { creditsItems[i].innerHTML = translatedText.start.credits[i+4]; }
+  for (let i = 0; i < creditsItems.length; i++) { creditsItems[i].innerHTML = translatedText.mainMenu.credits[i+4]; }
 
   // Div Others
   document.getElementById('tomap').innerHTML = translatedText.others.map;

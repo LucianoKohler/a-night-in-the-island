@@ -2,7 +2,7 @@ var brazilian = {
 
 // LINHAS DO MENU PRINCIPAL
 
-  start: {
+  mainMenu: {
     buttons: {
       newgame: `NOVO JOGO`,
       continue: `CONTINUAR`,
@@ -148,12 +148,12 @@ welcomeBack1: `Bem vindo de volta à ilha,`,
 welcomeBack2: ` lembre-se de usar o mapa se você se sentir preso,`,
 welcomeBack3: ` boa sorte!`,
 
-chooseLines: {
+choose: {
   0: `No menu do canto inferior direito, há um botão clicável que abre um mapa que indica sua localização atual em amarelo,`,
   1: ` clique nas diferentes localizações da ilha para ir até elas, lembre-se de que algumas áreas podem estar bloqueadas!`,
 },
 
-startLines: {
+start: {
   0: `Você acorda em frente a uma grande e densa floresta,`,
   1: ` você não se lembra da sua casa,`,
   2: ` da sua vida,`,
@@ -165,20 +165,20 @@ startLines: {
   7: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Recuar da floresta</a>`,
 },
 
-forestLines: {
+forest: {
   0: `Você se reencontra com a floresta.<br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('forest', 'enterForest')">Entrar na floresta </a><br>`,
   2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Recuar da floresta</a>`,
 },
 
-forestBearScaredLines: {
+forestBearScared: {
   0: `Você se reencontra com a floresta.<br><br>`,
   1: `O urso desapareceu da floresta, e você não vê nada de interessante por entre as árvores,`,
   2: ` você sente que continuar sua trilha na floresta não vai te ajudar.`,
 },
 
-enterForestLinesWOStick: {
+enterForestWOStick: {
   0: `Você decide adentrar mais fundo na floresta, sem saber o que te espera do outro lado dela.<br><br>`,
   1: `Pelo chão, você encontra um graveto torto no chão:<br><br>`,
   2: `<b>Você adquiriu um graveto comum</b>! <br><br>`,
@@ -187,14 +187,14 @@ enterForestLinesWOStick: {
   4: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Recuar da floresta`,
 },
 
-enterForestLinesWithStick: {
+enterForestWithStick: {
   0: `De volta ao mesmo lugar, você ainda reconhece o lugar em que o graveto foi encontrado... <br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continuar</a> <br>`,
   2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Recuar da floresta</a>`,
 },
 
-ForestBearWSwordLines: {
+ForestBearWSword: {
   0: `Você prossegue sua caminhada florestal até que de repente...`,
   1: ` Um urso aparece das moitas!<br><br>`,
   2: `Você rapidamente saca sua pesadíssima espada,`,
@@ -207,7 +207,7 @@ ForestBearWSwordLines: {
   9: `<b>Agora, você pode acessar o píer!</b>`,
 },
 
-ForestBearWOSwordLines: {
+ForestBearWOSword: {
   0: `Você prossegue sua caminhada florestal até que de repente...`,
   1: ` Um urso aparece das moitas!<br><br>`,
   2: `Você segura seu bastão firmemente,`,
@@ -218,14 +218,14 @@ ForestBearWOSwordLines: {
   7: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">O que eu faço agora?</a>`,
 },
 
-pierLines: {
+pier: {
   0: `Um pequeno píer com um barquinho pronto para uso te aguarda em frente ao mar.<br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('island', 'island')">Velejar para algum lugar</a><br>`,
   2: `<a href="#" onclick="updateScreen('pier', 'pierStareSea')">Vislumbrar o mar</a>`,
 },
 
-pierStareSeaLines: {
+pierStareSea: {
   0: `Você olha para a água e percebe:`,
   1: ` Você não se lembra do seu próprio rosto!<br><br>`,
   2: `Ao se inclinar ao mar, você vê belas estrelas e a grande lua refletidas na água, mas falta algo...`,
@@ -235,7 +235,7 @@ pierStareSeaLines: {
   6: ` <a href="#" onclick="updateScreen('pier', 'pier')">Voltar</a>`,
 },
 
-islandFirstLines: {
+islandFirst: {
   0: `Você sobe no barco, agarra os remos e começa a remar,`,
   1: ` sem direção alguma, apenas com a intenção de sair do lugar.`,
   2: ` Alguns minutos de solitude com o som das ondas do mar te levam à uma pequena ilha,`,
@@ -250,14 +250,14 @@ islandFirstLines: {
   11: `<a href="#" onclick="updateScreen('islandhole', 'island')">É isso aí!</a>`,
 },
 
-islandLines: {
+island: {
   0: `Aí você está, parado na orla da ilha, junto ao buraco que você fez.<br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('island', 'islandRowHorizonPart1')">Remar ao horizonte</a><br>`,
   2: `<a href="#" onclick="updateScreen('island', 'islandAppreciateLandscape')">Apreciar a paisagem</a>`,
 },
 
-islandAppreciateLandscapeLines: {
+islandAppreciateLandscape: {
   0: `Você olha para o horizonte.<br><br>`,
   1: `Água,`,
   2: ` estrelas`,
@@ -271,13 +271,13 @@ islandAppreciateLandscapeLines: {
   10: `<a href="#" onclick="updateScreen('island', 'island')">Voltar</a>`,
 },
 
-islandRowHorizonPart1Lines: {
+islandRowHorizonPart1: {
   0: `Você continua sua jornada para o desconhecido,`,
   1: ` talvez o tempo te guie para o caminho certo.<br><br>`,
   2: `<a href="#" onclick="updateScreen('pier', 'islandRowHorizonPart2')">Continuar</a>`,
 },
 
-islandRowHorizonPart2Lines: {
+islandRowHorizonPart2: {
   0: `Após alguns minutos,`,
   1: ` a confirmação de que esse lugar não é normal aparece:`,
   2: ` Você retornou ao píer!`,
@@ -288,21 +288,21 @@ islandRowHorizonPart2Lines: {
   6: `<a href="#" onclick="updateScreen('pier', 'pierStareSea')">Vislumbrar o mar</a><br>`,
 },
 
-wellLines: {
+well: {
   0: `Na distância, você encontra um poço comum com uma plaquinha pendurada nele escrito "me mostre os brilhantes".<br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('well', 'wellThrowCoin')">Jogar uma moeda</a><br>`,
   2: `<a href="#" onclick="updateScreen('well', 'wellLookInside')">Olhar dentro do poço</a>`,
 },
 
-wellLinesAfterGoggles: {
+wellAfterGoggles: {
   0: `Você volta ao poço,`,
   1: ` a placa ainda fala que você é pobre.<br><br>`,
   2: ` "É só um poço bobo, ignora ele"<br><br>`,
   3: ` Você diz a si mesmo enquanto se afasta.`,
 },
 
-wellThrowCoinLines: {
+wellThrowCoin: {
   0: `Você retira uma moeda do resto do seu dinheiro, se aproxima do poço, e a joga no buraco sem fim.<br><br>`,
   1: `Você ouve uns barulhinhos, e então, um par de óculos é lançado para fora do poço,`,
   2: ` você reconhece como sendo um daqueles óculos de festa com um desenho espiral no lugar das lentes:<br><br>`,
@@ -312,14 +312,14 @@ wellThrowCoinLines: {
   6: `Que poço mal-educado! Você não quer mais ficar perto dele.`,
 },
 
-wellThrowCoinWOCoinLines: {
+wellThrowCoinWOCoin: {
   0: `Você procura pelos bolsos,`,
   1: ` mas percebe que não tem nem um tostão com você agora,`,
   2: ` que vergonha...<br><br>`,
   3: `<a href="#" onclick="updateScreen('well', 'well')">Voltar</a>`,
 },
 
-wellLookInsideLines: {
+wellLookInside: {
   0: `Você se inclina,`,
   1: ` sem água,`,
   2: ` sem balde,`,
@@ -327,7 +327,7 @@ wellLookInsideLines: {
   4: `<a href="#" onclick="updateScreen('well', 'well')">Voltar</a>`,
 },
 
-weirdRocksLines: {
+weirdRocks: {
   0: `Você encontra um arranjo de pedras no meio da grama:<br><br>`,
   1: `-Aoba! - A rocha diz.<br><br>`,
   //WWYS
@@ -335,20 +335,20 @@ weirdRocksLines: {
   3: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksEye')">O que é esse olho esquisito?</a>`,
 },
 
-weirdRocksWhoAreYouLines: {
+weirdRocksWhoAreYou: {
   0: `- Eu sou Pedro, Pedro a pedra, prazer em conhecer chará!<br><br>`,
   //WWYS
   1: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksCabin')">Você sabe quem mora na cabana?</a><br>`,
   2: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksEye')">O que é esse olho esquisito?</a>`,
 },
 
-weirdRocksCabinLines: {
+weirdRocksCabin: {
   0: `- Ah... Você tá falando do <i>Leshy</i>? <i>Ele</i> ele é um espírito que faz coisas ruins com as pessoas, eu não quero falar sobre isso...<br><br>`,
   1: `<i>Leshy</i> transformou Pedro em um monte de pedras!<br><br>`,
   2: `Pedro começa a chorar pedrinhas, e você decide deixá-lo sozinho um pouco...`,
 },
 
-weirdRocksEyeLines: {
+weirdRocksEye: {
   0: `- Ah, esse olho? É o meu olho de metal ultra afiado e brilhante, maneiro né?<br><br>`,
   1: `Sem piadas, esse olho é brilhante mesmo. <br><br>`,
   //WWYS
@@ -356,14 +356,14 @@ weirdRocksEyeLines: {
   3: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksNice')">Legal! Posso pegar?</a>`,
 },
 
-weirdRocksNiceLines: {
+weirdRocksNice: {
   0: `- Claro que não! Esse é o MEU olho, e se você roubá-lo, palavras não conseguirão descrever a dor que você vai sentir!<br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('weirdRocks','weirdRocksNotStealEye')">Não roubar o olho</a><br>`,
   2: `<a href="#" onclick="updateScreen('weirdRocksEyeless', 'weirdRocksStealEye')">Roubar o olho</a>`,
 },
 
-weirdRocksNotStealEyeLines: {
+weirdRocksNotStealEye: {
   0: `- Valeu mano! :D <br><br>`,
   1: `Além do olho e da ameaça, a rocha não parece ter nada demais, você termina sua conversa com ela por enquanto.`,
 },
@@ -380,7 +380,7 @@ weirdRocksAngryRox: {
   2: `Você acha que já importunou a pedrinha demais, você se vira e vai embora.`,
 },
 
-farmLines: {
+farm: {
   0: `Essa fazenda solitária está isolada do resto da civilização, o fazendeiro, rapidamente reconhecendo a visita, diz:<br><br>`,
   1: `- Aoba, uma visita!!! Bem vindu ao meu brejo, aqui eu pranto cenora, batata, cenora, cenora, metal e cenora!<br><br>`,
   //WWYS
@@ -389,7 +389,7 @@ farmLines: {
   4: `<a href="#" onclick="updateScreen('farm','farmBye')">Tchau!</a>`,
 },
 
-farmLinesWOSticker: {
+farmWOSticker: {
   0: `- Claru que não! As cenora são minhas linda e eu nunca ia deixá alguém tocá elas! <br><br>`,
   1: `Ele parece bem sério falando isso, além disso ele tem uma enxada, é melhor ouvir ele.<br><br>`,
   //WWYS
@@ -397,7 +397,7 @@ farmLinesWOSticker: {
   3: `<a href="#" onclick="updateScreen('farm','farmBye')">Tchau!</a> `,
 },
 
-farmLinesWSticker: {
+farmWSticker: {
   0: `- Claru que nã...`,
   1: ` pera, `,
   2: `isso é um adisivo de cenora? `,
@@ -406,7 +406,7 @@ farmLinesWSticker: {
   5: `<a href="#" onclick="updateScreen('farmZoom','farmApproach')">Se aproximar da plantação</a>`,
 },
 
-farmLinesMetal: {
+farmMetal: {
   0: `- Issaê! Se cenora faz mais cenora, metal faz mais metal, ocê é burro?<br><br>`,
   1: `Você fica quieto, pensando que discutir sobre isso vai ser que nem falar com uma parede.<br><br>`,
   //WWYS
@@ -414,12 +414,12 @@ farmLinesMetal: {
   3: `<a href="#" onclick="updateScreen('farm','farmBye')">Tchau!</a>`,
 },
 
-farmLinesBye: {
+farmBye: {
   0: `- Inté mais visita, que as cenoras te guie!<br><br>`,
   1: `Você realmente queria se afastar desse louco da cenoura.`,
 },
 
-farmLinesApproach: {
+farmApproach: {
   0: `Ao passar o olho pela plantação, você encontra algo estranho, algo que parece um tubo brilhante enterrado.<br><br>`,
   1: `Você acha que o fazendeiro não vai se importar se uma cenoura desaparecer, então você puxa o tubo.<br><br>`,
   2: `Ele estava bem enterrado entre os vegetais, mas depois de uma força, você ganha a luta contra o tubo, retirando uma bela guarda da terra.<br><br>`,
@@ -427,12 +427,12 @@ farmLinesApproach: {
   4: `Você torce para o fazendeiro não ter percebido, e então corre tentando sair da visão dele.`,
 },
 
-farmLinesHilt: {
+farmHilt: {
   0: `Você vê o fazendeiro totalmente biruta procurando o tubo com a sua enxada...<br><br>`,
   1: `Talvez seja bom passar longe dele.`,
 },
 
-wallLines: {
+wall: {
   0: `Uma parede massiva bloqueia o caminho, e um carinha que não parece amigável dentro de um pedágio fica te encarando:<br><br>`,
   1: `- Oi, cadê o passe?<br><br>`,
   //WWYS
@@ -442,45 +442,45 @@ wallLines: {
   5: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
 },
 
-wallWhatPassLines: {
+wallWhatPass: {
   0: `- Você precisa de um passe pra passar por aqui, pegue um no castelo, eles são legais comigo.<br><br>`,
   //WWYS
   1: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">O que tem atrás dessa parede?</a><br>`,
   2: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
 },
 
-wallBeyondWallLines: {
+wallBeyondWall: {
   0: `- Tem uma bela caverna com um semideus, você precisa vê-lo, então pegue um passe!<br><br>`,
   //WWYS
   1: `<a href="#" onclick="updateScreen('wall','wallWhatPass')">Passe? Como assim?</a><br>`,
   2: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
 },
 
-wallByeLines: {
+wallBye: {
   0: `- Obrigado por nada, não se esqueça de comprar um passe!<br><br>`,
   1: `Talvez você deveria dar uma olhada no que é esse passe e onde encontrar um.`,
 },
 
-wallUsePassLines: {
+wallUsePass: {
   0: `Você dá o passe para a coisa, e ela fica muito feliz! <br><br>`,
   1: `- AAAAH, FINALMENTE, O CHEFE VAI ME DEIXAR TIRAR FOLGA!!!<br>`,
   2: `- Ok, você pode passar e admirar a caverna.<br><br>`,
   3: `A cancela ao lado dele abre. <b>Agora, você pode acessar a caverna!</b>.`,
 },
 
-wallAlreadyUsedPassLines: {
+wallAlreadyUsedPass: {
   0: `Você vê a coisa de novo, tentando se segurar pra não sorrir na sua frente.<br><br>`,
   1: `- O que foi? Passa, você não tem mais nada de interessante para mim.<br><br>`,
   2: `Você tenta falar algo, mas a criatura tampa os ouvidos e fica repetindo "blablabla", que crinaçinha!`,
 },
 
-caveLines: {
+cave: {
   0: `Há uma grande caverna à sua frente,`,
   1: ` você consegue ouvir pequenos grunhidos vindo dela...<br><br>`,
   2: `<a href="#" onclick="updateScreen('goblin','goblin')">Entrar nela.</a>`,
 },
 
-goblinFirstLines: {
+goblinFirst: {
   0: `A caverna tem cheiro de mofo e sons de água pingando, além dos ruídos bizarros,`,
   1: ` adentrar mais fundo na caverna mostra para você o tal semideus que o porteiro falou sobre:`,
   2: ` Um pequeno goblin ao lado de um "tesouro",`,
@@ -492,7 +492,7 @@ goblinFirstLines: {
   7: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Tchau!</a>`,
 },
 
-goblinLines: {
+goblin: {
   0: `Você volta para o interior da caverna,`,
   1: ` o goblin ainda está lá.<br><br>`,
   //WWYS
@@ -501,7 +501,7 @@ goblinLines: {
   4: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Tchau!</a>`,
 },
 
-goblinAfterGotMoneyLines: {
+goblinAfterGotMoney: {
   0: `Você volta para a caverna,`,
   1: ` o goblin ainda está chorando,`,
   2: ` você não é o melhor em animar os outros,`,
@@ -509,7 +509,7 @@ goblinAfterGotMoneyLines: {
   4: ` taaalveeez seja melhor esquecer dele por enquanto.`,
 },
 
-goblinWhoAreYouLines: {
+goblinWhoAreYou: {
   0: `- Eu sou Barretos, o semideus,`,
   1: ` o guardião do tesouro mais valioso desta ilha,`,
   2: ` o habitante da caverna mais anciã da ilha,`,
@@ -522,7 +522,7 @@ goblinWhoAreYouLines: {
   8: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Tchau!</a>`,
 },
 
-goblinWhatGoldLines: {
+goblinWhatGold: {
   0: `- Este é o meu tesouro,`,
   1: ` MEU tesouro,`,
   2: ` pode babar, eu sou o ser mais rico da ilha!`,
@@ -531,7 +531,7 @@ goblinWhatGoldLines: {
   5: `<a href="#" onclick="updateScreen('goblin','goblinNotMuch')">"Isso não é muito pra falar a verdade..."</a>`,
 },
 
-goblinNotMuchLines: {
+goblinNotMuch: {
   0: `O que você disse?`,
   1: ` Isso é muito! O vendedor disse pra mim!`,
   2: ` O dinheiro que ele ganha dos passes é passado pra mim,`,
@@ -541,7 +541,7 @@ goblinNotMuchLines: {
   5: `<a href="#" onclick="updateScreen('goblin','goblinBluff')">(Mentir) Uma pena que eu tenho mais dinheiro que você, haha.</a>`,
 },
 
-goblinBluffLines: {
+goblinBluff: {
   0: `- Não,`,
   1: ` isso é impossível,`,
   2: ` só pode haver um ser mais rico na ilha,`,
@@ -551,7 +551,7 @@ goblinBluffLines: {
   6: `<a href="#" onclick="updateScreen('goblin','goblinComeOn')">Cai dentro!</a>`,
 },
 
-goblinTruthLines: {
+goblinTruth: {
   0: `- Você tá me dizendo que entrou na MINHA caverna SEM ME DAR DINHEIRO?`,
   1: ` Não, isso não pode acontecer,`,
   2: ` já que você entrou aqui de graça,`,
@@ -564,7 +564,7 @@ goblinTruthLines: {
   9: `<a href="#" onclick="updateScreen('goblin','goblinComeOn')">Cai dentro!</a>`,
 },
 
-goblinComeOnLines: {
+goblinComeOn: {
   0: `O goblin começa a ir em sua direção,`,
   1: ` as suas perninhas pequenas fazem esse processo meio longo,`,
   2: ` longo o suficiente para você pegar uma pedra do chão.`,
@@ -578,7 +578,7 @@ goblinComeOnLines: {
   10: `<a href="#" onclick="updateScreen('goblinCry','goblinMoney')">Pegar o dinheiro</a>`,
 },
 
-goblinMoneyLines: {
+goblinMoney: {
   0: `Você não é burro.`,
   1: ` Dinheiro pode te ajudar a se equipar,`,
   2: ` e você venceu a luta!`,
@@ -588,20 +588,20 @@ goblinMoneyLines: {
   6: ` aquele cara é irritante demais.`,
 },
 
-goblinByeLines: {
+goblinBye: {
   0: `- Valeu, otário,`,
   1: ` tenta me trazer algo pra comer na próxima!<br><br>`,
   2: `Quem esse cara pensa que é?`,
 },
 
-castleLines: {
+castle: {
   0: `Um grande castelo pode ser visto de quase qualquer lugar da ilha,`,
   1: ` o portão principal está aberto,`,
   2: ` você pode entrar nele.<br><br>`,
   3: `<a href="#" onclick="updateScreen('bifurcation','castle')">Entrar</a>`,
 },
 
-enterCastleLines: {
+enterCastle: {
   0: `Pessoas passam pelas ruas, te ignorando, as construções parecem chatas e nada chama a sua atenção. <br><br>`,
   1: `No fim da rua principal, você se encontra em uma bifurcação:<br><br>`,
   2: `Para a esquerda, temos o palácio do rei.<br>`,
@@ -611,7 +611,7 @@ enterCastleLines: {
   6: `<a href="#" onclick="updateScreen('shop','shop')">Para o mercadinho</a>`,
 },
 
-palaceEnterFirstLines: {
+palaceEnterFirst: {
   0: `Você entra no palácio sem problemas, parece que este lugar não precisa de muitos guardas para ser seguro, no fim da sala, você encontra um rei:<br><br>`,
   1: `- Saudações jovem cidadão, ou deveria eu dizer... Estranho?<br><br>`,
   //WWYS
@@ -621,7 +621,7 @@ palaceEnterFirstLines: {
   5: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
 },
 
-palaceEnterLines: {
+palaceEnter: {
   0: `Saudações novamente, viajante.<br><br>`,
   //WWYS
   1: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')">Quem é você?</a><br>`,
@@ -630,7 +630,7 @@ palaceEnterLines: {
   4: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
 },
 
-kingWhoAreYouLines: {
+kingWhoAreYou: {
   0: `- Eu sou o rei Cyryenp, comandante deste reino, `,
   1: `meu povo foi trazido para cá por <i>Leshy</i>, e agora todos estão longe de sua família, `,
   2: `eu sirvo de guia para estas pobres almas que perderam seus lares.<br><br>`,
@@ -641,7 +641,7 @@ kingWhoAreYouLines: {
   6: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
 },
 
-kingMeetSameFateLines: {
+kingMeetSameFate: {
   0: `- Infelizmente sim, `,
   1: `eu fui o primeiro a aparecer aqui, e tive que passar um longo tempo sozinho,`,
   2: ` mas com o tempo mais pessoas apareceram,`,
@@ -653,7 +653,7 @@ kingMeetSameFateLines: {
   7: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
 },
 
-kingGoHomeLines: {
+kingGoHome: {
   0: `Você conta a ele sobre aparecer nesse lugar sem suas memórias. <br><br>`,
   1: `- Bem,`,
   2: ` na verdade, tenho uma ideia que pode te ajudar:`,
@@ -665,7 +665,7 @@ kingGoHomeLines: {
   7: `<a href="#" onclick="updateScreen('king','kingHowDoThis')">E como eu faço isso?</a>`,
 },
 
-kingHowDoThisLines: {
+kingHowDoThis: {
   0: `- Armas comuns não funcionam contra <i>ele</i>,`,
   1: ` vá para o altar a sudeste daqui, você encontrará um anjo que te guiará melhor que eu,`,
   2: ` minha sugestão por agora é de ir para o mercadinho próximo daqui e ver se encontra algo útil lá,`,
@@ -676,13 +676,13 @@ kingHowDoThisLines: {
   7: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
 },
 
-kingByeLines: {
+kingBye: {
   0: `- Até breve, viajante. <br><br>`,
   1: `Você sai do castelo, inspirado por ver tantas pessoas como você vivendo normalmente aqui.<br><br>`,
   2: `<a href="#" onclick="updateScreen('shop','shop')">Para o mercadinho</a>`,
 },
 
-kingGivePommelLines: {
+kingGivePommel: {
   0: `- Olá de novo, viajante,`,
   1: ` como vai a sua missão?<br><br>`,
   2: `Você diz para ele que só precisa do pomo para terminar a espada.<br><br>`,
@@ -692,7 +692,7 @@ kingGivePommelLines: {
   6: `<a href="#" onclick="updateScreen('kingPommelless','kingPommelPart2')">Finalmente!</a>`,
 },
 
-kingPommelPart2Lines: {
+kingPommelPart2: {
   0: `- Este pomo foi a única parte da lâmina que encontramos,`,
   1: ` para mantê-lo seguro,`,
   2: ` eu o guardei junto ao meu trono, mas agora,`,
@@ -700,7 +700,7 @@ kingPommelPart2Lines: {
   4: `Vá para o santuário e termine de vez essa caça à lâmina.`,
 },
 
-shopFirstLines: {
+shopFirst: {
   0: `Você entra no local e é atendido por um vendedor gente boa: <br><br>`,
   1: `- Oooulá! Eu sou o Joobireu, o aprediz de feiticeiro e vendedor honorário!`,
   2: ` Tenho muita tralha valiosa, dá uma olhadinha!<br><br>`,
@@ -710,7 +710,7 @@ shopFirstLines: {
   6: `<a href="#" onclick="updateScreen('king','palaceEnter')">Ir para o palácio</a>`,
 },
 
-shopLines: {
+shop: {
   0: `- E aí! Dá uma olhada nas minhas tralhas!<br><br>`,
   1: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Espada larga (20 moedas)</a><br>`,
   2: `<a href="#" onclick="updateScreen('shop','shopSticker')">Adesivo (10 moedas)</a><br>`,
@@ -718,7 +718,7 @@ shopLines: {
   4: `<a href="#" onclick="updateScreen('king','palaceEnter')">Ir para o palácio</a>`,
 },
 
-shopBroadswordLines: {
+shopBroadsword: {
   0: `- Uma espada larga de aço, forjada pelo melhor ferreiro do reino:`,
   1: ` Kyle Kompos!<br><br>`,
   2: `Vai comprar?<br><br>`,
@@ -726,14 +726,14 @@ shopBroadswordLines: {
   4: `<a href="#" onclick="updateScreen('shop','shop')">Não</a>`,
 },
 
-shopBroadswordYesLines: {
+shopBroadswordYes: {
   0: `- Katching! - Diz o pequeno feiticeiro:<br><br>`,
   1: `<b>Você adquiriu a espada de aço!</b><br><br>`,
   2: `Esta espada é BEM pesada, você sabe que vai ter uns problemas ao usar ela<br><br>`,
   3: `<a href="#" onclick="updateScreen('shop','shop')">Melhor que nada!</a>`,
 },
 
-shopStickerLines: {
+shopSticker: {
   0: `- Um adesivo de cenoura bobinho, sei lá se alguém compraria isso,`,
   1: ` mas é engraçado, de qualquer forma!<br><br>`,
   2: `Atrás do adesivo, você descobre que uma tal de "Mittens" desenhou isso.<br><br>`,
@@ -742,7 +742,7 @@ shopStickerLines: {
   5: `<a href="#" onclick="updateScreen('shop','shop')">Não</a>`,
 },
 
-shopStickerYesLines: {
+shopStickerYes: {
   0: `- Katching! - Diz o pequeno feiticeiro:<br><br>`,
   1: `<b>Você adquiriu o adesivo de cenoura!</b><br><br>`,
   2: `Sem um lugar para colar ele, você só gruda ele nas suas roupas<br><br>`,
@@ -769,26 +769,26 @@ shopPassWKingQuest: {
   7: `<a href="#" onclick="updateScreen('shop','shop')">Voltar</a>`,
 },
 
-shopTooPoorLines: {
+shopTooPoor: {
   0: `- Você não tem dinheiro para comprar isso!<br><br>`,
   1: `- Foi mal, não faço fiado...<br><br>`,
   2: `<a href="#" onclick="updateScreen('shop','shop')">Voltar</a>`,
 },
 
-shopOnlyOnePerPersonLines: {
+shopOnlyOnePerPerson: {
   0: `- Só um produto de cada tipo por cliente!<br><br>`,
   1: `- Foi mal, regras da loja...<br><br>`,
   2: `<a href="#" onclick="updateScreen('shop','shop')">Voltar</a>`,
 },
 
-altarAbandonedLines: {
+altarAbandoned: {
   0: `Seu caminho te leva para um altar abandonado com nada de especial,`,
   1: ` ao se aproximar, você vê três espaços vazios, `,
   2: `talvez você deva colocar algo neles?<br><br>`,
   3: `Não há mais nada para investigar aqui.`,
 },
 
-altarLines: {
+altar: {
   0: `- Bem-vindo de novo,`,
   1: ` minha criança.<br><br>`,
   //WWYS
@@ -799,7 +799,7 @@ altarLines: {
   6: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 },
 
-altarFirstLines: {
+altarFirst: {
   0: `- Olá pequena criança,`,
   1: ` Percebi que o rei me convocou para te ajudar na missão de derrotar <i>Leshy</i>, o espírito maligno.<br><br>`,
   2: `- Como o rei havia dito, armas comuns não vão funcionar em <i>seu</i> corpo,`,
@@ -817,31 +817,31 @@ altarFirstLines: {
   13: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 },
 
-angelParts2Lines: {
+angelParts2: {
   0: `- Uma vez, já ouvi o fazendeiro falar algo sobre "plantar metal",`,
   1: ` Eu não sei se isso é útil,`,
   2: ` mas vale a pena dar uma procurada.<br><br>`,
   //WWYS
-  //GeneralLines
+  //General
 },
 
-angelParts3Lines: {
+angelParts3: {
   0: `- Eu senti uma força mágica vinda do oeste da ilha,`,
   1: ` talvez algo poderoso esteja guardando uma parte da lâmina para si!<br><br>`,
   //WWYS
-  //GeneralLines
+  //General
 },
 
-angelParts1Lines: {
+angelParts1: {
   0: `- Agora que temos duas partes,`,
   1: ` nós só precisamos do pomo, a fonte principal dos poderes da lâmina,`,
   2: ` vá falar com o rei,`,
   3: ` ele saberá onde o pomo está.<br><br>`,
   //WWYS
-  //GeneralLines
+  //General
 },
 
-angelPartsBadFeelingLines: {
+angelPartsBadFeeling: {
   0: `- Nós temos a arma mais poderosa desta ilha.`,
   1: ` Mas tem algo...`,
   2: ` De errado,`,
@@ -849,10 +849,10 @@ angelPartsBadFeelingLines: {
   4: ` Estou com um mal pressentimento,`,
   5: ` <i>Leshy</i> joga sujo, e fará qualquer coisa para acabar com qualquer um que <i>o</i> perturbe<br><br>`,
   //WWYS
-  //GeneralLines
+  //General
 },
 
-angelPartsGeneralLines: {
+angelPartsGeneral: {
   //Falas usadas nas três perguntas de onde estão as partes de espada
   0: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Quem é você?</a><br>`,
   1: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Como que a lâmina sumiu?</a><br>`,
@@ -860,7 +860,7 @@ angelPartsGeneralLines: {
   3: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 },
 
-angelFuseSwordPart1Lines: {
+angelFuseSwordPart1: {
   0: `- Nós conseguimos,`,
   1: ` minha criança!`,
   2: ` Temos todas as peças necessárias para recriar a lâmina!<br><br>`,
@@ -868,7 +868,7 @@ angelFuseSwordPart1Lines: {
   4: `<a href="#" onclick="updateScreen('altarlightbeam','altarFuseSword')">Colocar e se afastar</a>`,
 },
 
-angelFuseSwordPart2Lines: {
+angelFuseSwordPart2: {
   0: `O anjo recua do altar,`,
   1: `após alguns passos para trás,`,
   2: ` um feixe de luz enorme incide sobre o altar,`,
@@ -876,7 +876,7 @@ angelFuseSwordPart2Lines: {
   4: `<a href="#" onclick="updateScreen('angel','altarFuseSwordAftermath')">E?</a>`,
 },
 
-angelFuseSwordPart3Lines: {
+angelFuseSwordPart3: {
   0: `O feixe de luz desaparece de repente,`,
   1: ` e ao fim da luz, tudo que resta é a tal lâmina capaz de matar qualquer coisa.<br><br>`,
   2: `<b>Você adquiriu a Lâmina da Ilha!</b><br><br>`,
@@ -887,7 +887,7 @@ angelFuseSwordPart3Lines: {
   6: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
 },
 
-angelWhoAreYouLines: {
+angelWhoAreYou: {
   0: `- Eu sou Maldio,`,
   1: ` Maldio o anjo,`,
   2: ` trabalho como guardiã da lâmina, mas falhei em minha missão... Agora fico aqui, esperando alguém para me ajudar com a caça à espada.<br><br>`,
@@ -898,7 +898,7 @@ angelWhoAreYouLines: {
   6: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 },
 
-angelHowSwordDisappearLines: {
+angelHowSwordDisappear: {
   0: `- Eu estava jogando RPG com meus amigos anjos na taverna do castelo e,`,
   1: ` infelizmente,`,
   2: ` <i>Leshy</i> percebeu minha ausência e roubou a lâmina, agora ela está desaparecida,`,
@@ -910,7 +910,7 @@ angelHowSwordDisappearLines: {
   7: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 },
 
-angelSearchSwordYourselfLines: {
+angelSearchSwordYourself: {
   0: `- Meu corpo é intangível!<br><br>`,
   1: `Você acha que isso faz sentido<br><br>`,
   2: `- Mas esse não é o problema, eu também sou meio tímida...<br><br>`,
@@ -921,12 +921,12 @@ angelSearchSwordYourselfLines: {
   6: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 },
 
-angelByeLines: {
+angelBye: {
   0: `- Até, minha criança,`,
   1: ` boa sorte com a caça à espada.`,
 },
 
-cabinLines: {
+cabin: {
   0: `Você localiza uma pequena e miserável cabana próxima à orla da ilha, ela tem um crânio pendurado no topo de sua única entrada.<br><br>`,
   1: `Ao lado, você percebe uma árvore morta com algo entalhado em seu tronco.<br><br>`,
   //WWYD
@@ -934,7 +934,7 @@ cabinLines: {
   3: `<a href="#" onclick="updateScreen('cabin','cabinTree')">Investigar a árvore</a>`,
 },
 
-cabinLinesWOGoggles: {
+cabinWOGoggles: {
   0: `Ao se aproximar da árvore,`,
   1: ` os entalhamentos se tornam claros,`,
   2: ` é um texto que diz:<br><br>`,
@@ -942,7 +942,7 @@ cabinLinesWOGoggles: {
   4: `<a href="#" onclick="updateScreen('cabin','cabin')">Voltar</a>`,
 },
 
-cabinLinesWGoggles: {
+cabinWGoggles: {
   0: `Ao se aproximar da árvore,`,
   1: ` a dor de cabeça vinda de usar o óculos de festa bate BEM forte,`,
   2: ` mas você ainda consegue decifrar o que está escrito no tronco,`,
@@ -951,7 +951,7 @@ cabinLinesWGoggles: {
   5: `<a href="#" onclick="updateScreen('cabin','cabin')">Voltar</a>`,
 },
 
-CabinEnterLines: {
+CabinEnter: {
   0: `Você decide entrar na cabana obscura,`,
   1: ` o que reside em seu interior ainda é um mistério.<br><br>`,
   2: `Ao entrar, tudo está um breu total,`,
@@ -963,7 +963,7 @@ CabinEnterLines: {
   8: `<a href="#" onclick="updateScreen('leshy','cabinFate')">Escutá-la</a>`,
 },
 
-leshyLostSoulLines: {
+leshyLostSoul: {
   0: `<i>- O que temos aqui...`,
   1: `<b><i> Uma alma perdida</b><br><br>`,
   2: `A entidade retira um pêndulo feito de gravetos do breu da cabana e começa a balançá-lo lentamente.`,
@@ -978,7 +978,7 @@ leshyLostSoulLines: {
   //YAEH
 },
 
-leshyWOGogglesLines: {
+leshyWOGoggles: {
   0: `<i>- O que temos aqui...`,
   1: `<b><i> Um corajoso guerreiro</b><br><br>`,
   2: `A entidade retira um pêndulo feito de gravetos do breu da cabana e começa a balançá-lo lentamente.`,
@@ -995,7 +995,7 @@ leshyWOGogglesLines: {
   //YAEH
 },
 
-leshyWGogglesLines: {
+leshyWGoggles: {
   0: `<i>- O que temos aqui...`,
   1: `<b><i> Um corajoso guerreiro</b><br><br>`,
   2: `A entidade retira um pêndulo feito de gravetos do breu da cabana e começa a balançá-lo lentamente.`,
@@ -1014,7 +1014,7 @@ leshyWGogglesLines: {
   15: `<a href="#" onclick="updateScreen('leshySkull','leshyPassTest1')">Se recompor</a>`,
 },
 
-leshySkullLines: {
+leshySkull: {
   0: `<i>- Entendo, você não é um tolo comum,`,
   1: `<i> infelizmente, eu não tenho somente um truque na manga.<br><br>`,
   2: `Uma vela enfiada em um crânio aparece, segurada por uma mão cadavérica.<br><br>`,
@@ -1022,7 +1022,7 @@ leshySkullLines: {
   4: `<a href="#" onclick="updateScreen('leshyBurn','leshyBurn')">Continuar</a>`,
 },
 
-leshyWODarkTunicLines: {
+leshyWODarkTunic: {
   0: `<i>Leshy</i> joga a caveira em seus pés,`,
   1: ` o chão grudento começa a inflamar rapidamente,`,
   2: ` subindo as chamas ao seu corpo.<br><br>`,
@@ -1034,7 +1034,7 @@ leshyWODarkTunicLines: {
   8: ` com <i>Leshy</i> também.<br><br>`,
 },
 
-leshyWDarkTunicLines: {
+leshyWDarkTunic: {
   0: `<i>Leshy</i> joga a caveira em seus pés,`,
   1: ` o chão grudento começa a inflamar rapidamente,`,
   2: ` subindo as chamas ao seu corpo.<br><br>`,
@@ -1059,7 +1059,7 @@ leshyTransformation: {
   8: `<a href="#" onclick="updateScreen('leshyFinalForm','leshyFinalForm')">Confrontar o inimigo</a>`,
 },
 
-leshyFinalFormLines: {
+leshyFinalForm: {
   0: `O pequeno par de olhos não existe mais.<br><br>`,
   1: `A pútrida mão que segurava o crânio não existe mais.<br><br>`,
   2: `O seu inimigo mudou,`,
@@ -1082,7 +1082,7 @@ leshyFinalFormLines: {
   19: `<a href="#" onclick="updateScreen('empty','leshyFinalTest')">Acabar com isso</a>`,
 },
 
-leshyFinalDefeatLines: {
+leshyFinalDefeat: {
   0: `Você empunha sua espada larga com toda sua força,`,
   1: ` por algum motivo,`,
   2: ` ela não parece tão pesada como antes,`,
@@ -1111,7 +1111,7 @@ leshyFinalDefeatLines: {
   //YAEH
 },
 
-leshyFinalVictoryLines: {
+leshyFinalVictory: {
   0: `Você empunha sua lâmina mágica com força,`,
   1: ` a arma é muito mais leve do que parece,`,
   2: ` facilitando um corte rápido e mortal.<br><br>`,
@@ -1127,7 +1127,7 @@ leshyFinalVictoryLines: {
   12: `<a href="#" onclick="updateScreen('leshyAftermath','leshyAftermath')">Enfim, o fim...</a>`,
 },
 
-leshyAftermathLines: {
+leshyAftermath: {
   0: `Num piscar de olhos, o monstro fica totalmente podre,`,
   1: ` deixando um buraco gigante na parede da cabana,`,
   2: ` a luz do luar lava a sua alma`,
@@ -1140,7 +1140,7 @@ leshyAftermathLines: {
   9: `<a href="#" onclick="updateScreen('leshyAngel','leshyAngel')">Algo está se aproximando...</a>`,
 },
 
-leshyAngelLines: {
+leshyAngel: {
   0: ` Maldio, o anjo, atravessa a parede da cabana após o momento consigo mesmo:<br><br>`,
   1: `- Não consigo acreditar,`,
   2: ` você conseguiu derrotar o <i>espírito maligno</i>!`,
@@ -1164,7 +1164,7 @@ leshyAngelLines: {
   20: `<a href="#" onclick="updateScreen('finalDoor','ending')">Se virar</a>`,
 },
 
-endingLines: {
+ending: {
   0: `O fim da sua missão está próximo,`,
   1: ` todos os seus esforços serão finalmente recompensados,`,
   2: ` você sente um enorme sentimento de missão cumprida após recuperar suas memórias.<br><br>`,

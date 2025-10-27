@@ -2,7 +2,7 @@ var english = {
 
 // LINHAS DO MENU PRINCIPAL
 
-start: {
+mainMenu: {
   buttons: {
     newgame: `NEW GAME`,
     continue: `CONTINUE`,
@@ -24,7 +24,7 @@ start: {
   credits: {
     title: `Credits`,
     backButton: `Go Back`,
-    specialThanks: `Special Thanks Especiais`,
+    specialThanks: `Special Thanks`,
     0: `The entirety of the game was made by Luciano Kohler da Silva, AKA Blockier, but I also got a helping hand with some arts from Cyrenp (more precisely, the king and cave arts).`,
     1: `Some third party softwares were also used to build the game: <a href="https://safi.me.uk/typewriterjs/" target="_blank">Typewriter.js</a> for the widely used typewriter effect throughout the game and <a href="https://patorjk.com/software/taag/" target="_blank">Patorjk's ascii text generator</a> to create the ascii titles, my thanks to these devs for saving me a ton of time!`,
     2: `This project wouldn't be possible if I didn't have my friends to motivate me, I needed some people to play my game, after all, and I knew that I could count on my friends to know that my game would be appreciated by someone, and that makes my day!`,
@@ -148,12 +148,12 @@ welcomeBack1: `Welcome back to the island,`,
 welcomeBack2: ` remember to use your map if you ever get stuck,`,
 welcomeBack3: ` good luck!`,
 
-chooseLines: {
+choose: {
   0: `On the bottom right menu, there's, a clickable button that opens a map that indicates your current position in yellow,`,
   1: ` click on the different locations of the island to go there, remember that some areas aren't accessible yet!`,
 },
 
-startLines: {
+start: {
   0: `You wake up in front of a great and dense forest,`,
   1: ` you don't remember your home,`,
   2: ` your life,`,
@@ -165,20 +165,20 @@ startLines: {
   7: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest</a>`,
 },
 
-forestLines: {
+forest: {
   0: `Back to forest you get.<br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('forest', 'enterForest')"> Enter the forest </a><br>`,
   2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')"> Retreat from the forest</a>`,
 },
 
-forestBearScaredLines: {
+forestBearScared: {
   0: `Back to forest you get.<br><br>`,
   1: `The bear is nowhere to be seen, and you haven't seen anything useful between the trees,`,
   2: ` you feel that further scouting the forest won't help.`,
 },
 
-enterForestLinesWOStick: {
+enterForestWOStick: {
   0: `You decided to enter further into the forest, not knowing what may be at the other side of it.<br><br>`,
   1: `By the ground, you find a somewhat straight stick on the ground:<br><br>`,
   2: `<b>You got an ordinary stick</b>! <br><br>`,
@@ -187,14 +187,14 @@ enterForestLinesWOStick: {
   4: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Retreat from the forest`,
 },
 
-enterForestLinesWithStick: {
+enterForestWithStick: {
   0: `Back to the same place you are, you can still see the spot where you found your stick... <br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continue</a> <br>`,
   2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Retreat from the forest</a>`,
 },
 
-ForestBearWSwordLines: {
+ForestBearWSword: {
   0: `You go further into the forest, the path leads you to...`,
   1: ` A bear!<br><br>`,
   2: `You quickly draw your sword,`,
@@ -207,7 +207,7 @@ ForestBearWSwordLines: {
   9: `<b>You got access to the pier!</b>`,
 },
 
-ForestBearWOSwordLines: {
+ForestBearWOSword: {
   0: `You go further into the forest, the path leads you to...`,
   1: ` A bear!<br><br>`,
   2: `You firmly hold your stick,`,
@@ -218,14 +218,14 @@ ForestBearWOSwordLines: {
   7: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">What to do now?</a>`,
 },
 
-pierLines: {
+pier: {
   0: `A lonely pier with a ready-to-go little boat stands in front of you.<br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('island', 'island')">Sail with the boat</a><br>`,
   2: `<a href="#" onclick="updateScreen('pier', 'pierStareSea')">Stare at the sea</a>`,
 },
 
-pierStareSeaLines: {
+pierStareSea: {
   0: `You look into the water, realizing:`,
   1: ` You don't remember your face!<br><br>`,
   2: `Upon bending to the sea, you only see the moon and stars reflected by the water's transparency.`,
@@ -235,7 +235,7 @@ pierStareSeaLines: {
   6: ` <a href="#" onclick="updateScreen('pier', 'pier')">Go back</a>`,
 },
 
-islandFirstLines: {
+islandFirst: {
   0: `You hop on the boat, wrap your hands around the oars, and start rowing,`,
   1: ` without directions, only with the intention to go somewhere.`,
   2: ` A few minutes of only listening to the waves' sound takes you to a small island,`,
@@ -250,14 +250,14 @@ islandFirstLines: {
   11: `<a href="#" onclick="updateScreen('islandhole', 'island')">Wahoo!</a>`,
 },
 
-islandLines: {
+island: {
   0: `There you are, standing in front of a desert island with the hole that you made.<br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('island', 'islandRowHorizonPart1')">Row to the Horizon</a><br>`,
   2: `<a href="#" onclick="updateScreen('island', 'islandAppreciateLandscape')">Appreciate the landscape</a>`,
 },
 
-islandAppreciateLandscapeLines: {
+islandAppreciateLandscape: {
   0: `You look at the horizon.<br><br>`,
   1: `Water,`,
   2: ` stars`,
@@ -271,13 +271,13 @@ islandAppreciateLandscapeLines: {
   10: `<a href="#" onclick="updateScreen('island', 'island')">Go back</a>`,
 },
 
-islandRowHorizonPart1Lines: {
+islandRowHorizonPart1: {
   0: `You continue your journey to the unknown,`,
   1: ` maybe the time will guide you to the right way.<br><br>`,
   2: `<a href="#" onclick="updateScreen('pier', 'islandRowHorizonPart2')">Continue</a>`,
 },
 
-islandRowHorizonPart2Lines: {
+islandRowHorizonPart2: {
   0: `After minutes,`,
   1: ` the confimation that this place is not normal appears:`,
   2: ` You returned back to the pier!`,
@@ -288,21 +288,21 @@ islandRowHorizonPart2Lines: {
   6: `<a href="#" onclick="updateScreen('pier', 'pierStareSea')">Stare at the sea</a><br>`,
 },
 
-wellLines: {
+well: {
   0: `In the distance, you discover an ordinary well with a hanging sign on its side. The sign reads: "Show me the shinies" <br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('well', 'wellThrowCoin')">Throw a Coin</a><br>`,
   2: `<a href="#" onclick="updateScreen('well', 'wellLookInside')">Look inside the well</a>`,
 },
 
-wellLinesAfterGoggles: {
+wellAfterGoggles: {
   0: `You get back to the well,`,
   1: ` the sign is still talking about you being poor.<br><br>`,
   2: ` "It's just a silly well, ignore it"<br><br>`,
   3: ` You say to yourself, backing off.`,
 },
 
-wellThrowCoinLines: {
+wellThrowCoin: {
   0: `You get one coin from the rest of your money, you then reach near the well and throw it to the endless hole.<br><br>`,
   1: `You hear some noises, and then, a pair of goggles gets spit out of the well,`,
   2: `You recognize them as those party goggles with a spiral decal on the lenses:<br><br>`,
@@ -312,14 +312,14 @@ wellThrowCoinLines: {
   6: `What a rude well! You don't want to stay near him anymore.`,
 },
 
-wellThrowCoinWOCoinLines: {
+wellThrowCoinWOCoin: {
   0: `You search around your pockets,`,
   1: ` but you realize that you don't have any money with you right now,`,
   2: ` what a shame...<br><br>`,
   3: `<a href="#" onclick="updateScreen('well', 'well')">Go back</a>`,
 },
 
-wellLookInsideLines: {
+wellLookInside: {
   0: `You lean into the well, checking if there was something,`,
   1: ` no water,`,
   2: ` no bucket,`,
@@ -327,7 +327,7 @@ wellLookInsideLines: {
   4: `<a href="#" onclick="updateScreen('well', 'well')">Go back</a>`,
 },
 
-weirdRocksLines: {
+weirdRocks: {
   0: `You find a weird arrangement of rocks in the middle of the grass:<br><br>`,
   1: `-Heyo! - The rock says.<br><br>`,
   //WWYS
@@ -335,20 +335,20 @@ weirdRocksLines: {
   3: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksEye')"> What's the deal with your eye?</a>`,
 },
 
-weirdRocksWhoAreYouLines: {
+weirdRocksWhoAreYou: {
   0: `- I'm Rox, Rox the rock, nice to meetcha pal!<br><br>`,
   //WWYS
   1: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksCabin')">Do you know who lives in the cabin?<br>`,
   2: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksEye')">What's the deal with your eye?</a>`,
 },
 
-weirdRocksCabinLines: {
+weirdRocksCabin: {
   0: `- Oh... Are you talking about <i>Leshy</i>? <i>It</i> is a spirit that makes bad things to people, I don't like to talk about that...<BR><BR>`,
   1: `<i>Leshy</i> turned Rox into a lot of stones!<BR><BR>`,
   2: `Rox starts crying pebbles, you decide to leave it alone for a bit...`,
 },
 
-weirdRocksEyeLines: {
+weirdRocksEye: {
   0: `- Oh, this eye? It's my ultra sharp and shiny metal eye, cool huh?<br><br>`,
   1: `You can't lie, that eye is awesome. <br><br>`,
   //WWYS
@@ -356,14 +356,14 @@ weirdRocksEyeLines: {
   3: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksNice')"> Nice! Can I have it?`,
 },
 
-weirdRocksNiceLines: {
+weirdRocksNice: {
   0: `- Of course not! This is MY eye and if you steal it, you will suffer the most ruthless punishment you'll ever feel!<br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('weirdRocks','weirdRocksNotStealEye')">Not steal the eye<br>`,
   2: `<a href="#" onclick="updateScreen('weirdRocksEyeless', 'weirdRocksStealEye')">Steal the eye`,
 },
 
-weirdRocksNotStealEyeLines: {
+weirdRocksNotStealEye: {
   0: `- Thanks mate! :D <br><br>`,
   1: `Besides the eye and the threat, the rock doesn't show anything special, you are done with chatting with him for now.`,
 },
@@ -380,7 +380,7 @@ weirdRocksAngryRox: {
   2: `You think you already did to much to this poor rock, you turn around and leave.`,
 },
 
-farmLines: {
+farm: {
   0: `This lonely farm is far from the rest of the civilization, the farmer, quickly realizing you, approaches: <br><br>`,
   1: `- Oh my! Visitor!!! Welcome to ma farm, I plant carrots, potatoes, carrots, carrots, metal'n'carrots! How can I help'ya? <br><br>`,
   //WWYS
@@ -389,7 +389,7 @@ farmLines: {
   4: `<a href="#" onclick="updateScreen('farm','farmBye')">Bye!</a>`,
 },
 
-farmLinesWOSticker: {
+farmWOSticker: {
   0: `- Of course not! The carrots are my precious ons and I'ould never let anyone touch'em! <br><br>`,
   1: `He seems really serious when talking this, plus he has a rake, better listen to him <br><br>`,
   //WWYS
@@ -397,7 +397,7 @@ farmLinesWOSticker: {
   3: `<a href="#" onclick="updateScreen('farm','farmBye')">Bye!</a> `,
 },
 
-farmLinesWSticker: {
+farmWSticker: {
   0: `- Of course no...`,
   1: ` wait, `,
   2: `is that a carrot sticker? `,
@@ -406,7 +406,7 @@ farmLinesWSticker: {
   5: `<a href="#" onclick="updateScreen('farmZoom','farmApproach')">Approach the plantation</a>`,
 },
 
-farmLinesMetal: {
+farmMetal: {
   0: `- Yeah! If carrots grow carrots, expensive metal grows more metal, are ya dum?<br><br>`,
   1: `You stay quiet, thinking that arguing about this would be like talking to a wall.<br><br>`,
   //WWYS
@@ -414,12 +414,12 @@ farmLinesMetal: {
   3: `<a href="#" onclick="updateScreen('farm','farmBye')">Bye!</a>`,
 },
 
-farmLinesBye: {
+farmBye: {
   0: `- Bye visitor, may the carrots be with ya!<br><br>`,
   1: `You really wanted to move away from that carrot crazy.`,
 },
 
-farmLinesApproach: {
+farmApproach: {
   0: `As you pass your eyes through the plantation, you find something weird, it looks like a shiny tube.<br><br>`,
   1: `You think the farmer won't mind if one carrot goes away, so you pull the tube.<br><br>`,
   2: `It looked really stuck to the ground among other vegetables, but you win the fight against it and pull a beautiful hilt from the ground.<br><br>`,
@@ -427,12 +427,12 @@ farmLinesApproach: {
   4: `You hope the farmer didn't notice it, you run trying to get out of his view.`,
 },
 
-farmLinesHilt: {
+farmHilt: {
   0: `You see the farmer going goblin mode trying to find the metal part with his rake...<br><br>`,
   1: `Maybe it's better to not get near him.`,
 },
 
-wallLines: {
+wall: {
   0: `A massive wall blocks the way beyond it, a small guy inside a toll whick doesn't look much friendly stares at you:<br><br>`,
   1: `- Hi, where's the Pass?<br><br>`,
   //WWYS
@@ -442,45 +442,45 @@ wallLines: {
   5: `<a href="#" onclick="updateScreen('wall','wallBye')">Bye!</a>`,
 },
 
-wallWhatPassLines: {
+wallWhatPass: {
   0: `- You need a Pass to pass the toll, go get one at the castle, they're nice to me.<br><br>`,
   //WWYS
   1: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">What's beyond this wall?</a><br>`,
   2: `<a href="#" onclick="updateScreen('wall','wallBye')">Bye!</a>`,
 },
 
-wallBeyondWallLines: {
+wallBeyondWall: {
   0: `- A beatiful cavern with a demigod, you need to see it, so please, get a Pass!<br><br>`,
   //WWYS
   1: `<a href="#" onclick="updateScreen('wall','wallWhatPass')">Pass? What do you mean?</a><br>`,
   2: `<a href="#" onclick="updateScreen('wall','wallBye')">Bye!</a>`,
 },
 
-wallByeLines: {
+wallBye: {
   0: `- Thank you for nothing, don't forget to buy a Pass! <br><br>`,
   1: `Maybe you should take a look at what and where this Pass is.`,
 },
 
-wallUsePassLines: {
+wallUsePass: {
   0: `You give the Pass to the thing, and it gets really happy! <br><br>`,
   1: `- OOOOOHH, THE BOSS WILL LET ME HAVE A DAY OFF!!!<br>`,
   2: `- Ok, you may pass and admire the cave.<br><br>`,
   3: `The pole besides him lifts. <b>You now have access to the cave!</b>.`,
 },
 
-wallAlreadyUsedPassLines: {
+wallAlreadyUsedPass: {
   0: `You see the thing again, trying to hold his smile in front of you: <br><br>`,
   1: `- So? Pass, you don't have anything interesting for me now.<br><br>`,
   2: `You try to say something, but the creature just says "blablabla" while covering its ears, what a child!`,
 },
 
-caveLines: {
+cave: {
   0: `A big cave stands in front of you,`,
   1: ` you can hear small growls coming from it.<br><br>`,
   2: `<a href="#" onclick="updateScreen('goblin','goblin')">Enter it.</a>`,
 },
 
-goblinFirstLines: {
+goblinFirst: {
   0: `The cave smells like mold and has the sound of dripping water from the dripstones along with the growls,`,
   1: ` walking further shows you the so called demigod that the doorman spoke about:`,
   2: ` A small goblin near a "treasure",`,
@@ -492,7 +492,7 @@ goblinFirstLines: {
   7: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
 },
 
-goblinLines: {
+goblin: {
   0: `You get back to the inside of the cave,`,
   1: ` the goblin is still there.<br><br>`,
   //WWYS
@@ -501,7 +501,7 @@ goblinLines: {
   4: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
 },
 
-goblinAfterGotMoneyLines: {
+goblinAfterGotMoney: {
   0: `You get back to the cave,`,
   1: ` the goblin is still crying,`,
   2: ` you're not good with cheering someone up,`,
@@ -509,7 +509,7 @@ goblinAfterGotMoneyLines: {
   4: ` maaaaybe it's better to forget him by now.`,
 },
 
-goblinWhoAreYouLines: {
+goblinWhoAreYou: {
   0: `- I'm Barretos, the demigod,`,
   1: ` the keeper of the island's biggest treasure,`,
   2: ` the inhabitant of the oldest cave on the island,`,
@@ -522,7 +522,7 @@ goblinWhoAreYouLines: {
   8: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
 },
 
-goblinWhatGoldLines: {
+goblinWhatGold: {
   0: `- It's my treasure,`,
   1: ` MY treasure,`,
   2: ` envy me, I'm the richest being in the island!`,
@@ -531,7 +531,7 @@ goblinWhatGoldLines: {
   5: `<a href="#" onclick="updateScreen('goblin','goblinNotMuch')">"That's not much to be honest..."</a>`,
 },
 
-goblinNotMuchLines: {
+goblinNotMuch: {
   0: `What do you mean?`,
   1: ` It's a lot! The shopkeeper said that to me!`,
   2: ` The money that he gets from the pass is passed to ME,`,
@@ -541,7 +541,7 @@ goblinNotMuchLines: {
   5: `<a href="#" onclick="updateScreen('goblin','goblinBluff')">(Bluff) I have much more money than you, haha.</a>`,
 },
 
-goblinBluffLines: {
+goblinBluff: {
   0: `- No,`,
   1: ` that's impossible,`,
   2: ` there can only be one richest being in the island,`,
@@ -551,7 +551,7 @@ goblinBluffLines: {
   6: `<a href="#" onclick="updateScreen('goblin','goblinComeOn')">Come on!</a>`,
 },
 
-goblinTruthLines: {
+goblinTruth: {
   0: `- You're telling me that you entered MY cave WITHOUT GIVING ME MONEY?`,
   1: ` No, this can't happen,`,
   2: ` since you got here for free,`,
@@ -564,7 +564,7 @@ goblinTruthLines: {
   9: `<a href="#" onclick="updateScreen('goblin','goblinComeOn')">Come on!</a>`,
 },
 
-goblinComeOnLines: {
+goblinComeOn: {
   0: `The goblin starts to come at your direction,`,
   1: ` its small legs make this process a little long,`,
   2: ` long enough to give time to pick up a rock from the ground.`,
@@ -578,7 +578,7 @@ goblinComeOnLines: {
   10: `<a href="#" onclick="updateScreen('goblinCry','goblinMoney')">Take the money</a>`,
 },
 
-goblinMoneyLines: {
+goblinMoney: {
   0: `You are not dumb.`,
   1: ` Money may help you with getting geared up,`,
   2: ` and you won the fight!`,
@@ -588,20 +588,20 @@ goblinMoneyLines: {
   6: ` that guy is too annoying.`,
 },
 
-goblinByeLines: {
+goblinBye: {
   0: `- Bye, sucker,`,
   1: ` bring me something to eat next time!<br><br>`,
   2: `Who this guy think it is?`,
 },
 
-castleLines: {
+castle: {
   0: `A big castle can be seen at the distance from the entire island,`,
   1: ` the main gate is open,`,
   2: ` you may enter it.<br><br>`,
   3: `<a href="#" onclick="updateScreen('bifurcation','castle')">Enter it</a>`,
 },
 
-enterCastleLines: {
+enterCastle: {
   0: `People walk by, ignoring you, the buildings appear boring, and nothing attracts your attention. <br><br>`,
   1: `At the end of the main street, you find yourself at a bifurcation:<br><br>`,
   2: `To the left, we have the king's palace.<br>`,
@@ -611,7 +611,7 @@ enterCastleLines: {
   6: `<a href="#" onclick="updateScreen('shop','shop')">To the local store</a>`,
 },
 
-palaceEnterFirstLines: {
+palaceEnterFirst: {
   0: `You enter the palace without any problems, looks like this place doesn't need much guards to be peaceful, at the end of the room, you see a king: <br><br>`,
   1: `- Hello fellow citizen, or may I say... Stranger?<br><br>`,
   //WWYS
@@ -621,7 +621,7 @@ palaceEnterFirstLines: {
   5: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
 },
 
-palaceEnterLines: {
+palaceEnter: {
   0: `Greetings again, stranger.<br><br>`,
   //WWYS
   1: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')">Who are you?</a><br>`,
@@ -630,7 +630,7 @@ palaceEnterLines: {
   4: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
 },
 
-kingWhoAreYouLines: {
+kingWhoAreYou: {
   0: `- I'm king Cyryenp, ruler of this kingdom, `,
   1: `my people were brought here by <i>Leshy</i>, and now are away from their family, `,
   2: `I serve as a guide for these poor souls who lost their home. <br><br>`,
@@ -641,7 +641,7 @@ kingWhoAreYouLines: {
   6: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
 },
 
-kingMeetSameFateLines: {
+kingMeetSameFate: {
   0: `- Indeed, `,
   1: `I was the first one to get here, and got to spend my time alone for a long time, more people appeared here,`,
   2: ` though,`,
@@ -653,7 +653,7 @@ kingMeetSameFateLines: {
   7: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
 },
 
-kingGoHomeLines: {
+kingGoHome: {
   0: `You told him about waking up here without your memories. <br><br>`,
   1: `- Well,`,
   2: ` actually, I have an idea that may help you:`,
@@ -665,7 +665,7 @@ kingGoHomeLines: {
   7: `<a href="#" onclick="updateScreen('king','kingHowDoThis')">How do I do this?</a>`,
 },
 
-kingHowDoThisLines: {
+kingHowDoThis: {
   0: `- Regular weapons won't work against <i>it</i>,`,
   1: ` go to the shrine at southeast, you'll find an angel able to guide you better than me,`,
   2: ` my suggestion for now is to go to the shop near here and see if there's anything useful there,`,
@@ -676,13 +676,13 @@ kingHowDoThisLines: {
   7: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
 },
 
-kingByeLines: {
+kingBye: {
   0: `- So long, stranger. <br><br>`,
   1: `You exit the castle, inspired by seeing so many people like you living normally.<br><br>`,
   2: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
 },
 
-kingGivePommelLines: {
+kingGivePommel: {
   0: `- Hello again, stranger,`,
   1: ` how's your quest going?<br><br>`,
   2: `You tell him that you only need the pommel to finish the sword.<br><br>`,
@@ -692,7 +692,7 @@ kingGivePommelLines: {
   6: `<a href="#" onclick="updateScreen('kingPommelless','kingPommelPart2')">Finally!</a>`,
 },
 
-kingPommelPart2Lines: {
+kingPommelPart2: {
   0: `- This pommel was the only part of the sword that we found,`,
   1: ` to keep it safe,`,
   2: ` I guarded it within my throne, but now,`,
@@ -700,7 +700,7 @@ kingPommelPart2Lines: {
   4: `You should go to the angel and finish this sword hunting.`,
 },
 
-shopFirstLines: {
+shopFirst: {
   0: `You enter the building and are greeted with a friendly shopkeeper: <br><br>`,
   1: `- Helllooooww, I'm Joobireu, the little wizard apprentice AND shopkeeper!`,
   2: ` I got a lot of stuff here, take a look!<br><br>`,
@@ -710,7 +710,7 @@ shopFirstLines: {
   6: `<a href="#" onclick="updateScreen('king','palaceEnter')">Go to the palace</a>`,
 },
 
-shopLines: {
+shop: {
   0: `- Hey! Take a look at my stuff!<br><br>`,
   1: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Broadsword (20 coins)</a><br>`,
   2: `<a href="#" onclick="updateScreen('shop','shopSticker')">Sticker (10 coins)</a><br>`,
@@ -718,7 +718,7 @@ shopLines: {
   4: `<a href="#" onclick="updateScreen('king','palaceEnter')">Go to the palace</a>`,
 },
 
-shopBroadswordLines: {
+shopBroadsword: {
   0: `- A steel broadsword, forged by the kingdom's best swordsmith:`,
   1: ` Kyle Kompos!<br><br>`,
   2: `Wanna buy it?<br><br>`,
@@ -726,14 +726,14 @@ shopBroadswordLines: {
   4: `<a href="#" onclick="updateScreen('shop','shop')">No</a>`,
 },
 
-shopBroadswordYesLines: {
+shopBroadswordYes: {
   0: `- Katching! - Says the little wizard:<br><br>`,
   1: `<b>You got the Steel Broadsword!</b><br><br>`,
   2: `The sword is REALLY heavy, you know that you'll have problems with using it<br><br>`,
   3: `<a href="#" onclick="updateScreen('shop','shop')">Better than nothing!</a>`,
 },
 
-shopStickerLines: {
+shopSticker: {
   0: `- A silly carrot sticker, dunno what would you do with it,`,
   1: ` it's funny, though!<br><br>`,
   2: `At the back of the card, you discover that someone named "Mittens" drew it.<br><br>`,
@@ -742,7 +742,7 @@ shopStickerLines: {
   5: `<a href="#" onclick="updateScreen('shop','shop')">No</a>`,
 },
 
-shopStickerYesLines: {
+shopStickerYes: {
   0: `- Katching! - Says the little wizard:<br><br>`,
   1: `<b>You got the Carrot Sticker!</b><br><br>`,
   2: `Without a place to glue it, you glue it to your clothing.<br><br>`,
@@ -769,26 +769,26 @@ shopPassWKingQuest: {
   7: `<a href="#" onclick="updateScreen('shop','shop')">Go back</a>`,
 },
 
-shopTooPoorLines: {
+shopTooPoor: {
   0: `- You don't have enough money to buy that!<br><br>`,
   1: `- Sorry, I can't give credit...<br><br>`,
   2: `<a href="#" onclick="updateScreen('shop','shop')">Go back</a>`,
 },
 
-shopOnlyOnePerPersonLines: {
+shopOnlyOnePerPerson: {
   0: `- Only one product of each type per person!<br><br>`,
   1: `- Sorry, store rules...<br><br>`,
   2: `<a href="#" onclick="updateScreen('shop','shop')">Go back</a>`,
 },
 
-altarAbandonedLines: {
+altarAbandoned: {
   0: `Your way takes you to an abandoned altar without anything apparent,`,
   1: ` upon getting closer, you find three empty notches, `,
   2: `maybe you need to place someting there?<br><br>`,
   3: `There's nothing more to investigate here.`,
 },
 
-altarLines: {
+altar: {
   0: `- Welcome again,`,
   1: ` my child.<br><br>`,
   //WWYS
@@ -799,7 +799,7 @@ altarLines: {
   6: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
 },
 
-altarFirstLines: {
+altarFirst: {
   0: `- Hello little child,`,
   1: ` I see that the king has called me to help you with your quest of defeating the evil spirit <i>Leshy</i>.<br><br>`,
   2: `- As the king said, regular weapons won't work against <i>its</i> body,`,
@@ -817,31 +817,31 @@ altarFirstLines: {
   13: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
 },
 
-angelParts2Lines: {
+angelParts2: {
   0: `- I once heard the farmer talking about "planting metal",`,
   1: ` I don't know if that's useful,`,
   2: ` but it is surely worth a shot.<br><br>`,
   //WWYS
-  //GeneralLines
+  //General
 },
 
-angelParts3Lines: {
+angelParts3: {
   0: `- I felt a little bit of magic coming the west of the island,`,
   1: ` maybe someone powerful is keeping a part for itself!<br><br>`,
   //WWYS
-  //GeneralLines
+  //General
 },
 
-angelParts1Lines: {
+angelParts1: {
   0: `- Now that we have two parts,`,
   1: ` we only need the pommel, the main part of the sword's superpowers,`,
   2: ` go talk to the king,`,
   3: ` he knows where it is.<br><br>`,
   //WWYS
-  //GeneralLines
+  //General
 },
 
-angelPartsBadFeelingLines: {
+angelPartsBadFeeling: {
   0: `- We got the mightiest weapon of this island.`,
   1: ` But something feels...`,
   2: ` Off,`,
@@ -849,10 +849,10 @@ angelPartsBadFeelingLines: {
   4: ` I have a bad feeling about this,`,
   5: `  <i>Leshy</i> is dirty, and will do anything to kill anyone who bothers <i>him</i>.<br><br>`,
   //WWYS
-  //GeneralLines
+  //General
 },
 
-angelPartsGeneralLines: {
+angelPartsGeneral: {
   //Falas usadas nas três perguntas de onde estão as partes de espada
   0: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
   1: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">How did the sword disappear?</a><br>`,
@@ -860,7 +860,7 @@ angelPartsGeneralLines: {
   3: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
 },
 
-angelFuseSwordPart1Lines: {
+angelFuseSwordPart1: {
   0: `- We did it,`,
   1: ` my child!`,
   2: ` We got all the necessary pieces to refuse the Sword!<br><br>`,
@@ -868,7 +868,7 @@ angelFuseSwordPart1Lines: {
   4: `<a href="#" onclick="updateScreen('altarlightbeam','altarFuseSword')">Do what they asked</a>`,
 },
 
-angelFuseSwordPart2Lines: {
+angelFuseSwordPart2: {
   0: `The angel retreats from the altar,`,
   1: `and after 5 steps of backing off,`,
   2: ` a giant light beam strucks the altar,`,
@@ -876,7 +876,7 @@ angelFuseSwordPart2Lines: {
   4: `<a href="#" onclick="updateScreen('angel','altarFuseSwordAftermath')">And?</a>`,
 },
 
-angelFuseSwordPart3Lines: {
+angelFuseSwordPart3: {
   0: `The light beam disappears into thin air,`,
   1: ` and you're left with the so called blade capable of slaying anything.<br><br>`,
   2: `<b>You got The Island Sword!</b><br><br>`,
@@ -887,7 +887,7 @@ angelFuseSwordPart3Lines: {
   6: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
 },
 
-angelWhoAreYouLines: {
+angelWhoAreYou: {
   0: `- I'm Maldio,`,
   1: ` Maldio the angel,`,
   2: ` I work here as a swordkeeper, but I failed my job... Now I stay here, waiting for someone to come and help with the swordfinding.<br><br>`,
@@ -898,7 +898,7 @@ angelWhoAreYouLines: {
   6: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
 },
 
-angelHowSwordDisappearLines: {
+angelHowSwordDisappear: {
   0: `- I was playing RPG with my angel friends at the castle's tavern and,`,
   1: ` unfortunately,`,
   2: ` <i>Leshy</i> took the cue and stole the sword while I was away, and now it is gone,`,
@@ -910,7 +910,7 @@ angelHowSwordDisappearLines: {
   7: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
 },
 
-angelSearchSwordYourselfLines: {
+angelSearchSwordYourself: {
   0: `- I don't have a physical body! <br><br>`,
   1: `You think that this makes sense<br><br>`,
   2: `- But that's not the main problem, I am also a little shy...<br><br>`,
@@ -921,12 +921,12 @@ angelSearchSwordYourselfLines: {
   6: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
 },
 
-angelByeLines: {
+angelBye: {
   0: `- Bye my child,`,
   1: ` good luck with the sword finding.`,
 },
 
-cabinLines: {
+cabin: {
   0: `You spot a small and miserable cabin at the edge of the island, the cabin has a skull hanged by the top of its only entrance.<br><br>`,
   1: `By the side, you notice a dead tree with a small script carved on its trunk.<br><br>`,
   //WWYD
@@ -934,7 +934,7 @@ cabinLines: {
   3: `<a href="#" onclick="updateScreen('cabin','cabinTree')">Investigate the tree</a>`,
 },
 
-cabinLinesWOGoggles: {
+cabinWOGoggles: {
   0: `Upon coming closer to the tree,`,
   1: ` the carving becomes clear,`,
   2: ` it's a text written:<br><br>`,
@@ -942,7 +942,7 @@ cabinLinesWOGoggles: {
   4: `<a href="#" onclick="updateScreen('cabin','cabin')">Go back</a>`,
 },
 
-cabinLinesWGoggles: {
+cabinWGoggles: {
   0: `Upon coming closer to the tree,`,
   1: ` the headache from using the goggles gets REALLY strong,`,
   2: ` but you can still see what's carved,`,
@@ -951,7 +951,7 @@ cabinLinesWGoggles: {
   5: `<a href="#" onclick="updateScreen('cabin','cabin')">Go back</a>`,
 },
 
-CabinEnterLines: {
+CabinEnter: {
   0: `You decided to enter the dark cabin,`,
   1: ` what really resides inside of it is still unknown.<br><br>`,
   2: `Inside of it, everything is pitch black,`,
@@ -963,7 +963,7 @@ CabinEnterLines: {
   8: `<a href="#" onclick="updateScreen('leshy','cabinFate')">Listen to it</a>`,
 },
 
-leshyLostSoulLines: {
+leshyLostSoul: {
   0: `<i>- What do we have here...`,
   1: `<b><i> A lost soul.</b><br><br>`,
   2: `The entity pulls off a pendulum made out of sticks and starts to swing it.`,
@@ -978,7 +978,7 @@ leshyLostSoulLines: {
   //YAEH
 },
 
-leshyWOGogglesLines: {
+leshyWOGoggles: {
   0: `<i>- What do we have here...`,
   1: `<b><i> A brave warrior?</b><br><br>`,
   2: `The entity pulls off a pendulum made out of sticks and starts to swing it.`,
@@ -995,7 +995,7 @@ leshyWOGogglesLines: {
   //YAEH
 },
 
-leshyWGogglesLines: {
+leshyWGoggles: {
   0: `<i>- What do we have here...`,
   1: `<b><i> A brave warrior.</b><br><br>`,
   2: `The entity pulls off a pendulum made out of sticks and starts to swing it.`,
@@ -1014,7 +1014,7 @@ leshyWGogglesLines: {
   15: `<a href="#" onclick="updateScreen('leshySkull','leshyPassTest1')">Pull yourself together</a>`,
 },
 
-leshySkullLines: {
+leshySkull: {
   0: `<i>- I see, that you have something special,`,
   1: `<i> sadly, I have more than one trick.<br><br>`,
   2: `A skull with a candle across it appears, held by a gruesome hand.<br><br>`,
@@ -1022,7 +1022,7 @@ leshySkullLines: {
   4: `<a href="#" onclick="updateScreen('leshyBurn','leshyBurn')">Continue</a>`,
 },
 
-leshyWODarkTunicLines: {
+leshyWODarkTunic: {
   0: `<i>Leshy</i> throws the skull at your feet,`,
   1: ` the sticky floor begins to burn,`,
   2: ` quickly spreading into your upper body.<br><br>`,
@@ -1034,7 +1034,7 @@ leshyWODarkTunicLines: {
   8: ` with <i>Leshy</i> as well.<br><br>`,
 },
 
-leshyWDarkTunicLines: {
+leshyWDarkTunic: {
   0: `<i>Leshy</i> throws the skull at your feet,`,
   1: ` the sticky floor begins to burn,`,
   2: ` quickly spreading into your upper body.<br><br>`,
@@ -1059,7 +1059,7 @@ leshyTransformation: {
   8: `<a href="#" onclick="updateScreen('leshyFinalForm','leshyFinalForm')">Face the enemy</a>`,
 },
 
-leshyFinalFormLines: {
+leshyFinalForm: {
   0: `The small pair of eyes doesn't exist anymore.<br><br>`,
   1: `The putrid hand which held the skull doesn't exist anymore.<br><br>`,
   2: `Your enemy has changed,`,
@@ -1082,7 +1082,7 @@ leshyFinalFormLines: {
   19: `<a href="#" onclick="updateScreen('empty','leshyFinalTest')">End this</a>`,
 },
 
-leshyFinalDefeatLines: {
+leshyFinalDefeat: {
   0: `You hold your broadsword uptight,`,
   1: ` for some reason,`,
   2: ` it isn't as heavy as before,`,
@@ -1111,7 +1111,7 @@ leshyFinalDefeatLines: {
   //YAEH
 },
 
-leshyFinalVictoryLines: {
+leshyFinalVictory: {
   0: `You hold your magical blade uptight,`,
   1: ` the weapon is much more lighter than it looks,`,
   2: ` making slicing much more effective.<br><br>`,
@@ -1127,7 +1127,7 @@ leshyFinalVictoryLines: {
   12: `<a href="#" onclick="updateScreen('leshyAftermath','leshyAftermath')">Victory at last...</a>`,
 },
 
-leshyAftermathLines: {
+leshyAftermath: {
   0: `Suddenly, the eye gets totally rotten,`,
   1: ` leaving a giant hole in the wall,`,
   2: ` the moonglow washes you`,
@@ -1140,7 +1140,7 @@ leshyAftermathLines: {
   9: `<a href="#" onclick="updateScreen('leshyAngel','leshyAngel')">Something is approaching...</a>`,
 },
 
-leshyAngelLines: {
+leshyAngel: {
   0: ` Maldio the angel phases through the cabin's walls after this conversation with yourself:<br><br>`,
   1: `- I can't believe it,`,
   2: ` you managed to defeat the <i>evil spirit</i>!`,
@@ -1164,7 +1164,7 @@ leshyAngelLines: {
   20: `<a href="#" onclick="updateScreen('finalDoor','ending')">Turn Around</a>`,
 },
 
-endingLines: {
+ending: {
   0: `The end of your quest is nigh,`,
   1: ` all of your efforts paid off,`,
   2: ` and you feel a giant feeling of realization after the recovery of your memories.<br><br>`,
