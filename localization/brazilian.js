@@ -1,6 +1,6 @@
 var brazilian = {
 
-// LINHAS DO MENU PRINCIPAL
+  // LINHAS DO MENU PRINCIPAL
 
   mainMenu: {
     buttons: {
@@ -137,13 +137,6 @@ settings: {
   }
 },
 
-// LINHAS PARA O JOGO
-
-WWYD: `O que você fará? <br><br>`,
-WWYS: `O que você dirá? <br><br>`,
-YAEH: `<a href="#" onclick="dyingAnimation()">Sua aventura acaba aqui.</a>`,
-exitCabin: `<b>Você sai da cabana.</b>`,
-
 welcomeBack: {
   0: `Bem vindo de volta à ilha,`,
   1: ` lembre-se de usar o mapa se você se sentir preso,`,
@@ -190,7 +183,7 @@ enterForestWOStick: {
   4: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Recuar da floresta`,
 },
 
-enterForestWithStick: {
+enterForestWStick: {
   0: `De volta ao mesmo lugar, você ainda reconhece o lugar em que o graveto foi encontrado... <br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continuar</a> <br>`,
@@ -348,7 +341,7 @@ weirdRocksWhoAreYou: {
 weirdRocksCabin: {
   0: `- Ah... Você tá falando do <i>Leshy</i>? <i>Ele</i> ele é um espírito que faz coisas ruins com as pessoas, eu não quero falar sobre isso...<br><br>`,
   1: `<i>Leshy</i> transformou Pedro em um monte de pedras!<br><br>`,
-  2: `Pedro começa a chorar pedrinhas, e você decide deixá-lo sozinho um pouco...`,
+  2: `Pedro começa a chorar pedrinhas, e você decide deixá-lo sozinho um pouco...<br><br>`,
   3: `(Vá embora pelo mapa!)`,
 },
 
@@ -393,7 +386,7 @@ farm: {
   4: `<a href="#" onclick="updateScreen('farm','farmBye')">Tchau!</a>`,
 },
 
-farmWOSticker: {
+farmSeeCropsWOSticker: {
   0: `- Claru que não! As cenora são minhas linda e eu nunca ia deixá alguém tocá elas! <br><br>`,
   1: `Ele parece bem sério falando isso, além disso ele tem uma enxada, é melhor ouvir ele.<br><br>`,
   //WWYS
@@ -401,7 +394,7 @@ farmWOSticker: {
   3: `<a href="#" onclick="updateScreen('farm','farmBye')">Tchau!</a> `,
 },
 
-farmWSticker: {
+farmSeeCropsWSticker: {
   0: `- Claru que nã...`,
   1: ` pera, `,
   2: `isso é um adisivo de cenora? `,
@@ -431,7 +424,7 @@ farmApproach: {
   4: `Você torce para o fazendeiro não ter percebido, e então corre tentando sair da visão dele.`,
 },
 
-farmHilt: {
+farmCrazyFarmer: {
   0: `Você vê o fazendeiro totalmente biruta procurando o tubo com a sua enxada...<br><br>`,
   1: `Talvez seja bom passar longe dele.`,
 },
@@ -440,7 +433,7 @@ wall: {
   0: `Uma parede massiva bloqueia o caminho, e um carinha que não parece amigável dentro de um pedágio fica te encarando:<br><br>`,
   1: `- Oi, cadê o passe?<br><br>`,
   //WWYS
-  2: `<a href="#" onclick="updateScreen('wall-open','wallUsePass')">Aqui, eu tenho um passe</a><br>`,
+  2: `<a href="#" onclick="updateScreen('wall','wallUsePass')">Aqui, eu tenho um passe</a><br>`,
   3: `<a href="#" onclick="updateScreen('wall','wallWhatPass')">Passe? Como assim?</a><br>`,
   4: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">O que tem atrás dessa parede?</a><br>`,
   5: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
@@ -449,15 +442,17 @@ wall: {
 wallWhatPass: {
   0: `- Você precisa de um passe pra passar por aqui, pegue um no castelo, eles são legais comigo.<br><br>`,
   //WWYS
-  1: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">O que tem atrás dessa parede?</a><br>`,
-  2: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
+  1: `<a href="#" onclick="updateScreen('wall','wallUsePass')">Aqui, eu tenho um passe</a><br>`,
+  2: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">O que tem atrás dessa parede?</a><br>`,
+  3: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
 },
 
 wallBeyondWall: {
   0: `- Tem uma bela caverna com um semideus, você precisa vê-lo, então pegue um passe!<br><br>`,
   //WWYS
-  1: `<a href="#" onclick="updateScreen('wall','wallWhatPass')">Passe? Como assim?</a><br>`,
-  2: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
+  1: `<a href="#" onclick="updateScreen('wall','wallUsePass')">Aqui, eu tenho um passe</a><br>`,
+  2: `<a href="#" onclick="updateScreen('wall','wallWhatPass')">Passe? Como assim?</a><br>`,
+  3: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
 },
 
 wallBye: {
@@ -465,11 +460,20 @@ wallBye: {
   1: `Talvez você deveria dar uma olhada no que é esse passe e onde encontrar um.`,
 },
 
-wallUsePass: {
+wallUsePassWPass: {
   0: `Você dá o passe para a coisa, e ela fica muito feliz! <br><br>`,
   1: `- AAAAH, FINALMENTE, O CHEFE VAI ME DEIXAR TIRAR FOLGA!!!<br>`,
   2: `- Ok, você pode passar e admirar a caverna.<br><br>`,
   3: `A cancela ao lado dele abre. <b>Agora, você pode acessar a caverna!</b>.`,
+},
+
+wallUsePassWOPass: {
+  0: `Você entrega uma pilha de nada para a criatura, ela não parece ter gostado da brincadeira:<br><br>`,
+  1: `- Tá de brincadeira? Meu único trabalho é recolher passes e você me vem com essa piada? Seu &*!$@<br><br>`,
+  2: `Mas que monstro deselegante! Parece que somente um passe pode passar por cima de tanta ignorância.`,
+  // WWYS
+  3: `<a href="#" onclick="updateScreen('wall','wallWhatPass')">Passe? Como assim?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">O que tem atrás dessa parede?</a><br>`,
 },
 
 wallAlreadyUsedPass: {
