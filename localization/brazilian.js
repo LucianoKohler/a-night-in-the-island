@@ -144,13 +144,16 @@ WWYS: `O que você dirá? <br><br>`,
 YAEH: `<a href="#" onclick="dyingAnimation()">Sua aventura acaba aqui.</a>`,
 exitCabin: `<b>Você sai da cabana.</b>`,
 
-welcomeBack1: `Bem vindo de volta à ilha,`,
-welcomeBack2: ` lembre-se de usar o mapa se você se sentir preso,`,
-welcomeBack3: ` boa sorte!`,
+welcomeBack: {
+  0: `Bem vindo de volta à ilha,`,
+  1: ` lembre-se de usar o mapa se você se sentir preso,`,
+  2: ` boa sorte!`
+},
 
-choose: {
-  0: `No menu do canto inferior direito, há um botão clicável que abre um mapa que indica sua localização atual em amarelo,`,
-  1: ` clique nas diferentes localizações da ilha para ir até elas, lembre-se de que algumas áreas podem estar bloqueadas!`,
+chooseLocation: {
+  0: `Hora do Tutorial!<br><br>`,
+  1: ` No menu do canto inferior direito, há um botão clicável que abre um mapa que indica sua localização atual em amarelo,`,
+  2: ` clique nas diferentes localizações da ilha para ir até elas, lembre-se de que algumas áreas podem estar bloqueadas!`,
 },
 
 start: {
@@ -162,14 +165,14 @@ start: {
   5: ` e a única coisa que você pode fazer agora é procurar ajuda.<br><br>`,
   //WWYD
   6: `<a href="#" onclick="updateScreen('forest', 'enterForest')">Entrar na floresta</a> <br>`,
-  7: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Recuar da floresta</a>`,
+  7: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Recuar da floresta</a>`,
 },
 
 forest: {
   0: `Você se reencontra com a floresta.<br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('forest', 'enterForest')">Entrar na floresta </a><br>`,
-  2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Recuar da floresta</a>`,
+  2: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Recuar da floresta</a>`,
 },
 
 forestBearScared: {
@@ -184,17 +187,17 @@ enterForestWOStick: {
   2: `<b>Você adquiriu um graveto comum</b>! <br><br>`,
   //WWYD
   3: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continuar</a> <br>`,
-  4: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Recuar da floresta`,
+  4: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Recuar da floresta`,
 },
 
 enterForestWithStick: {
   0: `De volta ao mesmo lugar, você ainda reconhece o lugar em que o graveto foi encontrado... <br><br>`,
   //WWYD
   1: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continuar</a> <br>`,
-  2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Recuar da floresta</a>`,
+  2: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Recuar da floresta</a>`,
 },
 
-ForestBearWSword: {
+forestBearWSword: {
   0: `Você prossegue sua caminhada florestal até que de repente...`,
   1: ` Um urso aparece das moitas!<br><br>`,
   2: `Você rapidamente saca sua pesadíssima espada,`,
@@ -207,7 +210,7 @@ ForestBearWSword: {
   9: `<b>Agora, você pode acessar o píer!</b>`,
 },
 
-ForestBearWOSword: {
+forestBearWOSword: {
   0: `Você prossegue sua caminhada florestal até que de repente...`,
   1: ` Um urso aparece das moitas!<br><br>`,
   2: `Você segura seu bastão firmemente,`,
@@ -215,7 +218,7 @@ ForestBearWOSword: {
   4: `O urso dá seu primeiro passo em sua direção, e suas pernas começam a pensar melhor que você,`,
   5: ` sem perceber, você começa a correr loucamente, só parando ao perceber que voltou à entrada da floresta,`,
   6: ` talvez você não esteja preparado para lutar com algo tão grande?<br><br>`,
-  7: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">O que eu faço agora?</a>`,
+  7: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">O que eu faço agora?</a>`,
 },
 
 pier: {
@@ -346,6 +349,7 @@ weirdRocksCabin: {
   0: `- Ah... Você tá falando do <i>Leshy</i>? <i>Ele</i> ele é um espírito que faz coisas ruins com as pessoas, eu não quero falar sobre isso...<br><br>`,
   1: `<i>Leshy</i> transformou Pedro em um monte de pedras!<br><br>`,
   2: `Pedro começa a chorar pedrinhas, e você decide deixá-lo sozinho um pouco...`,
+  3: `(Vá embora pelo mapa!)`,
 },
 
 weirdRocksEye: {
@@ -598,20 +602,20 @@ castle: {
   0: `Um grande castelo pode ser visto de quase qualquer lugar da ilha,`,
   1: ` o portão principal está aberto,`,
   2: ` você pode entrar nele.<br><br>`,
-  3: `<a href="#" onclick="updateScreen('bifurcation','castle')">Entrar</a>`,
+  3: `<a href="#" onclick="updateScreen('bifurcation','castleEnter')">Entrar</a>`,
 },
 
-enterCastle: {
+castleEnter: {
   0: `Pessoas passam pelas ruas, te ignorando, as construções parecem chatas e nada chama a sua atenção. <br><br>`,
   1: `No fim da rua principal, você se encontra em uma bifurcação:<br><br>`,
   2: `Para a esquerda, temos o palácio do rei.<br>`,
   3: `Para a direita, temos o mercadinho que aparenta ter umas coisas interessantes.<br><br>`,
   4: `Para onde você quer ir?<br><br>`,
-  5: `<a href="#" onclick="updateScreen('king','palaceEnter')">Para o palácio do rei</a><br>`,
+  5: `<a href="#" onclick="updateScreen('king','palace')">Para o palácio do rei</a><br>`,
   6: `<a href="#" onclick="updateScreen('shop','shop')">Para o mercadinho</a>`,
 },
 
-palaceEnterFirst: {
+palaceFirst: {
   0: `Você entra no palácio sem problemas, parece que este lugar não precisa de muitos guardas para ser seguro, no fim da sala, você encontra um rei:<br><br>`,
   1: `- Saudações jovem cidadão, ou deveria eu dizer... Estranho?<br><br>`,
   //WWYS
@@ -621,7 +625,7 @@ palaceEnterFirst: {
   5: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
 },
 
-palaceEnter: {
+palace: {
   0: `Saudações novamente, viajante.<br><br>`,
   //WWYS
   1: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')">Quem é você?</a><br>`,
@@ -707,7 +711,7 @@ shopFirst: {
   3: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Espada larga (20 moedas)</a><br>`,
   4: `<a href="#" onclick="updateScreen('shop','shopSticker')">Adesivo (10 moedas)</a><br>`,
   5: `<a href="#" onclick="updateScreen('shop','shopPass')">Passe da parede (GRÁTIS!)</a><br><br>`,
-  6: `<a href="#" onclick="updateScreen('king','palaceEnter')">Ir para o palácio</a>`,
+  6: `<a href="#" onclick="updateScreen('king','palace')">Ir para o palácio</a>`,
 },
 
 shop: {
@@ -715,7 +719,7 @@ shop: {
   1: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Espada larga (20 moedas)</a><br>`,
   2: `<a href="#" onclick="updateScreen('shop','shopSticker')">Adesivo (10 moedas)</a><br>`,
   3: `<a href="#" onclick="updateScreen('shop','shopPass')">Passe da parede (GRÁTIS!)</a><br><br>`,
-  4: `<a href="#" onclick="updateScreen('king','palaceEnter')">Ir para o palácio</a>`,
+  4: `<a href="#" onclick="updateScreen('king','palace')">Ir para o palácio</a>`,
 },
 
 shopBroadsword: {

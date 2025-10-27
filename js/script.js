@@ -110,7 +110,7 @@ function updateStart(div) {
       creditsScreen.style.display = "none";
       gameScreen.style.display = "grid";
       patchNotesScreen.style.display = "none";
-    
+
       updateScreen("forest", "start");
     break;
 
@@ -148,7 +148,7 @@ function updateStart(div) {
       updateInventory();
       updateScreen("forest", "welcomeBack");
       break;
-    
+
       case "howtoplay":
       startScreen.style.display = "none";
       gameScreen.style.display = "none";
@@ -194,7 +194,7 @@ function toMainMenu() {
   howToPlayScreen.style.display = "none";
   patchNotesScreen.style.display = "none";
   startScreen.style.display = "flex";
-  
+
   // Ativar/desativar o botão de continuar caso o jogador tenha feito algo
   updateContinueButton();
 }
@@ -240,7 +240,7 @@ function setPalette(step) {
 
   if(step == 0) currentPalette = 0;
   else if(step != "useSaved") currentPalette += step;
-  
+
   if (currentPalette == 5) currentPalette = 0;
   if (currentPalette == -1) currentPalette = 4;
 
@@ -268,7 +268,7 @@ function setDelayTime(step){
   if (currentDelay == null) currentDelay = 0;
   if(step == 0) currentDelay = 0;
   if(step != "useSaved") currentDelay += step;
-  
+
   if (currentDelay == 3) currentDelay = 0;
   if (currentDelay == -1) currentDelay = 2;
 
@@ -460,15 +460,33 @@ function updateScreen(nextImg, nextText) {
   let ImgQuery;
 
   //Esses IFs abaixo são usados caso o player entre no local após certo acontecimento.
-  if (sword3 == true && nextImg == "weirdRocks")        { ImgQuery = "weirdRocksCrying"; } 
-else if (pass == 2 && nextImg == "wall")                { ImgQuery = "wall-open"; } 
-else if (castleEntered == true && nextImg == "castle")  { ImgQuery = "bifurcation"; } 
-else if (kingQuest == true && nextImg == "altar")       { ImgQuery = "angel"; } 
-else if (tunic == true && nextImg == "island")          { ImgQuery = "islandhole"; } 
-else if (goggles == true && nextImg == "well")          { ImgQuery = "wellPoor"; } 
-else if (goblinGotMoney == true && nextImg == "goblin") { ImgQuery = "goblinCry"; } 
-else if (sword1 == true && nextImg == "king")           { ImgQuery = "kingPommelless"; } 
-else if (
+    if (stick && nextText == "enterForest")         { nextText = "enterForestWStick" }
+    else if(!stick && nextText == "enterForest")    { nextText = "enterForestWOStick"; localStorage.setItem("stick", true) }
+    else if(bearScared && nextText == "forestBear") { nextText = "forestBearScared" }
+    else if((islandSword || broadsword) && nextText == "forestBear") {nextText = "forestBearWSword"; localStorage.setItem("bearScared", true) }
+    else if(nextText == "forestBear")               { nextText = "forestBearWOSword" }
+    else if(!kingQuest && nextText == "altar")      { nextText = "altarAbandoned" }
+    else if(!angelVisited && nextText == "altar")   { nextText = "altarFirst"; localStorage.setItem("angelVisited", true) }
+    else if(!palaceEntered && nextText == "palace") { nextText = "palaceFirst"; localStorage.setItem("palaceEntered", true) }
+    else if(nextText == "kingHowDoThis")            { localStorage.setItem("kingQuest", true) }
+    else if(!shopEntered && nextText == "shop")     { nextText = "shopFirst"; localStorage.setItem("shopEntered", true) }
+    else if(nextText == "shopBroadswordYes" && broadsword) { nextText = "shopOnlyOnePerPerson" }
+    else if(nextText == "shopStickerYes" && sticker){ nextText = "shopOnlyOnePerPerson" }
+    else if(nextText == "shopPass" && pass > 0)  { nextText = "shopOnlyOnePerPerson" }
+    else if(nextText == "shopBroadswordYes" && coins < 20) { nextText = "shopTooPoor" }
+    else if(nextText == "shopStickerYes" && coins < 10)    { nextText = "shopTooPoor" }
+    else if(nextText == "shopPass" && !kingQuest)   { nextText = "shopPassWOKingQuest" }
+    else if(nextText == "shopPass" && kingQuest)    { nextText = "shopPassWKingQuest"; localStorage.setItem("pass", 1) }
+
+    if (sword3 && nextImg == "weirdRocks")          { ImgQuery = "weirdRocksCrying"; }
+    else if (pass == 2 && nextImg == "wall")        { ImgQuery = "wall-open"; }
+    else if (castleEntered && nextImg == "castle")  { ImgQuery = "bifurcation"; }
+    else if (kingQuest && nextImg == "altar")       { ImgQuery = "angel"; }
+    else if (tunic && nextImg == "island")          { ImgQuery = "islandhole"; }
+    else if (goggles && nextImg == "well")          { ImgQuery = "wellPoor"; }
+    else if (goblinGotMoney && nextImg == "goblin") { ImgQuery = "goblinCry"; }
+    else if (sword1 && nextImg == "king")           { ImgQuery = "kingPommelless"; }
+    else if (
     (broadsword == true && nextText == "shopBroadswordYes") ||
     (sticker == true && nextText == "shopStickerYes") ||
     ((pass == 1 || pass == 2) && nextText == "shopPass")
@@ -492,9 +510,12 @@ else if (
   //mudar texto
   chatDiv.innerHTML = "";
 
-  for(let s of Object.values(selectedLanguage[nextText])){
-    console.log(s)
-    chatDiv.innerHTML += s;
+  if(!selectedLanguage[nextText]){
+    console.log(`Erro: Texto da variável ${nextText}, nenhum texto encontrado com tal nome`)
+  }else{
+    for(let s of Object.values(selectedLanguage[nextText])){
+      chatDiv.innerHTML += s;
+    }
   }
 }
 
