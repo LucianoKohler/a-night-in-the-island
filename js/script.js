@@ -523,6 +523,12 @@ function updateScreen(nextImg, nextText) {
       localStorage.setItem("islandEntered", true) 
       localStorage.setItem("tunic", true)
     }
+    else if(nextText == "angelAskAboutQuest" && !sword2)              { nextText = "angelParts2" }
+    else if(nextText == "angelAskAboutQuest" && !sword3)              { nextText = "angelParts3" }
+    else if(nextText == "angelAskAboutQuest" && !sword1)              { nextText = "angelParts1" }
+    else if(nextText == "angelAskAboutQuest" && !islandSword)         { nextText = "angelFuseSword1" }
+    else if(nextText == "angelAskAboutQuest")                         { nextText = "angelPartsBadFeeling" }
+    else if(nextText == "angelFuseSword3")                            { localStorage.setItem("islandSword", true) }
 
 
     if (sword3 && nextImg == "weirdRocks")          { ImgQuery = "weirdRocksCrying"; }
@@ -533,16 +539,7 @@ function updateScreen(nextImg, nextText) {
     else if (goggles && nextImg == "well")          { ImgQuery = "wellPoor"; }
     else if (goblinGotMoney && nextImg == "goblin") { ImgQuery = "goblinCry"; }
     else if (sword1 && nextImg == "king")           { ImgQuery = "kingPommelless"; }
-    else if (
-    (broadsword == true && nextText == "shopBroadswordYes") ||
-    (sticker == true && nextText == "shopStickerYes") ||
-    ((pass == 1 || pass == 2) && nextText == "shopPass")
-  ) {
-    nextText = "shopOnlyOnePerPerson";
-    ImgQuery = nextImg;
-  } else {
-    ImgQuery = nextImg;
-  }
+    else                                            { ImgQuery = nextImg; }
 
   updateInventory();
 

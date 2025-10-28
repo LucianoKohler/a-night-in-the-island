@@ -817,7 +817,7 @@ altarFirst: {
   6: `- This altar once was a place to keep it safe, but time passed, and <i>Leshy</i> thought fast and got rid of it.`,
   7: ` But hope is not lost! The sword can't leave the island, so it must be here, and if not, its parts are.`,
   8: ` We just need to find them and take them here.<br><br>`,
-  9: window.englishGlobals.WWYS,//WWYS
+  9: window.englishGlobals.WWYS, 
   10: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
   11: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
   12: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">How did the sword disappear?</a><br>`,
@@ -830,14 +830,20 @@ angelParts2: {
   1: ` I don't know if that's useful,`,
   2: ` but it is surely worth a shot.<br><br>`,
   3: window.englishGlobals.WWYS,
-  //General
+  4: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">How did the sword disappear?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Why didn't you search the sword by yourself?</a><br>`,
+  7: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
 },
 
 angelParts3: {
   0: `- I felt a little bit of magic coming the west of the island,`,
   1: ` maybe someone powerful is keeping a part for itself!<br><br>`,
   2: window.englishGlobals.WWYS,
-  //General
+  3: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">How did the sword disappear?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Why didn't you search the sword by yourself?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
 },
 
 angelParts1: {
@@ -846,7 +852,10 @@ angelParts1: {
   2: ` go talk to the king,`,
   3: ` he knows where it is.<br><br>`,
   4: window.englishGlobals.WWYS,
-  //General
+  5: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">How did the sword disappear?</a><br>`,
+  7: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Why didn't you search the sword by yourself?</a><br>`,
+  8: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
 },
 
 angelPartsBadFeeling: {
@@ -856,35 +865,26 @@ angelPartsBadFeeling: {
   3: ` what if just it is not enough to defeat <i>him</i>?`,
   4: ` I have a bad feeling about this,`,
   5: `  <i>Leshy</i> is dirty, and will do anything to kill anyone who bothers <i>him</i>.<br><br>`,
-  6: window.englishGlobals.WWYS,
-  //General
+  6: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
 },
 
-angelPartsGeneral: {
-  // Falas usadas nas três perguntas de onde estão as partes de espada
-  0: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
-  1: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">How did the sword disappear?</a><br>`,
-  2: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Why didn't you search the sword by yourself?</a><br>`,
-  3: `<a href="#" onclick="updateScreen('angel','angelBye')">Bye!</a>`,
-},
-
-angelFuseSwordPart1: {
+angelFuseSword1: {
   0: `- We did it,`,
   1: ` my child!`,
   2: ` We got all the necessary pieces to refuse the Sword!<br><br>`,
   3: `- Now, place the parts at their notches and take a step back.<br><br>`,
-  4: `<a href="#" onclick="updateScreen('altarlightbeam','altarFuseSword')">Do what they asked</a>`,
+  4: `<a href="#" onclick="updateScreen('altarlightbeam','angelFuseSword2')">Do what they asked</a>`,
 },
 
-angelFuseSwordPart2: {
+angelFuseSword2: {
   0: `The angel retreats from the altar,`,
   1: `and after 5 steps of backing off,`,
   2: ` a giant light beam strucks the altar,`,
   3: ` making a deafening noise of a lightning, together with a blinding light...<br><br>`,
-  4: `<a href="#" onclick="updateScreen('angel','altarFuseSwordAftermath')">And?</a>`,
+  4: `<a href="#" onclick="updateScreen('angel','angelFuseSword3')">And?</a>`,
 },
 
-angelFuseSwordPart3: {
+angelFuseSword3: {
   0: `The light beam disappears into thin air,`,
   1: ` and you're left with the so called blade capable of slaying anything.<br><br>`,
   2: `<b>You got The Island Sword!</b><br><br>`,
@@ -931,7 +931,7 @@ angelSearchSwordYourself: {
 
 angelBye: {
   0: `- Bye my child,`,
-  1: ` good luck with the sword finding.`,
+  1: ` good luck with your quest.`,
 },
 
 cabin: {
