@@ -472,6 +472,8 @@ function updateScreen(nextImg, nextText) {
     else if(nextText == "forestBear")                                { nextText = "forestBearWOSword" }
     else if(!kingQuest && nextText == "altar")                       { nextText = "altarAbandoned" }
     else if(!angelVisited && nextText == "altar")                    { nextText = "altarFirst"; localStorage.setItem("angelVisited", true) }
+    else if(!castleEntered && nextText == "castle")                  { localStorage.setItem("castleEntered", true) }
+    else if(castleEntered && nextText == "castle")                   { nextText = "castleEnter" }
     else if(!palaceEntered && nextText == "palace")                  { nextText = "palaceFirst"; localStorage.setItem("palaceEntered", true) }
     else if(nextText == "kingHowDoThis")                             { localStorage.setItem("kingQuest", true) }
     else if(sword2 && sword3 && !sword1 && nextText == "palace")     { nextText = "kingGivePommel"; localStorage.setItem("sword1", true) }
@@ -529,6 +531,16 @@ function updateScreen(nextImg, nextText) {
     else if(nextText == "angelAskAboutQuest" && !islandSword)         { nextText = "angelFuseSword1" }
     else if(nextText == "angelAskAboutQuest")                         { nextText = "angelPartsBadFeeling" }
     else if(nextText == "angelFuseSword3")                            { localStorage.setItem("islandSword", true) }
+    else if(nextText == "cabinTree" && islandSword && goggles && tunic){ nextText = "treeCanDefeat" }
+    else if(nextText == "cabinTree")                                  { nextText = "treeCantDefeat" }
+    else if(nextText == "leshyFate" && !kingQuest)                    { nextText = "leshyLostSoul" }
+    else if(nextText == "leshyFate" && !goggles)                      { nextText = "leshyWOGoggles" }
+    else if(nextText == "leshyFate")                                  { nextText = "leshyWGoggles" }
+    else if(nextText == "leshyBurn" && !tunic)                        { nextText = "leshyWODarkTunic" }
+    else if(nextText == "leshyBurn")                                  { nextText = "leshyWDarkTunic" }
+    else if(nextText == "leshyFinalTest" && !islandSword)             { nextText = "leshyFinalDefeat" }
+    else if(nextText == "leshyFinalTest")                             { nextText = "leshyFinalVictory" }
+    else if(nextText == "leshyAngel")                                 { setPalette("useSaved") }
 
 
     if (sword3 && nextImg == "weirdRocks")          { ImgQuery = "weirdRocksCrying"; }
@@ -557,7 +569,7 @@ function updateScreen(nextImg, nextText) {
   chatDiv.innerHTML = "";
 
   if(!selectedLanguage[nextText]){
-    console.log(`Erro: Texto da variável ${nextText}, nenhum texto encontrado com tal nome`)
+    console.error(`Texto da variável ${nextText}, não encontrado`)
   }else{
     for(let s of Object.values(selectedLanguage[nextText])){
       chatDiv.innerHTML += s;
@@ -570,12 +582,7 @@ function winGame() {
   gameScreen.style.display = "none";
   winScreen.style.display = "flex";
 
-  let TWEnding = new Typewriter(endingText, {
-    delay: 75,
-  });
-
-  TWEnding.pauseFor(250).typeString(window[language].exitCabin).start();
-
+  endingText.innerHTML = window[language].exitCabin[0]
   eraseSave();
 }
 

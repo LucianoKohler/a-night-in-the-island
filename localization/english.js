@@ -937,12 +937,12 @@ angelBye: {
 cabin: {
   0: `You spot a small and miserable cabin at the edge of the island, the cabin has a skull hanged by the top of its only entrance.<br><br>`,
   1: `By the side, you notice a dead tree with a small script carved on its trunk.<br><br>`,
-  2: window.englishGlobals.WWYS,
+  2: window.englishGlobals.WWYD,
   3: `<a href="#" onclick="updateScreen('empty','cabinEnter')">Enter the cabin</a><br>`,
   4: `<a href="#" onclick="updateScreen('cabin','cabinTree')">Investigate the tree</a>`,
 },
 
-cabinWOGoggles: {
+treeCantDefeat: {
   0: `Upon coming closer to the tree,`,
   1: ` the carving becomes clear,`,
   2: ` it's a text written:<br><br>`,
@@ -950,16 +950,16 @@ cabinWOGoggles: {
   4: `<a href="#" onclick="updateScreen('cabin','cabin')">Go back</a>`,
 },
 
-cabinWGoggles: {
+treeCanDefeat: {
   0: `Upon coming closer to the tree,`,
   1: ` the headache from using the goggles gets REALLY strong,`,
   2: ` but you can still see what's carved,`,
   3: ` it's a text:<br><br>`,
-  4: `<b>You can slay him.</b><br><br>`,
+  4: `<b>You can slay <i>him</i>.</b><br><br>`,
   5: `<a href="#" onclick="updateScreen('cabin','cabin')">Go back</a>`,
 },
 
-CabinEnter: {
+cabinEnter: {
   0: `You decided to enter the dark cabin,`,
   1: ` what really resides inside of it is still unknown.<br><br>`,
   2: `Inside of it, everything is pitch black,`,
@@ -968,7 +968,7 @@ CabinEnter: {
   5: ` there isn't... Anything.`,
   6: ` Moments before going back outside,`,
   7: ` the door shuts, and you hear a voice from the darkness:<br><br>`,
-  8: `<a href="#" onclick="updateScreen('leshy','cabinFate')">Listen to it</a>`,
+  8: `<a href="#" onclick="updateScreen('leshy','leshyFate')">Listen to it</a>`,
 },
 
 leshyLostSoul: {
@@ -1019,7 +1019,7 @@ leshyWGoggles: {
   12: ` straight into the ground,`,
   13: ` the goggles made you dizzy again,`,
   14: ` and the impact made you snap out of the control!<br><br>`,
-  15: `<a href="#" onclick="updateScreen('leshySkull','leshyPassTest1')">Pull yourself together</a>`,
+  15: `<a href="#" onclick="updateScreen('leshySkull','leshySkull')">Pull yourself together</a>`,
 },
 
 leshySkull: {
@@ -1055,7 +1055,7 @@ leshyWDarkTunic: {
   9: `<a href="#" onclick="updateScreen('empty','leshyTransform')">Continue</a>`,
 },
 
-leshyTransformation: {
+leshyTransform: {
   0: `The pair of eyes disappear in the darkness.<br><br>`,
   1: `The deafening silence of the cabin soon turns into a loud orchestra of craking wood,`,
   2: ` as if it was being destroyed,`,
@@ -1185,5 +1185,9 @@ ending: {
   9: ` you turn around to say the last goodbye to Maldio,`,
   10: ` this wouldn't be possible without their help.<br><br>`,
   11: `<a href="#" onclick="winGame()">Go through the door</a>`,
+},
+
+exitCabin: {
+  0: window.englishGlobals.exitCabin
 }
 }
