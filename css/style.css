@@ -276,6 +276,7 @@ button {
     width: 30%;
     height: 50px;
     font-size: 1.2vw;
+    border-radius: 5px;
 }
 
 button:hover {
@@ -298,10 +299,6 @@ button:active {
 #hidden * { color: var(--bg) !important; }
 #shown    { color: var(--main) !important; }
 
-
-#chat {
-    user-select: none;
-}
 
 #chat a::before {
     content: "• ";

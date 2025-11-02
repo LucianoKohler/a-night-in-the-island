@@ -256,11 +256,11 @@ function setPalette(step) {
 }
 
 //Mudar delay entre frases
-
+// smallDel, bigDel, between
 let betweenDelays = [
-  [500, 1000, 1500, 0],
-  [250, 500, 750, 1],
-  [0, 0, 0, 2],
+  [500, 1000, 0],
+  [250, 500,  1],
+  [0,   0,    2],
 ];
 
 function setDelayTime(step){
@@ -454,7 +454,6 @@ function typewrite(delay, divToType, lines){ // Text to type = object
     
     if(divHTML[i+1] == "<"){
       while(divHTML[i+1] != ">" && i < len){
-        console.log("tag")
         if(divHTML[i+1] == 'a'){
           chatDiv.style.pointerEvents = "all"
         } 
@@ -597,8 +596,8 @@ function updateScreen(nextImg, nextText) {
     else if(nextText == "leshyBurn")                                  { nextText = "leshyWDarkTunic" }
     else if(nextText == "leshyFinalTest" && !islandSword)             { nextText = "leshyFinalDefeat" }
     else if(nextText == "leshyFinalTest")                             { nextText = "leshyFinalVictory" }
+    
     else if(nextText == "leshyAngel")                                 { setPalette("useSaved") }
-
 
     if (sword3 && nextImg == "weirdRocks")          { ImgQuery = "weirdRocksCrying"; }
     else if (pass == 2 && nextImg == "wall")        { ImgQuery = "wall-open"; }

@@ -145,7 +145,7 @@ welcomeBack: {
 
 chooseLocation: {
   0: `Tutorial time!<br><br>`,
-  1: ` On the bottom right menu, there's, a clickable button that opens a map that indicates your current position in yellow,`,
+  1: ` On the bottom right menu, there's a clickable button that opens a map that indicates your current position in yellow,`,
   2: ` click on the different locations of the island to go there, remember that some areas aren't accessible yet!`,
 },
 
