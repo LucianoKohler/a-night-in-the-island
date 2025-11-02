@@ -292,8 +292,19 @@ button:active {
 #inventory,
 #settings {
     font-size: calc(.4em + 1vh);
-
 }
+
+#hidden   { color: var(--bg) !important; }
+#hidden * { color: var(--bg) !important; }
+#shown    { color: var(--main) !important; }
+
+
+#chat {
+    user-select: none;
+    pointer-events: none;
+}
+
+
 
 #chat a::before {
     content: "• ";

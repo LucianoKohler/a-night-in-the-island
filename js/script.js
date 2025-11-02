@@ -425,8 +425,57 @@ function disableKeyFeatures() {
   document.getElementById("paletteBack").onclick = "";
 }
 
+function typewrite(delay, divToType, lines){ // Text to type = object
+  chatDiv.style.pointerEvents = "none"
+  
+  let textObject = window[language][lines]
+  if(!textObject){ console.error(`Texto da variável ${textObject}, não encontrado`); return }
+  
+  divToType.innerHTML = "<span id='shown'></span><span id='hidden'></span>";
+  
+  let shownSpan = divToType.querySelector("#shown")
+  let hiddenSpan = divToType.querySelector("#hidden")
+
+  for(let s of Object.values(textObject)){
+    hiddenSpan.innerHTML += s; // Fills the hidden span
+  }
+
+  let i = 0;
+  let divHTML = hiddenSpan.innerHTML // Full text
+  let len = divHTML.length
+
+  function nextChar(){ // TODO fix when naturally typing to enable anchors
+    if(i >= len) return;
+    
+    if(divHTML[i] == "<"){
+      while(divHTML[i] != ">" && i < len){
+        i++;
+      }
+    }
+    shownSpan.innerHTML = divHTML.substring(0, i);
+    hiddenSpan.innerHTML = divHTML.substring(i);
+
+    i++;
+    delay = del;
+
+    if(divHTML[i-2] == ',') delay = smallDel
+    if(divHTML[i-2] == '.' || divHTML[i-2] == '?' || divHTML[i-2] == '!') delay = bigDel // TODO fix (jumps because of <br>)
+    interval = setTimeout(nextChar, delay)  
+  }
+
+  function skipTyping(){
+    clearInterval(interval)
+    hiddenSpan.innerHTML = ""
+    shownSpan.innerHTML = divHTML
+    chatDiv.style.pointerEvents = "all"
+  }
+
+  nextChar()
+  setTimeout(() => {  window.addEventListener("click", skipTyping, { once: true }) }, 100) // TODO fix to be only on chatDiv
+  // Good Night!
+}
+
 function updateScreen(nextImg, nextText) {
-  console.log(nextText)
 
   // IMPORTANTE: TODAS AS VARIÁVEIS DO LOCALSTORAGE PASSAM A SEREM VARIÁVEIS
   // SIMPLES NESSA FUNÇÃO, SE FOR USAR UMA VARIÁVEL NOVA, DECLARE-A AQUI PRIMEIRO
@@ -457,7 +506,6 @@ function updateScreen(nextImg, nextText) {
   var goblinGotMoney = JSON.parse(localStorage.getItem("goblinGotMoney"));
   var goblinVisited = JSON.parse(localStorage.getItem("goblinVisited"))
 
-  var selectedLanguage = window[language];
   let ImgQuery;
 
   //Esses IFs abaixo são usados caso o player entre no local após certo acontecimento.
@@ -566,15 +614,7 @@ function updateScreen(nextImg, nextText) {
   NI.classList.add("active");
 
   //mudar texto
-  chatDiv.innerHTML = "";
-
-  if(!selectedLanguage[nextText]){
-    console.error(`Texto da variável ${nextText}, não encontrado`)
-  }else{
-    for(let s of Object.values(selectedLanguage[nextText])){
-      chatDiv.innerHTML += s;
-    }
-  }
+  typewrite(del, chatDiv, nextText)
 }
 
 function winGame() {
@@ -590,7 +630,7 @@ window.addEventListener('keydown', (e) => {
   if (e.key === 'w' || e.key === 'W') {
     winGame();
   }
-});
+}, { once: true });
 
 UpdateColors();
 updateContinueButton();
