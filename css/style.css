@@ -301,10 +301,7 @@ button:active {
 
 #chat {
     user-select: none;
-    pointer-events: none;
 }
-
-
 
 #chat a::before {
     content: "• ";

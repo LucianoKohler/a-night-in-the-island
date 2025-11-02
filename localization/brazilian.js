@@ -379,7 +379,7 @@ weirdRocksAngryRox: {
 
 farm: {
   0: `Essa fazenda solitária está isolada do resto da civilização, o fazendeiro, rapidamente reconhecendo a visita, diz:<br><br>`,
-  1: `- Aoba, uma visita!!! Bem vindu ao meu brejo, aqui eu pranto cenora, batata, cenora, cenora, metal e cenora!<br><br>`,
+  1: `- Aoba, uma visita! Bem vindu ao meu brejo, aqui eu pranto cenora, batata, cenora, cenora, metal e cenora!<br><br>`,
   2: window.brazilianGlobals.WWYS,
   3: `<a href="#" onclick="updateScreen('farm', 'farmSeeCrops')">Posso ver a sua plantação?</a><br>`,
   4: `<a href="#" onclick="updateScreen('farm', 'farmMetal')">Você planta metal?</a><br>`,

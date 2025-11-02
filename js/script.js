@@ -440,39 +440,48 @@ function typewrite(delay, divToType, lines){ // Text to type = object
     hiddenSpan.innerHTML += s; // Fills the hidden span
   }
 
+  divToType.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", e => e.stopPropagation());
+  });
+
+
   let i = 0;
   let divHTML = hiddenSpan.innerHTML // Full text
   let len = divHTML.length
 
-  function nextChar(){ // TODO fix when naturally typing to enable anchors
+  function nextChar(){
     if(i >= len) return;
     
-    if(divHTML[i] == "<"){
-      while(divHTML[i] != ">" && i < len){
+    if(divHTML[i+1] == "<"){
+      while(divHTML[i+1] != ">" && i < len){
+        console.log("tag")
+        if(divHTML[i+1] == 'a'){
+          chatDiv.style.pointerEvents = "all"
+        } 
         i++;
       }
     }
-    shownSpan.innerHTML = divHTML.substring(0, i);
-    hiddenSpan.innerHTML = divHTML.substring(i);
+    shownSpan.innerHTML = divHTML.substring(0, i+2);
+    hiddenSpan.innerHTML = divHTML.substring(i+2);
 
     i++;
     delay = del;
 
-    if(divHTML[i-2] == ',') delay = smallDel
-    if(divHTML[i-2] == '.' || divHTML[i-2] == '?' || divHTML[i-2] == '!') delay = bigDel // TODO fix (jumps because of <br>)
-    interval = setTimeout(nextChar, delay)  
+    if(/,/.test(divHTML[i])) delay = smallDel
+    if(/[.:?!]/.test(divHTML[i])) delay = bigDel
+    timeout = setTimeout(nextChar, delay)
   }
 
-  function skipTyping(){
-    clearInterval(interval)
+  function skipTyping(e){
+    if(e.target.closest("a")) return; // se for um link clicado
+    clearTimeout(timeout)
     hiddenSpan.innerHTML = ""
     shownSpan.innerHTML = divHTML
     chatDiv.style.pointerEvents = "all"
   }
-
+  
   nextChar()
-  setTimeout(() => {  window.addEventListener("click", skipTyping, { once: true }) }, 100) // TODO fix to be only on chatDiv
-  // Good Night!
+  setTimeout(() => { document.getElementById("chat").addEventListener("click", skipTyping, { once: true }) }, 100)
 }
 
 function updateScreen(nextImg, nextText) {
