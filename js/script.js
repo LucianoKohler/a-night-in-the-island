@@ -449,12 +449,10 @@ async function typewriteCorrect(delay, divToType, lines){
       function nextChar(){
       let spans = divToType.querySelectorAll("span")
       if(i >= len) { resolve(); return; }
-      if(line[i+1] == "<"){
-        while(line[i+1] != ">" && i < len){
-          if(line[i+1] == 'a'){
-            divToType.style.pointerEvents = "all"
-          }
-          i++
+      if(line[i] == "<"){
+        const tagEnd = line.indexOf(">", i)
+        if(tagEnd != -1){
+          i = tagEnd
         }
       }
 
@@ -464,9 +462,8 @@ async function typewriteCorrect(delay, divToType, lines){
   
       delay = del;
 
-      // Ignore
-      // if(/,/.test(line[i])) delay = smallDel
-      // if(/[.:?!]/.test(line[i])) delay = bigDel
+      if(/,/.test(line[i])) delay = smallDel
+      if(/[.:?!]/.test(line[i])) delay = bigDel
       
       let timeout = setTimeout(nextChar, delay);
     }
