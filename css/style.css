@@ -299,9 +299,9 @@ button:active {
 #hidden * { color: var(--bg) !important; }
 #shown    { color: var(--main) !important; }
 
-#chat {
+/* #chat {
     user-select: none;
-}
+} */
 
 #chat a::before {
     content: "• ";

@@ -276,7 +276,7 @@ function setDelayTime(step){
   bigDel = betweenDelays[currentDelay][1];
   hugeDel = betweenDelays[currentDelay][2];
 
-  document.getElementById("delayName").innerHTML = window[language].settings.delayBetween[betweenDelays[currentDelay][3]];
+  document.getElementById("delayName").innerHTML = window[language].settings.delayBetween[betweenDelays[currentDelay][2]];
 
   localStorage.setItem("currentDelay", currentDelay);
 }
@@ -425,11 +425,62 @@ function disableKeyFeatures() {
   document.getElementById("paletteBack").onclick = "";
 }
 
+async function typewriteCorrect(delay, divToType, lines){
+  divToType.style.pointerEvents = "none"
+
+  let textOBJ = window[language][lines]
+  if(!textOBJ){ console.error(`Não há texto na variável ${lines}.`); return; }
+
+  divToType.innerHTML = "";
+
+  for(let line of Object.values(textOBJ)){
+    const newSpan = document.createElement("span") // Nova span com a nova linha
+    divToType.appendChild(newSpan)
+    console.log("Proxima linha: " + line)
+
+    divToType.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", e => e.stopPropagation());
+    });
+
+    await new Promise(resolve => {
+      let i = 0;
+      let len = line.length
+      
+      function nextChar(){
+      let spans = divToType.querySelectorAll("span")
+      if(i >= len) { resolve(); return; }
+      if(line[i+1] == "<"){
+        while(line[i+1] != ">" && i < len){
+          if(line[i+1] == 'a'){
+            divToType.style.pointerEvents = "all"
+          }
+          i++
+        }
+      }
+
+      spans[spans.length-1].innerHTML = line.slice(0, i+2)
+
+      i++
+  
+      delay = del;
+
+      // Ignore
+      // if(/,/.test(line[i])) delay = smallDel
+      // if(/[.:?!]/.test(line[i])) delay = bigDel
+      
+      let timeout = setTimeout(nextChar, delay);
+    }
+    
+    nextChar()
+  })    
+  }
+}
+
 function typewrite(delay, divToType, lines){ // Text to type = object
   chatDiv.style.pointerEvents = "none"
   
   let textObject = window[language][lines]
-  if(!textObject){ console.error(`Texto da variável ${textObject}, não encontrado`); return }
+  if(!textObject){ console.error(`Texto da variável ${lines}, não encontrado`); return }
   
   divToType.innerHTML = "<span id='shown'></span><span id='hidden'></span>";
   
@@ -622,7 +673,7 @@ function updateScreen(nextImg, nextText) {
   NI.classList.add("active");
 
   //mudar texto
-  typewrite(del, chatDiv, nextText)
+  typewriteCorrect(del, chatDiv, nextText)
 }
 
 function winGame() {

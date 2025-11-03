@@ -157,8 +157,8 @@ start: {
   4: ` you're lost,`,
   5: ` and the only thing that you can do now is to search for help.<br><br>`,
   6: window.englishGlobals.WWYD,
-  7: `<a href="#" onclick="updateScreen('forest', 'enterForest')"> Enter the forest </a> <br>`,
-  8: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')"> Retreat from the forest</a>`,
+  7: `<a href="#" onclick="updateScreen('forest', 'enterForest')">Enter the forest</a><br>`,
+  8: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Retreat from the forest</a>`,
 },
 
 forest: {
