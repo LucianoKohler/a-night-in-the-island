@@ -1,3 +1,4 @@
+
 let del = 20;
 let smallDel = 500; //Delays usados para dar uma pausa entre frases
 let bigDel = 1000;
@@ -7,7 +8,10 @@ const targetLang = new URLSearchParams(window.location.search).get('l');
 var language = targetLang == 'pt-br' ? 'brazilian' : 'english';
 var langLines = window[language];
 
-//BOTÕES PARA A TELA DE INÍCIO
+// Audios
+let getItemAudio = new Audio("../assets/getItem.mp3")
+
+// BOTÕES PARA A TELA DE INÍCIO
 
 var startScreen = document.getElementById("start");
 var gameScreen = document.getElementById("gamescreen");
@@ -97,7 +101,6 @@ function updateContinueButton(){
 function updateStart(div) {
   switch (div) {
     case "newgame":
-
       isPlaying = true;
       eraseSave();
       setPalette(0);
@@ -426,50 +429,74 @@ function disableKeyFeatures() {
 }
 
 async function typewriteCorrect(delay, divToType, lines){
-  divToType.style.pointerEvents = "none"
-
   let textOBJ = window[language][lines]
   if(!textOBJ){ console.error(`Não há texto na variável ${lines}.`); return; }
 
   divToType.innerHTML = "";
 
+  // setTimeout(() => { document.getElementById("chat").addEventListener("click", skipTyping, { once: true }) }, 100)
+  // Where do i fit this...
   for(let line of Object.values(textOBJ)){
-    const newSpan = document.createElement("span") // Nova span com a nova linha
-    divToType.appendChild(newSpan)
-    console.log("Proxima linha: " + line)
-
-    divToType.querySelectorAll("a").forEach(a => {
-      a.addEventListener("click", e => e.stopPropagation());
-    });
-
-    await new Promise(resolve => {
-      let i = 0;
-      let len = line.length
-      
-      function nextChar(){
-      let spans = divToType.querySelectorAll("span")
-      if(i >= len) { resolve(); return; }
-      if(line[i] == "<"){
-        const tagEnd = line.indexOf(">", i)
-        if(tagEnd != -1){
-          i = tagEnd
-        }
+    if(line.substring(0, 3) == "CMD"){
+      switch(line.substring(4, 8)){
+        case "PLAY":
+          const audio = new Audio("../assets/" + line.substring(9) + ".mp3")
+          audio.play()
       }
-
-      spans[spans.length-1].innerHTML = line.slice(0, i+2)
-
-      i++
+    }else{
+      const newSpan = document.createElement("span") // Nova span com a nova linha
+      divToType.appendChild(newSpan)
+      console.log("Proxima linha: " + line)
   
-      delay = del;
-
-      if(/,/.test(line[i])) delay = smallDel
-      if(/[.:?!]/.test(line[i])) delay = bigDel
-      
-      let timeout = setTimeout(nextChar, delay);
-    }
+      divToType.querySelectorAll("a").forEach(a => {
+        a.addEventListener("click", e => e.stopPropagation());
+      });
+  
+      await new Promise(resolve => {
+        let i = 0;
+        let len = line.length
+        
+        function nextChar(){
+        let spans = divToType.querySelectorAll("span")
+        if(i >= len) { resolve(); return; }
+        if(line[i] == "<"){
+          const tagEnd = line.indexOf(">", i)
+          if(tagEnd != -1){
+            i = tagEnd
+          }
+        }
+  
+        spans[spans.length-1].innerHTML = line.slice(0, i+2)
+  
+        i++
     
-    nextChar()
-  })    
+        delay = del;
+  
+        if(/,/.test(line[i])) delay = smallDel
+        if(/[.:?!]/.test(line[i])) delay = bigDel
+        
+        let timeout = setTimeout(nextChar, delay);
+      }
+      
+      nextChar()
+    })    
+    }
+  }
+}
+
+function skipTyping(timeout, textOBJ, divToType){
+  clearTimeout(timeout)
+
+  for(let line of Object.values(textOBJ)){
+    if(line.substring(0, 3) == "CMD"){
+      switch(line.substring(4, 8)){
+        case "PLAY":
+          const audio = new Audio("../assets/" + line.substring(9) + ".mp3")
+          audio.play()
+      }
+    }else{
+      divToType.innerHTML += line
+    }
   }
 }
 

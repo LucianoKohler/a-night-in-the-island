@@ -177,10 +177,11 @@ forestBearScared: {
 enterForestWOStick: {
   0: `You decided to enter further into the forest, not knowing what may be at the other side of it.<br><br>`,
   1: `By the ground, you find a somewhat straight stick on the ground:<br><br>`,
-  2: `<b>You got an ordinary stick</b>! <br><br>`,
-  3: window.englishGlobals.WWYD,
-  4: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continue</a> <br>`,
-  5: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Retreat from the forest`,
+  2: `CMD_PLAY_getItem`,
+  3: `<b>You got an ordinary stick</b>! <br><br>`,
+  4: window.englishGlobals.WWYD,
+  5: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continue</a> <br>`,
+  6: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Retreat from the forest`,
 },
 
 enterForestWStick: {
