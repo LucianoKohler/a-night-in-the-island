@@ -428,58 +428,75 @@ function disableKeyFeatures() {
   document.getElementById("paletteBack").onclick = "";
 }
 
-async function typewriteCorrect(delay, divToType, lines){
+function parseInstruction(instruction){
+  if(instruction.substring(0,3) == "CMD"){
+      switch(instruction.substring(4, 8)){
+        case "PLAY":
+          const audio = new Audio("../assets/" + instruction.substring(9) + ".mp3")
+          audio.play()
+      }
+    return true
+  }else{
+    return false // Not an instruction
+  }
+}
+
+async function typewrite(delay, divToType, lines){
+  let skipped = false
   let textOBJ = window[language][lines]
   if(!textOBJ){ console.error(`Não há texto na variável ${lines}.`); return; }
 
   divToType.innerHTML = "";
 
-  // setTimeout(() => { document.getElementById("chat").addEventListener("click", skipTyping, { once: true }) }, 100)
-  // Where do i fit this...
+  setTimeout(() => {document.getElementById("chat").addEventListener("click", () => {console.log("opa"); skipped = true}, { once: true })}, 50)
+
   for(let line of Object.values(textOBJ)){
-    if(line.substring(0, 3) == "CMD"){
-      switch(line.substring(4, 8)){
-        case "PLAY":
-          const audio = new Audio("../assets/" + line.substring(9) + ".mp3")
-          audio.play()
-      }
-    }else{
-      const newSpan = document.createElement("span") // Nova span com a nova linha
-      divToType.appendChild(newSpan)
-      console.log("Proxima linha: " + line)
-  
-      divToType.querySelectorAll("a").forEach(a => {
-        a.addEventListener("click", e => e.stopPropagation());
-      });
-  
-      await new Promise(resolve => {
-        let i = 0;
-        let len = line.length
-        
-        function nextChar(){
-        let spans = divToType.querySelectorAll("span")
-        if(i >= len) { resolve(); return; }
-        if(line[i] == "<"){
-          const tagEnd = line.indexOf(">", i)
-          if(tagEnd != -1){
-            i = tagEnd
-          }
-        }
-  
-        spans[spans.length-1].innerHTML = line.slice(0, i+2)
-  
-        i++
-    
-        delay = del;
-  
-        if(/,/.test(line[i])) delay = smallDel
-        if(/[.:?!]/.test(line[i])) delay = bigDel
-        
-        let timeout = setTimeout(nextChar, delay);
-      }
+      if(!parseInstruction(line)){
+        if(!skipped){
+          const newSpan = document.createElement("span") // Nova span com a nova linha
+          divToType.appendChild(newSpan)
       
-      nextChar()
-    })    
+          divToType.querySelectorAll("a").forEach(a => {
+            a.addEventListener("click", e => e.stopPropagation());
+          });
+      
+          await new Promise(resolve => {
+            let i = 0;
+            let len = line.length
+            
+            function nextChar(){
+              let spans = divToType.querySelectorAll("span")
+              if(skipped){
+                spans[spans.length - 1].innerHTML = line
+                resolve();
+                return;
+              }
+            if(i >= len) { resolve(); return; }
+            if(line[i] == "<"){
+              const tagEnd = line.indexOf(">", i)
+              if(tagEnd != -1){
+                i = tagEnd
+              }
+            }
+      
+            spans[spans.length-1].innerHTML = line.slice(0, i+2)
+      
+            i++
+        
+            delay = del;
+      
+            if(/,/.test(line[i])) delay = smallDel
+            if(/[.:?!]/.test(line[i])) delay = bigDel
+            
+            const timeout = setTimeout(nextChar, delay);
+          }
+          nextChar()
+        })
+      }else{
+          const newSpan = document.createElement("span") // Nova span com a nova linha
+          divToType.appendChild(newSpan)
+          newSpan.innerHTML = line
+      }
     }
   }
 }
@@ -488,74 +505,10 @@ function skipTyping(timeout, textOBJ, divToType){
   clearTimeout(timeout)
 
   for(let line of Object.values(textOBJ)){
-    if(line.substring(0, 3) == "CMD"){
-      switch(line.substring(4, 8)){
-        case "PLAY":
-          const audio = new Audio("../assets/" + line.substring(9) + ".mp3")
-          audio.play()
-      }
-    }else{
+    if(!parseInstruction(line)){
       divToType.innerHTML += line
     }
   }
-}
-
-function typewrite(delay, divToType, lines){ // Text to type = object
-  chatDiv.style.pointerEvents = "none"
-  
-  let textObject = window[language][lines]
-  if(!textObject){ console.error(`Texto da variável ${lines}, não encontrado`); return }
-  
-  divToType.innerHTML = "<span id='shown'></span><span id='hidden'></span>";
-  
-  let shownSpan = divToType.querySelector("#shown")
-  let hiddenSpan = divToType.querySelector("#hidden")
-
-  for(let s of Object.values(textObject)){
-    hiddenSpan.innerHTML += s; // Fills the hidden span
-  }
-
-  divToType.querySelectorAll("a").forEach(a => {
-    a.addEventListener("click", e => e.stopPropagation());
-  });
-
-
-  let i = 0;
-  let divHTML = hiddenSpan.innerHTML // Full text
-  let len = divHTML.length
-
-  function nextChar(){
-    if(i >= len) return;
-    
-    if(divHTML[i+1] == "<"){
-      while(divHTML[i+1] != ">" && i < len){
-        if(divHTML[i+1] == 'a'){
-          chatDiv.style.pointerEvents = "all"
-        } 
-        i++;
-      }
-    }
-    shownSpan.innerHTML = divHTML.substring(0, i+2);
-    hiddenSpan.innerHTML = divHTML.substring(i+2);
-
-    i++;
-    delay = del;
-
-    if(/,/.test(divHTML[i])) delay = smallDel
-    if(/[.:?!]/.test(divHTML[i])) delay = bigDel
-    timeout = setTimeout(nextChar, delay)
-  }
-
-  function skipTyping(e){
-    if(e.target.closest("a")) return; // se for um link clicado
-    clearTimeout(timeout)
-    hiddenSpan.innerHTML = ""
-    shownSpan.innerHTML = divHTML
-    chatDiv.style.pointerEvents = "all"
-  }
-  
-  nextChar()
-  setTimeout(() => { document.getElementById("chat").addEventListener("click", skipTyping, { once: true }) }, 100)
 }
 
 function updateScreen(nextImg, nextText) {
@@ -697,7 +650,7 @@ function updateScreen(nextImg, nextText) {
   NI.classList.add("active");
 
   //mudar texto
-  typewriteCorrect(del, chatDiv, nextText)
+  typewrite(del, chatDiv, nextText)
 }
 
 function winGame() {

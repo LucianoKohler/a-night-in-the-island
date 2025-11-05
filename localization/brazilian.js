@@ -177,10 +177,11 @@ forestBearScared: {
 enterForestWOStick: {
   0: `Você decide adentrar mais fundo na floresta, sem saber o que te espera do outro lado dela.<br><br>`,
   1: `Pelo chão, você encontra um graveto torto no chão:<br><br>`,
-  2: `<b>Você adquiriu um graveto comum</b>! <br><br>`,
-  3: window.brazilianGlobals.WWYD,
-  4: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continuar</a> <br>`,
-  5: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Recuar da floresta`,
+  2: `CMD_PLAY_getItem`,
+  3: `<b>Você adquiriu um graveto comum</b>! <br><br>`,
+  4: window.brazilianGlobals.WWYD,
+  5: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continuar</a> <br>`,
+  6: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Recuar da floresta`,
 },
 
 enterForestWStick: {
