@@ -201,7 +201,8 @@ forestBearWSword: {
   6: ` afinal, você não sabe usar uma...<br><br>`,
   7: `Você continua pela floresta até encontrar o seu fim,`,
   8: ` no outro lado, você encontra um pequeno píer, com um barquinho amarrado na água.<br><br>`,
-  9: `<b>Agora, você pode acessar o píer!</b>`,
+  9: `CMD_PLAY_getItem`,
+  10: `<b>Agora, você pode acessar o píer!</b>`,
 },
 
 forestBearWOSword: {
@@ -243,8 +244,9 @@ islandFirst: {
   7: ` depois de suas mãos ficarem quase dormentes,`,
   8: ` você encontra uma malha negra, aparentemente resistente, e acima de tudo:`,
   9: ` Estilosa!<br><br>`,
-  10: `<b>Você adquiriu a malha negra!<b><br><br>`,
-  11: `<a href="#" onclick="updateScreen('islandhole', 'island')">É isso aí!</a>`,
+  10: `CMD_PLAY_getItem`,
+  11: `<b>Você adquiriu a malha negra!<b><br><br>`,
+  12: `<a href="#" onclick="updateScreen('islandhole', 'island')">É isso aí!</a>`,
 },
 
 island: {
@@ -303,10 +305,11 @@ wellThrowCoin: {
   0: `Você retira uma moeda do resto do seu dinheiro, se aproxima do poço, e a joga no buraco sem fim.<br><br>`,
   1: `Você ouve uns barulhinhos, e então, um par de óculos é lançado para fora do poço,`,
   2: ` você reconhece como sendo um daqueles óculos de festa com um desenho espiral no lugar das lentes:<br><br>`,
-  3: `<b>Você adquiriu o óculos de espiral!</b><br><br>`,
-  4: `Usá-los te deixa muito tonto, depois de tirá-los, você percebe que a placa mudou seu texto:<br><br>`,
-  5: `"Tu é pobre, lixão"<br><br>`,
-  6: `Que poço mal-educado! Você não quer mais ficar perto dele.`,
+  3: `CMD_PLAY_getItem`,
+  4: `<b>Você adquiriu o óculos de espiral!</b><br><br>`,
+  5: `Usá-los te deixa muito tonto, depois de tirá-los, você percebe que a placa mudou seu texto:<br><br>`,
+  6: `"Tu é pobre, lixão"<br><br>`,
+  7: `Que poço mal-educado! Você não quer mais ficar perto dele.`,
 },
 
 wellThrowCoinWOCoin: {
@@ -367,9 +370,10 @@ weirdRocksNotStealEye: {
 },
 
 weirdRocksStealEye: {
-  0: `<b>Você adquiriu o olho do Pedro!<br><br>`,
-  1: `- Ai! Devolve agora! Esse é o último aviso!<br><br>`,
-  2: `Você vê claramente que Pedro está mentindo à esse ponto, você apenas vai embora.`,
+  0: `CMD_PLAY_getItem`,
+  1: `<b>Você adquiriu o olho do Pedro!<br><br>`,
+  2: `- Ai! Devolve agora! Esse é o último aviso!<br><br>`,
+  3: `Você vê claramente que Pedro está mentindo à esse ponto, você apenas vai embora.`,
 },
 
 weirdRocksAngryRox: {
@@ -421,8 +425,9 @@ farmApproach: {
   0: `Ao passar o olho pela plantação, você encontra algo estranho, algo que parece um tubo brilhante enterrado.<br><br>`,
   1: `Você acha que o fazendeiro não vai se importar se uma cenoura desaparecer, então você puxa o tubo.<br><br>`,
   2: `Ele estava bem enterrado entre os vegetais, mas depois de uma força, você ganha a luta contra o tubo, retirando uma bela guarda da terra.<br><br>`,
-  3: `<b>Você adquiriu a guarda do fazendeiro!</b><br><br>`,
-  4: `Você torce para o fazendeiro não ter percebido, e então corre tentando sair da visão dele.`,
+  3: `CMD_PLAY_getItem`,
+  4: `<b>Você adquiriu a guarda do fazendeiro!</b><br><br>`,
+  5: `Você torce para o fazendeiro não ter percebido, e então corre tentando sair da visão dele.`,
 },
 
 farmCrazyFarmer: {
@@ -465,7 +470,8 @@ wallUsePassWPass: {
   0: `Você dá o passe para a coisa, e ela fica muito feliz! <br><br>`,
   1: `- AAAAH, FINALMENTE, O CHEFE VAI ME DEIXAR TIRAR FOLGA!!!<br>`,
   2: `- Ok, você pode passar e admirar a caverna.<br><br>`,
-  3: `A cancela ao lado dele abre. <b>Agora, você pode acessar a caverna!</b>.`,
+  3: `CMD_PLAY_getItem`,
+  4: `A cancela ao lado dele abre. <b>Agora, você pode acessar a caverna!</b>.`,
 },
 
 wallUsePassWOPass: {
@@ -592,9 +598,10 @@ goblinMoney: {
   1: ` Dinheiro pode te ajudar a se equipar,`,
   2: ` e você venceu a luta!`,
   3: ` você pega a pilha medíocre de dinheiro do chão.<br><br>`,
-  4: `<b>Você adquiriu exatamente 31 moedas!</b><br><br>`,
-  5: `Você deixa o goblin chorando na caverna,`,
-  6: ` aquele cara é irritante demais.`,
+  4: `CMD_PLAY_getItem`,
+  5: `<b>Você adquiriu exatamente 31 moedas!</b><br><br>`,
+  6: `Você deixa o goblin chorando na caverna,`,
+  7: ` aquele cara é irritante demais.`,
 },
 
 goblinBye: {
@@ -697,8 +704,9 @@ kingGivePommel: {
   2: `Você diz para ele que só precisa do pomo para terminar a espada.<br><br>`,
   3: `- Não diga mais nada.<br><br>`,
   4: `O rei remove um ornamento de seu trono, e o entrega para você:<br><br>`,
-  5: `<b>Você adquiriu o pomo do rei!</b><br><br>`,
-  6: `<a href="#" onclick="updateScreen('kingPommelless','kingPommelPart2')">Finalmente!</a>`,
+  5: `CMD_PLAY_getItem`,
+  6: `<b>Você adquiriu o pomo do rei!</b><br><br>`,
+  7: `<a href="#" onclick="updateScreen('kingPommelless','kingPommelPart2')">Finalmente!</a>`,
 },
 
 kingPommelPart2: {
@@ -739,7 +747,8 @@ shopBroadswordYes: {
   0: `- Katching! - Diz o pequeno feiticeiro:<br><br>`,
   1: `<b>Você adquiriu a espada de aço!</b><br><br>`,
   2: `Esta espada é BEM pesada, você sabe que vai ter uns problemas ao usar ela<br><br>`,
-  3: `<a href="#" onclick="updateScreen('shop','shop')">Melhor que nada!</a>`,
+  3: `CMD_PLAY_getItem`,
+  4: `<a href="#" onclick="updateScreen('shop','shop')">Melhor que nada!</a>`,
 },
 
 shopSticker: {
@@ -755,7 +764,8 @@ shopStickerYes: {
   0: `- Katching! - Diz o pequeno feiticeiro:<br><br>`,
   1: `<b>Você adquiriu o adesivo de cenoura!</b><br><br>`,
   2: `Sem um lugar para colar ele, você só gruda ele nas suas roupas<br><br>`,
-  3: `<a href="#" onclick="updateScreen('shop','shop')">Se sentindo maneiro!</a>`,
+  3: `CMD_PLAY_getItem`,
+  4: `<a href="#" onclick="updateScreen('shop','shop')">Se sentindo maneiro!</a>`,
 },
 
 shopPassWOKingQuest: {
@@ -774,8 +784,9 @@ shopPassWKingQuest: {
   3: ` ele é meio solitário...<br><br>`,
   4: `- Ah, entendo,`,
   5: ` o rei confia em você, no caso, eu também! Então toma:<br><br>`,
-  6: `<b>Você adquiriu o passe da caverna!</b><br><br>`,
-  7: `<a href="#" onclick="updateScreen('shop','shop')">Voltar</a>`,
+  6: `CMD_PLAY_getItem`,
+  7: `<b>Você adquiriu o passe da caverna!</b><br><br>`,
+  8: `<a href="#" onclick="updateScreen('shop','shop')">Voltar</a>`,
 },
 
 shopTooPoor: {
@@ -888,12 +899,13 @@ angelFuseSword2: {
 angelFuseSword3: {
   0: `O feixe de luz desaparece de repente,`,
   1: ` e ao fim da luz, tudo que resta é a tal lâmina capaz de matar qualquer coisa.<br><br>`,
-  2: `<b>Você adquiriu a Lâmina da Ilha!</b><br><br>`,
-  3: `- Aí está ela! Em toda a sua glória!`,
-  4: ` sou grato pela sua ajuda, minha criança,`,
-  5: ` você merece, segure-a firmemente e acabe com o sofrimento desta ilha.<br><br>`,
-  6: window.brazilianGlobals.WWYS,
-  7: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
+  2: `CMD_PLAY_getItem`,
+  3: `<b>Você adquiriu a Lâmina da Ilha!</b><br><br>`,
+  4: `- Aí está ela! Em toda a sua glória!`,
+  5: ` sou grato pela sua ajuda, minha criança,`,
+  6: ` você merece, segure-a firmemente e acabe com o sofrimento desta ilha.<br><br>`,
+  7: window.brazilianGlobals.WWYS,
+  8: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
 },
 
 angelWhoAreYou: {

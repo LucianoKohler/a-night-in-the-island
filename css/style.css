@@ -276,6 +276,9 @@ button {
     width: 30%;
     height: 50px;
     font-size: 1.2vw;
+}
+
+button:not(#tomap, #tosettings, #tomainmenu){
     border-radius: 5px;
 }
 

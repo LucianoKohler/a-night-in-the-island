@@ -441,37 +441,40 @@ function parseInstruction(instruction){
   }
 }
 
+let dialogueControl = 0; // Changes when a new typewrite() is called, interrupting other dialogues
+
 async function typewrite(delay, divToType, lines){
   let skipped = false
   let textOBJ = window[language][lines]
   if(!textOBJ){ console.error(`Não há texto na variável ${lines}.`); return; }
 
+  let currentDialogueControl = ++dialogueControl;
+
   divToType.innerHTML = "";
 
-  setTimeout(() => {document.getElementById("chat").addEventListener("click", () => {console.log("opa"); skipped = true}, { once: true })}, 50)
+  setTimeout(() => {document.getElementById("chat").addEventListener("click", () => { skipped = true}, { once: true })}, 50)
 
   for(let line of Object.values(textOBJ)){
+      if (currentDialogueControl != dialogueControl) return
+
       if(!parseInstruction(line)){
         if(!skipped){
-          const newSpan = document.createElement("span") // Nova span com a nova linha
+          const newSpan = document.createElement("span") // New span with the next line
           divToType.appendChild(newSpan)
-      
-          divToType.querySelectorAll("a").forEach(a => {
-            a.addEventListener("click", e => e.stopPropagation());
-          });
       
           await new Promise(resolve => {
             let i = 0;
             let len = line.length
             
-            function nextChar(){
+            function nextChar(){  
+              if (currentDialogueControl != dialogueControl) return resolve();
               let spans = divToType.querySelectorAll("span")
               if(skipped){
                 spans[spans.length - 1].innerHTML = line
                 resolve();
                 return;
               }
-            if(i >= len) { resolve(); return; }
+            if(i >= len) return resolve();
             if(line[i] == "<"){
               const tagEnd = line.indexOf(">", i)
               if(tagEnd != -1){
@@ -497,16 +500,6 @@ async function typewrite(delay, divToType, lines){
           divToType.appendChild(newSpan)
           newSpan.innerHTML = line
       }
-    }
-  }
-}
-
-function skipTyping(timeout, textOBJ, divToType){
-  clearTimeout(timeout)
-
-  for(let line of Object.values(textOBJ)){
-    if(!parseInstruction(line)){
-      divToType.innerHTML += line
     }
   }
 }
@@ -658,7 +651,7 @@ function winGame() {
   gameScreen.style.display = "none";
   winScreen.style.display = "flex";
 
-  endingText.innerHTML = window[language].exitCabin[0]
+  
   eraseSave();
 }
 
