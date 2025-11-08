@@ -422,21 +422,29 @@ function disableKeyFeatures() {
 }
 
 function parseInstruction(instruction){
-  let command = instruction.substring(0, 3)
-  if(command != "CMD") return false // Not an instruction
+  let commandValues = instruction.split("_")
+  // CMD, PLAY, soundName (example)
+  // CMD, UPDATE, item, amount (example)
 
-  let commandType = instruction.substring(4, instruction.indexOf("_", 4))
-  let commandValue = instruction.substring(instruction.indexOf("_", 6)+1)
+  if(commandValues[0] != "CMD") return false // Not an instruction
 
-    switch(commandType){ 
+    switch(commandValues[1]){ 
       case "PLAY":
-        const audio = new Audio("../assets/" + commandValue + ".mp3")
+        const audio = new Audio("../assets/" + commandValues[2] + ".mp3")
         audio.play()
         break;
-      case "GET":
-        localStorage.setItem(commandValue, "true")
+      case "UNLOCK":
+        localStorage.setItem(commandValues[2], "true")
+        updateInventory()
         break;
-    }
+      case "UPDATE":
+        localStorage.setItem(commandValues[2], parseInt(localStorage.getItem(commandValues[2])) + parseInt(commandValues[3]))
+        updateInventory()
+        break;
+      case "UNLOCKLOCATION":
+        document.querySelectorAll("." + commandValues[2]).forEach(e => {e.classList.remove("disabled")});
+        break;
+      }
   return true
 }
 
@@ -538,85 +546,52 @@ function updateScreen(nextImg, nextText) {
     if     (stick && nextText == "enterForest")                      { nextText = "enterForestWStick" }
     else if(!stick && nextText == "enterForest")                     { nextText = "enterForestWOStick" }
     else if(bearScared && nextText == "forest")                      { nextText = "forestBearScared" }
-    else if((islandSword || broadsword) && nextText == "forestBear") {
-      nextText = "forestBearWSword";
-      localStorage.setItem("bearScared", true)
-      document.getElementsByClassName("pier")[0].classList.remove("disabled");
-    }
+    else if((islandSword || broadsword) && nextText == "forestBear") { nextText = "forestBearWSword" }
     else if(nextText == "forestBear")                                { nextText = "forestBearWOSword" }
     else if(!kingQuest && nextText == "altar")                       { nextText = "altarAbandoned" }
-    else if(!angelVisited && nextText == "altar")                    { nextText = "altarFirst"; }
+    else if(!angelVisited && nextText == "altar")                    { nextText = "altarFirst"  }
     else if(castleEntered && nextText == "castle")                   { nextText = "castleEnter" }
-    else if(!palaceEntered && nextText == "palace")                  { nextText = "palaceFirst";}
-    else if(sword2 && sword3 && !sword1 && nextText == "palace")     { nextText = "kingGivePommel"; localStorage.setItem("sword1", true) }
-    else if(!shopEntered && nextText == "shop")                      { nextText = "shopFirst"; localStorage.setItem("shopEntered", true) }
+    else if(!palaceEntered && nextText == "palace")                  { nextText = "palaceFirst" }
+    else if(sword2 && sword3 && !sword1 && nextText == "palace")     { nextText = "kingGivePommel" }
+    else if(!shopEntered && nextText == "shop")                      { nextText = "shopFirst" }
     else if(nextText == "shopBroadswordYes" && broadsword)           { nextText = "shopOnlyOnePerPerson" }
     else if(nextText == "shopStickerYes" && sticker)                 { nextText = "shopOnlyOnePerPerson" }
     else if(nextText == "shopPass" && pass)                          { nextText = "shopOnlyOnePerPerson" }
     else if(nextText == "shopBroadswordYes" && coins < 20)           { nextText = "shopTooPoor" }
-    else if(nextText == "shopBroadswordYes" && coins >= 20)          { 
-      localStorage.setItem("coins", coins - 20);
-      localStorage.setItem("broadsword", true) }
-      else if(nextText == "shopStickerYes" && coins < 10)            { nextText = "shopTooPoor" }
-      else if(nextText == "shopStickerYes" && coins >= 10)    {
-      localStorage.setItem("coins", coins - 10);
-      localStorage.setItem("sticker", true) 
-    }
+    else if(nextText == "shopStickerYes" && coins < 10)              { nextText = "shopTooPoor" }
     else if(nextText == "shopPass" && !kingQuest)                    { nextText = "shopPassWOKingQuest" }
-    else if(nextText == "shopPass" && kingQuest)                     { nextText = "shopPassWKingQuest"; localStorage.setItem("pass", true) }
-    else if(nextText == "weirdRocksStealEye")                        { localStorage.setItem("sword3", true) }
+    else if(nextText == "shopPass" && kingQuest)                     { nextText = "shopPassWKingQuest" }
     else if(nextText == "weirdRocks" && sword3)                      { nextText = "weirdRocksAngryRox" }
     else if(nextText == "farm" && sword2)                            { nextText = "farmCrazyFarmer" }
     else if(nextText == "farmSeeCrops" && !sticker)                  { nextText = "farmSeeCropsWOSticker" }
     else if(nextText == "farmSeeCrops" && sticker)                   { nextText = "farmSeeCropsWSticker" }
-    else if(nextText == "farmApproach" && sticker)                   { localStorage.setItem("sword2", true) }
-    else if(nextText == "wallUsePass" && !pass)                      { nextText = "wallUsePassWOPass" }
-    else if(nextText == "wallUsePass" && pass)                  { // Unlocking the pier
-      nextText = "wallUsePassWPass"; 
-      localStorage.setItem("passUsed", true); 
-      document.getElementsByClassName("cave")[0].classList.remove("disabled");
-      document.getElementsByClassName("cave")[1].classList.remove("disabled"); }
     else if(nextText == "wall" && passUsed)                          { nextText = "wallAlreadyUsedPass"}
+    else if(nextText == "wallUsePass" && !pass)                      { nextText = "wallUsePassWOPass" }
+    else if(nextText == "wallUsePass" && pass)                       { nextText = "wallUsePassWPass" }
     else if(nextText == "goblin" && goblinGotMoney)                  { nextText = "goblinAfterGotMoney"}
-    else if(nextText == "goblin" && !goblinVisited)                  { nextText = "goblinFirst"; localStorage.setItem("goblinVisited", true)}
-    else if(nextText == "goblinMoney")                               {
-      localStorage.setItem("goblinGotMoney", true)
-      localStorage.setItem("coins", 31)
-    }
+    else if(nextText == "goblin" && !goblinVisited)                  { nextText = "goblinFirst" }
     else if(nextText == "wellThrowCoin" && coins < 1)                { nextText = "wellThrowCoinWOCoin" }
-    else if(nextText == "wellThrowCoin" && coins >= 1)               {
-      localStorage.setItem("goggles", true) 
-      localStorage.setItem("coins", coins-1)
-    }
     else if(nextText == "well" && goggles)                           { nextText = "wellAfterGoggles" }
-    else if(nextText == "island" && !islandEntered)                  {
-      nextText = "islandFirst"
-      document.getElementsByClassName("island")[0].classList.remove("disabled");
-      document.getElementsByClassName("island")[1].classList.remove("disabled");
-      document.getElementsByClassName("island")[2].classList.remove("disabled");
-      localStorage.setItem("islandEntered", true) 
-      localStorage.setItem("tunic", true)
-    }
-    else if(nextText == "angelAskAboutQuest" && !sword2)              { nextText = "angelParts2" }
-    else if(nextText == "angelAskAboutQuest" && !sword3)              { nextText = "angelParts3" }
-    else if(nextText == "angelAskAboutQuest" && !sword1)              { nextText = "angelParts1" }
-    else if(nextText == "angelAskAboutQuest" && !islandSword)         { nextText = "angelFuseSword1" }
-    else if(nextText == "angelAskAboutQuest")                         { nextText = "angelPartsBadFeeling" }
-    else if(nextText == "angelFuseSword3")                            { localStorage.setItem("islandSword", true) }
-    else if(nextText == "cabinTree" && islandSword && goggles && tunic){ nextText = "treeCanDefeat" }
-    else if(nextText == "cabinTree")                                  { nextText = "treeCantDefeat" }
-    else if(nextText == "leshyFate" && !kingQuest)                    { nextText = "leshyLostSoul" }
-    else if(nextText == "leshyFate" && !goggles)                      { nextText = "leshyWOGoggles" }
-    else if(nextText == "leshyFate")                                  { nextText = "leshyWGoggles" }
-    else if(nextText == "leshyBurn" && !tunic)                        { nextText = "leshyWODarkTunic" }
-    else if(nextText == "leshyBurn")                                  { nextText = "leshyWDarkTunic" }
-    else if(nextText == "leshyFinalTest" && !islandSword)             { nextText = "leshyFinalDefeat" }
-    else if(nextText == "leshyFinalTest")                             { nextText = "leshyFinalVictory" }
+    else if(nextText == "island" && !islandEntered)                  { nextText = "islandFirst" }
+    else if(nextText == "angelAskAboutQuest" && !sword2)             { nextText = "angelParts2" }
+    else if(nextText == "angelAskAboutQuest" && !sword3)             { nextText = "angelParts3" }
+    else if(nextText == "angelAskAboutQuest" && !sword1)             { nextText = "angelParts1" }
+    else if(nextText == "angelAskAboutQuest" && !islandSword)        { nextText = "angelFuseSword1" }
+    else if(nextText == "angelAskAboutQuest")                        { nextText = "angelPartsBadFeeling" }
+    else if(nextText == "cabinTree"&&islandSword&&goggles&&tunic)    { nextText = "treeCanDefeat" }
+    else if(nextText == "cabinTree")                                 { nextText = "treeCantDefeat" }
+    else if(nextText == "leshyFate" && !kingQuest)                   { nextText = "leshyLostSoul" }
+    else if(nextText == "leshyFate" && !goggles)                     { nextText = "leshyWOGoggles" }
+    else if(nextText == "leshyFate")                                 { nextText = "leshyWGoggles" }
+    else if(nextText == "leshyBurn" && !tunic)                       { nextText = "leshyWODarkTunic" }
+    else if(nextText == "leshyBurn")                                 { nextText = "leshyWDarkTunic" }
+    else if(nextText == "leshyFinalTest" && !islandSword)            { nextText = "leshyFinalDefeat" }
+    else if(nextText == "leshyFinalTest")                            { nextText = "leshyFinalVictory" }
     
-    else if(nextText == "leshyAngel")                                 { setPalette("useSaved") }
+    else if(nextText == "leshyAngel")                                { setPalette("useSaved") }
 
-    if (sword3 && nextImg == "weirdRocks")          { ImgQuery = "weirdRocksCrying"; }
-    else if (pass == 2 && nextImg == "wall")        { ImgQuery = "wall-open"; }
+    if      (sword3 && nextImg == "weirdRocks")     { ImgQuery = "weirdRocksCrying"; }
+    else if (passUsed && nextImg == "wall")         { ImgQuery = "wall-open"; }
     else if (castleEntered && nextImg == "castle")  { ImgQuery = "bifurcation"; }
     else if (kingQuest && nextImg == "altar")       { ImgQuery = "angel"; }
     else if (tunic && nextImg == "island")          { ImgQuery = "islandhole"; }
@@ -624,8 +599,6 @@ function updateScreen(nextImg, nextText) {
     else if (goblinGotMoney && nextImg == "goblin") { ImgQuery = "goblinCry"; }
     else if (sword1 && nextImg == "king")           { ImgQuery = "kingPommelless"; }
     else                                            { ImgQuery = nextImg; }
-
-  updateInventory();
 
   if (nextImg == "leshyFinalForm") {
     document.querySelector(":root").style.setProperty("--main", "green");

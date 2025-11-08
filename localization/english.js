@@ -177,7 +177,7 @@ forestBearScared: {
 enterForestWOStick: {
   0: `You decided to enter further into the forest, not knowing what may be at the other side of it.<br><br>`,
   1: `By the ground, you find a somewhat straight stick on the ground:<br><br>`,
-  2: `CMD_GET_stick`,
+  2: `CMD_UNLOCK_stick`,
   3: `CMD_PLAY_getItem`,
   4: `<b>You got an ordinary stick</b>! <br><br>`,
   5: window.englishGlobals.WWYD,
@@ -202,8 +202,10 @@ forestBearWSword: {
   6: ` after all, you don't know how to use a sword...<br><br>`,
   7: `You continue through the forest until you reach the end of it,`,
   8: ` on the other side, you find a lonely pier, with a small boat hanging on the water.<br><br>`,
-  9: `CMD_PLAY_getItem`,
-  10: `<b>You got access to the pier!</b>`,
+  9: `CMD_UNLOCK_bearScared`,
+  10: `CMD_PLAY_getItem`,
+  11: `CMD_UNLOCKLOCATION_pier`,
+  12: `<b>You got access to the pier!</b>`,
 },
 
 forestBearWOSword: {
@@ -246,8 +248,11 @@ islandFirst: {
   8: ` you find a black mail, seemingly sturdy and, even more important:`,
   9: ` Stylish!<br><br>`,
   10: `CMD_PLAY_getItem`,
-  11: `<b>You got the dark Tunic!<b><br><br>`,
-  12: `<a href="#" onclick="updateScreen('islandhole', 'island')">Wahoo!</a>`,
+  11: `CMD_UNLOCK_tunic`,
+  12: `CMD_UNLOCK_islandEntered`,
+  13: `CMD_UNLOCKLOCATION_island`,
+  14: `<b>You got the dark Tunic!<b><br><br>`,
+  15: `<a href="#" onclick="updateScreen('islandhole', 'island')">Wahoo!</a>`,
 },
 
 island: {
@@ -307,10 +312,12 @@ wellThrowCoin: {
   1: `You hear some noises, and then, a pair of goggles gets spit out of the well,`,
   2: `You recognize them as those party goggles with a spiral decal on the lenses:<br><br>`,
   3: `CMD_PLAY_getItem`,
-  4: `<b>You got the Spiral Goggles!</b><br><br>`,
-  5: `Wearing them makes you really dizzy, and after removing them, you notice that the sign changed its text:<br><br>`,
-  6: `"You're poor, You're trash"<br><br>`,
-  7: `What a rude well! You don't want to stay near him anymore.`,
+  4: `CMD_UNLOCK_goggles`,
+  5: `CMD_UPDATE_coins_-1`,
+  6: `<b>You got the Spiral Goggles!</b><br><br>`,
+  7: `Wearing them makes you really dizzy, and after removing them, you notice that the sign changed its text:<br><br>`,
+  8: `"You're poor, You're trash"<br><br>`,
+  9: `What a rude well! You don't want to stay near him anymore.`,
 },
 
 wellThrowCoinWOCoin: {
@@ -372,9 +379,10 @@ weirdRocksNotStealEye: {
 
 weirdRocksStealEye: {
   0: `CMD_PLAY_getItem`,
-  1: `<b>you got Rox's eye! <br><br>`,
-  2: `- Ouch! Give it back! It's your last advice!<br><br>`,
-  3: `You can clearly tell that Rox is lying at this point, you just leave.`,
+  1: `CMD_UNLOCK_sword3`,
+  2: `<b>you got Rox's eye! <br><br>`,
+  3: `- Ouch! Give it back! It's your last advice!<br><br>`,
+  4: `You can clearly tell that Rox is lying at this point, you just leave.`,
 },
 
 weirdRocksAngryRox: {
@@ -427,8 +435,9 @@ farmApproach: {
   1: `You think the farmer won't mind if one carrot goes away, so you pull the tube.<br><br>`,
   2: `It looked really stuck to the ground among other vegetables, but you win the fight against it and pull a beautiful hilt from the ground.<br><br>`,
   3: `CMD_PLAY_getItem`,
-  4: `<b>You got the farmer's hilt!</b><br><br>`,
-  5: `You hope the farmer didn't notice it, you run trying to get out of his view.`,
+  4: `CMD_UNLOCK_sword2`,
+  5: `<b>You got the farmer's hilt!</b><br><br>`,
+  6: `You hope the farmer didn't notice it, you run trying to get out of his view.`,
 },
 
 farmCrazyFarmer: {
@@ -472,7 +481,9 @@ wallUsePassWPass: {
   1: `- OOOOOHH, THE BOSS WILL LET ME HAVE A DAY OFF!!!<br>`,
   2: `- Ok, you may pass and admire the cave.<br><br>`,
   3: `CMD_PLAY_getItem`,
-  4: `The pole besides him lifts. <b>You now have access to the cave!</b>.`,
+  4: `CMD_UNLOCK_passUsed`,
+  5: `CMD_UNLOCKLOCATION_cave`,
+  6: `The pole besides him lifts. <b>You now have access to the cave!</b>.`,
 },
 
 wallUsePassWOPass: {
@@ -497,15 +508,16 @@ cave: {
 },
 
 goblinFirst: {
-  0: `The cave smells like mold and has the sound of dripping water from the dripstones along with the growls,`,
-  1: ` walking further shows you the so called demigod that the doorman spoke about:`,
-  2: ` A small goblin near a "treasure",`,
-  3: ` which is actually just a small pile of coins on the ground.<br><br>`,
-  4: `- Who dares to enter my domain?<br><br>`,
-  5: window.englishGlobals.WWYS,
-  6: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Who are you?</a><br>`,
-  7: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">What's that gold?</a><br>`,
-  8: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
+  0: `CMD_UNLOCK_goblinVisited`,
+  1: `The cave smells like mold and has the sound of dripping water from the dripstones along with the growls,`,
+  2: ` walking further shows you the so called demigod that the doorman spoke about:`,
+  3: ` A small goblin near a "treasure",`,
+  4: ` which is actually just a small pile of coins on the ground.<br><br>`,
+  5: `- Who dares to enter my domain?<br><br>`,
+  6: window.englishGlobals.WWYS,
+  7: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Who are you?</a><br>`,
+  8: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">What's that gold?</a><br>`,
+  9: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Bye!</a>`,
 },
 
 goblin: {
@@ -544,7 +556,7 @@ goblinWhatGold: {
   2: ` envy me, I'm the richest being in the island!`,
   3: ` If you cry enough, I may give you a penny...`,
   4: ` HAHA!<br><br>`,
-  5: `<a href="#" onclick="updateScreen('goblin','goblinNotMuch')">"That's not much to be honest..."</a>`,
+  5: `<a href="#" onclick="updateScreen('goblin','goblinNotMuch')">That's not much to be honest...</a>`,
 },
 
 goblinNotMuch: {
@@ -600,9 +612,11 @@ goblinMoney: {
   2: ` and you won the fight!`,
   3: ` you get the mediocre pile of money from the ground.<br><br>`,
   4: `CMD_PLAY_getItem`,
-  5: `<b>You got exactly 31 coins!</b><br><br>`,
-  6: `You let the goblin crying at its cave,`,
-  7: ` that guy is too annoying.`,
+  5: `CMD_UNLOCK_goblinGotMoney`,
+  6: `CMD_UPDATE_coins_31`,
+  7: `<b>You got exactly 31 coins!</b><br><br>`,
+  8: `You let the goblin crying at its cave,`,
+  9: ` that guy is too annoying.`,
 },
 
 goblinBye: {
@@ -619,7 +633,7 @@ castle: {
 },
 
 castleEnter: {
-  0: `CMD_GET_castleEntered`,
+  0: `CMD_UNLOCK_castleEntered`,
   1: `People walk by, ignoring you, the buildings appear boring, and nothing attracts your attention. <br><br>`,
   2: `At the end of the main street, you find yourself at a bifurcation:<br><br>`,
   3: `To the left, we have the king's palace.<br>`,
@@ -630,7 +644,7 @@ castleEnter: {
 },
 
 palaceFirst: {
-  0: `CMD_GET_palaceEntered`,
+  0: `CMD_UNLOCK_palaceEntered`,
   1: `You enter the palace without any problems, looks like this place doesn't need much guards to be peaceful, at the end of the room, you see a king: <br><br>`,
   2: `- Hello fellow citizen, or may I say... Stranger?<br><br>`,
   3:  window.englishGlobals.WWYS,
@@ -691,7 +705,7 @@ kingHowDoThis: {
   3: ` tell the shopkeeper I sent you there and he'll give you some help. <br><br>`,
   4: ` - Good luck,`,
   5: ` stranger. <br><br>`,
-  6: `CMD_GET_kingQuest`,
+  6: `CMD_UNLOCK_kingQuest`,
   7: ` The king just gave you a quest, you think there's nothing more to do other than trying.<br><br>`,
   8: `<a href="#" onclick="updateScreen('shop','shop')">Go to shop</a>`,
 },
@@ -708,9 +722,10 @@ kingGivePommel: {
   2: `You tell him that you only need the pommel to finish the sword.<br><br>`,
   3: `- Speak no more.<br><br>`,
   4: `The king removes an ornament from his throne, and gives it to you:<br><br>`,
-  5: `CMD_PLAY_getItem`,
-  6: `<b>You got the King's Pommel!</b><br><br>`,
-  7: `<a href="#" onclick="updateScreen('kingPommelless','kingPommelPart2')">Finally!</a>`,
+  5: `CMD_UNLOCK_sword1`,
+  6: `CMD_PLAY_getItem`,
+  7: `<b>You got the King's Pommel!</b><br><br>`,
+  8: `<a href="#" onclick="updateScreen('kingPommelless','kingPommelPart2')">Finally!</a>`,
 },
 
 kingPommelPart2: {
@@ -722,13 +737,14 @@ kingPommelPart2: {
 },
 
 shopFirst: {
-  0: `You enter the building and are greeted with a friendly shopkeeper: <br><br>`,
-  1: `- Helllooooww, I'm Joobireu, the little wizard apprentice AND shopkeeper!`,
-  2: ` I got a lot of stuff here, take a look!<br><br>`,
-  3: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Broadsword (20 coins)</a><br>`,
-  4: `<a href="#" onclick="updateScreen('shop','shopSticker')">Sticker (10 coins)</a><br>`,
-  5: `<a href="#" onclick="updateScreen('shop','shopPass')">Wall Pass (FREE!)</a><br><br>`,
-  6: `<a href="#" onclick="updateScreen('king','palace')">Go to the palace</a>`,
+  0: `CMD_UNLOCK_shopEntered`,
+  1: `You enter the building and are greeted with a friendly shopkeeper: <br><br>`,
+  2: `- Helllooooww, I'm Joobireu, the little wizard apprentice AND shopkeeper!`,
+  3: ` I got a lot of stuff here, take a look!<br><br>`,
+  4: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Broadsword (20 coins)</a><br>`,
+  5: `<a href="#" onclick="updateScreen('shop','shopSticker')">Sticker (10 coins)</a><br>`,
+  6: `<a href="#" onclick="updateScreen('shop','shopPass')">Wall Pass (FREE!)</a><br><br>`,
+  7: `<a href="#" onclick="updateScreen('king','palace')">Go to the palace</a>`,
 },
 
 shop: {
@@ -748,11 +764,13 @@ shopBroadsword: {
 },
 
 shopBroadswordYes: {
-  0: `- Katching! - Says the little wizard:<br><br>`,
-  1: `<b>You got the Steel Broadsword!</b><br><br>`,
-  2: `The sword is REALLY heavy, you know that you'll have problems with using it<br><br>`,
-  3: `CMD_PLAY_getItem`,
-  4: `<a href="#" onclick="updateScreen('shop','shop')">Better than nothing!</a>`,
+  0: `CMD_PLAY_getItem`,
+  1: `CMD_UPDATE_coins_-20`,
+  2: `CMD_UNLOCK_broadsword`,
+  3: `- Katching! - Says the little wizard:<br><br>`,
+  4: `<b>You got the Steel Broadsword!</b><br><br>`,
+  5: `The sword is REALLY heavy, you know that you'll have problems with using it<br><br>`,
+  6: `<a href="#" onclick="updateScreen('shop','shop')">Better than nothing!</a>`,
 },
 
 shopSticker: {
@@ -765,11 +783,13 @@ shopSticker: {
 },
 
 shopStickerYes: {
-  0: `- Katching! - Says the little wizard:<br><br>`,
-  1: `<b>You got the Carrot Sticker!</b><br><br>`,
-  2: `Without a place to glue it, you glue it to your clothing.<br><br>`,
-  3: `CMD_PLAY_getItem`,
-  4: `<a href="#" onclick="updateScreen('shop','shop')">Feeling stylish!</a>`,
+  0: `CMD_PLAY_getItem`,
+  1: `CMD_UPDATE_coins_-10`,
+  2: `CMD_UNLOCK_sticker`,
+  3: `- Katching! - Says the little wizard:<br><br>`,
+  4: `<b>You got the Carrot Sticker!</b><br><br>`,
+  5: `Without a place to glue it, you glue it to your clothing.<br><br>`,
+  6: `<a href="#" onclick="updateScreen('shop','shop')">Feeling stylish!</a>`,
 },
 
 shopPassWOKingQuest: {
@@ -789,8 +809,9 @@ shopPassWKingQuest: {
   4: `- Oh, I get it,`,
   5: ` the king trusts you, then so do I, take it:<br><br>`,
   6: `CMD_PLAY_getItem`,
-  7: `<b>You got the Wall Pass!</b><br><br>`,
-  8: `<a href="#" onclick="updateScreen('shop','shop')">Go back</a>`,
+  7: `CMD_UNLOCK_pass`,
+  8: `<b>You got the Wall Pass!</b><br><br>`,
+  9: `<a href="#" onclick="updateScreen('shop','shop')">Go back</a>`,
 },
 
 shopTooPoor: {
@@ -833,7 +854,7 @@ altarFirst: {
   6: `- This altar once was a place to keep it safe, but time passed, and <i>Leshy</i> thought fast and got rid of it.`,
   7: ` But hope is not lost! The sword can't leave the island, so it must be here, and if not, its parts are.`,
   8: ` We just need to find them and take them here.<br><br>`,
-  9: `CMD_GET_angelVisited`,
+  9: `CMD_UNLOCK_angelVisited`,
   10: window.englishGlobals.WWYS, 
   11: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
   12: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Who are you?</a><br>`,
@@ -905,12 +926,13 @@ angelFuseSword3: {
   0: `The light beam disappears into thin air,`,
   1: ` and you're left with the so called blade capable of slaying anything.<br><br>`,
   2: `CMD_PLAY_getItem`,
-  3: `<b>You got The Island Sword!</b><br><br>`,
-  4: `- There it is! In all of its glory!`,
-  5: ` I'm grateful for your help, my child,`,
-  6: ` you deserve it, keep it and use it to end this island's suffering.<br><br>`,
-  7: window.englishGlobals.WWYS,
-  8: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
+  3: `CMD_UNLOCK_islandSword`,
+  4: `<b>You got The Island Sword!</b><br><br>`,
+  5: `- There it is! In all of its glory!`,
+  6: ` I'm grateful for your help, my child,`,
+  7: ` you deserve it, keep it and use it to end this island's suffering.<br><br>`,
+  8: window.englishGlobals.WWYS,
+  9: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Ask about the progress of the quest</a><br>`,
 },
 
 angelWhoAreYou: {
