@@ -19,6 +19,9 @@ var creditsScreen = document.getElementById("credits");
 var howToPlayScreen = document.getElementById("howtoplay");
 var patchNotesScreen = document.getElementById("patchNotes");
 var wrongResolutionScreen = document.getElementById("wrongResolution");
+var othersDiv = document.getElementById("others");
+var mapDiv = document.getElementById("map");
+var settingsDiv = document.getElementById("settings");
 
 var isPlaying = false;
 var wrongResOn = false;
@@ -51,10 +54,8 @@ function eraseSave(){
   localStorage.setItem("sticker", false);
   localStorage.setItem("stick", false);
   localStorage.setItem("coins", 0);
-  localStorage.setItem("pass", 0);
-  // 0 = Não tem o pass
-  // 1 = Tem mas não usou
-  // 2 = Tem E já usou
+  localStorage.setItem("pass", false);
+  localStorage.setItem("passUsed", false);
   localStorage.setItem("sword1", false); // Pommel
   localStorage.setItem("sword2", false); // Hilt
   localStorage.setItem("sword3", false); // Blade
@@ -132,7 +133,7 @@ function updateStart(div) {
       patchNotesScreen.style.display = "none";
 
       // Liberando áreas que o jogador desbloqueou
-      if(localStorage.getItem("pass") == '2'){
+      if(localStorage.getItem("passUsed") == 'true'){
         document.getElementsByClassName("cave")[0].classList.remove("disabled");
         document.getElementsByClassName("cave")[1].classList.remove("disabled");
       }
@@ -174,10 +175,6 @@ function updateStart(div) {
       patchNotesScreen.style.display = "block";
   }
 }
-
-var othersDiv = document.getElementById("others");
-var mapDiv = document.getElementById("map");
-var settingsDiv = document.getElementById("settings");
 
 //Cicla as divs que ficam dentro da div pai "others", chamada no HTML
 function UpdateInfoDiv(div) {
@@ -356,16 +353,12 @@ function updateInventory() {
     document.getElementById("gogglesunlocked").style.display = "block";
   }
 
-  switch (localStorage.getItem("pass")) {
-    case '0':
-      document.getElementById("passStatus").innerHTML = window[language].inventory.passNo;
-      break;
-    case '1':
-      document.getElementById("passStatus").innerHTML = window[language].inventory.passYes;
-      break;
-    case '2':
-      document.getElementById("passStatus").innerHTML = window[language].inventory.passUsed;
-      break;
+  if(localStorage.getItem("passUsed") == "true"){
+    document.getElementById("passStatus").innerHTML = window[language].inventory.passUsed;
+  }else if(localStorage.getItem("pass") == "true"){
+    document.getElementById("passStatus").innerHTML = window[language].inventory.passYes;
+  }else{
+    document.getElementById("passStatus").innerHTML = window[language].inventory.passNo;
   }
 
   let sword1Sprite = document.getElementsByClassName("sword1Sprite");
@@ -429,16 +422,22 @@ function disableKeyFeatures() {
 }
 
 function parseInstruction(instruction){
-  if(instruction.substring(0,3) == "CMD"){
-      switch(instruction.substring(4, 8)){
-        case "PLAY":
-          const audio = new Audio("../assets/" + instruction.substring(9) + ".mp3")
-          audio.play()
-      }
-    return true
-  }else{
-    return false // Not an instruction
-  }
+  let command = instruction.substring(0, 3)
+  if(command != "CMD") return false // Not an instruction
+
+  let commandType = instruction.substring(4, instruction.indexOf("_", 4))
+  let commandValue = instruction.substring(instruction.indexOf("_", 6)+1)
+
+    switch(commandType){ 
+      case "PLAY":
+        const audio = new Audio("../assets/" + commandValue + ".mp3")
+        audio.play()
+        break;
+      case "GET":
+        localStorage.setItem(commandValue, "true")
+        break;
+    }
+  return true
 }
 
 let dialogueControl = 0; // Changes when a new typewrite() is called, interrupting other dialogues
@@ -512,9 +511,7 @@ function updateScreen(nextImg, nextText) {
   var stick = JSON.parse(localStorage.getItem("stick"));
   var coins = JSON.parse(localStorage.getItem("coins"));
   var pass = JSON.parse(localStorage.getItem("pass"));
-  //0 = Não tem o pass
-  //1 = Tem mas não usou
-  //2 = Tem E já usou
+  var passUsed = JSON.parse(localStorage.getItem("passUsed"));
 
   var sword1 = JSON.parse(localStorage.getItem("sword1")); //Pommel
   var sword2 = JSON.parse(localStorage.getItem("sword2")); //Hilt
@@ -539,7 +536,7 @@ function updateScreen(nextImg, nextText) {
 
   //Esses IFs abaixo são usados caso o player entre no local após certo acontecimento.
     if     (stick && nextText == "enterForest")                      { nextText = "enterForestWStick" }
-    else if(!stick && nextText == "enterForest")                     { nextText = "enterForestWOStick"; localStorage.setItem("stick", true) }
+    else if(!stick && nextText == "enterForest")                     { nextText = "enterForestWOStick" }
     else if(bearScared && nextText == "forest")                      { nextText = "forestBearScared" }
     else if((islandSword || broadsword) && nextText == "forestBear") {
       nextText = "forestBearWSword";
@@ -548,16 +545,14 @@ function updateScreen(nextImg, nextText) {
     }
     else if(nextText == "forestBear")                                { nextText = "forestBearWOSword" }
     else if(!kingQuest && nextText == "altar")                       { nextText = "altarAbandoned" }
-    else if(!angelVisited && nextText == "altar")                    { nextText = "altarFirst"; localStorage.setItem("angelVisited", true) }
-    else if(!castleEntered && nextText == "castle")                  { localStorage.setItem("castleEntered", true) }
+    else if(!angelVisited && nextText == "altar")                    { nextText = "altarFirst"; }
     else if(castleEntered && nextText == "castle")                   { nextText = "castleEnter" }
-    else if(!palaceEntered && nextText == "palace")                  { nextText = "palaceFirst"; localStorage.setItem("palaceEntered", true) }
-    else if(nextText == "kingHowDoThis")                             { localStorage.setItem("kingQuest", true) }
+    else if(!palaceEntered && nextText == "palace")                  { nextText = "palaceFirst";}
     else if(sword2 && sword3 && !sword1 && nextText == "palace")     { nextText = "kingGivePommel"; localStorage.setItem("sword1", true) }
     else if(!shopEntered && nextText == "shop")                      { nextText = "shopFirst"; localStorage.setItem("shopEntered", true) }
     else if(nextText == "shopBroadswordYes" && broadsword)           { nextText = "shopOnlyOnePerPerson" }
     else if(nextText == "shopStickerYes" && sticker)                 { nextText = "shopOnlyOnePerPerson" }
-    else if(nextText == "shopPass" && pass > 0)                      { nextText = "shopOnlyOnePerPerson" }
+    else if(nextText == "shopPass" && pass)                          { nextText = "shopOnlyOnePerPerson" }
     else if(nextText == "shopBroadswordYes" && coins < 20)           { nextText = "shopTooPoor" }
     else if(nextText == "shopBroadswordYes" && coins >= 20)          { 
       localStorage.setItem("coins", coins - 20);
@@ -568,20 +563,20 @@ function updateScreen(nextImg, nextText) {
       localStorage.setItem("sticker", true) 
     }
     else if(nextText == "shopPass" && !kingQuest)                    { nextText = "shopPassWOKingQuest" }
-    else if(nextText == "shopPass" && kingQuest)                     { nextText = "shopPassWKingQuest"; localStorage.setItem("pass", 1) }
+    else if(nextText == "shopPass" && kingQuest)                     { nextText = "shopPassWKingQuest"; localStorage.setItem("pass", true) }
     else if(nextText == "weirdRocksStealEye")                        { localStorage.setItem("sword3", true) }
     else if(nextText == "weirdRocks" && sword3)                      { nextText = "weirdRocksAngryRox" }
     else if(nextText == "farm" && sword2)                            { nextText = "farmCrazyFarmer" }
     else if(nextText == "farmSeeCrops" && !sticker)                  { nextText = "farmSeeCropsWOSticker" }
     else if(nextText == "farmSeeCrops" && sticker)                   { nextText = "farmSeeCropsWSticker" }
     else if(nextText == "farmApproach" && sticker)                   { localStorage.setItem("sword2", true) }
-    else if(nextText == "wallUsePass" && pass == 0)                  { nextText = "wallUsePassWOPass" }
-    else if(nextText == "wallUsePass" && pass == 1)                  { // Unlocking the pier
+    else if(nextText == "wallUsePass" && !pass)                      { nextText = "wallUsePassWOPass" }
+    else if(nextText == "wallUsePass" && pass)                  { // Unlocking the pier
       nextText = "wallUsePassWPass"; 
-      localStorage.setItem("pass", 2); 
+      localStorage.setItem("passUsed", true); 
       document.getElementsByClassName("cave")[0].classList.remove("disabled");
       document.getElementsByClassName("cave")[1].classList.remove("disabled"); }
-    else if(nextText == "wall" && pass == 2)                         { nextText = "wallAlreadyUsedPass"}
+    else if(nextText == "wall" && passUsed)                          { nextText = "wallAlreadyUsedPass"}
     else if(nextText == "goblin" && goblinGotMoney)                  { nextText = "goblinAfterGotMoney"}
     else if(nextText == "goblin" && !goblinVisited)                  { nextText = "goblinFirst"; localStorage.setItem("goblinVisited", true)}
     else if(nextText == "goblinMoney")                               {
@@ -651,6 +646,7 @@ function winGame() {
   gameScreen.style.display = "none";
   winScreen.style.display = "flex";
 
+  winScreen.innerHTML = window[language].exitCabin[0]
   
   eraseSave();
 }
