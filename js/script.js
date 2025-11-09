@@ -1,3 +1,4 @@
+
 let del = 20;
 let smallDel = 500; //Delays usados para dar uma pausa entre frases
 let bigDel = 1000;
@@ -7,7 +8,7 @@ const targetLang = new URLSearchParams(window.location.search).get('l');
 var language = targetLang == 'pt-br' ? 'brazilian' : 'english';
 var langLines = window[language];
 
-//BOTÕES PARA A TELA DE INÍCIO
+// BOTÕES PARA A TELA DE INÍCIO
 
 var startScreen = document.getElementById("start");
 var gameScreen = document.getElementById("gamescreen");
@@ -15,6 +16,9 @@ var creditsScreen = document.getElementById("credits");
 var howToPlayScreen = document.getElementById("howtoplay");
 var patchNotesScreen = document.getElementById("patchNotes");
 var wrongResolutionScreen = document.getElementById("wrongResolution");
+var othersDiv = document.getElementById("others");
+var mapDiv = document.getElementById("map");
+var settingsDiv = document.getElementById("settings");
 
 var isPlaying = false;
 var wrongResOn = false;
@@ -47,10 +51,8 @@ function eraseSave(){
   localStorage.setItem("sticker", false);
   localStorage.setItem("stick", false);
   localStorage.setItem("coins", 0);
-  localStorage.setItem("pass", 0);
-  // 0 = Não tem o pass
-  // 1 = Tem mas não usou
-  // 2 = Tem E já usou
+  localStorage.setItem("pass", false);
+  localStorage.setItem("passUsed", false);
   localStorage.setItem("sword1", false); // Pommel
   localStorage.setItem("sword2", false); // Hilt
   localStorage.setItem("sword3", false); // Blade
@@ -82,6 +84,7 @@ function eraseSave(){
 
   place = "forest";
   UpdateColors();
+  updateInventory();
 }
 
 function updateContinueButton(){
@@ -97,7 +100,6 @@ function updateContinueButton(){
 function updateStart(div) {
   switch (div) {
     case "newgame":
-
       isPlaying = true;
       eraseSave();
       setPalette(0);
@@ -110,7 +112,7 @@ function updateStart(div) {
       creditsScreen.style.display = "none";
       gameScreen.style.display = "grid";
       patchNotesScreen.style.display = "none";
-    
+
       updateScreen("forest", "start");
     break;
 
@@ -129,7 +131,7 @@ function updateStart(div) {
       patchNotesScreen.style.display = "none";
 
       // Liberando áreas que o jogador desbloqueou
-      if(localStorage.getItem("pass") == '2'){
+      if(localStorage.getItem("passUsed") == 'true'){
         document.getElementsByClassName("cave")[0].classList.remove("disabled");
         document.getElementsByClassName("cave")[1].classList.remove("disabled");
       }
@@ -148,7 +150,7 @@ function updateStart(div) {
       updateInventory();
       updateScreen("forest", "welcomeBack");
       break;
-    
+
       case "howtoplay":
       startScreen.style.display = "none";
       gameScreen.style.display = "none";
@@ -172,10 +174,6 @@ function updateStart(div) {
   }
 }
 
-var othersDiv = document.getElementById("others");
-var mapDiv = document.getElementById("map");
-var settingsDiv = document.getElementById("settings");
-
 //Cicla as divs que ficam dentro da div pai "others", chamada no HTML
 function UpdateInfoDiv(div) {
   othersDiv.style.display = "none";
@@ -194,7 +192,7 @@ function toMainMenu() {
   howToPlayScreen.style.display = "none";
   patchNotesScreen.style.display = "none";
   startScreen.style.display = "flex";
-  
+
   // Ativar/desativar o botão de continuar caso o jogador tenha feito algo
   updateContinueButton();
 }
@@ -240,7 +238,7 @@ function setPalette(step) {
 
   if(step == 0) currentPalette = 0;
   else if(step != "useSaved") currentPalette += step;
-  
+
   if (currentPalette == 5) currentPalette = 0;
   if (currentPalette == -1) currentPalette = 4;
 
@@ -256,11 +254,11 @@ function setPalette(step) {
 }
 
 //Mudar delay entre frases
-
+// smallDel, bigDel, between
 let betweenDelays = [
-  [500, 1000, 1500, 0],
-  [250, 500, 750, 1],
-  [0, 0, 0, 2],
+  [500, 1000, 0],
+  [250, 500,  1],
+  [0,   0,    2],
 ];
 
 function setDelayTime(step){
@@ -268,7 +266,7 @@ function setDelayTime(step){
   if (currentDelay == null) currentDelay = 0;
   if(step == 0) currentDelay = 0;
   if(step != "useSaved") currentDelay += step;
-  
+
   if (currentDelay == 3) currentDelay = 0;
   if (currentDelay == -1) currentDelay = 2;
 
@@ -276,7 +274,7 @@ function setDelayTime(step){
   bigDel = betweenDelays[currentDelay][1];
   hugeDel = betweenDelays[currentDelay][2];
 
-  document.getElementById("delayName").innerHTML = window[language].settings.delayBetween[betweenDelays[currentDelay][3]];
+  document.getElementById("delayName").innerHTML = window[language].settings.delayBetween[betweenDelays[currentDelay][2]];
 
   localStorage.setItem("currentDelay", currentDelay);
 }
@@ -353,16 +351,12 @@ function updateInventory() {
     document.getElementById("gogglesunlocked").style.display = "block";
   }
 
-  switch (localStorage.getItem("pass")) {
-    case '0':
-      document.getElementById("passStatus").innerHTML = window[language].inventory.passNo;
-      break;
-    case '1':
-      document.getElementById("passStatus").innerHTML = window[language].inventory.passYes;
-      break;
-    case '2':
-      document.getElementById("passStatus").innerHTML = window[language].inventory.passUsed;
-      break;
+  if(localStorage.getItem("passUsed") == "true"){
+    document.getElementById("passStatus").innerHTML = window[language].inventory.passUsed;
+  }else if(localStorage.getItem("pass") == "true"){
+    document.getElementById("passStatus").innerHTML = window[language].inventory.passYes;
+  }else{
+    document.getElementById("passStatus").innerHTML = window[language].inventory.passNo;
   }
 
   let sword1Sprite = document.getElementsByClassName("sword1Sprite");
@@ -425,6 +419,97 @@ function disableKeyFeatures() {
   document.getElementById("paletteBack").onclick = "";
 }
 
+function parseInstruction(instruction){
+  let commandValues = instruction.split("_")
+  // CMD, PLAY, soundName (example)
+  // CMD, UPDATE, item, amount (example)
+
+  if(commandValues[0] != "CMD") return false // Not an instruction
+
+    switch(commandValues[1]){ 
+      case "PLAY":
+        const audio = new Audio("../assets/" + commandValues[2] + ".mp3")
+        audio.play()
+        break;
+      case "UNLOCK":
+        localStorage.setItem(commandValues[2], "true")
+        updateInventory()
+        break;
+      case "UPDATE":
+        localStorage.setItem(commandValues[2], parseInt(localStorage.getItem(commandValues[2])) + parseInt(commandValues[3]))
+        updateInventory()
+        break;
+      case "UNLOCKLOCATION":
+        document.querySelectorAll("." + commandValues[2]).forEach(e => {e.classList.remove("disabled")});
+        break;
+      }
+  return true
+}
+
+let dialogueControl = 0; // Changes when a new typewrite() is called, interrupting other dialogues
+
+async function typewrite(delay, divID, lines){
+  let divToType = document.getElementById(divID)
+  let skipped = false
+  let textOBJ = window[language][lines]
+  if(!textOBJ){ console.error(`Não há texto na variável ${lines}.`); return; }
+
+  let currentDialogueControl = ++dialogueControl;
+
+  divToType.innerHTML = "";
+
+  setTimeout(() => { divToType.addEventListener("click", () => { skipped = true}, { once: true })}, 50)
+
+  for(let line of Object.values(textOBJ)){
+      if (currentDialogueControl != dialogueControl) return
+
+      if(!parseInstruction(line)){
+        if(!skipped){
+          const newSpan = document.createElement("span") // New span with the next line
+          divToType.appendChild(newSpan)
+      
+          await new Promise(resolve => {
+            let i = 0;
+            let len = line.length
+            
+            function nextChar(){  
+              if (currentDialogueControl != dialogueControl) return resolve();
+              let spans = divToType.querySelectorAll("span")
+              if(skipped){
+                spans[spans.length - 1].innerHTML = line
+                resolve();
+                return;
+              }
+            if(i >= len) return resolve();
+            if(line[i] == "<"){
+              const tagEnd = line.indexOf(">", i)
+              if(tagEnd != -1){
+                i = tagEnd
+              }
+            }
+      
+            spans[spans.length-1].innerHTML = line.slice(0, i+2)
+      
+            i++
+        
+            delay = del;
+      
+            if(/,/.test(line[i])) delay = smallDel
+            if(/[.:?!]/.test(line[i])) delay = bigDel
+            
+            const timeout = setTimeout(nextChar, delay);
+          }
+          nextChar()
+        })
+      }else{
+          const newSpan = document.createElement("span") // Nova span com a nova linha
+          divToType.appendChild(newSpan)
+          newSpan.innerHTML = line
+      }
+    }
+  }
+}
+
 function updateScreen(nextImg, nextText) {
 
   // IMPORTANTE: TODAS AS VARIÁVEIS DO LOCALSTORAGE PASSAM A SEREM VARIÁVEIS
@@ -433,9 +518,7 @@ function updateScreen(nextImg, nextText) {
   var stick = JSON.parse(localStorage.getItem("stick"));
   var coins = JSON.parse(localStorage.getItem("coins"));
   var pass = JSON.parse(localStorage.getItem("pass"));
-  //0 = Não tem o pass
-  //1 = Tem mas não usou
-  //2 = Tem E já usou
+  var passUsed = JSON.parse(localStorage.getItem("passUsed"));
 
   var sword1 = JSON.parse(localStorage.getItem("sword1")); //Pommel
   var sword2 = JSON.parse(localStorage.getItem("sword2")); //Hilt
@@ -456,28 +539,65 @@ function updateScreen(nextImg, nextText) {
   var goblinGotMoney = JSON.parse(localStorage.getItem("goblinGotMoney"));
   var goblinVisited = JSON.parse(localStorage.getItem("goblinVisited"))
 
-  var selectedLanguage = window[language];
   let ImgQuery;
 
   //Esses IFs abaixo são usados caso o player entre no local após certo acontecimento.
-  if (sword3 == true && nextImg == "weirdRocks")        { ImgQuery = "weirdRocksCrying"; } 
-else if (pass == 2 && nextImg == "wall")                { ImgQuery = "wall-open"; } 
-else if (castleEntered == true && nextImg == "castle")  { ImgQuery = "bifurcation"; } 
-else if (kingQuest == true && nextImg == "altar")       { ImgQuery = "angel"; } 
-else if (tunic == true && nextImg == "island")          { ImgQuery = "islandhole"; } 
-else if (goggles == true && nextImg == "well")          { ImgQuery = "wellPoor"; } 
-else if (goblinGotMoney == true && nextImg == "goblin") { ImgQuery = "goblinCry"; } 
-else if (sword1 == true && nextImg == "king")           { ImgQuery = "kingPommelless"; } 
-else if (
-    (broadsword == true && nextText == "shopBroadswordYes") ||
-    (sticker == true && nextText == "shopStickerYes") ||
-    ((pass == 1 || pass == 2) && nextText == "shopPass")
-  ) {
-    nextText = "shopOnlyOnePerPerson";
-    ImgQuery = nextImg;
-  } else {
-    ImgQuery = nextImg;
-  }
+    if     (stick && nextText == "enterForest")                      { nextText = "enterForestWStick" }
+    else if(!stick && nextText == "enterForest")                     { nextText = "enterForestWOStick" }
+    else if(bearScared && nextText == "forest")                      { nextText = "forestBearScared" }
+    else if((islandSword || broadsword) && nextText == "forestBear") { nextText = "forestBearWSword" }
+    else if(nextText == "forestBear")                                { nextText = "forestBearWOSword" }
+    else if(!kingQuest && nextText == "altar")                       { nextText = "altarAbandoned" }
+    else if(!angelVisited && nextText == "altar")                    { nextText = "altarFirst"  }
+    else if(castleEntered && nextText == "castle")                   { nextText = "castleEnter" }
+    else if(!palaceEntered && nextText == "palace")                  { nextText = "palaceFirst" }
+    else if(sword2 && sword3 && !sword1 && nextText == "palace")     { nextText = "kingGivePommel" }
+    else if(!shopEntered && nextText == "shop")                      { nextText = "shopFirst" }
+    else if(nextText == "shopBroadswordYes" && broadsword)           { nextText = "shopOnlyOnePerPerson" }
+    else if(nextText == "shopStickerYes" && sticker)                 { nextText = "shopOnlyOnePerPerson" }
+    else if(nextText == "shopPass" && pass)                          { nextText = "shopOnlyOnePerPerson" }
+    else if(nextText == "shopBroadswordYes" && coins < 20)           { nextText = "shopTooPoor" }
+    else if(nextText == "shopStickerYes" && coins < 10)              { nextText = "shopTooPoor" }
+    else if(nextText == "shopPass" && !kingQuest)                    { nextText = "shopPassWOKingQuest" }
+    else if(nextText == "shopPass" && kingQuest)                     { nextText = "shopPassWKingQuest" }
+    else if(nextText == "weirdRocks" && sword3)                      { nextText = "weirdRocksAngryRox" }
+    else if(nextText == "farm" && sword2)                            { nextText = "farmCrazyFarmer" }
+    else if(nextText == "farmSeeCrops" && !sticker)                  { nextText = "farmSeeCropsWOSticker" }
+    else if(nextText == "farmSeeCrops" && sticker)                   { nextText = "farmSeeCropsWSticker" }
+    else if(nextText == "wall" && passUsed)                          { nextText = "wallAlreadyUsedPass"}
+    else if(nextText == "wallUsePass" && !pass)                      { nextText = "wallUsePassWOPass" }
+    else if(nextText == "wallUsePass" && pass)                       { nextText = "wallUsePassWPass" }
+    else if(nextText == "goblin" && goblinGotMoney)                  { nextText = "goblinAfterGotMoney"}
+    else if(nextText == "goblin" && !goblinVisited)                  { nextText = "goblinFirst" }
+    else if(nextText == "wellThrowCoin" && coins < 1)                { nextText = "wellThrowCoinWOCoin" }
+    else if(nextText == "well" && goggles)                           { nextText = "wellAfterGoggles" }
+    else if(nextText == "island" && !islandEntered)                  { nextText = "islandFirst" }
+    else if(nextText == "angelAskAboutQuest" && !sword2)             { nextText = "angelParts2" }
+    else if(nextText == "angelAskAboutQuest" && !sword3)             { nextText = "angelParts3" }
+    else if(nextText == "angelAskAboutQuest" && !sword1)             { nextText = "angelParts1" }
+    else if(nextText == "angelAskAboutQuest" && !islandSword)        { nextText = "angelFuseSword1" }
+    else if(nextText == "angelAskAboutQuest")                        { nextText = "angelPartsBadFeeling" }
+    else if(nextText == "cabinTree"&&islandSword&&goggles&&tunic)    { nextText = "treeCanDefeat" }
+    else if(nextText == "cabinTree")                                 { nextText = "treeCantDefeat" }
+    else if(nextText == "leshyFate" && !kingQuest)                   { nextText = "leshyLostSoul" }
+    else if(nextText == "leshyFate" && !goggles)                     { nextText = "leshyWOGoggles" }
+    else if(nextText == "leshyFate")                                 { nextText = "leshyWGoggles" }
+    else if(nextText == "leshyBurn" && !tunic)                       { nextText = "leshyWODarkTunic" }
+    else if(nextText == "leshyBurn")                                 { nextText = "leshyWDarkTunic" }
+    else if(nextText == "leshyFinalTest" && !islandSword)            { nextText = "leshyFinalDefeat" }
+    else if(nextText == "leshyFinalTest")                            { nextText = "leshyFinalVictory" }
+    
+    else if(nextText == "leshyAngel")                                { setPalette("useSaved") }
+
+    if      (sword3 && nextImg == "weirdRocks")     { ImgQuery = "weirdRocksCrying"; }
+    else if (passUsed && nextImg == "wall")         { ImgQuery = "wall-open"; }
+    else if (castleEntered && nextImg == "castle")  { ImgQuery = "bifurcation"; }
+    else if (kingQuest && nextImg == "altar")       { ImgQuery = "angel"; }
+    else if (tunic && nextImg == "island")          { ImgQuery = "islandhole"; }
+    else if (goggles && nextImg == "well")          { ImgQuery = "wellPoor"; }
+    else if (goblinGotMoney && nextImg == "goblin") { ImgQuery = "goblinCry"; }
+    else if (sword1 && nextImg == "king")           { ImgQuery = "kingPommelless"; }
+    else                                            { ImgQuery = nextImg; }
 
   if (nextImg == "leshyFinalForm") {
     document.querySelector(":root").style.setProperty("--main", "green");
@@ -490,12 +610,7 @@ else if (
   NI.classList.add("active");
 
   //mudar texto
-  chatDiv.innerHTML = "";
-
-  for(let s of Object.values(selectedLanguage[nextText])){
-    console.log(s)
-    chatDiv.innerHTML += s;
-  }
+  typewrite(del, "chat", nextText)
 }
 
 function winGame() {
@@ -503,12 +618,8 @@ function winGame() {
   gameScreen.style.display = "none";
   winScreen.style.display = "flex";
 
-  let TWEnding = new Typewriter(endingText, {
-    delay: 75,
-  });
-
-  TWEnding.pauseFor(250).typeString(window[language].exitCabin).start();
-
+  typewrite(del, "winScreen", "exitCabin")
+  
   eraseSave();
 }
 
@@ -516,7 +627,7 @@ window.addEventListener('keydown', (e) => {
   if (e.key === 'w' || e.key === 'W') {
     winGame();
   }
-});
+}, { once: true });
 
 UpdateColors();
 updateContinueButton();

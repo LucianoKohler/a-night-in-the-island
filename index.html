@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/start.css">
-    <link rel="icon" type="image/x-icon" href="icon.png">
+    <link rel="icon" type="image/x-icon" href="assets/icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>A Night In The Island</title>
@@ -1034,6 +1034,11 @@ e o text-align não quebrar o frame da espada.-->
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</pre>
 
 
@@ -1137,38 +1142,40 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
     </div>
     <div id="patchNotes">
       <h1>Patch Notes</h1>
-      <h3>1.0 - 10/10/2023</h3>
+      <h3>1.0 - 10/10/2023 - The Beggining</h3>
       <ul>
         <li>Added main game, all the base mechanics, lore, all the way to the ending</li>
       </ul>
-      <h3>1.1 - 04/04/2024</h3>
+      <h3>1.1 - 04/04/2024 - Mini improvements</h3>
       <ul>
         <li>Added the patch notes to the bottom of the screen for further documentation of new game updates</li>
         <li>Made so that when the game starts, it gets on full screen, to improve mobile experience</li>
         <li>Added corny cheese of made by Blockier on the bottom of the screen</li>
       </ul>
-      <h3>1.2 - 15/08/2024</h3>
+      <h3>1.2 - 15/08/2024 - Localization</h3>
       <ul>
         <li>Game now Fully translated to Brazilian Portuguese</li>
         <li>Game texts are now separated in different files for each language to allow further localization</li>
         <li>Removed inverted color palette after browsers added autodark mode that bugs the inverted colors</li>
       </ul>
-      <h3>1.3 - 03/01/2025</h3>
+      <h3>1.3 - 03/01/2025 - Saves</h3>
       <ul>
         <li>Implemented a saving feature, now the player can leave the game without worrying about losing their progress</li>
         <li>Reimagined the map art/text tutorial to be more intuitive since people would often not understand how to use the map</li>
         <li>Fixed some typos, mostly on the portuguese translation</li>
       </ul>
-      <h3>1.4 - 12/01/2025</h3>
+      <h3>1.4 - 12/01/2025 - Mobile port</h3>
       <ul>
         <li>Changed some numbers to improve playing on mobile devices mobiles and making the game more responsive overall</li>
         <li>Removed certain characters that wouldn't appear on mobile screens and swapped them with similar ones</li>
         <li>Remodeled the forest and castle arts to seem cleaner to look at</li>
       </ul>
       <ul>
-        <h3>1.5 - 29/10/2025</h3>
+        <h3>1.5 - 29/10/2025 - Skipping and Sound Effects</h3>
         
-        <p>Fixed the continue button being clickable even if the player didn't make any progress on the game</p>
+        <li>Typewriting system completely overhauled and improved, now made by me instead of using a 3rd party software <strong>(better performance with ~1500 less lines!)</strong></li>
+        <li>Added text skipping and sound effects for certain events</li>
+        <li>Fixed the continue button being clickable even if the player didn't make any progress on the game</li>
       </ul>
       <button onclick="toMainMenu()" style="float: right;">Go Back</button>
     </div>
@@ -1208,10 +1215,9 @@ MAPA SEM LINKS PARA VIZUALIZAÇÃO-->
       <p id="endingText"></p>
     </div>
 
-    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
-    <!--Script de terceiros para fazer o efeito typewriter-->
     <script src="js/script.js"></script>
     <script src="js/menuTranslating.js"></script>
+    <script src="localization/globals.js"></script>
     <script src="localization/english.js"></script>
     <script src="localization/brazilian.js"></script>
 </body>

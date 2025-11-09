@@ -278,6 +278,10 @@ button {
     font-size: 1.2vw;
 }
 
+button:not(#tomap, #tosettings, #tomainmenu){
+    border-radius: 5px;
+}
+
 button:hover {
     background-color: rgba(255, 255, 255, 0.3);
     transition: 0.1s ease-in;
@@ -292,7 +296,14 @@ button:active {
 #inventory,
 #settings {
     font-size: calc(.4em + 1vh);
+}
 
+#hidden   { color: var(--bg) !important; }
+#hidden * { color: var(--bg) !important; }
+#shown    { color: var(--main) !important; }
+
+#chat {
+    user-select: none;
 }
 
 #chat a::before {

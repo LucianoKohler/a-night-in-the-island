@@ -1,6 +1,6 @@
 var brazilian = {
 
-// LINHAS DO MENU PRINCIPAL
+  // LINHAS DO MENU PRINCIPAL
 
   mainMenu: {
     buttons: {
@@ -137,20 +137,16 @@ settings: {
   }
 },
 
-// LINHAS PARA O JOGO
+welcomeBack: {
+  0: `Bem vindo de volta à ilha,`,
+  1: ` lembre-se de usar o mapa se você se sentir preso,`,
+  2: ` boa sorte!`
+},
 
-WWYD: `O que você fará? <br><br>`,
-WWYS: `O que você dirá? <br><br>`,
-YAEH: `<a href="#" onclick="dyingAnimation()">Sua aventura acaba aqui.</a>`,
-exitCabin: `<b>Você sai da cabana.</b>`,
-
-welcomeBack1: `Bem vindo de volta à ilha,`,
-welcomeBack2: ` lembre-se de usar o mapa se você se sentir preso,`,
-welcomeBack3: ` boa sorte!`,
-
-choose: {
-  0: `No menu do canto inferior direito, há um botão clicável que abre um mapa que indica sua localização atual em amarelo,`,
-  1: ` clique nas diferentes localizações da ilha para ir até elas, lembre-se de que algumas áreas podem estar bloqueadas!`,
+chooseLocation: {
+  0: `Hora do Tutorial!<br><br>`,
+  1: ` No menu do canto inferior direito, há um botão clicável que abre um mapa que indica sua localização atual em amarelo,`,
+  2: ` clique nas diferentes localizações da ilha para ir até elas, lembre-se de que algumas áreas podem estar bloqueadas!`,
 },
 
 start: {
@@ -160,16 +156,16 @@ start: {
   3: ` e muito menos do seu nome,`,
   4: ` você está perdido,`,
   5: ` e a única coisa que você pode fazer agora é procurar ajuda.<br><br>`,
-  //WWYD
-  6: `<a href="#" onclick="updateScreen('forest', 'enterForest')">Entrar na floresta</a> <br>`,
-  7: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Recuar da floresta</a>`,
+  6: window.brazilianGlobals.WWYD,
+  7: `<a href="#" onclick="updateScreen('forest', 'enterForest')">Entrar na floresta</a> <br>`,
+  8: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Recuar da floresta</a>`,
 },
 
 forest: {
   0: `Você se reencontra com a floresta.<br><br>`,
-  //WWYD
-  1: `<a href="#" onclick="updateScreen('forest', 'enterForest')">Entrar na floresta </a><br>`,
-  2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Recuar da floresta</a>`,
+  1: window.brazilianGlobals.WWYD,
+  2: `<a href="#" onclick="updateScreen('forest', 'enterForest')">Entrar na floresta </a><br>`,
+  3: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Recuar da floresta</a>`,
 },
 
 forestBearScared: {
@@ -181,20 +177,23 @@ forestBearScared: {
 enterForestWOStick: {
   0: `Você decide adentrar mais fundo na floresta, sem saber o que te espera do outro lado dela.<br><br>`,
   1: `Pelo chão, você encontra um graveto torto no chão:<br><br>`,
-  2: `<b>Você adquiriu um graveto comum</b>! <br><br>`,
-  //WWYD
-  3: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continuar</a> <br>`,
-  4: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Recuar da floresta`,
+  2: `CMD_UNLOCK_stick`,
+  3: `CMD_PLAY_getItem`,
+  4: `<b>Você adquiriu um graveto comum</b>! <br><br>`,
+  5: `... Actually, this stick is pretty useless, you just leave it there.<br><br>`,
+  6: window.brazilianGlobals.WWYD,
+  7: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continuar</a> <br>`,
+  8: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Recuar da floresta`,
 },
 
-enterForestWithStick: {
-  0: `De volta ao mesmo lugar, você ainda reconhece o lugar em que o graveto foi encontrado... <br><br>`,
-  //WWYD
-  1: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continuar</a> <br>`,
-  2: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">Recuar da floresta</a>`,
+enterForestWStick: {
+  0: `De volta ao local, o graveto ainda está no mesmo lugar... <br><br>`,
+  1: window.brazilianGlobals.WWYD,
+  2: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continuar</a> <br>`,
+  3: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Recuar da floresta</a>`,
 },
 
-ForestBearWSword: {
+forestBearWSword: {
   0: `Você prossegue sua caminhada florestal até que de repente...`,
   1: ` Um urso aparece das moitas!<br><br>`,
   2: `Você rapidamente saca sua pesadíssima espada,`,
@@ -204,25 +203,28 @@ ForestBearWSword: {
   6: ` afinal, você não sabe usar uma...<br><br>`,
   7: `Você continua pela floresta até encontrar o seu fim,`,
   8: ` no outro lado, você encontra um pequeno píer, com um barquinho amarrado na água.<br><br>`,
-  9: `<b>Agora, você pode acessar o píer!</b>`,
+  9: `CMD_UNLOCK_bearScared`,
+  10: `CMD_PLAY_getItem`,
+  11: `CMD_UNLOCKLOCATION_pier`,
+  12: `<b>Agora, você pode acessar o píer!</b>`,
 },
 
-ForestBearWOSword: {
+forestBearWOSword: {
   0: `Você prossegue sua caminhada florestal até que de repente...`,
   1: ` Um urso aparece das moitas!<br><br>`,
-  2: `Você segura seu bastão firmemente,`,
+  2: `Você corajosamente levanta seus punhos,`,
   3: ` pronto para lutar por sua vida, sem voltar atrás!<br><br>`,
   4: `O urso dá seu primeiro passo em sua direção, e suas pernas começam a pensar melhor que você,`,
   5: ` sem perceber, você começa a correr loucamente, só parando ao perceber que voltou à entrada da floresta,`,
   6: ` talvez você não esteja preparado para lutar com algo tão grande?<br><br>`,
-  7: `<a href="#" onclick="updateScreen('map-choose', 'chooselocation')">O que eu faço agora?</a>`,
+  7: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">O que eu faço agora?</a>`,
 },
 
 pier: {
   0: `Um pequeno píer com um barquinho pronto para uso te aguarda em frente ao mar.<br><br>`,
-  //WWYD
-  1: `<a href="#" onclick="updateScreen('island', 'island')">Velejar para algum lugar</a><br>`,
-  2: `<a href="#" onclick="updateScreen('pier', 'pierStareSea')">Vislumbrar o mar</a>`,
+  1: window.brazilianGlobals.WWYD,
+  2: `<a href="#" onclick="updateScreen('island', 'island')">Velejar para algum lugar</a><br>`,
+  3: `<a href="#" onclick="updateScreen('pier', 'pierStareSea')">Vislumbrar o mar</a>`,
 },
 
 pierStareSea: {
@@ -246,15 +248,19 @@ islandFirst: {
   7: ` depois de suas mãos ficarem quase dormentes,`,
   8: ` você encontra uma malha negra, aparentemente resistente, e acima de tudo:`,
   9: ` Estilosa!<br><br>`,
-  10: `<b>Você adquiriu a malha negra!<b><br><br>`,
-  11: `<a href="#" onclick="updateScreen('islandhole', 'island')">É isso aí!</a>`,
+  10: `CMD_PLAY_getItem`,
+  11: `CMD_UNLOCK_tunic`,
+  12: `CMD_UNLOCK_islandEntered`,
+  13: `CMD_UNLOCKLOCATION_island`,
+  14: `<b>Você adquiriu a malha negra!<b><br><br>`,
+  15: `<a href="#" onclick="updateScreen('islandhole', 'island')">É isso aí!</a>`,
 },
 
 island: {
   0: `Aí você está, parado na orla da ilha, junto ao buraco que você fez.<br><br>`,
-  //WWYD
-  1: `<a href="#" onclick="updateScreen('island', 'islandRowHorizonPart1')">Remar ao horizonte</a><br>`,
-  2: `<a href="#" onclick="updateScreen('island', 'islandAppreciateLandscape')">Apreciar a paisagem</a>`,
+  1: window.brazilianGlobals.WWYD,
+  2: `<a href="#" onclick="updateScreen('island', 'islandRowHorizonPart1')">Remar ao horizonte</a><br>`,
+  3: `<a href="#" onclick="updateScreen('island', 'islandAppreciateLandscape')">Apreciar a paisagem</a>`,
 },
 
 islandAppreciateLandscape: {
@@ -283,16 +289,16 @@ islandRowHorizonPart2: {
   2: ` Você retornou ao píer!`,
   3: ` Nem você e nem a calmaria do mar virou seu barco em qualquer momento`,
   4: ` parece que você realmente está preso nesse lugar e que magia realmente existe afinal...<br><br>`,
-  //WWYD
-  5: `<a href="#" onclick="updateScreen('island', 'island')">Velejar para algum lugar</a><br>`,
-  6: `<a href="#" onclick="updateScreen('pier', 'pierStareSea')">Vislumbrar o mar</a><br>`,
+  5: window.brazilianGlobals.WWYD,
+  6: `<a href="#" onclick="updateScreen('island', 'island')">Velejar para algum lugar</a><br>`,
+  7: `<a href="#" onclick="updateScreen('pier', 'pierStareSea')">Vislumbrar o mar</a><br>`,
 },
 
 well: {
   0: `Na distância, você encontra um poço comum com uma plaquinha pendurada nele escrito "me mostre os brilhantes".<br><br>`,
-  //WWYD
-  1: `<a href="#" onclick="updateScreen('well', 'wellThrowCoin')">Jogar uma moeda</a><br>`,
-  2: `<a href="#" onclick="updateScreen('well', 'wellLookInside')">Olhar dentro do poço</a>`,
+  1: window.brazilianGlobals.WWYD,
+  2: `<a href="#" onclick="updateScreen('well', 'wellThrowCoin')">Jogar uma moeda</a><br>`,
+  3: `<a href="#" onclick="updateScreen('well', 'wellLookInside')">Olhar dentro do poço</a>`,
 },
 
 wellAfterGoggles: {
@@ -306,10 +312,13 @@ wellThrowCoin: {
   0: `Você retira uma moeda do resto do seu dinheiro, se aproxima do poço, e a joga no buraco sem fim.<br><br>`,
   1: `Você ouve uns barulhinhos, e então, um par de óculos é lançado para fora do poço,`,
   2: ` você reconhece como sendo um daqueles óculos de festa com um desenho espiral no lugar das lentes:<br><br>`,
-  3: `<b>Você adquiriu o óculos de espiral!</b><br><br>`,
-  4: `Usá-los te deixa muito tonto, depois de tirá-los, você percebe que a placa mudou seu texto:<br><br>`,
-  5: `"Tu é pobre, lixão"<br><br>`,
-  6: `Que poço mal-educado! Você não quer mais ficar perto dele.`,
+  3: `CMD_PLAY_getItem`,
+  4: `CMD_UNLOCK_goggles`,
+  5: `CMD_UPDATE_coins_-1`,
+  6: `<b>Você adquiriu o óculos de espiral!</b><br><br>`,
+  7: `Usá-los te deixa muito tonto, depois de tirá-los, você percebe que a placa mudou seu texto:<br><br>`,
+  8: `"Tu é pobre, lixão"<br><br>`,
+  9: `Que poço mal-educado! Você não quer mais ficar perto dele.`,
 },
 
 wellThrowCoinWOCoin: {
@@ -330,37 +339,38 @@ wellLookInside: {
 weirdRocks: {
   0: `Você encontra um arranjo de pedras no meio da grama:<br><br>`,
   1: `-Aoba! - A rocha diz.<br><br>`,
-  //WWYS
-  2: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksWhoAreYou')">Quem é você?</a><br>`,
-  3: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksEye')">O que é esse olho esquisito?</a>`,
+  2: window.brazilianGlobals.WWYS,
+  3: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksWhoAreYou')">Quem é você?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksEye')">O que é esse olho esquisito?</a>`,
 },
 
 weirdRocksWhoAreYou: {
   0: `- Eu sou Pedro, Pedro a pedra, prazer em conhecer chará!<br><br>`,
-  //WWYS
-  1: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksCabin')">Você sabe quem mora na cabana?</a><br>`,
-  2: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksEye')">O que é esse olho esquisito?</a>`,
+  1: window.brazilianGlobals.WWYS,
+  2: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksCabin')">Você sabe quem mora na cabana?</a><br>`,
+  3: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksEye')">O que é esse olho esquisito?</a>`,
 },
 
 weirdRocksCabin: {
   0: `- Ah... Você tá falando do <i>Leshy</i>? <i>Ele</i> ele é um espírito que faz coisas ruins com as pessoas, eu não quero falar sobre isso...<br><br>`,
   1: `<i>Leshy</i> transformou Pedro em um monte de pedras!<br><br>`,
-  2: `Pedro começa a chorar pedrinhas, e você decide deixá-lo sozinho um pouco...`,
+  2: `Pedro começa a chorar pedrinhas, e você decide deixá-lo sozinho um pouco...<br><br>`,
+  3: `(Vá embora pelo mapa!)`,
 },
 
 weirdRocksEye: {
   0: `- Ah, esse olho? É o meu olho de metal ultra afiado e brilhante, maneiro né?<br><br>`,
   1: `Sem piadas, esse olho é brilhante mesmo. <br><br>`,
-  //WWYS
-  2: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksWhoAreYou')">Quem é você?<br>`,
-  3: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksNice')">Legal! Posso pegar?</a>`,
+  2: window.brazilianGlobals.WWYS,
+  3: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksWhoAreYou')">Quem é você?<br>`,
+  4: `<a href="#" onclick="updateScreen('weirdRocks', 'weirdRocksNice')">Legal! Posso pegar?</a>`,
 },
 
 weirdRocksNice: {
   0: `- Claro que não! Esse é o MEU olho, e se você roubá-lo, palavras não conseguirão descrever a dor que você vai sentir!<br><br>`,
-  //WWYD
-  1: `<a href="#" onclick="updateScreen('weirdRocks','weirdRocksNotStealEye')">Não roubar o olho</a><br>`,
-  2: `<a href="#" onclick="updateScreen('weirdRocksEyeless', 'weirdRocksStealEye')">Roubar o olho</a>`,
+  1: window.brazilianGlobals.WWYS,
+  2: `<a href="#" onclick="updateScreen('weirdRocks','weirdRocksNotStealEye')">Não roubar o olho</a><br>`,
+  3: `<a href="#" onclick="updateScreen('weirdRocksEyeless', 'weirdRocksStealEye')">Roubar o olho</a>`,
 },
 
 weirdRocksNotStealEye: {
@@ -369,9 +379,11 @@ weirdRocksNotStealEye: {
 },
 
 weirdRocksStealEye: {
-  0: `<b>Você adquiriu o olho do Pedro!<br><br>`,
-  1: `- Ai! Devolve agora! Esse é o último aviso!<br><br>`,
-  2: `Você vê claramente que Pedro está mentindo à esse ponto, você apenas vai embora.`,
+  0: `CMD_PLAY_getItem`,
+  1: `CMD_UNLOCK_sword3`,
+  2: `<b>Você adquiriu o olho do Pedro!<br><br>`,
+  3: `- Ai! Devolve agora! Esse é o último aviso!<br><br>`,
+  4: `Você vê claramente que Pedro está mentindo à esse ponto, você apenas vai embora.`,
 },
 
 weirdRocksAngryRox: {
@@ -382,22 +394,22 @@ weirdRocksAngryRox: {
 
 farm: {
   0: `Essa fazenda solitária está isolada do resto da civilização, o fazendeiro, rapidamente reconhecendo a visita, diz:<br><br>`,
-  1: `- Aoba, uma visita!!! Bem vindu ao meu brejo, aqui eu pranto cenora, batata, cenora, cenora, metal e cenora!<br><br>`,
-  //WWYS
-  2: `<a href="#" onclick="updateScreen('farm', 'farmSeeCrops')">Posso ver a sua plantação?</a><br>`,
-  3: `<a href="#" onclick="updateScreen('farm', 'farmMetal')">Você planta metal?</a><br>`,
-  4: `<a href="#" onclick="updateScreen('farm','farmBye')">Tchau!</a>`,
+  1: `- Aoba, uma visita! Bem vindu ao meu brejo, aqui eu pranto cenora, batata, cenora, cenora, metal e cenora!<br><br>`,
+  2: window.brazilianGlobals.WWYS,
+  3: `<a href="#" onclick="updateScreen('farm', 'farmSeeCrops')">Posso ver a sua plantação?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('farm', 'farmMetal')">Você planta metal?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('farm','farmBye')">Tchau!</a>`,
 },
 
-farmWOSticker: {
+farmSeeCropsWOSticker: {
   0: `- Claru que não! As cenora são minhas linda e eu nunca ia deixá alguém tocá elas! <br><br>`,
   1: `Ele parece bem sério falando isso, além disso ele tem uma enxada, é melhor ouvir ele.<br><br>`,
-  //WWYS
-  2: `<a href="#" onclick="updateScreen('farm', 'farmMetal')">Você planta metal?</a><br>`,
-  3: `<a href="#" onclick="updateScreen('farm','farmBye')">Tchau!</a> `,
+  2: window.brazilianGlobals.WWYS,
+  3: `<a href="#" onclick="updateScreen('farm', 'farmMetal')">Você planta metal?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('farm','farmBye')">Tchau!</a> `,
 },
 
-farmWSticker: {
+farmSeeCropsWSticker: {
   0: `- Claru que nã...`,
   1: ` pera, `,
   2: `isso é um adisivo de cenora? `,
@@ -409,9 +421,9 @@ farmWSticker: {
 farmMetal: {
   0: `- Issaê! Se cenora faz mais cenora, metal faz mais metal, ocê é burro?<br><br>`,
   1: `Você fica quieto, pensando que discutir sobre isso vai ser que nem falar com uma parede.<br><br>`,
-  //WWYS
-  2: `<a href="#" onclick="updateScreen('farm','farmSeeCrops')">Posso ver sua plantação?</a><br>`,
-  3: `<a href="#" onclick="updateScreen('farm','farmBye')">Tchau!</a>`,
+  2: window.brazilianGlobals.WWYS,
+  3: `<a href="#" onclick="updateScreen('farm','farmSeeCrops')">Posso ver sua plantação?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('farm','farmBye')">Tchau!</a>`,
 },
 
 farmBye: {
@@ -423,11 +435,13 @@ farmApproach: {
   0: `Ao passar o olho pela plantação, você encontra algo estranho, algo que parece um tubo brilhante enterrado.<br><br>`,
   1: `Você acha que o fazendeiro não vai se importar se uma cenoura desaparecer, então você puxa o tubo.<br><br>`,
   2: `Ele estava bem enterrado entre os vegetais, mas depois de uma força, você ganha a luta contra o tubo, retirando uma bela guarda da terra.<br><br>`,
-  3: `<b>Você adquiriu a guarda do fazendeiro!</b><br><br>`,
-  4: `Você torce para o fazendeiro não ter percebido, e então corre tentando sair da visão dele.`,
+  3: `CMD_PLAY_getItem`,
+  4: `CMD_UNLOCK_sword2`,
+  5: `<b>Você adquiriu a guarda do fazendeiro!</b><br><br>`,
+  6: `Você torce para o fazendeiro não ter percebido, e então corre tentando sair da visão dele.`,
 },
 
-farmHilt: {
+farmCrazyFarmer: {
   0: `Você vê o fazendeiro totalmente biruta procurando o tubo com a sua enxada...<br><br>`,
   1: `Talvez seja bom passar longe dele.`,
 },
@@ -435,25 +449,27 @@ farmHilt: {
 wall: {
   0: `Uma parede massiva bloqueia o caminho, e um carinha que não parece amigável dentro de um pedágio fica te encarando:<br><br>`,
   1: `- Oi, cadê o passe?<br><br>`,
-  //WWYS
-  2: `<a href="#" onclick="updateScreen('wall-open','wallUsePass')">Aqui, eu tenho um passe</a><br>`,
-  3: `<a href="#" onclick="updateScreen('wall','wallWhatPass')">Passe? Como assim?</a><br>`,
-  4: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">O que tem atrás dessa parede?</a><br>`,
-  5: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
+  2: window.brazilianGlobals.WWYS,
+  3: `<a href="#" onclick="updateScreen('wall','wallUsePass')">Aqui, eu tenho um passe</a><br>`,
+  4: `<a href="#" onclick="updateScreen('wall','wallWhatPass')">Passe? Como assim?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">O que tem atrás dessa parede?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
 },
 
 wallWhatPass: {
   0: `- Você precisa de um passe pra passar por aqui, pegue um no castelo, eles são legais comigo.<br><br>`,
-  //WWYS
-  1: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">O que tem atrás dessa parede?</a><br>`,
-  2: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
+  1: window.brazilianGlobals.WWYS,
+  2: `<a href="#" onclick="updateScreen('wall','wallUsePass')">Aqui, eu tenho um passe</a><br>`,
+  3: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">O que tem atrás dessa parede?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
 },
 
 wallBeyondWall: {
   0: `- Tem uma bela caverna com um semideus, você precisa vê-lo, então pegue um passe!<br><br>`,
-  //WWYS
-  1: `<a href="#" onclick="updateScreen('wall','wallWhatPass')">Passe? Como assim?</a><br>`,
-  2: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
+  1: window.brazilianGlobals.WWYS,
+  2: `<a href="#" onclick="updateScreen('wall','wallUsePass')">Aqui, eu tenho um passe</a><br>`,
+  3: `<a href="#" onclick="updateScreen('wall','wallWhatPass')">Passe? Como assim?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('wall','wallBye')">Tchau!</a>`,
 },
 
 wallBye: {
@@ -461,11 +477,23 @@ wallBye: {
   1: `Talvez você deveria dar uma olhada no que é esse passe e onde encontrar um.`,
 },
 
-wallUsePass: {
+wallUsePassWPass: {
   0: `Você dá o passe para a coisa, e ela fica muito feliz! <br><br>`,
   1: `- AAAAH, FINALMENTE, O CHEFE VAI ME DEIXAR TIRAR FOLGA!!!<br>`,
   2: `- Ok, você pode passar e admirar a caverna.<br><br>`,
-  3: `A cancela ao lado dele abre. <b>Agora, você pode acessar a caverna!</b>.`,
+  3: `CMD_PLAY_getItem`,
+  4: `CMD_UNLOCK_passUsed`,
+  5: `CMD_UNLOCKLOCATION_cave`,
+  6: `A cancela ao lado dele abre. <b>Agora, você pode acessar a caverna!</b>.`,
+},
+
+wallUsePassWOPass: {
+  0: `Você entrega uma pilha de nada para a criatura, ela não parece ter gostado da brincadeira:<br><br>`,
+  1: `- Tá de brincadeira? Meu único trabalho é recolher passes e você me vem com essa piada? Seu &*!$@<br><br>`,
+  2: `Mas que monstro deselegante! Parece que somente um passe pode passar por cima de tanta ignorância.`,
+  3: window.brazilianGlobals.WWYS,
+  4: `<a href="#" onclick="updateScreen('wall','wallWhatPass')">Passe? Como assim?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('wall','wallBeyondWall')">O que tem atrás dessa parede?</a><br>`,
 },
 
 wallAlreadyUsedPass: {
@@ -481,24 +509,25 @@ cave: {
 },
 
 goblinFirst: {
-  0: `A caverna tem cheiro de mofo e sons de água pingando, além dos ruídos bizarros,`,
-  1: ` adentrar mais fundo na caverna mostra para você o tal semideus que o porteiro falou sobre:`,
-  2: ` Um pequeno goblin ao lado de um "tesouro",`,
-  3: ` que na verdade é só uma pilha medíocre de moedas no chão.<br><br>`,
-  4: `- Quem ousa adentrar em meus aposentos?<br><br>`,
-  //WWYS
-  5: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Quem é você?</a><br>`,
-  6: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">O que é esse ouro?</a><br>`,
-  7: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Tchau!</a>`,
+  0: `CMD_UNLOCK_goblinVisited`,
+  1: `A caverna tem cheiro de mofo e sons de água pingando, além dos ruídos bizarros,`,
+  2: ` adentrar mais fundo na caverna mostra para você o tal semideus que o porteiro falou sobre:`,
+  3: ` Um pequeno goblin ao lado de um "tesouro",`,
+  4: ` que na verdade é só uma pilha medíocre de moedas no chão.<br><br>`,
+  5: `- Quem ousa adentrar em meus aposentos?<br><br>`,
+  6: window.brazilianGlobals.WWYS,
+  7: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Quem é você?</a><br>`,
+  8: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">O que é esse ouro?</a><br>`,
+  9: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Tchau!</a>`,
 },
 
 goblin: {
   0: `Você volta para o interior da caverna,`,
   1: ` o goblin ainda está lá.<br><br>`,
-  //WWYS
-  2: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Quem é você?</a><br>`,
-  3: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">O que é esse ouro?</a><br>`,
-  4: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Tchau!</a>`,
+  2: window.brazilianGlobals.WWYS,
+  3: `<a href="#" onclick="updateScreen('goblin','goblinWhoAreYou')">Quem é você?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">O que é esse ouro?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Tchau!</a>`,
 },
 
 goblinAfterGotMoney: {
@@ -517,9 +546,9 @@ goblinWhoAreYou: {
   4: ` o MAIOR GUERREIRO QUE JÁ...<br><br>`,
   5: `Você grita para ele que você já entendeu.<br><br>`,
   6: `- Claro que entendeu...<br><br>`,
-  //WWYS
-  7: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">O que é esse ouro?</a><br>`,
-  8: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Tchau!</a>`,
+  7: window.brazilianGlobals.WWYS,
+  8: `<a href="#" onclick="updateScreen('goblin','goblinWhatGold')">O que é esse ouro?</a><br>`,
+  9: `<a href="#" onclick="updateScreen('goblin','goblinBye')">Tchau!</a>`,
 },
 
 goblinWhatGold: {
@@ -528,7 +557,7 @@ goblinWhatGold: {
   2: ` pode babar, eu sou o ser mais rico da ilha!`,
   3: ` Se você chorar o suficiente, posso pensar em te passar um tostão...`,
   4: ` HAHA!<br><br>`,
-  5: `<a href="#" onclick="updateScreen('goblin','goblinNotMuch')">"Isso não é muito pra falar a verdade..."</a>`,
+  5: `<a href="#" onclick="updateScreen('goblin','goblinNotMuch')">Isso não é muito pra falar a verdade...</a>`,
 },
 
 goblinNotMuch: {
@@ -536,9 +565,9 @@ goblinNotMuch: {
   1: ` Isso é muito! O vendedor disse pra mim!`,
   2: ` O dinheiro que ele ganha dos passes é passado pra mim,`,
   3: ` e assim eu fico cada dia MAIS RICO!<br><br>`,
-  //WWYS
-  4: `<a href="#" onclick="updateScreen('goblin','goblinTruth')">(Dizer a verdade) Então, eu consegui esse passe de graça...</a><br>`,
-  5: `<a href="#" onclick="updateScreen('goblin','goblinBluff')">(Mentir) Uma pena que eu tenho mais dinheiro que você, haha.</a>`,
+  4: window.brazilianGlobals.WWYS,
+  5: `<a href="#" onclick="updateScreen('goblin','goblinTruth')">(Dizer a verdade) Então, eu consegui esse passe de graça...</a><br>`,
+  6: `<a href="#" onclick="updateScreen('goblin','goblinBluff')">(Mentir) Uma pena que eu tenho mais dinheiro que você, haha.</a>`,
 },
 
 goblinBluff: {
@@ -583,9 +612,12 @@ goblinMoney: {
   1: ` Dinheiro pode te ajudar a se equipar,`,
   2: ` e você venceu a luta!`,
   3: ` você pega a pilha medíocre de dinheiro do chão.<br><br>`,
-  4: `<b>Você adquiriu exatamente 31 moedas!</b><br><br>`,
-  5: `Você deixa o goblin chorando na caverna,`,
-  6: ` aquele cara é irritante demais.`,
+  4: `CMD_PLAY_getItem`,
+  5: `CMD_UNLOCK_goblinGotMoney`,
+  6: `CMD_UPDATE_coins_31`,
+  7: `<b>Você adquiriu exatamente 31 moedas!</b><br><br>`,
+  8: `Você deixa o goblin chorando na caverna,`,
+  9: ` aquele cara é irritante demais.`,
 },
 
 goblinBye: {
@@ -598,47 +630,49 @@ castle: {
   0: `Um grande castelo pode ser visto de quase qualquer lugar da ilha,`,
   1: ` o portão principal está aberto,`,
   2: ` você pode entrar nele.<br><br>`,
-  3: `<a href="#" onclick="updateScreen('bifurcation','castle')">Entrar</a>`,
+  3: `<a href="#" onclick="updateScreen('bifurcation','castleEnter')">Entrar</a>`,
 },
 
-enterCastle: {
-  0: `Pessoas passam pelas ruas, te ignorando, as construções parecem chatas e nada chama a sua atenção. <br><br>`,
-  1: `No fim da rua principal, você se encontra em uma bifurcação:<br><br>`,
-  2: `Para a esquerda, temos o palácio do rei.<br>`,
-  3: `Para a direita, temos o mercadinho que aparenta ter umas coisas interessantes.<br><br>`,
-  4: `Para onde você quer ir?<br><br>`,
-  5: `<a href="#" onclick="updateScreen('king','palaceEnter')">Para o palácio do rei</a><br>`,
-  6: `<a href="#" onclick="updateScreen('shop','shop')">Para o mercadinho</a>`,
+castleEnter: {
+  0: `CMD_UNLOCK_castleEntered`,
+  1: `Pessoas passam pelas ruas, te ignorando, as construções parecem chatas e nada chama a sua atenção. <br><br>`,
+  2: `No fim da rua principal, você se encontra em uma bifurcação:<br><br>`,
+  3: `Para a esquerda, temos o palácio do rei.<br>`,
+  4: `Para a direita, temos o mercadinho que aparenta ter umas coisas interessantes.<br><br>`,
+  5: `Para onde você quer ir?<br><br>`,
+  6: `<a href="#" onclick="updateScreen('king','palace')">Para o palácio do rei</a><br>`,
+  7: `<a href="#" onclick="updateScreen('shop','shop')">Para o mercadinho</a>`,
 },
 
-palaceEnterFirst: {
-  0: `Você entra no palácio sem problemas, parece que este lugar não precisa de muitos guardas para ser seguro, no fim da sala, você encontra um rei:<br><br>`,
-  1: `- Saudações jovem cidadão, ou deveria eu dizer... Estranho?<br><br>`,
-  //WWYS
+palaceFirst: {
+  0: `CMD_UNLOCK_palaceEntered`,
+  1: `Você entra no palácio sem problemas, parece que este lugar não precisa de muitos guardas para ser seguro, no fim da sala, você encontra um rei:<br><br>`,
+  2: `- Saudações jovem cidadão, ou deveria eu dizer... Estranho?<br><br>`,
+  3: window.brazilianGlobals.WWYS,
+  4: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')">Quem é você?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('king','kingGoHome')">Eu preciso ir para casa</a><br>`,
+  6: `<a href="#" onclick="updateScreen('king','kingBye')">Tchau!</a><br><br>`,
+  7: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
+},
+
+palace: {
+  0: `Saudações novamente, viajante.<br><br>`,
+  1: window.brazilianGlobals.WWYS,
   2: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')">Quem é você?</a><br>`,
   3: `<a href="#" onclick="updateScreen('king','kingGoHome')">Eu preciso ir para casa</a><br>`,
   4: `<a href="#" onclick="updateScreen('king','kingBye')">Tchau!</a><br><br>`,
   5: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
 },
 
-palaceEnter: {
-  0: `Saudações novamente, viajante.<br><br>`,
-  //WWYS
-  1: `<a href="#" onclick="updateScreen('king','kingWhoAreYou')">Quem é você?</a><br>`,
-  2: `<a href="#" onclick="updateScreen('king','kingGoHome')">Eu preciso ir para casa</a><br>`,
-  3: `<a href="#" onclick="updateScreen('king','kingBye')">Tchau!</a><br><br>`,
-  4: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
-},
-
 kingWhoAreYou: {
   0: `- Eu sou o rei Cyryenp, comandante deste reino, `,
   1: `meu povo foi trazido para cá por <i>Leshy</i>, e agora todos estão longe de sua família, `,
   2: `eu sirvo de guia para estas pobres almas que perderam seus lares.<br><br>`,
-  //WWYS
-  3: `<a href="#" onclick="updateScreen('king','kingMeetSameFate')">Você sofreu o mesmo destino que elas?</a><br>`,
-  4: `<a href="#" onclick="updateScreen('king','kingGoHome')">Eu preciso ir para casa</a><br>`,
-  5: `<a href="#" onclick="updateScreen('king','kingBye')">Tchau!</a><br><br>`,
-  6: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
+  3: window.brazilianGlobals.WWYS,
+  4: `<a href="#" onclick="updateScreen('king','kingMeetSameFate')">Você sofreu o mesmo destino que elas?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('king','kingGoHome')">Eu preciso ir para casa</a><br>`,
+  6: `<a href="#" onclick="updateScreen('king','kingBye')">Tchau!</a><br><br>`,
+  7: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
 },
 
 kingMeetSameFate: {
@@ -647,10 +681,10 @@ kingMeetSameFate: {
   2: ` mas com o tempo mais pessoas apareceram,`,
   3: ` e juntos,`,
   4: ` construímos este reino para termos um lugar para chamar de lar.<br><br>`,
-  //WWYS
-  5: `<a href="#" onclick="updateScreen('king','kingGoHome')">Eu preciso ir para casa</a><br>`,
-  6: `<a href="#" onclick="updateScreen('king','kingBye')">Tchau!</a> <br><br>`,
-  7: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
+  5: window.brazilianGlobals.WWYS,
+  6: `<a href="#" onclick="updateScreen('king','kingGoHome')">Eu preciso ir para casa</a><br>`,
+  7: `<a href="#" onclick="updateScreen('king','kingBye')">Tchau!</a> <br><br>`,
+  8: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
 },
 
 kingGoHome: {
@@ -672,8 +706,9 @@ kingHowDoThis: {
   3: ` diga ao vendedor que eu te enviei lá e ele pode te dar uma ajuda. <br><br>`,
   4: ` - Boa sorte,`,
   5: ` viajante. <br><br>`,
-  6: ` O rei te deu uma missão, você acha que tentar cumprí-la é a única coisa que resta.<br><br>`,
-  7: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
+  6: `CMD_UNLOCK_kingQuest`,
+  7: ` O rei te deu uma missão, você acha que tentar cumprí-la é a única coisa que resta.<br><br>`,
+  8: `<a href="#" onclick="updateScreen('shop','shop')">Ir para o mercadinho</a>`,
 },
 
 kingBye: {
@@ -688,8 +723,10 @@ kingGivePommel: {
   2: `Você diz para ele que só precisa do pomo para terminar a espada.<br><br>`,
   3: `- Não diga mais nada.<br><br>`,
   4: `O rei remove um ornamento de seu trono, e o entrega para você:<br><br>`,
-  5: `<b>Você adquiriu o pomo do rei!</b><br><br>`,
-  6: `<a href="#" onclick="updateScreen('kingPommelless','kingPommelPart2')">Finalmente!</a>`,
+  5: `CMD_UNLOCK_sword1`,
+  6: `CMD_PLAY_getItem`,
+  7: `<b>Você adquiriu o pomo do rei!</b><br><br>`,
+  8: `<a href="#" onclick="updateScreen('kingPommelless','kingPommelPart2')">Finalmente!</a>`,
 },
 
 kingPommelPart2: {
@@ -701,13 +738,14 @@ kingPommelPart2: {
 },
 
 shopFirst: {
-  0: `Você entra no local e é atendido por um vendedor gente boa: <br><br>`,
-  1: `- Oooulá! Eu sou o Joobireu, o aprediz de feiticeiro e vendedor honorário!`,
-  2: ` Tenho muita tralha valiosa, dá uma olhadinha!<br><br>`,
-  3: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Espada larga (20 moedas)</a><br>`,
-  4: `<a href="#" onclick="updateScreen('shop','shopSticker')">Adesivo (10 moedas)</a><br>`,
-  5: `<a href="#" onclick="updateScreen('shop','shopPass')">Passe da parede (GRÁTIS!)</a><br><br>`,
-  6: `<a href="#" onclick="updateScreen('king','palaceEnter')">Ir para o palácio</a>`,
+  0: `CMD_UNLOCK_shopEntered`,
+  1: `Você entra no local e é atendido por um vendedor gente boa: <br><br>`,
+  2: `- Oooulá! Eu sou o Joobireu, o aprediz de feiticeiro e vendedor honorário!`,
+  3: ` Tenho muita tralha valiosa, dá uma olhadinha!<br><br>`,
+  4: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Espada larga (20 moedas)</a><br>`,
+  5: `<a href="#" onclick="updateScreen('shop','shopSticker')">Adesivo (10 moedas)</a><br>`,
+  6: `<a href="#" onclick="updateScreen('shop','shopPass')">Passe da parede (GRÁTIS!)</a><br><br>`,
+  7: `<a href="#" onclick="updateScreen('king','palace')">Ir para o palácio</a>`,
 },
 
 shop: {
@@ -715,7 +753,7 @@ shop: {
   1: `<a href="#" onclick="updateScreen('shop','shopBroadsword')">Espada larga (20 moedas)</a><br>`,
   2: `<a href="#" onclick="updateScreen('shop','shopSticker')">Adesivo (10 moedas)</a><br>`,
   3: `<a href="#" onclick="updateScreen('shop','shopPass')">Passe da parede (GRÁTIS!)</a><br><br>`,
-  4: `<a href="#" onclick="updateScreen('king','palaceEnter')">Ir para o palácio</a>`,
+  4: `<a href="#" onclick="updateScreen('king','palace')">Ir para o palácio</a>`,
 },
 
 shopBroadsword: {
@@ -727,10 +765,13 @@ shopBroadsword: {
 },
 
 shopBroadswordYes: {
-  0: `- Katching! - Diz o pequeno feiticeiro:<br><br>`,
-  1: `<b>Você adquiriu a espada de aço!</b><br><br>`,
-  2: `Esta espada é BEM pesada, você sabe que vai ter uns problemas ao usar ela<br><br>`,
-  3: `<a href="#" onclick="updateScreen('shop','shop')">Melhor que nada!</a>`,
+  0: `CMD_PLAY_getItem`,
+  1: `CMD_UPDATE_coins_-20`,
+  2: `CMD_UNLOCK_broadsword`,
+  3: `- Katching! - Diz o pequeno feiticeiro:<br><br>`,
+  4: `<b>Você adquiriu a espada de aço!</b><br><br>`,
+  5: `Esta espada é BEM pesada, você sabe que vai ter uns problemas ao usar ela<br><br>`,
+  6: `<a href="#" onclick="updateScreen('shop','shop')">Melhor que nada!</a>`,
 },
 
 shopSticker: {
@@ -743,10 +784,14 @@ shopSticker: {
 },
 
 shopStickerYes: {
-  0: `- Katching! - Diz o pequeno feiticeiro:<br><br>`,
-  1: `<b>Você adquiriu o adesivo de cenoura!</b><br><br>`,
-  2: `Sem um lugar para colar ele, você só gruda ele nas suas roupas<br><br>`,
-  3: `<a href="#" onclick="updateScreen('shop','shop')">Se sentindo maneiro!</a>`,
+  0: `CMD_PLAY_getItem`,
+  1: `CMD_UPDATE_coins_-10`,
+  2: `CMD_UNLOCK_sticker`,
+  3: `- Katching! - Diz o pequeno feiticeiro:<br><br>`,
+  4: `<b>Você adquiriu o adesivo de cenoura!</b><br><br>`,
+  5: `Sem um lugar para colar ele, você só gruda ele nas suas roupas<br><br>`,
+  6: `CMD_PLAY_getItem`,
+  7: `<a href="#" onclick="updateScreen('shop','shop')">Se sentindo maneiro!</a>`,
 },
 
 shopPassWOKingQuest: {
@@ -765,8 +810,10 @@ shopPassWKingQuest: {
   3: ` ele é meio solitário...<br><br>`,
   4: `- Ah, entendo,`,
   5: ` o rei confia em você, no caso, eu também! Então toma:<br><br>`,
-  6: `<b>Você adquiriu o passe da caverna!</b><br><br>`,
-  7: `<a href="#" onclick="updateScreen('shop','shop')">Voltar</a>`,
+  6: `CMD_PLAY_getItem`,
+  7: `CMD_UNLOCK_pass`,
+  8: `<b>Você adquiriu o passe da caverna!</b><br><br>`,
+  9: `<a href="#" onclick="updateScreen('shop','shop')">Voltar</a>`,
 },
 
 shopTooPoor: {
@@ -791,12 +838,12 @@ altarAbandoned: {
 altar: {
   0: `- Bem-vindo de novo,`,
   1: ` minha criança.<br><br>`,
-  //WWYS
-  2: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
-  3: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Quem é você?</a><br>`,
-  4: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Como que a lâmina sumiu?</a><br>`,
-  5: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
-  6: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
+  2: window.brazilianGlobals.WWYS,
+  3: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
+  4: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Quem é você?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Como que a lâmina sumiu?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
+  7: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 },
 
 altarFirst: {
@@ -809,27 +856,34 @@ altarFirst: {
   6: `- Este altar uma vez já foi um local para mantê-la segura, mas o tempo passou, e <i>Leshy</i> pensou rápido e sumiu com ela.`,
   7: ` Mas a esperança é a úlima que morre! A espada não pode sair da ilha, então ela deve estar por aqui, e se não estiver, suas partes estão.`,
   8: ` Nós só precisamos achar as partes e trazê-las para cá.<br><br>`,
-  //WWYS
-  9: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
-  10: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Quem é você?</a><br>`,
-  11: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Como que a lâmina sumiu?</a><br>`,
-  12: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
-  13: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
+  9: `CMD_UNLOCK_angelVisited`,
+  10: window.brazilianGlobals.WWYS,
+  11: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
+  12: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Quem é você?</a><br>`,
+  13: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Como que a lâmina sumiu?</a><br>`,
+  14: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
+  15: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 },
 
 angelParts2: {
   0: `- Uma vez, já ouvi o fazendeiro falar algo sobre "plantar metal",`,
   1: ` Eu não sei se isso é útil,`,
   2: ` mas vale a pena dar uma procurada.<br><br>`,
-  //WWYS
-  //General
+  3: window.brazilianGlobals.WWYS,
+  4: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Quem é você?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Como que a lâmina sumiu?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
+  7: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 },
 
 angelParts3: {
   0: `- Eu senti uma força mágica vinda do oeste da ilha,`,
   1: ` talvez algo poderoso esteja guardando uma parte da lâmina para si!<br><br>`,
-  //WWYS
-  //General
+  2: window.brazilianGlobals.WWYS,
+  3: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Quem é você?</a><br>`,
+  4: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Como que a lâmina sumiu?</a><br>`,
+  5: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 },
 
 angelParts1: {
@@ -837,8 +891,11 @@ angelParts1: {
   1: ` nós só precisamos do pomo, a fonte principal dos poderes da lâmina,`,
   2: ` vá falar com o rei,`,
   3: ` ele saberá onde o pomo está.<br><br>`,
-  //WWYS
-  //General
+  4: window.brazilianGlobals.WWYS,
+  5: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Quem é você?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Como que a lâmina sumiu?</a><br>`,
+  7: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
+  8: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 },
 
 angelPartsBadFeeling: {
@@ -847,55 +904,48 @@ angelPartsBadFeeling: {
   2: ` De errado,`,
   3: ` e se só isso não for suficiente para derrotar <i>ele</i>?`,
   4: ` Estou com um mal pressentimento,`,
-  5: ` <i>Leshy</i> joga sujo, e fará qualquer coisa para acabar com qualquer um que <i>o</i> perturbe<br><br>`,
-  //WWYS
-  //General
+  5: ` <i>Leshy</i> joga sujo, e fará qualquer coisa para acabar com qualquer um que <i>o</i> perturbe.<br><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`
 },
 
-angelPartsGeneral: {
-  //Falas usadas nas três perguntas de onde estão as partes de espada
-  0: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Quem é você?</a><br>`,
-  1: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Como que a lâmina sumiu?</a><br>`,
-  2: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
-  3: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
-},
-
-angelFuseSwordPart1: {
+angelFuseSword1: {
   0: `- Nós conseguimos,`,
   1: ` minha criança!`,
   2: ` Temos todas as peças necessárias para recriar a lâmina!<br><br>`,
   3: `- Agora, coloque as suas partes nos encaixes do altar e se afaste.<br><br>`,
-  4: `<a href="#" onclick="updateScreen('altarlightbeam','altarFuseSword')">Colocar e se afastar</a>`,
+  4: `<a href="#" onclick="updateScreen('altarlightbeam','angelFuseSword2')">Colocar e se afastar</a>`,
 },
 
-angelFuseSwordPart2: {
+angelFuseSword2: {
   0: `O anjo recua do altar,`,
   1: `após alguns passos para trás,`,
   2: ` um feixe de luz enorme incide sobre o altar,`,
   3: ` soltando um som ensurdecedor de trovão, junto com uma luz cegante...<br><br>`,
-  4: `<a href="#" onclick="updateScreen('angel','altarFuseSwordAftermath')">E?</a>`,
+  4: `<a href="#" onclick="updateScreen('angel','angelFuseSword3')">E?</a>`,
 },
 
-angelFuseSwordPart3: {
+angelFuseSword3: {
   0: `O feixe de luz desaparece de repente,`,
   1: ` e ao fim da luz, tudo que resta é a tal lâmina capaz de matar qualquer coisa.<br><br>`,
-  2: `<b>Você adquiriu a Lâmina da Ilha!</b><br><br>`,
-  3: `- Aí está ela! Em toda a sua glória!`,
-  4: ` sou grato pela sua ajuda, minha criança,`,
-  5: ` você merece, segure-a firmemente e acabe com o sofrimento desta ilha.<br><br>`,
-  //WWYS
-  6: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
+  2: `CMD_PLAY_getItem`,
+  3: `CMD_UNLOCK_islandSword`,
+  4: `<b>Você adquiriu a Lâmina da Ilha!</b><br><br>`,
+  5: `- Aí está ela! Em toda a sua glória!`,
+  6: ` sou grato pela sua ajuda, minha criança,`,
+  7: ` você merece, segure-a firmemente e acabe com o sofrimento desta ilha.<br><br>`,
+  8: window.brazilianGlobals.WWYS,
+  9: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
 },
 
 angelWhoAreYou: {
   0: `- Eu sou Maldio,`,
   1: ` Maldio o anjo,`,
   2: ` trabalho como guardiã da lâmina, mas falhei em minha missão... Agora fico aqui, esperando alguém para me ajudar com a caça à espada.<br><br>`,
-  //WWYS
-  3: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
-  4: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Como que a lâmina sumiu?</a><br>`,
-  5: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
-  6: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
+  3: window.brazilianGlobals.WWYS,
+  4: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
+  5: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Como que a lâmina sumiu?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
+  7: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 },
 
 angelHowSwordDisappear: {
@@ -903,38 +953,38 @@ angelHowSwordDisappear: {
   1: ` infelizmente,`,
   2: ` <i>Leshy</i> percebeu minha ausência e roubou a lâmina, agora ela está desaparecida,`,
   3: ` e ninguém me ajudou a encontrá-la...<br><br>`,
-  //WWYS
-  4: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
-  5: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Quem é você?</a><br>`,
-  6: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
-  7: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
+  4: window.brazilianGlobals.WWYS,
+  5: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Quem é você?</a><br>`,
+  7: `<a href="#" onclick="updateScreen('angel','angelSearchSwordYourself')">Por que você não procurou a espada por si mesma?</a><br>`,
+  8: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 },
 
 angelSearchSwordYourself: {
   0: `- Meu corpo é intangível!<br><br>`,
   1: `Você acha que isso faz sentido<br><br>`,
   2: `- Mas esse não é o problema, eu também sou meio tímida...<br><br>`,
-  //WWYS
-  3: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
-  4: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Como que a lâmina sumiu?</a><br>`,
-  5: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Por que você não procurou a espada por si mesma?</a><br>`,
-  6: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
+  3: window.brazilianGlobals.WWYS,
+  4: `<a href="#" onclick="updateScreen('angel','angelAskAboutQuest')">Perguntar sobre o progresso da missão</a><br>`,
+  5: `<a href="#" onclick="updateScreen('angel','angelWhoAreYou')">Como que a lâmina sumiu?</a><br>`,
+  6: `<a href="#" onclick="updateScreen('angel','angelHowSwordDisappear')">Por que você não procurou a espada por si mesma?</a><br>`,
+  7: `<a href="#" onclick="updateScreen('angel','angelBye')">Tchau!</a>`,
 },
 
 angelBye: {
   0: `- Até, minha criança,`,
-  1: ` boa sorte com a caça à espada.`,
+  1: ` boa sorte com a tua missão.`,
 },
 
 cabin: {
   0: `Você localiza uma pequena e miserável cabana próxima à orla da ilha, ela tem um crânio pendurado no topo de sua única entrada.<br><br>`,
   1: `Ao lado, você percebe uma árvore morta com algo entalhado em seu tronco.<br><br>`,
-  //WWYD
-  2: `<a href="#" onclick="updateScreen('empty','cabinEnter')">Entrar na cabana</a><br>`,
-  3: `<a href="#" onclick="updateScreen('cabin','cabinTree')">Investigar a árvore</a>`,
+  2: window.brazilianGlobals.WWYD,
+  3: `<a href="#" onclick="updateScreen('empty','cabinEnter')">Entrar na cabana</a><br>`,
+  4: `<a href="#" onclick="updateScreen('cabin','cabinTree')">Investigar a árvore</a>`,
 },
 
-cabinWOGoggles: {
+treeCantDefeat: {
   0: `Ao se aproximar da árvore,`,
   1: ` os entalhamentos se tornam claros,`,
   2: ` é um texto que diz:<br><br>`,
@@ -942,7 +992,7 @@ cabinWOGoggles: {
   4: `<a href="#" onclick="updateScreen('cabin','cabin')">Voltar</a>`,
 },
 
-cabinWGoggles: {
+treeCanDefeat: {
   0: `Ao se aproximar da árvore,`,
   1: ` a dor de cabeça vinda de usar o óculos de festa bate BEM forte,`,
   2: ` mas você ainda consegue decifrar o que está escrito no tronco,`,
@@ -951,7 +1001,7 @@ cabinWGoggles: {
   5: `<a href="#" onclick="updateScreen('cabin','cabin')">Voltar</a>`,
 },
 
-CabinEnter: {
+cabinEnter: {
   0: `Você decide entrar na cabana obscura,`,
   1: ` o que reside em seu interior ainda é um mistério.<br><br>`,
   2: `Ao entrar, tudo está um breu total,`,
@@ -960,7 +1010,7 @@ CabinEnter: {
   5: ` não tem... Nada.`,
   6: ` Momentos antes de se virar e ir embora,`,
   7: ` a porta de saída bate com força, e você começa a ouvir uma voz da escuridão:<br><br>`,
-  8: `<a href="#" onclick="updateScreen('leshy','cabinFate')">Escutá-la</a>`,
+  8: `<a href="#" onclick="updateScreen('leshy','leshyFate')">Escutá-la</a>`,
 },
 
 leshyLostSoul: {
@@ -975,7 +1025,7 @@ leshyLostSoul: {
   8: ` <b>Você perdeu o controle de si mesmo...</b><br><br>`,
   9: `<i>- Terminarei com isso de forma rápida,`,
   10: `<i> Você não emana atitudes nem intenções negativas...<br><br>`,
-  //YAEH
+  11: window.brazilianGlobals.YAEH,
 },
 
 leshyWOGoggles: {
@@ -992,7 +1042,7 @@ leshyWOGoggles: {
   10: `<i>Leshy</i> joga uma adaga em seus pés,`,
   11: ` você forçadamente pega ela do chão, `,
   12: ` logo em seguida, você aponta ela para seu próprio coração.<br><br>`,
-  //YAEH
+  13: window.brazilianGlobals.YAEH,
 },
 
 leshyWGoggles: {
@@ -1011,7 +1061,7 @@ leshyWGoggles: {
   12: ` de cabeça no chão,`,
   13: ` esses óculos te deram tontura de novo...`,
   14: ` Mas o impacto da queda fez com que você saísse do controle de <i>Leshy</i>!<br><br>`,
-  15: `<a href="#" onclick="updateScreen('leshySkull','leshyPassTest1')">Se recompor</a>`,
+  15: `<a href="#" onclick="updateScreen('leshySkull','leshySkull')">Se recompor</a>`,
 },
 
 leshySkull: {
@@ -1047,7 +1097,7 @@ leshyWDarkTunic: {
   9: `<a href="#" onclick="updateScreen('empty','leshyTransform')">Continuar</a>`,
 },
 
-leshyTransformation: {
+leshyTransform: {
   0: `O par de olhos desaparece em meio a escuridão.<br><br>`,
   1: `O silêncio ensurdecedor da cabana cessa após alguns segundos, revelando uma orquestra desorganizada de madeira rangendo e quebrando,`,
   2: ` a cada tábua de madeira que se quebra,`,
@@ -1108,7 +1158,7 @@ leshyFinalDefeat: {
   22: ` não pode cortar material transcendido.`,
   23: ` Apenas o que não é feito deste mundo pode cortar o incortável.<br><br>`,
   24: ` Este é o seu último pensamento antes de sucumbir ao chamado da morte.<br><br>`,
-  //YAEH
+  25: window.brazilianGlobals.YAEH,
 },
 
 leshyFinalVictory: {
@@ -1177,5 +1227,9 @@ ending: {
   9: ` você olha para trás e dá um último adeus para Maldio,`,
   10: ` nada disso seria possível sem a sua ajuda.<br><br>`,
   11: `<a href="#" onclick="winGame()">Passar pela porta</a>`,
+},
+
+exitCabin: {
+  0: `<b>Você sai da cabana.</b>`
 }
 };
