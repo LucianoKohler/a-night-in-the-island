@@ -180,13 +180,14 @@ enterForestWOStick: {
   2: `CMD_UNLOCK_stick`,
   3: `CMD_PLAY_getItem`,
   4: `<b>Você adquiriu um graveto comum</b>! <br><br>`,
-  5: window.brazilianGlobals.WWYD,
-  6: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continuar</a> <br>`,
-  7: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Recuar da floresta`,
+  5: `... Actually, this stick is pretty useless, you just leave it there.<br><br>`,
+  6: window.brazilianGlobals.WWYD,
+  7: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continuar</a> <br>`,
+  8: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Recuar da floresta`,
 },
 
 enterForestWStick: {
-  0: `De volta ao mesmo lugar, você ainda reconhece o lugar em que o graveto foi encontrado... <br><br>`,
+  0: `De volta ao local, o graveto ainda está no mesmo lugar... <br><br>`,
   1: window.brazilianGlobals.WWYD,
   2: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continuar</a> <br>`,
   3: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Recuar da floresta</a>`,
@@ -211,7 +212,7 @@ forestBearWSword: {
 forestBearWOSword: {
   0: `Você prossegue sua caminhada florestal até que de repente...`,
   1: ` Um urso aparece das moitas!<br><br>`,
-  2: `Você segura seu bastão firmemente,`,
+  2: `Você corajosamente levanta seus punhos,`,
   3: ` pronto para lutar por sua vida, sem voltar atrás!<br><br>`,
   4: `O urso dá seu primeiro passo em sua direção, e suas pernas começam a pensar melhor que você,`,
   5: ` sem perceber, você começa a correr loucamente, só parando ao perceber que voltou à entrada da floresta,`,
@@ -1229,6 +1230,6 @@ ending: {
 },
 
 exitCabin: {
-  0: window.brazilianGlobals.exitCabin
+  0: `<b>Você sai da cabana.</b>`
 }
 };

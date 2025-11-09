@@ -8,9 +8,6 @@ const targetLang = new URLSearchParams(window.location.search).get('l');
 var language = targetLang == 'pt-br' ? 'brazilian' : 'english';
 var langLines = window[language];
 
-// Audios
-let getItemAudio = new Audio("../assets/getItem.mp3")
-
 // BOTÕES PARA A TELA DE INÍCIO
 
 var startScreen = document.getElementById("start");
@@ -87,6 +84,7 @@ function eraseSave(){
 
   place = "forest";
   UpdateColors();
+  updateInventory();
 }
 
 function updateContinueButton(){
@@ -450,7 +448,8 @@ function parseInstruction(instruction){
 
 let dialogueControl = 0; // Changes when a new typewrite() is called, interrupting other dialogues
 
-async function typewrite(delay, divToType, lines){
+async function typewrite(delay, divID, lines){
+  let divToType = document.getElementById(divID)
   let skipped = false
   let textOBJ = window[language][lines]
   if(!textOBJ){ console.error(`Não há texto na variável ${lines}.`); return; }
@@ -459,7 +458,7 @@ async function typewrite(delay, divToType, lines){
 
   divToType.innerHTML = "";
 
-  setTimeout(() => {document.getElementById("chat").addEventListener("click", () => { skipped = true}, { once: true })}, 50)
+  setTimeout(() => { divToType.addEventListener("click", () => { skipped = true}, { once: true })}, 50)
 
   for(let line of Object.values(textOBJ)){
       if (currentDialogueControl != dialogueControl) return
@@ -611,7 +610,7 @@ function updateScreen(nextImg, nextText) {
   NI.classList.add("active");
 
   //mudar texto
-  typewrite(del, chatDiv, nextText)
+  typewrite(del, "chat", nextText)
 }
 
 function winGame() {
@@ -619,7 +618,7 @@ function winGame() {
   gameScreen.style.display = "none";
   winScreen.style.display = "flex";
 
-  winScreen.innerHTML = window[language].exitCabin[0]
+  typewrite(del, "winScreen", "exitCabin")
   
   eraseSave();
 }

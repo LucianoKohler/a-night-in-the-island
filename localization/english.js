@@ -180,13 +180,14 @@ enterForestWOStick: {
   2: `CMD_UNLOCK_stick`,
   3: `CMD_PLAY_getItem`,
   4: `<b>You got an ordinary stick</b>! <br><br>`,
-  5: window.englishGlobals.WWYD,
-  6: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continue</a> <br>`,
-  7: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Retreat from the forest`,
+  5: `... Actually, this stick is pretty useless, you just leave it there.<br><br>`,
+  6: window.englishGlobals.WWYD,
+  7: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continue</a> <br>`,
+  8: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Retreat from the forest`,
 },
 
 enterForestWStick: {
-  0: `Back to the same place you are, you can still see the spot where you found your stick... <br><br>`,
+  0: `Back to the same place you are, you can still see the ordinary stick... <br><br>`,
   1: window.englishGlobals.WWYD,
   2: `<a href="#" onclick="updateScreen('forest', 'forestBear')">Continue</a> <br>`,
   3: `<a href="#" onclick="updateScreen('map-choose', 'chooseLocation')">Retreat from the forest</a>`,
@@ -211,7 +212,7 @@ forestBearWSword: {
 forestBearWOSword: {
   0: `You go further into the forest, the path leads you to...`,
   1: ` A bear!<br><br>`,
-  2: `You firmly hold your stick,`,
+  2: `You bravely raise your fists,`,
   3: ` ready to fight for your life, no turning back!<br><br>`,
   4: `The bear takes its first step towards you, and your legs start thinking better than you,`,
   5: ` before even realizing, you start to run away from the creature, getting back to the starting point,`,
@@ -1228,6 +1229,6 @@ ending: {
 },
 
 exitCabin: {
-  0: window.englishGlobals.exitCabin
+  0: `<b>You exited the cabin.</b>`
 }
 }
