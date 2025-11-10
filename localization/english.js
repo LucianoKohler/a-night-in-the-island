@@ -26,7 +26,7 @@ var english = {
       backButton: `Go Back`,
       specialThanks: `Special Thanks`,
       0: `The entirety of the game was made by Luciano Kohler da Silva, AKA Blockier, but I also got a helping hand with some arts from Cyrenp (more precisely, the king and cave arts).`,
-      1: `Some third party softwares were also used to build the game: <a href="https://safi.me.uk/typewriterjs/" target="_blank">Typewriter.js</a> for the widely used typewriter effect throughout the game and <a href="https://patorjk.com/software/taag/" target="_blank">Patorjk's ascii text generator</a> to create the ascii titles, my thanks to these devs for saving me a ton of time!`,
+      1: `<a href="https://patorjk.com/software/taag/" target="_blank">Patorjk's ascii text generator</a> was used create the ascii titles, my thanks to the dev for saving me some time!`,
       2: `This project wouldn't be possible if I didn't have my friends to motivate me, I needed some people to play my game, after all, and I knew that I could count on my friends to know that my game would be appreciated by someone, and that makes my day!`,
       3: `Here's a list of my pals, if you're not in here, know that you're still in my heart :D`,
       4: `Cyrenp - Valhallan`,
