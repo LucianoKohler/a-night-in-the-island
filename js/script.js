@@ -579,6 +579,7 @@ function updateScreen(nextImg, nextText) {
     else if(nextText == "angelAskAboutQuest")                        { nextText = "angelPartsBadFeeling" }
     else if(nextText == "cabinTree"&&islandSword&&goggles&&tunic)    { nextText = "treeCanDefeat" }
     else if(nextText == "cabinTree")                                 { nextText = "treeCantDefeat" }
+    else if(nextText == "cabinEnter")                                { disableKeyFeatures() }
     else if(nextText == "leshyFate" && !kingQuest)                   { nextText = "leshyLostSoul" }
     else if(nextText == "leshyFate" && !goggles)                     { nextText = "leshyWOGoggles" }
     else if(nextText == "leshyFate")                                 { nextText = "leshyWGoggles" }
@@ -586,7 +587,6 @@ function updateScreen(nextImg, nextText) {
     else if(nextText == "leshyBurn")                                 { nextText = "leshyWDarkTunic" }
     else if(nextText == "leshyFinalTest" && !islandSword)            { nextText = "leshyFinalDefeat" }
     else if(nextText == "leshyFinalTest")                            { nextText = "leshyFinalVictory" }
-    
     else if(nextText == "leshyAngel")                                { setPalette("useSaved") }
 
     if      (sword3 && nextImg == "weirdRocks")     { ImgQuery = "weirdRocksCrying"; }
